@@ -45,7 +45,7 @@
 
 ## About The Project
 
-![Screen Shot](C:\Users\shaan\Documents\GitHub\ReadME Generator\images\screenshot.png)
+![Screen Shot](images/screenshot.png)
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
 
@@ -87,16 +87,19 @@ This is an example of how to list things you need to use the software and how to
 ### Installation
 
 1. Get a free API Key at [https://example.com](https://example.com)
+
 2. Clone the repo
    
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
+
 3. Install NPM packages
    
    ```sh
    npm install
    ```
+
 4. Enter your API in `config.js`
    
    ```JS
