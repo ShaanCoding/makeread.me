@@ -47,6 +47,12 @@
                     <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'social'" :class="[tab == 'social' ? 'active' : '', '']">Social</a>
                     <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'non-social'" :class="[tab == 'non-social' ? 'active' : '', '']">Non-Social</a>
                     <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'getting-started'" :class="[tab == 'getting-started' ? 'active' : '', '']">Getting-Started</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'usage'" :class="[tab == 'usage' ? 'active' : '', '']">Usage</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'roadmap'" :class="[tab == 'roadmap' ? 'active' : '', '']">Roadmap</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'contributing'" :class="[tab == 'contributing' ? 'active' : '', '']">Contributing</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'license'" :class="[tab == 'license' ? 'active' : '', '']">License</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'authors'" :class="[tab == 'authors' ? 'active' : '', '']">Authors</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'acknowledgements'" :class="[tab == 'acknowledgements' ? 'active' : '', '']">Acknowledgements</a>
                 </nav>
 
                 <div v-if="tab == 'header'" class="tab">
@@ -154,9 +160,90 @@
                         <textarea v-model="data.installation" placeholder="Enter about this installation.." class="form-control">{{data.installation}}</textarea>
                     </div>
                 </div>
+
+                <div v-if="tab == 'usage'" class="tab">
+                    <h3>Usage</h3>
+
+                    <div class="form-group">
+                        <label>Usage Description</label>
+                        <textarea v-model="data.usage" placeholder="Enter about this usage.." class="form-control">{{data.usage}}</textarea>
+                    </div>
+                </div>
+
+                <div v-if="tab == 'roadmap'" class="tab">
+                    <h3>Roadmap</h3>
+
+                    <div class="form-group">
+                        <label>Roadmap Description</label>
+                        <textarea v-model="data.roadmap" placeholder="Enter about this roadmap.." class="form-control">{{data.roadmap}}</textarea>
+                    </div>
+                </div>
+
+                <div v-if="tab == 'contributing'" class="tab">
+                    <h3>Contributing</h3>
+
+                    <div class="form-group">
+                        <label>Contributing Description</label>
+                        <textarea v-model="data.contributing" placeholder="Enter about this contributing.." class="form-control">{{data.contributing}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Creating A Pull Request</label>
+                        <textarea v-model="data.pullRequest" placeholder="Enter about this pull request.." class="form-control">{{data.pullRequest}}</textarea>
+                    </div>
+                </div>
+
+                <div v-if="tab == 'license'" class="tab">
+                    <h3>License</h3>
+
+                    <div class="form-group">
+                        <label>License</label>
+                        <textarea v-model="data.license" placeholder="Enter about this license.." class="form-control">{{data.license}}</textarea>
+                    </div>
+                </div>
+
+                <div v-if="tab == 'authors'" class="tab">
+                    <h3>Authors</h3>
+
+                    <!-- To implement later -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>Others</h4>
+                        </div>
+                        <div class="col-xs-12 col-md-12" v-for="item in data.authors">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Icon</label>
+                                        <select v-model="item.icon" class="form-control">
+                                            <option v-for="icon in icons" :value="icon.title">{{icon.title}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.value" title="Link" placeholder="Enter URL.."></custom-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12">
+                            <button @click="addAuthor" class="btn btn-primary">Add more</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div v-if="tab == 'acknowledgements'" class="tab">
+                    <h3>Acknowledgements</h3>
+
+                    
+                </div>
                 
             </app-content>
 
+
+
+            
             <app-sidebar class="col-xs-12 col-md-6">
 
                 <div class="card mb-4">

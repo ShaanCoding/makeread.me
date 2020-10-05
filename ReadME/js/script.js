@@ -43,8 +43,18 @@ new Vue({
                 prerequisites: "",
                 installation: "",
 
+                usage: "",
 
-                items: [],
+                roadmap: "",
+
+                contributing: "",
+                pullRequest: "",
+
+                license: "",
+
+                authors: [],
+
+                acknowledgements: []
             },
             source: this.getSource(this.data),
         };
@@ -63,8 +73,8 @@ new Vue({
         this.addItem();
     },
     methods: {
-        addItem() {
-            this.data.items.push({
+        addAuthor() {
+            this.data.authors.push({
                 value: '',
                 icon: ''
             });
@@ -88,6 +98,10 @@ new Vue({
 
                 if(data.licenseBadge) {
                     source += "BAZINGA";
+                }
+
+                for(i = 0; i < authors.length; i++) {
+                    source += authors[i] + " Hello";
                 }
 
             }

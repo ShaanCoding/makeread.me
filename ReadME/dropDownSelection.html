@@ -1,24 +1,2 @@
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12">
-                            <h4>Others</h4>
-                        </div>
-                        <div class="col-xs-12 col-md-12" v-for="item in data.items">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Icon</label>
-                                        <select v-model="item.icon" class="form-control">
-                                            <option v-for="icon in icons" :value="icon.title">{{icon.title}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.value" title="Link" placeholder="Enter URL.."></custom-input>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-md-12">
-                            <button @click="addItem" class="btn btn-primary">Add more</button>
-                        </div>
-                    </div>
+                    
