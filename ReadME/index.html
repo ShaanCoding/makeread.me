@@ -38,23 +38,23 @@
             </div>
         </app-nav>
 
+        <nav class="nav nav-pills nav-justified">
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'header'" :class="[tab == 'header' ? 'active' : '', '']">Header</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'checkboxes'" :class="[tab == 'checkboxes' ? 'active' : '', '']">Checkboxes</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'aboutThisProject'" :class="[tab == 'aboutThisProject' ? 'active' : '', '']">About This Project</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'builtWith'" :class="[tab == 'builtWith' ? 'active' : '', '']">Built With</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'getting-started'" :class="[tab == 'getting-started' ? 'active' : '', '']">Getting Started</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'usage'" :class="[tab == 'usage' ? 'active' : '', '']">Usage</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'roadmap'" :class="[tab == 'roadmap' ? 'active' : '', '']">Roadmap</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'contributing'" :class="[tab == 'contributing' ? 'active' : '', '']">Contributing</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'license'" :class="[tab == 'license' ? 'active' : '', '']">License</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'authors'" :class="[tab == 'authors' ? 'active' : '', '']">Authors</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'acknowledgements'" :class="[tab == 'acknowledgements' ? 'active' : '', '']">Acknowledgements</a>
+        </nav>
+
         <app-view class="row">
 
             <app-content class="col-xs-12 col-md-6">                
-                <nav class="nav nav-pills nav-justified">
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'header'" :class="[tab == 'header' ? 'active' : '', '']">Header</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'checkboxes'" :class="[tab == 'checkboxes' ? 'active' : '', '']">Checkboxes</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'aboutThisProject'" :class="[tab == 'aboutThisProject' ? 'active' : '', '']">About This Project</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'builtWith'" :class="[tab == 'builtWith' ? 'active' : '', '']">Built With</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'getting-started'" :class="[tab == 'getting-started' ? 'active' : '', '']">Getting Started</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'usage'" :class="[tab == 'usage' ? 'active' : '', '']">Usage</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'roadmap'" :class="[tab == 'roadmap' ? 'active' : '', '']">Roadmap</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'contributing'" :class="[tab == 'contributing' ? 'active' : '', '']">Contributing</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'license'" :class="[tab == 'license' ? 'active' : '', '']">License</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'authors'" :class="[tab == 'authors' ? 'active' : '', '']">Authors</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'acknowledgements'" :class="[tab == 'acknowledgements' ? 'active' : '', '']">Acknowledgements</a>
-                </nav>
-
                 <div v-if="tab == 'header'" class="tab">
                     <h3>Header</h3>
 

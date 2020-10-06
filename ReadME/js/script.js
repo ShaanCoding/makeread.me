@@ -39,11 +39,11 @@ new Vue({
 
                 builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.\n\n* [Bootstrap](https://getbootstrap.com)\n* [JQuery](https://jquery.com)\n* [Laravel](https://laravel.com)",
 
-                gettingStarted: "",
-                prerequisites: "",
-                installation: "",
+                gettingStarted: "This is an example of how you may give instructions on setting up your project locally.\nTo get a local copy up and running follow these simple example steps.",
+                prerequisites: "This is an example of how to list things you need to use the software and how to install them.\n\n* npm\n\n```sh\nnpm install npm@latest -g\n```",
+                installation: "1. Get a free API Key at [https://example.com](https://example.com)\n\n2. Clone the repo\n\n```sh\ngit clone https://github.com/your_username_/Project-Name.git\n```\n\n3. Install NPM packages\n\n```sh\nnpm install\n```\n\n4. Enter your API in `config.js`\n\n```JS\nconst API_KEY = 'ENTER YOUR API';\n```",
 
-                usage: "",
+                usage: "Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.\n\n_For more examples, please refer to the [Documentation](https://example.com)_",
 
                 roadmap: "",
 
@@ -206,9 +206,60 @@ new Vue({
             source = '';
 
             source += "\n## Getting Started\n\n";
-            source += data.gettingStarted + "\n";
 
+            if(data.gettingStarted) {
+                source += data.gettingStarted + "\n\n";
+            }
 
+            if(data.prerequisites) {
+                source += "\n### Prerequisites\n\n";
+                source += data.prerequisites + "\n\n";
+            }
+
+            if(data.installation) {
+                source += "\n### Installation\n\n";
+                source += data.installation + "\n\n";
+            }
+
+            return source;
+        },
+        getUsage: function (data) {
+            source = '';
+
+            source += "\n## Usage\n\n";
+            source += data.usage + "\n";
+
+            return source;
+        },
+        getRoadmap: function (data) {
+            source = '';
+
+            source += "\n## Roadmap\n\n";
+            source += "See the [open issues](https://github.com/" + data.userName + "/" + data.repoName + "/issues) for a list of proposed features (and known issues).";
+
+            return source;
+        },
+        getContributing: function (data) {
+            source = '';
+
+            source += "\n## Contributing\n\n";
+            source += "Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n";
+            source += "* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/" + data.userName + "/" + data.repoName + "/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.";
+            source += "* Please make sure you check your spelling and grammar.\n";
+            source += "* Create individual PR for each suggestion.\n";
+            source += "* Please also read through the [Code Of Conduct](./CODE_OF_CONDUCT.md) before posting your first idea as well.\n";
+
+            return source;
+        },
+        getCreatingAPullRequest: function (data) {
+            source = '';
+            
+            source += "\n### Creating A Pull Request\n\n";
+            source += "1. Fork the Project\n";
+            source += "2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)\n";
+            source += "3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)\n";
+            source += "4. Push to the Branch (`git push origin feature/AmazingFeature`)\n";
+            source += "5. Open a Pull Request\n";
 
             return source;
         },
@@ -221,6 +272,10 @@ new Vue({
                 source += this.getAboutThisProject(data);
                 source += this.builtWith(data);
                 source += this.gettingStarted(data);
+                source += this.getUsage(data);
+                source += this.getRoadmap(data);
+                source += this.getContributing(data);
+                source += this.getCreatingAPullRequest(data);
             }
 
             return source;
