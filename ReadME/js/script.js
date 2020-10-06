@@ -82,8 +82,13 @@ new Vue({
             });
 
             this.data.acknowledgements.push({
-                acknowledgementName: 'Website Name',
-                acknowledgementURL: 'http://shaankhan.dev/'
+                acknowledgementName: 'ShaanCoding',
+                acknowledgementURL: 'https://github.com/ShaanCoding/'
+            });
+
+            this.data.acknowledgements.push({
+                acknowledgementName: 'ImgShields',
+                acknowledgementURL: 'https://shields.io/'
             });
         },
         addAuthor() {
