@@ -70,10 +70,22 @@ new Vue({
     },
     mounted: function(){
         this.source = this.getSource(this.data);
-        this.addAuthor();
-        this.addAcknowledgement();
+        this.initalizeButtons();
     },
     methods: {
+        initalizeButtons() {
+            this.data.authors.push({
+                authorName: 'Shaan Khan',
+                authorDesc: 'Comp Sci Student @UTS',
+                authorURL: 'https://github.com/ShaanCoding/',
+                authorContribution: 'Built ReadME Template'
+            });
+
+            this.data.acknowledgements.push({
+                acknowledgementName: 'Website Name',
+                acknowledgementURL: 'http://shaankhan.dev/'
+            });
+        },
         addAuthor() {
             this.data.authors.push({
                 authorName: '',
@@ -263,6 +275,36 @@ new Vue({
 
             return source;
         },
+        getLicense: function (data) {
+            source = '';
+
+            source += "\n## License\n\n";
+            source += "Distributed under the MIT License. See [LICENSE](./LICENSE.md) for more information.\n";
+
+            return source;
+        },
+        getAuthors: function (data) {
+            source = '';
+
+            source += "\n## Authors\n\n";
+
+            for(i = 0; i < data.authors.length; i++) {
+                source += "* **" + data.authors[i].authorName + "** - *" + data.authors[i].authorDesc + "* - [" + data.authors[i].authorName + "](" + data.authors[i].authorURL + ") - *" + data.authors[i].authorContribution + "*\n"; 
+            }
+
+            return source;
+        },
+        getAcknowledgements: function (data) {
+            source = '';
+
+            source += "\n## Acknowledgements\n\n";
+
+            for(i = 0; i < data.acknowledgements.length; i++) {
+                source += "* [" + data.acknowledgements[i].acknowledgementName + "](" + data.acknowledgements[i].acknowledgementURL + ")\n";
+            }
+
+            return source;
+        },
         getSource: function (data) {
             let source = '';
 
@@ -276,6 +318,9 @@ new Vue({
                 source += this.getRoadmap(data);
                 source += this.getContributing(data);
                 source += this.getCreatingAPullRequest(data);
+                source += this.getLicense(data);
+                source += this.getAuthors(data);
+                source += this.getAcknowledgements(data);
             }
 
             return source;
