@@ -43,10 +43,10 @@
             <app-content class="col-xs-12 col-md-6">                
                 <nav class="nav nav-pills nav-justified">
                     <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'header'" :class="[tab == 'header' ? 'active' : '', '']">Header</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'additional'" :class="[tab == 'additional' ? 'active' : '', '']">Additional</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'social'" :class="[tab == 'social' ? 'active' : '', '']">Social</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'non-social'" :class="[tab == 'non-social' ? 'active' : '', '']">Non-Social</a>
-                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'getting-started'" :class="[tab == 'getting-started' ? 'active' : '', '']">Getting-Started</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'checkboxes'" :class="[tab == 'checkboxes' ? 'active' : '', '']">Checkboxes</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'aboutThisProject'" :class="[tab == 'aboutThisProject' ? 'active' : '', '']">About This Project</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'builtWith'" :class="[tab == 'builtWith' ? 'active' : '', '']">Built With</a>
+                    <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'getting-started'" :class="[tab == 'getting-started' ? 'active' : '', '']">Getting Started</a>
                     <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'usage'" :class="[tab == 'usage' ? 'active' : '', '']">Usage</a>
                     <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'roadmap'" :class="[tab == 'roadmap' ? 'active' : '', '']">Roadmap</a>
                     <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'contributing'" :class="[tab == 'contributing' ? 'active' : '', '']">Contributing</a>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div v-if="tab == 'additional'" class="tab">
+                <div v-if="tab == 'checkboxes'" class="tab">
                     <h3>Checkboxes</h3>
 
                     <div class="row">
@@ -86,43 +86,50 @@
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.contributorsBadge">
-                                <label class="custom-control-label" for="customCheck2">Enable Contributors Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.downloadsBadge">
+                                <label class="custom-control-label" for="customCheck2">Enable Download Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3" v-model="data.forksBadge">
-                                <label class="custom-control-label" for="customCheck3">Enable Forks Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck3" v-model="data.contributorsBadge">
+                                <label class="custom-control-label" for="customCheck3">Enable Contributors Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck4" v-model="data.starsBadge">
-                                <label class="custom-control-label" for="customCheck4">Enable Stars Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck4" v-model="data.forksBadge">
+                                <label class="custom-control-label" for="customCheck4">Enable Forks Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck5" v-model="data.issuesBadge">
-                                <label class="custom-control-label" for="customCheck5">Enable Issues Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck5" v-model="data.starsBadge">
+                                <label class="custom-control-label" for="customCheck5">Enable Stars Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck6" v-model="data.licenseBadge">
-                                <label class="custom-control-label" for="customCheck6">Enable License Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck6" v-model="data.issuesBadge">
+                                <label class="custom-control-label" for="customCheck6">Enable Issues Badge</label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck7" v-model="data.licenseBadge">
+                                <label class="custom-control-label" for="customCheck7">Enable License Badge</label>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <div v-if="tab == 'social'" class="tab">
+                <div v-if="tab == 'aboutThisProject'" class="tab">
                     <h3>About This Project</h3>
 
                     <custom-input v-model="data.showcaseURL" title="Showcase URL" placeholder="Enter showcase URL.."></custom-input>
@@ -133,7 +140,7 @@
                     </div>
                 </div>
 
-                <div v-if="tab == 'non-social'" class="tab">
+                <div v-if="tab == 'builtWith'" class="tab">
                     <h3>Built With</h3>
 
                     <div class="form-group">
@@ -205,23 +212,20 @@
                 <div v-if="tab == 'authors'" class="tab">
                     <h3>Authors</h3>
 
-                    <!-- To implement later -->
                     <div class="row">
-                        <div class="col-xs-12 col-md-12">
-                            <h4>Others</h4>
-                        </div>
                         <div class="col-xs-12 col-md-12" v-for="item in data.authors">
                             <div class="row">
                                 <div class="col-xs-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Icon</label>
-                                        <select v-model="item.icon" class="form-control">
-                                            <option v-for="icon in icons" :value="icon.title">{{icon.title}}</option>
-                                        </select>
-                                    </div>
+                                    <custom-input v-model="item.authorName" title="Author Name" placeholder="Enter author name.."></custom-input>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.value" title="Link" placeholder="Enter URL.."></custom-input>
+                                    <custom-input v-model="item.authorDesc" title="Author Description" placeholder="Enter author desc.."></custom-input>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.authorURL" title="Author URL" placeholder="Enter author URL.."></custom-input>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.authorContribution" title="Author Contribution" placeholder="Enter author contributions.."></custom-input>
                                 </div>
                             </div>
                         </div>
@@ -230,13 +234,27 @@
                         </div>
                     </div>
 
-
                 </div>
 
                 <div v-if="tab == 'acknowledgements'" class="tab">
                     <h3>Acknowledgements</h3>
 
-                    
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12" v-for="item in data.acknowledgements">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.acknowledgementName" title="Acknowledgement Name" placeholder="Enter acknowledgement name.."></custom-input>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.acknowledgementURL" title="Acknowledgement URL" placeholder="Enter acknowledgement URL.."></custom-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12">
+                            <button @click="addAcknowledgement" class="btn btn-primary">Add more</button>
+                        </div>
+                    </div>
+
                 </div>
                 
             </app-content>
