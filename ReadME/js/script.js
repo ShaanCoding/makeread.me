@@ -20,6 +20,8 @@ new Vue({
             forced: false,
             tab: "header",
             data: {
+                tableOfContent: true,
+                enableHeaderImage: true,
                 userName: "ShaanCoding",
                 repoName: "ReadME-Generator",
                 logoURL: "../images/logo.png",
@@ -30,7 +32,6 @@ new Vue({
                 reportBug: true,
                 requestFeature: true,
 
-                tableOfContent: true,
                 downloadsBadge: true,
                 contributorsBadge: true,
                 forksBadge: false,
@@ -133,9 +134,12 @@ new Vue({
 
             source += "<br/>\n";
             source += "<p align=\"center\">\n";
-            source += "  <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">\n";
-            source += "    <img src=\"" + data.logoURL + "\" alt=\"Logo\" width=\"80\" height=\"80\">\n";
-            source += "  </a>\n\n";
+
+            if(data.enableHeaderImage) {
+                source += "  <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">\n";
+                source += "    <img src=\"" + data.logoURL + "\" alt=\"Logo\" width=\"80\" height=\"80\">\n";
+                source += "  </a>\n\n";
+            }
 
             if(data.headLine) {
                 source += "  <h3 align=\"center\">" + data.headLine + "</h3>\n\n";
@@ -208,8 +212,15 @@ new Vue({
 
             source += "\n";
 
+            source += this.generateTableOfContent(data);
+
+            return source;
+        },
+        generateTableOfContent: function (data) {
+            source = '';
+
             if(data.tableOfContent) {
-                source += "\n## Summary\n\n";
+                source += "\n## Table Of Contents\n\n";
 
                 if(data.showcaseURL || data.aboutThisProject) {
                     source += "* [About the Project](#about-the-project)\n";

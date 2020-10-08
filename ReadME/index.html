@@ -44,32 +44,18 @@
                     <h3>Header</h3>
 
                     <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
-                        <label class="custom-control-label" for="customCheck1">Enable Table Of Content</label>
+                        <input type="checkbox" class="custom-control-input" id="customCheck0" v-model="data.enableHeaderImage">
+                        <label class="custom-control-label" for="customCheck0">Enable Header Image</label>
                     </div>
 
-                    <custom-input v-model="data.userName" title="Username" placeholder="Enter username.."></custom-input>
-                    <custom-input v-model="data.repoName" title="Repository Name" placeholder="Enter repository name.."></custom-input>
-                    <custom-input v-model="data.logoURL" title="Logo URL" placeholder="Enter logo URL.."></custom-input>
-
-                    <div class="form-group">
-                        <label>Headline</label>
-                        <textarea v-model="data.headLine" placeholder="Enter headline.." class="form-control">{{data.headLine}}</textarea>
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.exploreTheDocs">
+                        <label class="custom-control-label" for="customCheck2">Enable Explore The Docs</label>
                     </div>
 
-                    <div class="form-group">
-                        <label>Catchphrase</label>
-                        <textarea v-model="data.catchPhrase" placeholder="Enter catchphrase.." class="form-control">{{data.catchPhrase}}</textarea>
-                    </div>
+                    <br>
 
                     <div class="row">
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.exploreTheDocs">
-                                <label class="custom-control-label" for="customCheck2">Enable Explore The Docs</label>
-                            </div>
-                        </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
@@ -94,6 +80,24 @@
 
                     </div>
 
+                    <custom-input v-model="data.userName" title="Username" placeholder="Enter username.."></custom-input>
+                    <custom-input v-model="data.repoName" title="Repository Name" placeholder="Enter repository name.."></custom-input>
+                    <custom-input v-model="data.logoURL" title="Logo URL" placeholder="Enter logo URL.."></custom-input>
+
+                    <div class="form-group">
+                        <label>Headline</label>
+                        <textarea v-model="data.headLine" placeholder="Enter headline.." class="form-control">{{data.headLine}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Catchphrase</label>
+                        <textarea v-model="data.catchPhrase" placeholder="Enter catchphrase.." class="form-control">{{data.catchPhrase}}</textarea>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
+                        <label class="custom-control-label" for="customCheck1">Enable Table Of Contents</label>
+                    </div>
 
                 </div>
 
