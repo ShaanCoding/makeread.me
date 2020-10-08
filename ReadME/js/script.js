@@ -226,7 +226,7 @@ new Vue({
                     source += "* [About the Project](#about-the-project)\n";
                 }
 
-                if(data.builtWith || data.builtWithList > 0) {
+                if(data.builtWith || data.builtWithList.length > 0) {
                     source += "* [Built With](#built-with)\n";
                 }
 
@@ -235,10 +235,10 @@ new Vue({
                 }
 
                 if(data.prerequisites) {
-                    source += "* [Prerequisites](#prerequisites)\n";
+                    source += "  * [Prerequisites](#prerequisites)\n";
                 }
                 if(data.installation) {
-                    source += "* [Installation](#installation)\n";
+                    source += "  * [Installation](#installation)\n";
                 }
 
                 source += "* [Usage](#usage)\n";
@@ -271,7 +271,7 @@ new Vue({
         builtWith: function (data) {
             source = '';
 
-            if(data.builtWith || data.builtWithList > 0) {
+            if(data.builtWith || data.builtWithList.length > 0) {
                 source += "\n## Built With\n\n";
                 source += data.builtWith + "\n";
     
