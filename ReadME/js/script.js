@@ -20,24 +20,30 @@ new Vue({
             forced: false,
             tab: "header",
             data: {
+                tableOfContent: true,
+                enableHeaderImage: true,
                 userName: "ShaanCoding",
                 repoName: "ReadME-Generator",
-                logoURL: "https://github.com/ShaanCoding/ReadME-Generator/tree/main/images/logo.png",
+                logoURL: "../images/logo.png",
                 headLine: "ReadME Template Generator",
-                catchPhrase: "An Awesome ReadME Template To Jumpstart Your Projects!",
+                catchPhrase: "An Awesome ReadME Generator To Jumpstart Your Projects!",
+                exploreTheDocs: true,
+                viewDemo: true,
+                reportBug: true,
+                requestFeature: true,
 
-                tableOfContent: true,
                 downloadsBadge: true,
                 contributorsBadge: true,
-                forksBadge: true,
-                starsBadge: true,
+                forksBadge: false,
+                starsBadge: false,
                 issuesBadge: true,
                 licenseBadge: true,
 
-                showcaseURL: "https://github.com/ShaanCoding/ReadME-Generator/tree/main/images/screenshot.png",
+                showcaseURL: "../images/screenshot.png",
                 aboutThisProject: "There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.\n\nHere's why:\n\n* Your time should be focused on creating something amazing. A project that solves a problem and helps others\n* You shouldn't be doing the same tasks over and over like creating a README from scratch\n* You should element DRY principles to the rest of your life :smile:\n\nOf course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.\n\nA list of commonly used resources that I find helpful are listed in the acknowledgements.",
 
-                builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.\n\n* [Bootstrap](https://getbootstrap.com)\n* [JQuery](https://jquery.com)\n* [Laravel](https://laravel.com)",
+                builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.\n\n",
+                builtWithList: [],
 
                 gettingStarted: "This is an example of how you may give instructions on setting up your project locally.\nTo get a local copy up and running follow these simple example steps.",
                 prerequisites: "This is an example of how to list things you need to use the software and how to install them.\n\n* npm\n\n```sh\nnpm install npm@latest -g\n```",
@@ -82,8 +88,19 @@ new Vue({
             });
 
             this.data.acknowledgements.push({
-                acknowledgementName: 'Website Name',
-                acknowledgementURL: 'http://shaankhan.dev/'
+                acknowledgementName: 'ShaanCoding',
+                acknowledgementURL: 'https://github.com/ShaanCoding/'
+            });
+
+            this.data.acknowledgements.push({
+                acknowledgementName: 'ImgShields',
+                acknowledgementURL: 'https://shields.io/'
+            });
+        },
+        addBuiltWith() {
+            this.data.builtWithList.push({
+                builtWithName: '',
+                builtWithURL: ''
             });
         },
         addAuthor() {
@@ -116,30 +133,50 @@ new Vue({
             source = '';
 
             source += "<br/>\n";
-            //Refactor to take LogoURL
             source += "<p align=\"center\">\n";
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">\n";
-            source += "    <img src=\"" + data.logoURL + "\" alt=\"Logo\" width=\"80\" height=\"80\">\n";
-            source += "</a>\n\n";
 
-            source += "<h3 align=\"center\">" + data.headLine + "</h3>\n\n";
+            if(data.enableHeaderImage) {
+                source += "  <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">\n";
+                source += "    <img src=\"" + data.logoURL + "\" alt=\"Logo\" width=\"80\" height=\"80\">\n";
+                source += "  </a>\n\n";
+            }
 
-            source += "<p align=\"center\">\n";
-            source += data.catchPhrase + "\n";
-            source += "<br/>\n"
-            source += "<br/>\n"
-            
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\"><strong>Explore the docs »</strong></a>\n";
+            if(data.headLine) {
+                source += "  <h3 align=\"center\">" + data.headLine + "</h3>\n\n";
+            }
 
-            source += "<br/>\n"
-            source += "<br/>\n"
+            if(data.catchPhrase || data.exploreTheDocs || data.viewDemo || data.reportBug) {
+                source += "  <p align=\"center\">\n";
 
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">View Demo</a>\n";
-            source += ".\n";
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Report Bug</a>\n";
-            source += ".\n";
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Request Feature</a>\n";
-            source += "</p>\n";
+                if(data.catchPhrase) {
+                    source += "    " + data.catchPhrase + "\n";
+                    source += "    <br/>\n"
+                    source += "    <br/>\n"
+                }
+    
+                if(data.exploreTheDocs) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\"><strong>Explore the docs »</strong></a>\n";
+                    source += "    <br/>\n"
+                    source += "    <br/>\n"
+                }
+    
+                if(data.viewDemo) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">View Demo</a>\n";
+                    source += "    .\n";
+                }
+    
+                if(data.reportBug) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Report Bug</a>\n";
+                    source += "    .\n";
+                }
+    
+                if(data.requestFeature) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Request Feature</a>\n";
+                }
+                
+                source += "  </p>\n";
+            }
+
             source += "</p>\n";
 
             return source;
@@ -175,13 +212,35 @@ new Vue({
 
             source += "\n";
 
+            source += this.generateTableOfContent(data);
+
+            return source;
+        },
+        generateTableOfContent: function (data) {
+            source = '';
+
             if(data.tableOfContent) {
-                source += "\n## Summary\n\n";
-                source += "* [About the Project](#about-the-project)\n";
-                source += "* [Built With](#built-with)\n";
-                source += "* [Getting Started](#getting-started)\n";
-                source += "* [Prerequisites](#prerequisites)\n";
-                source += "* [Installation](#installation)\n";
+                source += "\n## Table Of Contents\n\n";
+
+                if(data.showcaseURL || data.aboutThisProject) {
+                    source += "* [About the Project](#about-the-project)\n";
+                }
+
+                if(data.builtWith || data.builtWithList > 0) {
+                    source += "* [Built With](#built-with)\n";
+                }
+
+                if(data.gettingStarted || data.prerequisites || data.installation) {
+                    source += "* [Getting Started](#getting-started)\n";
+                }
+
+                if(data.prerequisites) {
+                    source += "* [Prerequisites](#prerequisites)\n";
+                }
+                if(data.installation) {
+                    source += "* [Installation](#installation)\n";
+                }
+
                 source += "* [Usage](#usage)\n";
                 source += "* [Roadmap](#roadmap)\n";
                 source += "* [Contributing](#contributing)\n";
@@ -195,13 +254,16 @@ new Vue({
         getAboutThisProject: function (data) {
             source = '';
 
-            source += "\n## About The Project\n\n";
-            if(data.showcaseURL) {
-                source += "![Screen Shot](" + data.showcaseURL + ")\n\n";
-            }
+            if(data.showcaseURL || data.aboutThisProject) {
+                source += "\n## About The Project\n\n";
 
-            if(data.aboutThisProject) {
-                source += data.aboutThisProject + "\n";
+                if(data.showcaseURL) {
+                    source += "![Screen Shot](" + data.showcaseURL + ")\n\n";
+                }
+    
+                if(data.aboutThisProject) {
+                    source += data.aboutThisProject + "\n";
+                }
             }
 
             return source;
@@ -209,28 +271,36 @@ new Vue({
         builtWith: function (data) {
             source = '';
 
-            source += "\n## Built With\n\n";
-            source += data.builtWith + "\n";
+            if(data.builtWith || data.builtWithList > 0) {
+                source += "\n## Built With\n\n";
+                source += data.builtWith + "\n";
+    
+                for(i = 0; i < data.builtWithList.length; i++) {
+                    source += "* [" + data.builtWithList[i].builtWithName + "](" + data.builtWithList[i].builtWithURL + ")\n";
+                }
+            }
 
             return source;
         },
         gettingStarted: function (data) {
             source = '';
 
-            source += "\n## Getting Started\n\n";
+            if(data.gettingStarted || data.prerequisites || data.installation) {
+                source += "\n## Getting Started\n\n";
 
-            if(data.gettingStarted) {
-                source += data.gettingStarted + "\n\n";
-            }
-
-            if(data.prerequisites) {
-                source += "\n### Prerequisites\n\n";
-                source += data.prerequisites + "\n\n";
-            }
-
-            if(data.installation) {
-                source += "\n### Installation\n\n";
-                source += data.installation + "\n\n";
+                if(data.gettingStarted) {
+                    source += data.gettingStarted + "\n\n";
+                }
+    
+                if(data.prerequisites) {
+                    source += "\n### Prerequisites\n\n";
+                    source += data.prerequisites + "\n\n";
+                }
+    
+                if(data.installation) {
+                    source += "\n### Installation\n\n";
+                    source += data.installation + "\n\n";
+                }
             }
 
             return source;
@@ -245,21 +315,27 @@ new Vue({
         },
         getRoadmap: function (data) {
             source = '';
+            data.roadmap = "See the [open issues](https://github.com/" + data.userName + "/" + data.repoName + "/issues) for a list of proposed features (and known issues).";
 
             source += "\n## Roadmap\n\n";
-            source += "See the [open issues](https://github.com/" + data.userName + "/" + data.repoName + "/issues) for a list of proposed features (and known issues).";
+            source += data.roadmap + "\n";
 
             return source;
         },
         getContributing: function (data) {
             source = '';
 
+            setContributing = '';
+            setContributing += "Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n";
+            setContributing += "* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/" + data.userName + "/" + data.repoName + "/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.";
+            setContributing += "* Please make sure you check your spelling and grammar.\n";
+            setContributing += "* Create individual PR for each suggestion.\n";
+            setContributing += "* Please also read through the [Code Of Conduct](https://github.com/" + data.userName + "/" + data.repoName + "/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.";
+
+            data.contributing = setContributing;
+
             source += "\n## Contributing\n\n";
-            source += "Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n";
-            source += "* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/" + data.userName + "/" + data.repoName + "/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.";
-            source += "* Please make sure you check your spelling and grammar.\n";
-            source += "* Create individual PR for each suggestion.\n";
-            source += "* Please also read through the [Code Of Conduct](./CODE_OF_CONDUCT.md) before posting your first idea as well.\n";
+            source += data.contributing + "\n";
 
             return source;
         },
