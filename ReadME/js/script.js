@@ -22,9 +22,9 @@ new Vue({
             data: {
                 userName: "ShaanCoding",
                 repoName: "ReadME-Generator",
-                logoURL: "https://github.com/ShaanCoding/ReadME-Generator/tree/main/images/logo.png",
+                logoURL: "../images/logo.png",
                 headLine: "ReadME Template Generator",
-                catchPhrase: "An Awesome ReadME Template To Jumpstart Your Projects!",
+                catchPhrase: "An Awesome ReadME Generator To Jumpstart Your Projects!",
 
                 tableOfContent: true,
                 downloadsBadge: true,
@@ -34,10 +34,11 @@ new Vue({
                 issuesBadge: true,
                 licenseBadge: true,
 
-                showcaseURL: "https://github.com/ShaanCoding/ReadME-Generator/tree/main/images/screenshot.png",
+                showcaseURL: "../images/screenshot.png",
                 aboutThisProject: "There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.\n\nHere's why:\n\n* Your time should be focused on creating something amazing. A project that solves a problem and helps others\n* You shouldn't be doing the same tasks over and over like creating a README from scratch\n* You should element DRY principles to the rest of your life :smile:\n\nOf course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.\n\nA list of commonly used resources that I find helpful are listed in the acknowledgements.",
 
-                builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.\n\n* [Bootstrap](https://getbootstrap.com)\n* [JQuery](https://jquery.com)\n* [Laravel](https://laravel.com)",
+                builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.\n\n",
+                builtWithList: [],
 
                 gettingStarted: "This is an example of how you may give instructions on setting up your project locally.\nTo get a local copy up and running follow these simple example steps.",
                 prerequisites: "This is an example of how to list things you need to use the software and how to install them.\n\n* npm\n\n```sh\nnpm install npm@latest -g\n```",
@@ -89,6 +90,12 @@ new Vue({
             this.data.acknowledgements.push({
                 acknowledgementName: 'ImgShields',
                 acknowledgementURL: 'https://shields.io/'
+            });
+        },
+        addBuiltWith() {
+            this.data.builtWithList.push({
+                builtWithName: '',
+                builtWithURL: ''
             });
         },
         addAuthor() {
@@ -216,6 +223,10 @@ new Vue({
 
             source += "\n## Built With\n\n";
             source += data.builtWith + "\n";
+
+            for(i = 0; i < data.builtWithList.length; i++) {
+                source += "* [" + data.builtWithList[i].builtWithName + "](" + data.builtWithList[i].builtWithURL + ")\n";
+            }
 
             return source;
         },

@@ -6,23 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>GitHub ReadMe Generator</title>
-    <meta name="description" content="GitHub profile readme generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your profile repository as profile preview." />
+    <meta name="description" content="GitHub Readme Generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your repository as a preview." />
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@artuurssmirnovs" />
-    <meta name="twitter:title" content="GitHub profile readme generator" />
-    <meta name="twitter:description" content="GitHub profile readme generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your profile repository as profile preview." />
-    <meta name="twitter:creator" content="@arturssmirnovs" />
-    <meta name="twitter:image" content="https://arturssmirnovs.github.io/github-profile-readme-generator/images/banner.png" />
-
-    <meta property="og:title" content="GitHub profile readme generator" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://arturssmirnovs.github.io/github-profile-readme-generator/" />
-    <meta property="og:image" content="https://arturssmirnovs.github.io/github-profile-readme-generator/images/banner.png" />
-    <meta property="og:description" content="GitHub profile readme generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your profile repository as profile preview." />
-    <meta property="og:site_name" content="artuurs.smirnovs" />
-
-    <link href="https://arturssmirnovs.github.io/github-profile-readme-generator/" rel="canonical" />
     <link rel="icon" type="image/png" href="images/icon.png" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -58,6 +43,13 @@
                 <div v-if="tab == 'header'" class="tab">
                     <h3>Header</h3>
 
+                    <div class="col-xs-12 col-md-6">
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
+                            <label class="custom-control-label" for="customCheck1">Enable Table Of Content</label>
+                        </div>
+                    </div>
+
                     <custom-input v-model="data.userName" title="Username" placeholder="Enter username.."></custom-input>
                     <custom-input v-model="data.repoName" title="Repository Name" placeholder="Enter repository name.."></custom-input>
                     <custom-input v-model="data.logoURL" title="Logo URL" placeholder="Enter logo URL.."></custom-input>
@@ -77,12 +69,6 @@
                     <h3>Checkboxes</h3>
 
                     <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
-                                <label class="custom-control-label" for="customCheck1">Enable Table Of Content</label>
-                            </div>
-                        </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
@@ -146,6 +132,22 @@
                     <div class="form-group">
                         <label>Built With Description</label>
                         <textarea v-model="data.builtWith" placeholder="Enter about this project.." class="form-control">{{data.builtWith}}</textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12" v-for="item in data.builtWithList">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.builtWithName" title="Built With Name" placeholder="Enter built with name.."></custom-input>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.builtWithURL" title="Built With URL" placeholder="Enter built with URL.."></custom-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12">
+                            <button @click="addBuiltWith" class="btn btn-primary">Add more</button>
+                        </div>
                     </div>
                 </div>
 
@@ -300,7 +302,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="js/icons.js"></script>
     <script src="js/markdown.js"></script>
     <script src="js/script.js"></script>
 
