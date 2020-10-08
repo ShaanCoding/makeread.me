@@ -25,7 +25,7 @@
 
         <nav class="nav nav-pills nav-justified">
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'header'" :class="[tab == 'header' ? 'active' : '', '']">Header</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'checkboxes'" :class="[tab == 'checkboxes' ? 'active' : '', '']">Checkboxes</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'badges'" :class="[tab == 'badges' ? 'active' : '', '']">Badges</a>
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'aboutThisProject'" :class="[tab == 'aboutThisProject' ? 'active' : '', '']">About This Project</a>
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'builtWith'" :class="[tab == 'builtWith' ? 'active' : '', '']">Built With</a>
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'getting-started'" :class="[tab == 'getting-started' ? 'active' : '', '']">Getting Started</a>
@@ -101,8 +101,8 @@
 
                 </div>
 
-                <div v-if="tab == 'checkboxes'" class="tab">
-                    <h3>Checkboxes</h3>
+                <div v-if="tab == 'badges'" class="tab">
+                    <h3>Badges</h3>
 
                     <div class="row">
 
