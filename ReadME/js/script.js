@@ -54,7 +54,7 @@ new Vue({
                 roadmap: "",
 
                 contributing: "",
-                pullRequest: "",
+                pullRequest: "1. Fork the Project\n2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)\n3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)\n4. Push to the Branch (`git push origin feature/AmazingFeature`)\n5. Open a Pull Request",
 
                 license: "",
 
@@ -341,13 +341,9 @@ new Vue({
         },
         getCreatingAPullRequest: function (data) {
             source = '';
-            
+
             source += "\n### Creating A Pull Request\n\n";
-            source += "1. Fork the Project\n";
-            source += "2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)\n";
-            source += "3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)\n";
-            source += "4. Push to the Branch (`git push origin feature/AmazingFeature`)\n";
-            source += "5. Open a Pull Request\n";
+            source += data.pullRequest + "\n";
 
             return source;
         },
