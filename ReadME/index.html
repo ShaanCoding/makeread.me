@@ -43,11 +43,9 @@
                 <div v-if="tab == 'header'" class="tab">
                     <h3>Header</h3>
 
-                    <div class="col-xs-12 col-md-6">
-                        <div class="custom-control custom-checkbox mb-2">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
-                            <label class="custom-control-label" for="customCheck1">Enable Table Of Content</label>
-                        </div>
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
+                        <label class="custom-control-label" for="customCheck1">Enable Table Of Content</label>
                     </div>
 
                     <custom-input v-model="data.userName" title="Username" placeholder="Enter username.."></custom-input>
@@ -63,6 +61,40 @@
                         <label>Catchphrase</label>
                         <textarea v-model="data.catchPhrase" placeholder="Enter catchphrase.." class="form-control">{{data.catchPhrase}}</textarea>
                     </div>
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.exploreTheDocs">
+                                <label class="custom-control-label" for="customCheck2">Enable Explore The Docs</label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck3" v-model="data.viewDemo">
+                                <label class="custom-control-label" for="customCheck3">Enable View Demo</label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck4" v-model="data.reportBug">
+                                <label class="custom-control-label" for="customCheck4">Enable Report Bug</label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck5" v-model="data.requestFeature">
+                                <label class="custom-control-label" for="customCheck5">Enable Request Feature</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
 
                 <div v-if="tab == 'checkboxes'" class="tab">
@@ -72,43 +104,43 @@
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.downloadsBadge">
-                                <label class="custom-control-label" for="customCheck2">Enable Download Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck6" v-model="data.downloadsBadge">
+                                <label class="custom-control-label" for="customCheck6">Enable Download Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3" v-model="data.contributorsBadge">
-                                <label class="custom-control-label" for="customCheck3">Enable Contributors Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck7" v-model="data.contributorsBadge">
+                                <label class="custom-control-label" for="customCheck7">Enable Contributors Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck4" v-model="data.forksBadge">
-                                <label class="custom-control-label" for="customCheck4">Enable Forks Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck8" v-model="data.forksBadge">
+                                <label class="custom-control-label" for="customCheck8">Enable Forks Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck5" v-model="data.starsBadge">
-                                <label class="custom-control-label" for="customCheck5">Enable Stars Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck9" v-model="data.starsBadge">
+                                <label class="custom-control-label" for="customCheck9">Enable Stars Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck6" v-model="data.issuesBadge">
-                                <label class="custom-control-label" for="customCheck6">Enable Issues Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck10" v-model="data.issuesBadge">
+                                <label class="custom-control-label" for="customCheck10">Enable Issues Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck7" v-model="data.licenseBadge">
-                                <label class="custom-control-label" for="customCheck7">Enable License Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck11" v-model="data.licenseBadge">
+                                <label class="custom-control-label" for="customCheck11">Enable License Badge</label>
                             </div>
                         </div>
 

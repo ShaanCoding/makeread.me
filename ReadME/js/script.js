@@ -25,6 +25,10 @@ new Vue({
                 logoURL: "../images/logo.png",
                 headLine: "ReadME Template Generator",
                 catchPhrase: "An Awesome ReadME Generator To Jumpstart Your Projects!",
+                exploreTheDocs: true,
+                viewDemo: true,
+                reportBug: true,
+                requestFeature: true,
 
                 tableOfContent: true,
                 downloadsBadge: true,
@@ -128,30 +132,47 @@ new Vue({
             source = '';
 
             source += "<br/>\n";
-            //Refactor to take LogoURL
             source += "<p align=\"center\">\n";
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">\n";
+            source += "  <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">\n";
             source += "    <img src=\"" + data.logoURL + "\" alt=\"Logo\" width=\"80\" height=\"80\">\n";
-            source += "</a>\n\n";
+            source += "  </a>\n\n";
 
-            source += "<h3 align=\"center\">" + data.headLine + "</h3>\n\n";
+            if(data.headLine) {
+                source += "  <h3 align=\"center\">" + data.headLine + "</h3>\n\n";
+            }
 
-            source += "<p align=\"center\">\n";
-            source += data.catchPhrase + "\n";
-            source += "<br/>\n"
-            source += "<br/>\n"
-            
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\"><strong>Explore the docs »</strong></a>\n";
+            if(data.catchPhrase || data.exploreTheDocs || data.viewDemo || data.reportBug) {
+                source += "  <p align=\"center\">\n";
 
-            source += "<br/>\n"
-            source += "<br/>\n"
+                if(data.catchPhrase) {
+                    source += "    " + data.catchPhrase + "\n";
+                    source += "    <br/>\n"
+                    source += "    <br/>\n"
+                }
+    
+                if(data.exploreTheDocs) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\"><strong>Explore the docs »</strong></a>\n";
+                    source += "    <br/>\n"
+                    source += "    <br/>\n"
+                }
+    
+                if(data.viewDemo) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">View Demo</a>\n";
+                    source += "    .\n";
+                }
+    
+                if(data.reportBug) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Report Bug</a>\n";
+                    source += "    .\n";
+                }
+    
+                if(data.requestFeature) {
+                    source += "    <a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Request Feature</a>\n";
+                }
+                
+                source += "  </p>\n";
+            }
 
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "\">View Demo</a>\n";
-            source += ".\n";
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Report Bug</a>\n";
-            source += ".\n";
-            source += "<a href=\"https://github.com/" + data.userName + "/" + data.repoName + "/issues\">Request Feature</a>\n";
-            source += "</p>\n";
             source += "</p>\n";
 
             return source;
