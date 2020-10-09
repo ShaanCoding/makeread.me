@@ -6,23 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>GitHub ReadMe Generator</title>
-    <meta name="description" content="GitHub profile readme generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your profile repository as profile preview." />
+    <meta name="description" content="GitHub Readme Generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your repository as a preview." />
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@artuurssmirnovs" />
-    <meta name="twitter:title" content="GitHub profile readme generator" />
-    <meta name="twitter:description" content="GitHub profile readme generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your profile repository as profile preview." />
-    <meta name="twitter:creator" content="@arturssmirnovs" />
-    <meta name="twitter:image" content="https://arturssmirnovs.github.io/github-profile-readme-generator/images/banner.png" />
-
-    <meta property="og:title" content="GitHub profile readme generator" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://arturssmirnovs.github.io/github-profile-readme-generator/" />
-    <meta property="og:image" content="https://arturssmirnovs.github.io/github-profile-readme-generator/images/banner.png" />
-    <meta property="og:description" content="GitHub profile readme generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your profile repository as profile preview." />
-    <meta property="og:site_name" content="artuurs.smirnovs" />
-
-    <link href="https://arturssmirnovs.github.io/github-profile-readme-generator/" rel="canonical" />
     <link rel="icon" type="image/png" href="images/icon.png" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -34,13 +19,13 @@
     <div id="app" class="container-xl">
         <app-nav>
             <div class="jumbotron">
-                <h1 class="display-5 bold">GitHub profile readme generator</h1>
+                <h1 class="display-5 bold">GitHub ReadME Generator</h1>
             </div>
         </app-nav>
 
         <nav class="nav nav-pills nav-justified">
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'header'" :class="[tab == 'header' ? 'active' : '', '']">Header</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'checkboxes'" :class="[tab == 'checkboxes' ? 'active' : '', '']">Checkboxes</a>
+            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'badges'" :class="[tab == 'badges' ? 'active' : '', '']">Badges</a>
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'aboutThisProject'" :class="[tab == 'aboutThisProject' ? 'active' : '', '']">About This Project</a>
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'builtWith'" :class="[tab == 'builtWith' ? 'active' : '', '']">Built With</a>
             <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'getting-started'" :class="[tab == 'getting-started' ? 'active' : '', '']">Getting Started</a>
@@ -58,6 +43,43 @@
                 <div v-if="tab == 'header'" class="tab">
                     <h3>Header</h3>
 
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck0" v-model="data.enableHeaderImage">
+                        <label class="custom-control-label" for="customCheck0">Enable Header Image</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.exploreTheDocs">
+                        <label class="custom-control-label" for="customCheck2">Enable Explore The Docs</label>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck3" v-model="data.viewDemo">
+                                <label class="custom-control-label" for="customCheck3">Enable View Demo</label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck4" v-model="data.reportBug">
+                                <label class="custom-control-label" for="customCheck4">Enable Report Bug</label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck5" v-model="data.requestFeature">
+                                <label class="custom-control-label" for="customCheck5">Enable Request Feature</label>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <custom-input v-model="data.userName" title="Username" placeholder="Enter username.."></custom-input>
                     <custom-input v-model="data.repoName" title="Repository Name" placeholder="Enter repository name.."></custom-input>
                     <custom-input v-model="data.logoURL" title="Logo URL" placeholder="Enter logo URL.."></custom-input>
@@ -71,58 +93,58 @@
                         <label>Catchphrase</label>
                         <textarea v-model="data.catchPhrase" placeholder="Enter catchphrase.." class="form-control">{{data.catchPhrase}}</textarea>
                     </div>
+
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
+                        <label class="custom-control-label" for="customCheck1">Enable Table Of Contents</label>
+                    </div>
+
                 </div>
 
-                <div v-if="tab == 'checkboxes'" class="tab">
-                    <h3>Checkboxes</h3>
+                <div v-if="tab == 'badges'" class="tab">
+                    <h3>Badges</h3>
 
                     <div class="row">
+
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
-                                <label class="custom-control-label" for="customCheck1">Enable Table Of Content</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck6" v-model="data.downloadsBadge">
+                                <label class="custom-control-label" for="customCheck6">Enable Download Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.downloadsBadge">
-                                <label class="custom-control-label" for="customCheck2">Enable Download Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck7" v-model="data.contributorsBadge">
+                                <label class="custom-control-label" for="customCheck7">Enable Contributors Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3" v-model="data.contributorsBadge">
-                                <label class="custom-control-label" for="customCheck3">Enable Contributors Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck8" v-model="data.forksBadge">
+                                <label class="custom-control-label" for="customCheck8">Enable Forks Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck4" v-model="data.forksBadge">
-                                <label class="custom-control-label" for="customCheck4">Enable Forks Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck9" v-model="data.starsBadge">
+                                <label class="custom-control-label" for="customCheck9">Enable Stars Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck5" v-model="data.starsBadge">
-                                <label class="custom-control-label" for="customCheck5">Enable Stars Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck10" v-model="data.issuesBadge">
+                                <label class="custom-control-label" for="customCheck10">Enable Issues Badge</label>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-md-6">
                             <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck6" v-model="data.issuesBadge">
-                                <label class="custom-control-label" for="customCheck6">Enable Issues Badge</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck7" v-model="data.licenseBadge">
-                                <label class="custom-control-label" for="customCheck7">Enable License Badge</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck11" v-model="data.licenseBadge">
+                                <label class="custom-control-label" for="customCheck11">Enable License Badge</label>
                             </div>
                         </div>
 
@@ -146,6 +168,22 @@
                     <div class="form-group">
                         <label>Built With Description</label>
                         <textarea v-model="data.builtWith" placeholder="Enter about this project.." class="form-control">{{data.builtWith}}</textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12" v-for="item in data.builtWithList">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.builtWithName" title="Built With Name" placeholder="Enter built with name.."></custom-input>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <custom-input v-model="item.builtWithURL" title="Built With URL" placeholder="Enter built with URL.."></custom-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12">
+                            <button @click="addBuiltWith" class="btn btn-primary">Add more</button>
+                        </div>
                     </div>
                 </div>
 
@@ -180,18 +218,28 @@
                 <div v-if="tab == 'roadmap'" class="tab">
                     <h3>Roadmap</h3>
 
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck12" v-model="data.roadmap">
+                        <label class="custom-control-label" for="customCheck12">Use Preset Roadmap</label>
+                    </div>
+
                     <div class="form-group">
-                        <label>Roadmap Description</label>
-                        <textarea v-model="data.roadmap" placeholder="Enter about this roadmap.." class="form-control">{{data.roadmap}}</textarea>
+                        <label>Custom Roadmap</label>
+                        <textarea v-model="data.roadmapDesc" :disabled="data.roadmap == 1" placeholder="Enter about this roadmap.." class="form-control">{{data.roadmapDesc}}</textarea>
                     </div>
                 </div>
 
                 <div v-if="tab == 'contributing'" class="tab">
                     <h3>Contributing</h3>
 
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck13" v-model="data.contributing">
+                        <label class="custom-control-label" for="customCheck13">Use Preset Contribution</label>
+                    </div>
+
                     <div class="form-group">
                         <label>Contributing Description</label>
-                        <textarea v-model="data.contributing" placeholder="Enter about this contributing.." class="form-control">{{data.contributing}}</textarea>
+                        <textarea v-model="data.contributingDesc" :disabled="data.contributing == 1" placeholder="Enter about this contributing.." class="form-control">{{data.contributingDesc}}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -203,9 +251,14 @@
                 <div v-if="tab == 'license'" class="tab">
                     <h3>License</h3>
 
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck13" v-model="data.license">
+                        <label class="custom-control-label" for="customCheck13">Enable License</label>
+                    </div>
+
                     <div class="form-group">
-                        <label>License</label>
-                        <textarea v-model="data.license" placeholder="Enter about this license.." class="form-control">{{data.license}}</textarea>
+                        <label>License Description</label>
+                        <textarea v-model="data.licenseDesc" :disabled="data.license == 1" placeholder="Enter about this contributing.." class="form-control">{{data.licenseDesc}}</textarea>
                     </div>
                 </div>
 
@@ -300,7 +353,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="js/icons.js"></script>
     <script src="js/markdown.js"></script>
     <script src="js/script.js"></script>
 
