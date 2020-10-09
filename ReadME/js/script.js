@@ -42,7 +42,7 @@ new Vue({
                 showcaseURL: "../images/screenshot.png",
                 aboutThisProject: "There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.\n\nHere's why:\n\n* Your time should be focused on creating something amazing. A project that solves a problem and helps others\n* You shouldn't be doing the same tasks over and over like creating a README from scratch\n* You should element DRY principles to the rest of your life :smile:\n\nOf course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.\n\nA list of commonly used resources that I find helpful are listed in the acknowledgements.",
 
-                builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.\n\n",
+                builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.",
                 builtWithList: [],
 
                 gettingStarted: "This is an example of how you may give instructions on setting up your project locally.\nTo get a local copy up and running follow these simple example steps.",
@@ -51,12 +51,15 @@ new Vue({
 
                 usage: "Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.\n\n_For more examples, please refer to the [Documentation](https://example.com)_",
 
-                roadmap: "",
+                roadmap: true,
+                roadmapDesc: "",
 
-                contributing: "",
+                contributing: true,
+                contributingDesc: "",
                 pullRequest: "1. Fork the Project\n2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)\n3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)\n4. Push to the Branch (`git push origin feature/AmazingFeature`)\n5. Open a Pull Request",
 
-                license: "",
+                license: true,
+                licenseDesc: "",
 
                 authors: [],
                 
@@ -241,10 +244,22 @@ new Vue({
                     source += "  * [Installation](#installation)\n";
                 }
 
-                source += "* [Usage](#usage)\n";
-                source += "* [Roadmap](#roadmap)\n";
-                source += "* [Contributing](#contributing)\n";
-                source += "* [License](#license)\n";
+                if(data.usage) {
+                    source += "* [Usage](#usage)\n";
+                }
+
+                if(data.roadmap || data.roadmapDesc) {
+                    source += "* [Roadmap](#roadmap)\n";
+                }
+
+                if(data.contributing || data.contributingDesc || data.pullRequest) {
+                    source += "* [Contributing](#contributing)\n";
+                }
+
+                if(data.license || data.licenseDesc) {
+                    source += "* [License](#license)\n";
+                }
+
                 source += "* [Contact](#contact)\n";
                 source += "* [Acknowledgements](#acknowledgements)\n";
             }
@@ -275,6 +290,10 @@ new Vue({
                 source += "\n## Built With\n\n";
                 source += data.builtWith + "\n";
     
+                if(data.builtWithList.length > 0) {
+                    source += "\n";
+                }
+
                 for(i = 0; i < data.builtWithList.length; i++) {
                     source += "* [" + data.builtWithList[i].builtWithName + "](" + data.builtWithList[i].builtWithURL + ")\n";
                 }
@@ -289,17 +308,17 @@ new Vue({
                 source += "\n## Getting Started\n\n";
 
                 if(data.gettingStarted) {
-                    source += data.gettingStarted + "\n\n";
+                    source += data.gettingStarted + "\n";
                 }
     
                 if(data.prerequisites) {
                     source += "\n### Prerequisites\n\n";
-                    source += data.prerequisites + "\n\n";
+                    source += data.prerequisites + "\n";
                 }
     
                 if(data.installation) {
                     source += "\n### Installation\n\n";
-                    source += data.installation + "\n\n";
+                    source += data.installation + "\n";
                 }
             }
 
@@ -308,34 +327,57 @@ new Vue({
         getUsage: function (data) {
             source = '';
 
-            source += "\n## Usage\n\n";
-            source += data.usage + "\n";
+            if(data.usage) {
+                source += "\n## Usage\n\n";
+                source += data.usage + "\n";
+            }
 
             return source;
         },
         getRoadmap: function (data) {
             source = '';
-            data.roadmap = "See the [open issues](https://github.com/" + data.userName + "/" + data.repoName + "/issues) for a list of proposed features (and known issues).";
 
-            source += "\n## Roadmap\n\n";
-            source += data.roadmap + "\n";
+            if(data.roadmap || data.roadmapDesc) {
+                sourceDesc = '';
+
+                if(data.roadmap) {
+                    sourceDesc = "See the [open issues](https://github.com/" + data.userName + "/" + data.repoName + "/issues) for a list of proposed features (and known issues).\n";
+                }
+    
+                source += "\n## Roadmap\n\n";
+
+                if(data.roadmap) {
+                    source += sourceDesc;
+                }
+                else {
+                    source += data.roadmapDesc + "\n";
+                }
+            }
 
             return source;
         },
         getContributing: function (data) {
             source = '';
 
-            setContributing = '';
-            setContributing += "Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n";
-            setContributing += "* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/" + data.userName + "/" + data.repoName + "/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.";
-            setContributing += "* Please make sure you check your spelling and grammar.\n";
-            setContributing += "* Create individual PR for each suggestion.\n";
-            setContributing += "* Please also read through the [Code Of Conduct](https://github.com/" + data.userName + "/" + data.repoName + "/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.";
+            if(data.contributing || data.contributingDesc || data.pullRequest) {
+                sourceDesc = '';
 
-            data.contributing = setContributing;
+                if(data.contributing) {
+                    sourceDesc += "Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n";
+                    sourceDesc += "* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/" + data.userName + "/" + data.repoName + "/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.";
+                    sourceDesc += "* Please make sure you check your spelling and grammar.\n";
+                    sourceDesc += "* Create individual PR for each suggestion.\n";
+                    sourceDesc += "* Please also read through the [Code Of Conduct](https://github.com/" + data.userName + "/" + data.repoName + "/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.\n";
+                }
 
-            source += "\n## Contributing\n\n";
-            source += data.contributing + "\n";
+                source += "\n## Contributing\n\n";
+                if(data.contributing) {
+                    source += sourceDesc;
+                }
+                else {
+                    source += data.contributingDesc + "\n";
+                }
+            }
 
             return source;
         },
@@ -350,8 +392,16 @@ new Vue({
         getLicense: function (data) {
             source = '';
 
-            source += "\n## License\n\n";
-            source += "Distributed under the MIT License. See [LICENSE](./LICENSE.md) for more information.\n";
+            if(data.license || data.licenseDesc) {
+                source += "\n## License\n\n";
+
+                if(data.license) {
+                    source += "Distributed under the MIT License. See [LICENSE](https://github.com/" + data.userName + "/" + data.repoName + "/blob/main/LICENSE.md) for more information.\n";    
+                }
+                else {
+                    source += data.licenseDesc + "\n";
+                }
+            }
 
             return source;
         },
