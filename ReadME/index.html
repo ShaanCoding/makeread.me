@@ -218,18 +218,28 @@
                 <div v-if="tab == 'roadmap'" class="tab">
                     <h3>Roadmap</h3>
 
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck12" v-model="data.roadmap">
+                        <label class="custom-control-label" for="customCheck12">Use Preset Roadmap</label>
+                    </div>
+
                     <div class="form-group">
-                        <label>Roadmap Description</label>
-                        <textarea v-model="data.roadmap" placeholder="Enter about this roadmap.." class="form-control">{{data.roadmap}}</textarea>
+                        <label>Custom Roadmap</label>
+                        <textarea v-model="data.roadmapDesc" :disabled="data.roadmap == 1" placeholder="Enter about this roadmap.." class="form-control">{{data.roadmapDesc}}</textarea>
                     </div>
                 </div>
 
                 <div v-if="tab == 'contributing'" class="tab">
                     <h3>Contributing</h3>
 
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck13" v-model="data.contributing">
+                        <label class="custom-control-label" for="customCheck13">Use Preset Contribution</label>
+                    </div>
+
                     <div class="form-group">
                         <label>Contributing Description</label>
-                        <textarea v-model="data.contributing" placeholder="Enter about this contributing.." class="form-control">{{data.contributing}}</textarea>
+                        <textarea v-model="data.contributingDesc" :disabled="data.contributing == 1" placeholder="Enter about this contributing.." class="form-control">{{data.contributingDesc}}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -241,9 +251,14 @@
                 <div v-if="tab == 'license'" class="tab">
                     <h3>License</h3>
 
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck13" v-model="data.license">
+                        <label class="custom-control-label" for="customCheck13">Enable License</label>
+                    </div>
+
                     <div class="form-group">
-                        <label>License</label>
-                        <textarea v-model="data.license" placeholder="Enter about this license.." class="form-control">{{data.license}}</textarea>
+                        <label>License Description</label>
+                        <textarea v-model="data.licenseDesc" :disabled="data.license == 1" placeholder="Enter about this contributing.." class="form-control">{{data.licenseDesc}}</textarea>
                     </div>
                 </div>
 
