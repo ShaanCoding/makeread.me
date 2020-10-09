@@ -82,16 +82,26 @@
 
                     <custom-input v-model="data.userName" title="Username" placeholder="Enter username.."></custom-input>
                     <custom-input v-model="data.repoName" title="Repository Name" placeholder="Enter repository name.."></custom-input>
-                    <custom-input v-model="data.logoURL" title="Logo URL" placeholder="Enter logo URL.."></custom-input>
+
+                    <div class="form-group">
+                        <label>Logo URL</label>
+                        <resizable-textarea>
+                            <textarea v-model="data.logoURL" placeholder="Enter logo URL.." class="form-control">{{data.logoURL}}</textarea>
+                        </resizable-textarea>
+                    </div>
 
                     <div class="form-group">
                         <label>Headline</label>
-                        <textarea v-model="data.headLine" placeholder="Enter headline.." class="form-control">{{data.headLine}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.headLine" placeholder="Enter headline.." class="form-control">{{data.headLine}}</textarea>
+                        </resizable-textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Catchphrase</label>
-                        <textarea v-model="data.catchPhrase" placeholder="Enter catchphrase.." class="form-control">{{data.catchPhrase}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.catchPhrase" placeholder="Enter catchphrase.." class="form-control">{{data.catchPhrase}}</textarea>
+                        </resizable-textarea>
                     </div>
 
                     <div class="custom-control custom-checkbox mb-2">
@@ -154,11 +164,18 @@
                 <div v-if="tab == 'aboutThisProject'" class="tab">
                     <h3>About This Project</h3>
 
-                    <custom-input v-model="data.showcaseURL" title="Showcase URL" placeholder="Enter showcase URL.."></custom-input>
+                    <div class="form-group">
+                        <label>Showcase URL</label>
+                        <resizable-textarea>
+                            <textarea v-model="data.showcaseURL" placeholder="Enter showcase URL.." class="form-control">{{data.showcaseURL}}</textarea>
+                        </resizable-textarea>
+                    </div>
 
                     <div class="form-group">
                         <label>About This Project Description</label>
-                        <textarea v-model="data.aboutThisProject" placeholder="Enter about this project.." class="form-control">{{data.aboutThisProject}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.aboutThisProject" placeholder="Enter about this project.." class="form-control">{{data.aboutThisProject}}</textarea>
+                        </resizable-textarea>
                     </div>
                 </div>
 
@@ -167,7 +184,9 @@
 
                     <div class="form-group">
                         <label>Built With Description</label>
-                        <textarea v-model="data.builtWith" placeholder="Enter about this project.." class="form-control">{{data.builtWith}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.builtWith" placeholder="Enter about this project.." class="form-control">{{data.builtWith}}</textarea>
+                        </resizable-textarea>
                     </div>
 
                     <div class="row">
@@ -192,17 +211,23 @@
 
                     <div class="form-group">
                         <label>Getting Started Description</label>
-                        <textarea v-model="data.gettingStarted" placeholder="Enter about this getting started.." class="form-control">{{data.gettingStarted}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.gettingStarted" placeholder="Enter about this getting started.." class="form-control">{{data.gettingStarted}}</textarea>
+                        </resizable-textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Prerequisites Description</label>
-                        <textarea v-model="data.prerequisites" placeholder="Enter about this prerequisites.." class="form-control">{{data.prerequisites}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.prerequisites" placeholder="Enter about this prerequisites.." class="form-control">{{data.prerequisites}}</textarea>
+                        </resizable-textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Installation Description</label>
-                        <textarea v-model="data.installation" placeholder="Enter about this installation.." class="form-control">{{data.installation}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.installation" placeholder="Enter about this installation.." class="form-control">{{data.installation}}</textarea>
+                        </resizable-textarea>
                     </div>
                 </div>
 
@@ -211,7 +236,9 @@
 
                     <div class="form-group">
                         <label>Usage Description</label>
-                        <textarea v-model="data.usage" placeholder="Enter about this usage.." class="form-control">{{data.usage}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.usage" placeholder="Enter about this usage.." class="form-control">{{data.usage}}</textarea>
+                        </resizable-textarea>
                     </div>
                 </div>
 
@@ -225,7 +252,9 @@
 
                     <div class="form-group">
                         <label>Custom Roadmap</label>
-                        <textarea v-model="data.roadmapDesc" :disabled="data.roadmap == 1" placeholder="Enter about this roadmap.." class="form-control">{{data.roadmapDesc}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.roadmapDesc" :disabled="data.roadmap == 1" placeholder="Enter about this roadmap.." class="form-control">{{data.roadmapDesc}}</textarea>
+                        </resizable-textarea>
                     </div>
                 </div>
 
@@ -239,12 +268,16 @@
 
                     <div class="form-group">
                         <label>Contributing Description</label>
-                        <textarea v-model="data.contributingDesc" :disabled="data.contributing == 1" placeholder="Enter about this contributing.." class="form-control">{{data.contributingDesc}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.contributingDesc" :disabled="data.contributing == 1" placeholder="Enter about this contributing.." class="form-control">{{data.contributingDesc}}</textarea>
+                        </resizable-textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Creating A Pull Request</label>
-                        <textarea v-model="data.pullRequest" placeholder="Enter about this pull request.." class="form-control">{{data.pullRequest}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.pullRequest" placeholder="Enter about this pull request.." class="form-control">{{data.pullRequest}}</textarea>
+                        </resizable-textarea>
                     </div>
                 </div>
 
@@ -258,7 +291,9 @@
 
                     <div class="form-group">
                         <label>License Description</label>
-                        <textarea v-model="data.licenseDesc" :disabled="data.license == 1" placeholder="Enter about this contributing.." class="form-control">{{data.licenseDesc}}</textarea>
+                        <resizable-textarea>
+                            <textarea v-model="data.licenseDesc" :disabled="data.license == 1" placeholder="Enter about this contributing.." class="form-control">{{data.licenseDesc}}</textarea>
+                        </resizable-textarea>
                     </div>
                 </div>
 
