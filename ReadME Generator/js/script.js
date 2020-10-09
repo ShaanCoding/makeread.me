@@ -190,27 +190,27 @@ new Vue({
             source += "\n";
             
             if(data.downloadsBadge) {
-                source += "![Downloads](https://img.shields.io/github/downloads/shaancoding/ReadME-Generator/total)";
+                source += "![Downloads](https://img.shields.io/github/downloads/" + data.userName + "/" + data.repoName + "/total)";
             }
 
             if(data.contributorsBadge) {
-                source += " ![Contributors](https://img.shields.io/github/contributors/ShaanCoding/ReadME-Generator?color=dark-green)";
+                source += " ![Contributors](https://img.shields.io/github/contributors/" + data.userName + "/" + data.repoName + "?color=dark-green)";
             }
 
             if(data.forksBadge) {
-                source += " ![Forks](https://img.shields.io/github/forks/shaancoding/ReadME-Generator?style=social) ";
+                source += " ![Forks](https://img.shields.io/github/forks/" + data.userName + "/" + data.repoName + "?style=social) ";
             }
 
             if(data.starsBadge) {
-                source += " ![Stargazers](https://img.shields.io/github/stars/shaancoding/ReadME-Generator?style=social) ";
+                source += " ![Stargazers](https://img.shields.io/github/stars/" + data.userName + "/" + data.repoName + "?style=social) ";
             }
 
             if(data.issuesBadge) {
-                source += " ![Issues](https://img.shields.io/github/issues/shaancoding/ReadME-Generator) ";
+                source += " ![Issues](https://img.shields.io/github/issues/" + data.userName + "/" + data.repoName + ") ";
             }
 
             if(data.licenseBadge) {
-                source += " ![License](https://img.shields.io/github/license/shaancoding/ReadME-Generator) ";
+                source += " ![License](https://img.shields.io/github/license/" + data.userName + "/" + data.repoName + ") ";
             }
 
             source += "\n";
@@ -453,3 +453,25 @@ new Vue({
         }
     }
 });
+
+Vue.component('resizable-textarea', {
+    methods: {
+      resizeTextarea (event) {
+        event.target.style.height = 'auto'
+        event.target.style.height = (event.target.scrollHeight) + 'px'
+      },
+    },
+    mounted () {
+      this.$nextTick(() => {
+        this.$el.setAttribute('style', 'height:' + (this.$el.scrollHeight) + 'px;overflow-y:hidden;')
+      })
+  
+      this.$el.addEventListener('input', this.resizeTextarea)
+    },
+    beforeDestroy () {
+      this.$el.removeEventListener('input', this.resizeTextarea)
+    },
+    render () {
+      return this.$slots.default[0]
+    },
+  });
