@@ -24,7 +24,7 @@ new Vue({
                 enableHeaderImage: true,
                 userName: "ShaanCoding",
                 repoName: "ReadME-Generator",
-                logoURL: "../images/logo.png",
+                logoURL: "images/logo.png",
                 headLine: "ReadME Template Generator",
                 catchPhrase: "An Awesome ReadME Generator To Jumpstart Your Projects!",
                 exploreTheDocs: true,
@@ -39,7 +39,7 @@ new Vue({
                 issuesBadge: true,
                 licenseBadge: true,
 
-                showcaseURL: "../images/screenshot.png",
+                showcaseURL: "images/screenshot.png",
                 aboutThisProject: "There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.\n\nHere's why:\n\n* Your time should be focused on creating something amazing. A project that solves a problem and helps others\n* You shouldn't be doing the same tasks over and over like creating a README from scratch\n* You should element DRY principles to the rest of your life :smile:\n\nOf course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.\n\nA list of commonly used resources that I find helpful are listed in the acknowledgements.",
 
                 builtWith: "This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.",
@@ -85,7 +85,7 @@ new Vue({
         initalizeButtons() {
             this.data.authors.push({
                 authorName: 'Shaan Khan',
-                authorDesc: 'Comp Sci Student @UTS',
+                authorDesc: 'Comp Sci Student',
                 authorURL: 'https://github.com/ShaanCoding/',
                 authorContribution: 'Built ReadME Template'
             });
@@ -93,6 +93,11 @@ new Vue({
             this.data.acknowledgements.push({
                 acknowledgementName: 'ShaanCoding',
                 acknowledgementURL: 'https://github.com/ShaanCoding/'
+            });
+
+            this.data.acknowledgements.push({
+                acknowledgementName: 'Othneil Drew',
+                acknowledgementURL: 'https://github.com/othneildrew/Best-README-Template'
             });
 
             this.data.acknowledgements.push({
