@@ -25,7 +25,7 @@ new Vue({
                 userName: "ShaanCoding",
                 repoName: "ReadME-Generator",
                 logoURL: "images/logo.png",
-                headLine: "ReadME Template Generator",
+                headLine: "ReadME Generator",
                 catchPhrase: "An Awesome ReadME Generator To Jumpstart Your Projects!",
                 exploreTheDocs: true,
                 viewDemo: true,
@@ -195,27 +195,27 @@ new Vue({
             source += "\n";
             
             if(data.downloadsBadge) {
-                source += "![Downloads](https://img.shields.io/github/downloads/" + data.userName + "/" + data.repoName + "/total)";
+                source += "![Downloads](https://img.shields.io/github/downloads/" + data.userName + "/" + data.repoName + "/total) ";
             }
 
             if(data.contributorsBadge) {
-                source += " ![Contributors](https://img.shields.io/github/contributors/" + data.userName + "/" + data.repoName + "?color=dark-green)";
+                source += "![Contributors](https://img.shields.io/github/contributors/" + data.userName + "/" + data.repoName + "?color=dark-green) ";
             }
 
             if(data.forksBadge) {
-                source += " ![Forks](https://img.shields.io/github/forks/" + data.userName + "/" + data.repoName + "?style=social) ";
+                source += "![Forks](https://img.shields.io/github/forks/" + data.userName + "/" + data.repoName + "?style=social) ";
             }
 
             if(data.starsBadge) {
-                source += " ![Stargazers](https://img.shields.io/github/stars/" + data.userName + "/" + data.repoName + "?style=social) ";
+                source += "![Stargazers](https://img.shields.io/github/stars/" + data.userName + "/" + data.repoName + "?style=social) ";
             }
 
             if(data.issuesBadge) {
-                source += " ![Issues](https://img.shields.io/github/issues/" + data.userName + "/" + data.repoName + ") ";
+                source += "![Issues](https://img.shields.io/github/issues/" + data.userName + "/" + data.repoName + ") ";
             }
 
             if(data.licenseBadge) {
-                source += " ![License](https://img.shields.io/github/license/" + data.userName + "/" + data.repoName + ") ";
+                source += "![License](https://img.shields.io/github/license/" + data.userName + "/" + data.repoName + ") ";
             }
 
             source += "\n";
@@ -369,7 +369,7 @@ new Vue({
 
                 if(data.contributing) {
                     sourceDesc += "Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n";
-                    sourceDesc += "* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/" + data.userName + "/" + data.repoName + "/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.";
+                    sourceDesc += "* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/" + data.userName + "/" + data.repoName + "/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.\n";
                     sourceDesc += "* Please make sure you check your spelling and grammar.\n";
                     sourceDesc += "* Create individual PR for each suggestion.\n";
                     sourceDesc += "* Please also read through the [Code Of Conduct](https://github.com/" + data.userName + "/" + data.repoName + "/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.\n";
