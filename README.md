@@ -12,10 +12,10 @@
     Note This Project Is Still W.I.P
     <br/>
     <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator"><strong>Explore the docs »</strong></a>
+    <a href="https://readme.shaankhan.dev/ReadME%20Generator/index.html"><strong>View Demo »</strong></a>
     <br/>
     <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator">View Demo</a>
+    <a href="https://github.com/ShaanCoding/ReadME-Generator">Explore the docs</a>
     .
     <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Report Bug</a>
     .
