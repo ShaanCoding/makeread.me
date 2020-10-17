@@ -265,8 +265,13 @@ new Vue({
                     source += "* [License](#license)\n";
                 }
 
-                source += "* [Contact](#contact)\n";
-                source += "* [Acknowledgements](#acknowledgements)\n";
+                if(data.authors.length > 0) {
+                    source += "* [Authors](#authors)\n";
+                }
+
+                if(data.acknowledgements.length > 0) {
+                    source += "* [Acknowledgements](#acknowledgements)\n";
+                }
             }
 
             return source;
