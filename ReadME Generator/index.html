@@ -1,397 +1,736 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>GitHub ReadMe Generator</title>
-    <meta name="description" content="GitHub Readme Generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your repository as a preview." />
+    <meta
+      name="description"
+      content="GitHub Readme Generator is a tool that allows you to create simple and beautiful readme that you can copy/paste and include in your repository as a preview."
+    />
 
     <link rel="icon" type="image/png" href="images/icon.png" />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/vue-simple-markdown/dist/vue-simple-markdown.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/vue-simple-markdown/dist/vue-simple-markdown.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-
+  </head>
+  <body>
     <div id="app" class="container-xl">
-        <app-nav>
-            <div class="jumbotron">
-                <img src="images/ReadMEGeneratorBanner.png"/>
+      <app-nav>
+        <div class="jumbotron">
+          <img src="images/ReadMEGeneratorBanner.png" />
+        </div>
+      </app-nav>
+
+      <nav class="nav nav-pills nav-justified">
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'header'"
+          :class="[tab == 'header' ? 'active' : '', '']"
+          >Header</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'badges'"
+          :class="[tab == 'badges' ? 'active' : '', '']"
+          >Badges</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'aboutThisProject'"
+          :class="[tab == 'aboutThisProject' ? 'active' : '', '']"
+          >About This Project</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'builtWith'"
+          :class="[tab == 'builtWith' ? 'active' : '', '']"
+          >Built With</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'gettingStarted'"
+          :class="[tab == 'gettingStarted' ? 'active' : '', '']"
+          >Getting Started</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'usage'"
+          :class="[tab == 'usage' ? 'active' : '', '']"
+          >Usage</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'roadmap'"
+          :class="[tab == 'roadmap' ? 'active' : '', '']"
+          >Roadmap</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'contributing'"
+          :class="[tab == 'contributing' ? 'active' : '', '']"
+          >Contributing</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'license'"
+          :class="[tab == 'license' ? 'active' : '', '']"
+          >License</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'authors'"
+          :class="[tab == 'authors' ? 'active' : '', '']"
+          >Authors</a
+        >
+        <a
+          class="nav-item nav-link"
+          href="#"
+          onclick="return false;"
+          @click="tab = 'acknowledgements'"
+          :class="[tab == 'acknowledgements' ? 'active' : '', '']"
+          >Acknowledgements</a
+        >
+      </nav>
+
+      <app-view class="row">
+        <app-content class="col-xs-12 col-md-6">
+          <div v-if="tab == 'header'" class="tab">
+            <h3>Header</h3>
+
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck0"
+                v-model="data.enableHeaderImage"
+              />
+              <label class="custom-control-label" for="customCheck0"
+                >Enable Header Icon</label
+              >
             </div>
-        </app-nav>
 
-        <nav class="nav nav-pills nav-justified">
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'header'" :class="[tab == 'header' ? 'active' : '', '']">Header</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'badges'" :class="[tab == 'badges' ? 'active' : '', '']">Badges</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'aboutThisProject'" :class="[tab == 'aboutThisProject' ? 'active' : '', '']">About This Project</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'builtWith'" :class="[tab == 'builtWith' ? 'active' : '', '']">Built With</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'gettingStarted'" :class="[tab == 'gettingStarted' ? 'active' : '', '']">Getting Started</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'usage'" :class="[tab == 'usage' ? 'active' : '', '']">Usage</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'roadmap'" :class="[tab == 'roadmap' ? 'active' : '', '']">Roadmap</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'contributing'" :class="[tab == 'contributing' ? 'active' : '', '']">Contributing</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'license'" :class="[tab == 'license' ? 'active' : '', '']">License</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'authors'" :class="[tab == 'authors' ? 'active' : '', '']">Authors</a>
-            <a class="nav-item nav-link" href="#" onclick="return false;" @click="tab = 'acknowledgements'" :class="[tab == 'acknowledgements' ? 'active' : '', '']">Acknowledgements</a>
-        </nav>
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck2"
+                v-model="data.exploreTheDocs"
+              />
+              <label class="custom-control-label" for="customCheck2"
+                >Enable Explore The Docs Hyperlink</label
+              >
+            </div>
 
-        <app-view class="row">
+            <br />
 
-            <app-content class="col-xs-12 col-md-6">                
-                <div v-if="tab == 'header'" class="tab">
-                    <h3>Header</h3>
-
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck0" v-model="data.enableHeaderImage">
-                        <label class="custom-control-label" for="customCheck0">Enable Header Icon</label>
-                    </div>
-
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck2" v-model="data.exploreTheDocs">
-                        <label class="custom-control-label" for="customCheck2">Enable Explore The Docs Hyperlink</label>
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3" v-model="data.viewDemo">
-                                <label class="custom-control-label" for="customCheck3">Enable View Demo Hyperlink</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck4" v-model="data.reportBug">
-                                <label class="custom-control-label" for="customCheck4">Enable Report Bug Hyperlink</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck5" v-model="data.requestFeature">
-                                <label class="custom-control-label" for="customCheck5">Enable Request Feature Hyperlink</label>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <custom-input v-model="data.userName" title="Username" placeholder="Enter username.."></custom-input>
-                    <custom-input v-model="data.repoName" title="Repository Name" placeholder="Enter repository name.."></custom-input>
-
-                    <div class="form-group">
-                        <label>Logo URL</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.logoURL" placeholder="Enter logo URL.." class="form-control">{{data.logoURL}}</textarea>
-                        </resizable-textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Headline</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.headLine" placeholder="Enter headline.." class="form-control">{{data.headLine}}</textarea>
-                        </resizable-textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Catchphrase</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.catchPhrase" placeholder="Enter catchphrase.." class="form-control">{{data.catchPhrase}}</textarea>
-                        </resizable-textarea>
-                    </div>
-
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="data.tableOfContent">
-                        <label class="custom-control-label" for="customCheck1">Enable Table Of Contents</label>
-                    </div>
-
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck3"
+                    v-model="data.viewDemo"
+                  />
+                  <label class="custom-control-label" for="customCheck3"
+                    >Enable View Demo Hyperlink</label
+                  >
                 </div>
+              </div>
 
-                <div v-if="tab == 'badges'" class="tab">
-                    <h3>Badges</h3>
-
-                    <div class="row">
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck6" v-model="data.downloadsBadge">
-                                <label class="custom-control-label" for="customCheck6">Enable Download Badge</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck7" v-model="data.contributorsBadge">
-                                <label class="custom-control-label" for="customCheck7">Enable Contributors Badge</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck8" v-model="data.forksBadge">
-                                <label class="custom-control-label" for="customCheck8">Enable Forks Badge</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck9" v-model="data.starsBadge">
-                                <label class="custom-control-label" for="customCheck9">Enable Stars Badge</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck10" v-model="data.issuesBadge">
-                                <label class="custom-control-label" for="customCheck10">Enable Issues Badge</label>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck11" v-model="data.licenseBadge">
-                                <label class="custom-control-label" for="customCheck11">Enable License Badge</label>
-                            </div>
-                        </div>
-
-                    </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck4"
+                    v-model="data.reportBug"
+                  />
+                  <label class="custom-control-label" for="customCheck4"
+                    >Enable Report Bug Hyperlink</label
+                  >
                 </div>
+              </div>
 
-                <div v-if="tab == 'aboutThisProject'" class="tab">
-                    <h3>About This Project</h3>
-
-                    <div class="form-group">
-                        <label>Showcase URL</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.showcaseURL" placeholder="Enter showcase URL.." class="form-control">{{data.showcaseURL}}</textarea>
-                        </resizable-textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>About This Project Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.aboutThisProject" placeholder="Enter a project description.." class="form-control">{{data.aboutThisProject}}</textarea>
-                        </resizable-textarea>
-                    </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck5"
+                    v-model="data.requestFeature"
+                  />
+                  <label class="custom-control-label" for="customCheck5"
+                    >Enable Request Feature Hyperlink</label
+                  >
                 </div>
+              </div>
+            </div>
 
-                <div v-if="tab == 'builtWith'" class="tab">
-                    <h3>Built With</h3>
+            <custom-input
+              v-model="data.userName"
+              title="Username"
+              placeholder="Enter username.."
+            ></custom-input>
+            <custom-input
+              v-model="data.repoName"
+              title="Repository Name"
+              placeholder="Enter repository name.."
+            ></custom-input>
 
-                    <div class="form-group">
-                        <label>Built With Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.builtWith" placeholder="Enter what the project was built with.." class="form-control">{{data.builtWith}}</textarea>
-                        </resizable-textarea>
-                    </div>
+            <div class="form-group">
+              <label>Logo URL</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.logoURL"
+                  placeholder="Enter logo URL.."
+                  class="form-control"
+                >
+{{data.logoURL}}</textarea
+                >
+              </resizable-textarea>
+            </div>
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12" v-for="item in data.builtWithList">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.builtWithName" title="Built With Name" placeholder="Enter built with name.."></custom-input>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.builtWithURL" title="Built With URL" placeholder="Enter built with URL.."></custom-input>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-md-12">
-                            <button @click="addBuiltWith" class="btn btn-primary">Add more</button>
-                        </div>
-                    </div>
+            <div class="form-group">
+              <label>Headline</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.headLine"
+                  placeholder="Enter headline.."
+                  class="form-control"
+                >
+{{data.headLine}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Catchphrase</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.catchPhrase"
+                  placeholder="Enter catchphrase.."
+                  class="form-control"
+                >
+{{data.catchPhrase}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck1"
+                v-model="data.tableOfContent"
+              />
+              <label class="custom-control-label" for="customCheck1"
+                >Enable Table Of Contents</label
+              >
+            </div>
+          </div>
+
+          <div v-if="tab == 'badges'" class="tab">
+            <h3>Badges</h3>
+
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck6"
+                    v-model="data.downloadsBadge"
+                  />
+                  <label class="custom-control-label" for="customCheck6"
+                    >Enable Download Badge</label
+                  >
                 </div>
+              </div>
 
-                <div v-if="tab == 'gettingStarted'" class="tab">
-                    <h3>Getting Started</h3>
-
-                    <div class="form-group">
-                        <label>Getting Started Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.gettingStarted" placeholder="Enter how to start using this project.." class="form-control">{{data.gettingStarted}}</textarea>
-                        </resizable-textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Prerequisites Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.prerequisites" placeholder="Enter about prerequisites required.." class="form-control">{{data.prerequisites}}</textarea>
-                        </resizable-textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Installation Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.installation" placeholder="Enter how to install said prerequisites.." class="form-control">{{data.installation}}</textarea>
-                        </resizable-textarea>
-                    </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck7"
+                    v-model="data.contributorsBadge"
+                  />
+                  <label class="custom-control-label" for="customCheck7"
+                    >Enable Contributors Badge</label
+                  >
                 </div>
+              </div>
 
-                <div v-if="tab == 'usage'" class="tab">
-                    <h3>Usage</h3>
-
-                    <div class="form-group">
-                        <label>Usage Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.usage" placeholder="Enter how this project can be used.." class="form-control">{{data.usage}}</textarea>
-                        </resizable-textarea>
-                    </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck8"
+                    v-model="data.forksBadge"
+                  />
+                  <label class="custom-control-label" for="customCheck8"
+                    >Enable Forks Badge</label
+                  >
                 </div>
+              </div>
 
-                <div v-if="tab == 'roadmap'" class="tab">
-                    <h3>Roadmap</h3>
-
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck12" v-model="data.roadmap">
-                        <label class="custom-control-label" for="customCheck12">Use Preset Roadmap</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Custom Roadmap</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.roadmapDesc" :disabled="data.roadmap == 1" placeholder="Enter the current softwares roadmap.." class="form-control">{{data.roadmapDesc}}</textarea>
-                        </resizable-textarea>
-                    </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck9"
+                    v-model="data.starsBadge"
+                  />
+                  <label class="custom-control-label" for="customCheck9"
+                    >Enable Stars Badge</label
+                  >
                 </div>
+              </div>
 
-                <div v-if="tab == 'contributing'" class="tab">
-                    <h3>Contributing</h3>
-
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck13" v-model="data.contributing">
-                        <label class="custom-control-label" for="customCheck13">Use Preset Contribution</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Contributing Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.contributingDesc" :disabled="data.contributing == 1" placeholder="Enter how others can contribute to this project.." class="form-control">{{data.contributingDesc}}</textarea>
-                        </resizable-textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Creating A Pull Request</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.pullRequest" placeholder="Enter how to create a pull request.." class="form-control">{{data.pullRequest}}</textarea>
-                        </resizable-textarea>
-                    </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck10"
+                    v-model="data.issuesBadge"
+                  />
+                  <label class="custom-control-label" for="customCheck10"
+                    >Enable Issues Badge</label
+                  >
                 </div>
+              </div>
 
-                <div v-if="tab == 'license'" class="tab">
-                    <h3>License</h3>
-
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck13" v-model="data.license">
-                        <label class="custom-control-label" for="customCheck13">Enable License</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label>License Description</label>
-                        <resizable-textarea>
-                            <textarea v-model="data.licenseDesc" :disabled="data.license == 1" placeholder="Enter information regarding the licensing.." class="form-control">{{data.licenseDesc}}</textarea>
-                        </resizable-textarea>
-                    </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck11"
+                    v-model="data.licenseBadge"
+                  />
+                  <label class="custom-control-label" for="customCheck11"
+                    >Enable License Badge</label
+                  >
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <div v-if="tab == 'authors'" class="tab">
-                    <h3>Authors</h3>
+          <div v-if="tab == 'aboutThisProject'" class="tab">
+            <h3>About This Project</h3>
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12" v-for="item in data.authors">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.authorName" title="Author Name" placeholder="Enter author name.."></custom-input>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.authorDesc" title="Author Description" placeholder="Enter author desc.."></custom-input>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.authorURL" title="Author URL" placeholder="Enter author URL.."></custom-input>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.authorContribution" title="Author Contribution" placeholder="Enter author contributions.."></custom-input>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-md-12">
-                            <button @click="addAuthor" class="btn btn-primary">Add more</button>
-                        </div>
-                    </div>
+            <div class="form-group">
+              <label>Showcase URL</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.showcaseURL"
+                  placeholder="Enter showcase URL.."
+                  class="form-control"
+                >
+{{data.showcaseURL}}</textarea
+                >
+              </resizable-textarea>
+            </div>
 
+            <div class="form-group">
+              <label>About This Project Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.aboutThisProject"
+                  placeholder="Enter a project description.."
+                  class="form-control"
+                >
+{{data.aboutThisProject}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+          </div>
+
+          <div v-if="tab == 'builtWith'" class="tab">
+            <h3>Built With</h3>
+
+            <div class="form-group">
+              <label>Built With Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.builtWith"
+                  placeholder="Enter what the project was built with.."
+                  class="form-control"
+                >
+{{data.builtWith}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+
+            <div class="row">
+              <div
+                class="col-xs-12 col-md-12"
+                v-for="item in data.builtWithList"
+              >
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.builtWithName"
+                      title="Built With Name"
+                      placeholder="Enter built with name.."
+                    ></custom-input>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.builtWithURL"
+                      title="Built With URL"
+                      placeholder="Enter built with URL.."
+                    ></custom-input>
+                  </div>
                 </div>
+              </div>
+              <div class="col-xs-12 col-md-12">
+                <button @click="addBuiltWith" class="btn btn-primary">
+                  Add more
+                </button>
+              </div>
+            </div>
+          </div>
 
-                <div v-if="tab == 'acknowledgements'" class="tab">
-                    <h3>Acknowledgements</h3>
+          <div v-if="tab == 'gettingStarted'" class="tab">
+            <h3>Getting Started</h3>
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12" v-for="item in data.acknowledgements">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.acknowledgementName" title="Acknowledgement Name" placeholder="Enter acknowledgement name.."></custom-input>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <custom-input v-model="item.acknowledgementURL" title="Acknowledgement URL" placeholder="Enter acknowledgement URL.."></custom-input>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-md-12">
-                            <button @click="addAcknowledgement" class="btn btn-primary">Add more</button>
-                        </div>
-                    </div>
+            <div class="form-group">
+              <label>Getting Started Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.gettingStarted"
+                  placeholder="Enter how to start using this project.."
+                  class="form-control"
+                >
+{{data.gettingStarted}}</textarea
+                >
+              </resizable-textarea>
+            </div>
 
+            <div class="form-group">
+              <label>Prerequisites Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.prerequisites"
+                  placeholder="Enter about prerequisites required.."
+                  class="form-control"
+                >
+{{data.prerequisites}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Installation Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.installation"
+                  placeholder="Enter how to install said prerequisites.."
+                  class="form-control"
+                >
+{{data.installation}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+          </div>
+
+          <div v-if="tab == 'usage'" class="tab">
+            <h3>Usage</h3>
+
+            <div class="form-group">
+              <label>Usage Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.usage"
+                  placeholder="Enter how this project can be used.."
+                  class="form-control"
+                >
+{{data.usage}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+          </div>
+
+          <div v-if="tab == 'roadmap'" class="tab">
+            <h3>Roadmap</h3>
+
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck12"
+                v-model="data.roadmap"
+              />
+              <label class="custom-control-label" for="customCheck12"
+                >Use Preset Roadmap</label
+              >
+            </div>
+
+            <div class="form-group">
+              <label>Custom Roadmap</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.roadmapDesc"
+                  :disabled="data.roadmap == 1"
+                  placeholder="Enter the current softwares roadmap.."
+                  class="form-control"
+                >
+{{data.roadmapDesc}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+          </div>
+
+          <div v-if="tab == 'contributing'" class="tab">
+            <h3>Contributing</h3>
+
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck13"
+                v-model="data.contributing"
+              />
+              <label class="custom-control-label" for="customCheck13"
+                >Use Preset Contribution</label
+              >
+            </div>
+
+            <div class="form-group">
+              <label>Contributing Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.contributingDesc"
+                  :disabled="data.contributing == 1"
+                  placeholder="Enter how others can contribute to this project.."
+                  class="form-control"
+                >
+{{data.contributingDesc}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Creating A Pull Request</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.pullRequest"
+                  placeholder="Enter how to create a pull request.."
+                  class="form-control"
+                >
+{{data.pullRequest}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+          </div>
+
+          <div v-if="tab == 'license'" class="tab">
+            <h3>License</h3>
+
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck13"
+                v-model="data.license"
+              />
+              <label class="custom-control-label" for="customCheck13"
+                >Enable License</label
+              >
+            </div>
+
+            <div class="form-group">
+              <label>License Description</label>
+              <resizable-textarea>
+                <textarea
+                  v-model="data.licenseDesc"
+                  :disabled="data.license == 1"
+                  placeholder="Enter information regarding the licensing.."
+                  class="form-control"
+                >
+{{data.licenseDesc}}</textarea
+                >
+              </resizable-textarea>
+            </div>
+          </div>
+
+          <div v-if="tab == 'authors'" class="tab">
+            <h3>Authors</h3>
+
+            <div class="row">
+              <div class="col-xs-12 col-md-12" v-for="item in data.authors">
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.authorName"
+                      title="Author Name"
+                      placeholder="Enter author name.."
+                    ></custom-input>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.authorDesc"
+                      title="Author Description"
+                      placeholder="Enter author desc.."
+                    ></custom-input>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.authorURL"
+                      title="Author URL"
+                      placeholder="Enter author URL.."
+                    ></custom-input>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.authorContribution"
+                      title="Author Contribution"
+                      placeholder="Enter author contributions.."
+                    ></custom-input>
+                  </div>
                 </div>
-                
-            </app-content>
+              </div>
+              <div class="col-xs-12 col-md-12">
+                <button @click="addAuthor" class="btn btn-primary">
+                  Add more
+                </button>
+              </div>
+            </div>
+          </div>
 
+          <div v-if="tab == 'acknowledgements'" class="tab">
+            <h3>Acknowledgements</h3>
 
-
-            
-            <app-sidebar class="col-xs-12 col-md-6">
-
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Preview</h5>
-                        <vue-markdown :source="source"></vue-markdown>
-                    </div>
+            <div class="row">
+              <div
+                class="col-xs-12 col-md-12"
+                v-for="item in data.acknowledgements"
+              >
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.acknowledgementName"
+                      title="Acknowledgement Name"
+                      placeholder="Enter acknowledgement name.."
+                    ></custom-input>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <custom-input
+                      v-model="item.acknowledgementURL"
+                      title="Acknowledgement URL"
+                      placeholder="Enter acknowledgement URL.."
+                    ></custom-input>
+                  </div>
                 </div>
+              </div>
+              <div class="col-xs-12 col-md-12">
+                <button @click="addAcknowledgement" class="btn btn-primary">
+                  Add more
+                </button>
+              </div>
+            </div>
+          </div>
+        </app-content>
 
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title">Code</h5>
-                            <button class="btn btn-primary mb-2 d-flex" @click="copyCode">
-                                <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg> &nbsp;
-                                <span> Copy</span>
-                            </button>
-                        </div>
-                        <div class="alert alert-danger" role="alert" v-if="forced">
-                            Changing source manually could result in lost of data if you use generation fields again.
-                        </div>
-                        <textarea v-model="source" @keyup="onKeyUp" class="form-control" ref="code">{{ source }}</textarea>
-                    </div>
-                </div>
+        <app-sidebar class="col-xs-12 col-md-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Preview</h5>
+              <vue-markdown :source="source"></vue-markdown>
+            </div>
+          </div>
 
-            </app-sidebar>
-
-        </app-view>
-
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title">Code</h5>
+                <button class="btn btn-primary mb-2 d-flex" @click="copyCode">
+                  <svg
+                    style="width: 1.5rem; height: 1.5rem"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                    ></path>
+                  </svg>
+                  &nbsp;
+                  <span> Copy</span>
+                </button>
+              </div>
+              <div class="alert alert-danger" role="alert" v-if="forced">
+                Changing source manually could result in lost of data if you use
+                generation fields again.
+              </div>
+              <textarea
+                v-model="source"
+                @keyup="onKeyUp"
+                class="form-control"
+                ref="code"
+              >
+{{ source }}</textarea
+              >
+            </div>
+          </div>
+        </app-sidebar>
+      </app-view>
     </div>
 
     <footer>
-        <div class="container">
-            <p>Made with ❤ by <a href="https://github.com/ShaanCoding" target="_blank">@ShaanCoding</a>.</p>
-        </div>
+      <div class="container">
+        <p>
+          Made with ❤ by
+          <a href="https://github.com/ShaanCoding" target="_blank"
+            >@ShaanCoding</a
+          >.
+        </p>
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="js/markdown.js"></script>
     <script src="js/script.js"></script>
-
-</body>
+  </body>
 </html>
-
-
