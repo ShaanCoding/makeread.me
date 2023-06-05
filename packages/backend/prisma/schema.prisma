@@ -1,0 +1,19 @@
+// This is your Prisma schema file,
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// generator dbml {
+//   provider = "prisma-dbml-generator"
+// }
+
+model User {
+  userId   String @id @default(cuid())
+  email    String @unique
+  password String
+}
