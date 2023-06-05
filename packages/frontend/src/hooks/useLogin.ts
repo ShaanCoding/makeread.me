@@ -1,4 +1,4 @@
-import { trpcReact, trpcClient } from "../App";
+import { trpcReact } from "../App";
 
 export default function useLogin() {
   const context = trpcReact.useContext();

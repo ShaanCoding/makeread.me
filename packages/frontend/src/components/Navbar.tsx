@@ -4,13 +4,7 @@ import {
   Box,
   Button,
   Flex,
-  Icon,
-  IconButton,
   Image,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Stack,
   Text,
   useBreakpointValue,
@@ -24,7 +18,7 @@ import useMe from "../hooks/useMe";
 
 export default function Navbar() {
   const { data, isError } = useMe();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <Box>

@@ -1,27 +1,10 @@
-import React, { useState } from "react";
-import {
-  RouterProvider,
-  createBrowserRouter,
-  useNavigate,
-} from "react-router-dom";
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DefaultLayout from "./layouts/Default";
 import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import profileLoader from "./loaders/profileLoader";
-import Profile from "./pages/Profile";
-import Logout from "./pages/Logout";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import CreateInventory from "./features/IoTDeviceCatalogue/pages/CreateInventory";
-import ManageInventory from "./features/IoTDeviceCatalogue/pages/ManageInventory";
-import EditInventory from "./features/IoTDeviceCatalogue/pages/EditInventory";
 import DarkLightModeToggle from "./components/DarkLightModeToggle";
-import staffLoader from "./loaders/staffLoader";
-import UserManagement from "./features/UserManagement/pages/UserManagement";
-import StaffDashboard from "./pages/StaffDashboard";
-import CustomerManagement from "./features/CustomerDetailManagement(Staff)/pages/CustomersDetailPage";
-import CustomerManagementEdit from "./features/CustomerDetailManagement(Staff)/pages/CustomersEditPage";
 import type { AppRouter } from "backend/src/routers/root.router";
 import {
   createTRPCProxyClient,
@@ -29,9 +12,6 @@ import {
   httpBatchLink,
 } from "@trpc/react-query";
 import SuperJSON from "superjson";
-import BrowseInventory from "./features/IoTPublicCatalogue/pages/BrowseInventory";
-import StaffManagement from "./features/StaffManagement/pages/StaffManagement";
-import CreateStaff from "./features/StaffManagement/pages/CreateStaff";
 
 const queryClient = new QueryClient();
 
