@@ -1,0 +1,32 @@
+{
+  "name": "readme-generator",
+  "version": "2.0.0",
+  "description": "Version 2 of ShaanCoding/ReadME-Generator",
+  "main": "index.js",
+  "repository": "git@github.com:ShaanCoding/ReadME-Generator.git",
+  "author": "Shaan <22236218+ShaanCoding@users.noreply.github.com>",
+  "license": "Mozilla Public License 2.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.1.0",
+    "typescript": "^5.1.3"
+  },
+  "scripts": {
+    "dev:frontend": "yarn workspace frontend dev",
+    "dev:backend": "yarn workspace backend dev",
+    "dev": "concurrently \"yarn dev:frontend\" \"yarn dev:backend\"",
+    "build:frontend": "yarn workspace frontend build",
+    "build:backend": "yarn workspace backend build",
+    "build": "concurrently \"yarn build:frontend\" \"yarn build:backend\"",
+    "build:run": "yarn build && yarn workspace backend start",
+    "migrate": "yarn workspace backend migrate",
+    "generate": "yarn workspace backend generate",
+    "postinstall": "yarn workspace backend postinstall",
+    "test:frontend": "yarn workspace frontend test",
+    "test:backend": "yarn workspace backend test",
+    "test": "concurrently \"yarn test:frontend\" \"yarn test:backend\""
+  }
+}
