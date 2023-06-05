@@ -1,0 +1,5 @@
+{
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "vitest.commandLine": "yarn test",
+  "formatOnSave": true
+}
