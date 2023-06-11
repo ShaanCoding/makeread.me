@@ -12,6 +12,7 @@ import {
   httpBatchLink,
 } from "@trpc/react-query";
 import SuperJSON from "superjson";
+import Editor from "./features/Editor/pages/Editor";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+      },
+      {
+        path: "/editor",
+        element: <Editor />,
       },
       // {
       //   path: "staff",

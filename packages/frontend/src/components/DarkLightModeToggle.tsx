@@ -1,8 +1,13 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Box, IconButton, useColorMode } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 const DarkLightModeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-color-mode", colorMode);
+  }, [colorMode]);
 
   return (
     <Box position="fixed" bottom="0" right="0" zIndex="999" p="8">

@@ -51,9 +51,9 @@ Whilst alternative options existed, I struggled to find one that could suit my n
 
 With this open-source project, I hope to allow you to save as much time as it saved me, the benefits of this project are huge and here's why:
 
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+- Your time should be focused on creating something amazing. A project that solves a problem and helps others
+- You shouldn't be doing the same tasks over and over like creating a README from scratch
+- You should element DRY principles to the rest of your life :smile:
 
 Of course, no one template will serve all projects since your needs may be different. Whilst this template has served my needs, it may not serve yours so I'll be continuing to work on this to make a more "Universal" and "Flexible" ReadME Generator in the future. Feel free to suggest changes by opening a new issue, or if you want to implement your own, feel free to fork this repo and create a pull request.
 
@@ -61,12 +61,10 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 Whilst I was the main developer of this project, this project couldn't of even started without the help of these open source projects, special thanks to:
 
-* [JavaScript](https://www.javascript.com/)
-* [VueJS](https://vuejs.org/)
+- [JavaScript](https://www.javascript.com/)
+- [VueJS](https://vuejs.org/)
 
 ## Getting Started
-
-
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
@@ -98,10 +96,11 @@ See the [open issues](https://github.com/ShaanCoding/ReadME-Generator/issues) fo
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/ShaanCoding/ReadME-Generator/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
-* Please make sure you check your spelling and grammar.
-* Create individual PR for each suggestion.
-* Please also read through the [Code Of Conduct](https://github.com/ShaanCoding/ReadME-Generator/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
+
+- If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/ShaanCoding/ReadME-Generator/issues/new) to discuss it, or directly create a pull request after you edit the _README.md_ file with necessary changes.
+- Please make sure you check your spelling and grammar.
+- Create individual PR for each suggestion.
+- Please also read through the [Code Of Conduct](https://github.com/ShaanCoding/ReadME-Generator/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
 
 ### Creating A Pull Request
 
@@ -117,10 +116,10 @@ Distributed under the MPL-2.0 License. See [LICENSE](https://github.com/ShaanCod
 
 ## Authors
 
-* **Shaan Khan** - *Comp Sci Student* - [Shaan Khan](https://github.com/ShaanCoding/) - *All Work*
+- **Shaan Khan** - _Comp Sci Student_ - [Shaan Khan](https://github.com/ShaanCoding/) - _All Work_
 
 ## Acknowledgements
 
-* [ShaanCoding](https://github.com/ShaanCoding/)
-* [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
-* [ImgShields](https://shields.io/)
+- [ShaanCoding](https://github.com/ShaanCoding/)
+- [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
+- [ImgShields](https://shields.io/)

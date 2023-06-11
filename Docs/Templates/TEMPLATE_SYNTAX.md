@@ -52,6 +52,8 @@ This is the right side!
 
 ## Libraries
 
+- [Nunjucks](https://mozilla.github.io/nunjucks/)
+
 ---
 
 Title: {{title}}
