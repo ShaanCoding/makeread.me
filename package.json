@@ -16,17 +16,11 @@
   },
   "scripts": {
     "dev:frontend": "yarn workspace frontend dev",
-    "dev:backend": "yarn workspace backend dev",
-    "dev": "concurrently \"yarn dev:frontend\" \"yarn dev:backend\"",
+    "dev": "concurrently \"yarn dev:frontend\"",
     "build:frontend": "yarn workspace frontend build",
-    "build:backend": "yarn workspace backend build",
-    "build": "concurrently \"yarn build:frontend\" \"yarn build:backend\"",
-    "build:run": "yarn build && yarn workspace backend start",
-    "migrate": "yarn workspace backend migrate",
-    "generate": "yarn workspace backend generate",
-    "postinstall": "yarn workspace backend postinstall",
+    "build": "concurrently \"yarn build:frontend\"",
+    "build:run": "yarn build",
     "test:frontend": "yarn workspace frontend test",
-    "test:backend": "yarn workspace backend test",
-    "test": "concurrently \"yarn test:frontend\" \"yarn test:backend\""
+    "test": "concurrently \"yarn test:frontend\""
   }
 }

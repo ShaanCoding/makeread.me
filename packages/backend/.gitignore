@@ -1,7 +1,0 @@
-node_modules/
-dist/
-prisma/client
-public/
-prisma/dev.db*
-.env
-html/
