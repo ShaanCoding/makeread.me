@@ -1,8 +1,4 @@
-import { trpcReact } from "../App";
-
 export default function useGetTemplates() {
-  const context = trpcReact.useContext();
-
   return [
     {
       title: "Best ReadME Template",

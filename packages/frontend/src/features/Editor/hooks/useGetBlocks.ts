@@ -1,8 +1,4 @@
-import { trpcReact } from "../../../App";
-
 export default function useGetBlocks() {
-  const context = trpcReact.useContext();
-
   const output = [
     {
       template: "Othniel Drew",

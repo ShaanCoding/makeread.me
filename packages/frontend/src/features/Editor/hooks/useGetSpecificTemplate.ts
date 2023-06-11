@@ -1,8 +1,4 @@
-import { trpcReact } from "../../../App";
-
 export default function useGetSpecificTemplate() {
-  const context = trpcReact.useContext();
-
   const index = `
 {{ projectHeader() }}
 {{ tableOfContents() }}

@@ -5,38 +5,9 @@ import DefaultLayout from "./layouts/Default";
 import Landing from "./pages/Landing";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import DarkLightModeToggle from "./components/DarkLightModeToggle";
-import type { AppRouter } from "backend/src/routers/root.router";
-import {
-  createTRPCProxyClient,
-  createTRPCReact,
-  httpBatchLink,
-} from "@trpc/react-query";
-import SuperJSON from "superjson";
 import Editor from "./features/Editor/pages/Editor";
 
 const queryClient = new QueryClient();
-
-export const trpcClient = createTRPCProxyClient<AppRouter>({
-  links: [
-    httpBatchLink({
-      url: "/api/trpc",
-      // You can pass any HTTP headers you wish here
-    }),
-  ],
-  transformer: SuperJSON,
-});
-
-export const trpcReact = createTRPCReact<AppRouter>();
-
-export const client = trpcReact.createClient({
-  links: [
-    httpBatchLink({
-      url: "/api/trpc",
-      // You can pass any HTTP headers you wish here
-    }),
-  ],
-  transformer: SuperJSON,
-});
 
 const ReactQueryDevtoolsProduction = React.lazy(() =>
   import("@tanstack/react-query-devtools/build/lib/index.prod.js").then(
@@ -98,18 +69,16 @@ export default function App() {
   }, []);
 
   return (
-    <trpcReact.Provider client={client} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
-        {showDevtools && (
-          <React.Suspense fallback={null}>
-            <ReactQueryDevtoolsProduction />
-          </React.Suspense>
-        )}
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+      {showDevtools && (
+        <React.Suspense fallback={null}>
+          <ReactQueryDevtoolsProduction />
+        </React.Suspense>
+      )}
 
-        <DarkLightModeToggle />
-      </QueryClientProvider>
-    </trpcReact.Provider>
+      <DarkLightModeToggle />
+    </QueryClientProvider>
   );
 }

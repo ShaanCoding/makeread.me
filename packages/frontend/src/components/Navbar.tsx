@@ -12,12 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import logo from "../assets/react.svg";
-import useMe from "../hooks/useMe";
 
 // Path: packages\frontend\src\components\Navbar.tsx
 
 export default function Navbar() {
-  const { data, isError } = useMe();
   const { colorMode } = useColorMode();
 
   return (
