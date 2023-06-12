@@ -4,6 +4,7 @@ import DefaultLayout from "./layouts/Default";
 import Landing from "./pages/Landing";
 import DarkLightModeToggle from "./components/DarkLightModeToggle";
 import Editor from "./features/Editor/pages/Editor";
+import ChooseTemplate from "./features/ChooseTemplate/page/ChooseTemplate";
 
 const router = createBrowserRouter([
   {
@@ -15,42 +16,18 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: "/editor",
+        path: "/choose-template",
+        element: <ChooseTemplate />,
+      },
+      {
+        path: "/editor/:templateId",
         element: <Editor />,
       },
-      // {
-      //   path: "staff",
-      //   loader: staffLoader(queryClient),
-      //   children: [
-      //     {
-      //       index: true,
-      //       element: <StaffDashboard />,
-      //     },
-      //     {
-      //       path: "inventory",
-      //       children: [
-      //         { index: true, element: <ManageInventory /> },
-      //         {
-      //           path: "create",
-      //           element: <CreateInventory />,
-      //         },
-      //         {
-      //           path: "edit/:id",
-      //           element: <EditInventory />,
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       path: "users",
-      //       element: <UserManagement />,
-      //     },
     ],
   },
 ]);
 
 export default function App() {
-  const [showDevtools, setShowDevtools] = React.useState(false);
-
   React.useEffect(() => {
     // @ts-ignore
     window.toggleDevtools = () => setShowDevtools((old) => !old);
