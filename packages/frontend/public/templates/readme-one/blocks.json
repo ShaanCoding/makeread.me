@@ -1,0 +1,31 @@
+{
+  "name": "Best ReadME Template",
+  "author": "Othneil Drew",
+  "authorUrl": "http://github.com/othneildrew",
+  "description": "This is a template",
+  "image": "https://via.placeholder.com/150",
+  "folder": "readme-one",
+  "date": "2021-05-20T00:00:00.000Z",
+  "tags": ["ReadMe", "Default"],
+  "featured": true,
+  "contributors": [
+    { "name": "ShaanCoding", "url": "http://shaancoding.github.io" }
+  ],
+  "functions": [
+    {
+      "name": "Project Header",
+      "description": "This is the project header",
+      "function": "projectHeader"
+    },
+    {
+      "name": "Table of Contents",
+      "description": "This is the table of contents",
+      "function": "tableOfContents"
+    },
+    {
+      "name": "About Project",
+      "description": "This is the about project",
+      "function": "aboutProject"
+    }
+  ]
+}

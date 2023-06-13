@@ -1,66 +1,79 @@
-export default function useGetBlocks() {
-  const output = [
-    {
-      template: "Othniel Drew",
-      blocks: [
-        {
-          name: "Header",
-          importName: "projectHeader()",
-          macro: `
-{% macro projectHeader() %}
-<br/>
-<p align="center">
-<a href="https://github.com/ShaanCoding/ReadME-Generator">
-    <img src="https://github.com/ShaanCoding/ReadME-Generator/blob/readme-generator-2020/images/logo.png?raw=true" alt="Logo" width="80" height="80">
-</a>
+export interface IReadME {
+  name: string;
+  author: string;
+  authorUrl: string;
+  description: string;
+  image: string;
+  folder: string;
+  date: string;
+  tags: string[];
+  featured: boolean;
+  contributors: IContributor[];
+  functions: IFunction[];
+}
 
-<h3 align="center">ReadME Generator</h3>
+export interface IContributor {
+  name: string;
+  url: string;
+}
 
-<p align="center">
-    An Awesome ReadME Generator To Jumpstart Your Projects!
-    <br/>
-    Note This Project Is Still W.I.P
-    <br/>
-    <br/>
-    <a href="https://readme.shaankhan.dev"><strong>View Demo »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator">Explore the docs</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Report Bug</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Request Feature</a>
-</p>
-</p>
-{% endmacro %}
-`,
-        },
-        {
-          name: "Table Of Contents",
-          importName: "tableOfContents()",
-          macro: `
-            {% macro tableOfContents() %}
-            ## Table Of Contents
-            
-            - [Table Of Contents](#table-of-contents)
-            - [About The Project](#about-the-project)
-            - [Built With](#built-with)
-            - [Getting Started](#getting-started)
-            - [Prerequisites](#prerequisites)
-            - [Installation](#installation)
-            - [Usage](#usage)
-            - [Roadmap](#roadmap)
-            - [Contributing](#contributing)
-            - [Creating A Pull Request](#creating-a-pull-request)
-            - [License](#license)
-            - [Authors](#authors)
-            - [Acknowledgements](#acknowledgements)
-            {% endmacro %}
-`,
-        },
-      ],
-    },
-  ];
+export interface IFunction {
+  name: string;
+  description: string;
+  function: string;
+}
 
-  return output;
+export default async function useGetBlocks(
+  filteredByTemplate: string | null = null,
+  searchedByQuery: string | null = null
+): Promise<IReadME[]> {
+  // Import all blocks from the templates folder
+  // Unless filtered and/or searched
+  // Should read macros for function definitions
+  //  {% macro projectHeader() %}
+
+  let allBlocks;
+
+  const allReadME = await fetch("/templates/folders.json").then((res) =>
+    res.json()
+  );
+
+  allBlocks = await Promise.all(
+    allReadME.map(async (readme: string) => {
+      const blocks = await fetch(`/templates/${readme}/blocks.json`).then(
+        (res) => res.json()
+      );
+
+      return blocks;
+    })
+  ).then((blocks) => blocks.flat());
+
+  if (filteredByTemplate) {
+    // Filter by template
+    allBlocks = allBlocks.filter((readme: IReadME) => {
+      return readme.name.toLowerCase() === filteredByTemplate.toLowerCase();
+    });
+  }
+
+  if (searchedByQuery) {
+    // Filter by code block name blocks.function.name only show blocks that match and hide other blocks
+
+    allBlocks = allBlocks.filter((readme: IReadME) => {
+      // Filter by function and if none match remove the parent block
+      const functions = readme.functions.filter((func: IFunction) => {
+        return func.name.toLowerCase().includes(searchedByQuery.toLowerCase());
+      });
+
+      if (functions.length > 0) {
+        readme.functions = functions;
+        return true;
+      }
+
+      return false;
+    });
+  }
+
+  console.log(JSON.stringify(allBlocks));
+
+  return allBlocks;
 }

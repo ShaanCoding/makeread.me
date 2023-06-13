@@ -4,20 +4,25 @@ import nunjucks from "nunjucks";
 import React, { useEffect } from "react";
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import SideBar from "../components/SideBar";
-import TemplateModal from "../components/TemplateModal";
 
 export default function Editor() {
   // Read the templateId from the URL
   const templateId = window.location.pathname.split("/")[2];
 
-  const specificTemplate = useGetSpecificTemplate();
   const [output, setOutput] = React.useState("");
   nunjucks.configure({ autoescape: true });
 
   useEffect(() => {
-    const string = `${specificTemplate.macros} ${specificTemplate.index}`;
-    const renderedString = nunjucks.renderString(string, {});
-    setOutput(renderedString);
+    // Make async
+    const asyncFunction = async () => {
+      const specificTemplate = await useGetSpecificTemplate(templateId);
+
+      const string = `${specificTemplate.macros} ${specificTemplate.index}`;
+      const renderedString = nunjucks.renderString(string, {});
+      setOutput(renderedString);
+    };
+
+    asyncFunction();
   }, []);
 
   return (

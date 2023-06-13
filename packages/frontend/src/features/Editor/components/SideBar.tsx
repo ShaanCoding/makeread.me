@@ -1,20 +1,45 @@
-import { Container, Heading, Stack, Select, Input } from "@chakra-ui/react";
-import React from "react";
-import useGetBlocks from "../hooks/useGetBlocks";
+import {
+  Container,
+  Heading,
+  Stack,
+  Select,
+  Input,
+  UnorderedList,
+  ListItem,
+} from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import useGetBlocks, { IFunction, IReadME } from "../hooks/useGetBlocks";
+import useGetNames from "../hooks/useGetNames";
+
+interface IFilter {
+  filterString: string;
+  allBlocks: IFunction[];
+}
 
 const SideBar = () => {
-  const getBlocks = useGetBlocks();
+  const [blocks, setBlocks] = React.useState<IReadME[]>([]);
+  const [search, setSearch] = React.useState<string>("");
+  const [filter, setFilter] = React.useState<IFilter>({} as IFilter);
+  const [templateList, setTemplateList] = React.useState<string[]>([]);
 
-  const generateBlocks = () => {
-    const allBlocks: string[] = [];
-    getBlocks.forEach((block) => {
-      block.blocks.forEach((individualBlock) => {
-        allBlocks.push(individualBlock.name);
-      });
-    });
-
-    return allBlocks;
+  const setSearchDropdown = async () => {
+    const getNames = await useGetNames();
+    setTemplateList(getNames);
   };
+
+  useEffect(() => {
+    const asyncFunction = async () => {
+      const blocks = await useGetBlocks(filter.filterString, search);
+
+      setBlocks(blocks);
+    };
+
+    asyncFunction();
+  }, [search, filter]);
+
+  useEffect(() => {
+    setSearchDropdown();
+  }, []);
 
   return (
     <Container h="100%" background="gray.900">
@@ -22,24 +47,55 @@ const SideBar = () => {
         <Heading as="h2" size="lg">
           Filter by ReadME Template
         </Heading>
-        <Select placeholder="Select option">
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+        <Select
+          placeholder="Select option"
+          onChange={(e) => {
+            setFilter({
+              ...filter,
+              filterString: e.target.value,
+            });
+          }}
+        >
+          {templateList.map((template) => {
+            return <option value={template}>{template}</option>;
+          })}
         </Select>
         <Heading as="h2" size="lg">
           Search by Block
         </Heading>
-        <Input placeholder="Search" />
+        <Input
+          placeholder="Search"
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
 
         <Heading as="h2" size="lg">
           Blocks
         </Heading>
 
-        {generateBlocks().map((block) => (
-          <Heading as="h2" size="md">
-            {block}
-          </Heading>
+        {blocks.map((block: IReadME) => (
+          <>
+            <Heading as="h2" size="md">
+              {block.name}
+            </Heading>
+            <Heading as="h2" size="md">
+              {block.description}
+            </Heading>
+
+            <UnorderedList>
+              {block.functions.map((func: IFunction) => (
+                <ListItem>
+                  <Heading as="h2" size="sm">
+                    {func.name}
+                  </Heading>
+                  <Heading as="h2" size="sm">
+                    {func.description}
+                  </Heading>
+                </ListItem>
+              ))}
+            </UnorderedList>
+          </>
         ))}
       </Stack>
     </Container>
