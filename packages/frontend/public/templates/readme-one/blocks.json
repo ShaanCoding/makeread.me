@@ -67,14 +67,14 @@
       "function": "aboutProject",
       "variables": [
         {
-          "name": "Showcase Image URL",
-          "label": "showcaseURL",
+          "label": "Showcase Image URL",
+          "name": "showcaseURL",
           "defaultValue": "https://via.placeholder.com/150",
           "type": "text"
         },
         {
-          "name": "About This Project Description",
-          "label": "aboutDescription",
+          "label": "About This Project Description",
+          "name": "aboutDescription",
           "defaultValue": "This is a description about this project",
           "type": "text"
         }
@@ -86,20 +86,20 @@
       "function": "builtWith",
       "variables": [
         {
-          "name": "Built With Description",
-          "label": "builtWithDescription",
+          "label": "Built With Description",
+          "name": "builtWithDescription",
           "defaultValue": "This project was built with the following technologies",
           "type": "text"
         },
         {
-          "name": "Built With Name",
-          "label": "builtWithName",
+          "label": "Built With Name",
+          "name": "builtWithName",
           "defaultValue": ["HTML", "CSS", "JavaScript"],
           "type": "array"
         },
         {
-          "name": "Built With URL",
-          "label": "builtWithURL",
+          "label": "Built With URL",
+          "name": "builtWithURL",
           "defaultValue": [
             "https://www.w3schools.com/html/",
             "https://www.w3schools.com/css/",
