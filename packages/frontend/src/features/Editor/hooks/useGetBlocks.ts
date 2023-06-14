@@ -21,6 +21,20 @@ export interface IFunction {
   name: string;
   description: string;
   function: string;
+  variables: IVariable[];
+}
+
+export interface IVariable {
+  name: string;
+  label: string;
+  defaultValue: string | string[] | boolean;
+  type: EBlockType;
+}
+
+export enum EBlockType {
+  TEXT = "text",
+  BOOLEAN = "boolean",
+  ARRAY = "array",
 }
 
 export default async function useGetBlocks(

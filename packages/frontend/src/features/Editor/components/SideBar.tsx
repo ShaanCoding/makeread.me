@@ -6,17 +6,22 @@ import {
   Input,
   UnorderedList,
   ListItem,
+  Button,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import useGetBlocks, { IFunction, IReadME } from "../hooks/useGetBlocks";
 import useGetNames from "../hooks/useGetNames";
+import { Link } from "react-router-dom";
 
 interface IFilter {
   filterString: string;
   allBlocks: IFunction[];
 }
 
-const SideBar = () => {
+const SideBar: React.FC<{
+  templateBlocks: IFunction[];
+  setTemplateBlocks: (e: IFunction[]) => any;
+}> = ({ templateBlocks, setTemplateBlocks }) => {
   const [blocks, setBlocks] = React.useState<IReadME[]>([]);
   const [search, setSearch] = React.useState<string>("");
   const [filter, setFilter] = React.useState<IFilter>({} as IFilter);
@@ -86,9 +91,15 @@ const SideBar = () => {
             <UnorderedList>
               {block.functions.map((func: IFunction) => (
                 <ListItem>
-                  <Heading as="h2" size="sm">
+                  <Button
+                    backgroundColor="red.700"
+                    onClick={() => {
+                      setTemplateBlocks([...templateBlocks, func]);
+                      // setTemplateBlocks([...func.blocks, ...func.blocks]);
+                    }}
+                  >
                     {func.name}
-                  </Heading>
+                  </Button>
                   <Heading as="h2" size="sm">
                     {func.description}
                   </Heading>
