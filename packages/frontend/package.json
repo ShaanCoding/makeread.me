@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.10.6",
     "@uiw/react-markdown-editor": "^5.11.1",
     "chakra-react-select": "^4.6.0",
+    "formik": "^2.4.1",
     "framer-motion": "^10.5.0",
     "luxon": "^3.3.0",
     "nunjucks": "^3.2.4",
