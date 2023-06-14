@@ -5,7 +5,7 @@ import Preview from "./Preview";
 import Raw from "./Raw";
 import useGetSpecificTemplate from "../hooks/useGetSpecificTemplate";
 import nunjucks from "nunjucks";
-import { IFunction } from "../hooks/useGetBlocks";
+import { IFunction, IVariable } from "../hooks/useGetBlocks";
 
 enum BlockType {
   Editor,
@@ -27,14 +27,25 @@ const EditorBody: React.FC<{
   const asyncFunction = async () => {
     const specificTemplate = await useGetSpecificTemplate(templateId);
     // Combine templateBLocks in format "macro1 macro2 macro3"
+
     const index = templateBlocks
       .map((func: IFunction) => {
-        return `{{ ${func.function}() }}`;
+        let variableArray: string[] = [];
+
+        func.variables.forEach((variable: IVariable) => {
+          variableArray.push(variable.name);
+        });
+
+        return `{{ ${func.function}(${variableArray.join(", ")}) }}`;
       })
       .join(" ");
 
-    const string = `${specificTemplate} ${index}`;
+    const variableString = `{% set username = "Shaan" %} {% set repository = "Test" %}`;
+
+    const string = `${variableString} ${specificTemplate} ${index}`;
+
     const renderedString = nunjucks.renderString(string, {});
+
     setOutput(renderedString);
   };
 
