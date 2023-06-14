@@ -1,17 +1,17 @@
 import React from "react";
 import { useField, FieldInputProps } from "formik";
-import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { Checkbox, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 
-export interface ITextField {
+export interface IBooleanField {
   label: string;
   name: string;
-  defaultValue: string;
+  defaultValue: boolean;
 }
 
-const TextField: React.FC<{ data: ITextField }> = ({
+const BooleanField: React.FC<{ data: IBooleanField }> = ({
   data: { defaultValue, label, name },
 }: {
-  data: ITextField;
+  data: IBooleanField;
 }) => {
   // const [field, meta] = useField({
   //   name,
@@ -23,14 +23,9 @@ const TextField: React.FC<{ data: ITextField }> = ({
 
   return (
     <InputGroup>
-      <InputLeftAddon children={label} />
-      <Input
-        placeholder={label}
-        defaultValue={defaultValue}
-        // {...field}
-      />
+      <Checkbox isChecked={defaultValue}>{label}</Checkbox>
     </InputGroup>
   );
 };
 
-export default TextField;
+export default BooleanField;

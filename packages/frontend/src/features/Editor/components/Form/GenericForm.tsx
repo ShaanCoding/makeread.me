@@ -1,51 +1,53 @@
 import React from "react";
 import { Form, FormikProps, Formik } from "formik";
-import TextField, { TextFieldProps } from "./TextField";
-import { Button, Heading } from "@chakra-ui/react";
+import TextField, { ITextField } from "./TextField";
+import { Button, Heading, Stack } from "@chakra-ui/react";
 import { EBlockType, IVariable } from "../../hooks/useGetBlocks";
-
-const generateBlockVariables = (variables: IVariable[]) => {
-  return variables?.map((variable) => {
-    if (variable.type === EBlockType.TEXT) {
-      return (
-        <>
-          <Heading as="h2" size="md">
-            {variable.label}
-          </Heading>
-          {/* // Need a text input */}
-
-          <Input
-            placeholder="Enter text"
-            onChange={(e) => {
-              setBlockVariables([
-                ...blockVariables,
-                { name: variable.name, value: e.target.value },
-              ]);
-            }}
-          />
-        </>
-      );
-    } else if (variable.type === EBlockType.BOOLEAN) {
-      return null;
-    } else if (variable.type === EBlockType.ARRAY) {
-      return null;
-    } else {
-      return null;
-    }
-  });
-};
+import BooleanField, { IBooleanField } from "./BooleanField";
+import ArrayField, { IArrayField } from "./ArrayField";
 
 const generateBlock = (fields: IVariable[]) => {
-  return fields.map(({ label, name, type }: IVariable) => {
-    switch (type) {
+  return fields.map((variable: IVariable) => {
+    switch (variable.type) {
       case EBlockType.TEXT:
-        return <TextField key={name} name={name} type={type} label={label} />;
+        return (
+          <TextField
+            key={variable.name}
+            data={
+              {
+                label: variable.name,
+                name: variable.name,
+                defaultValue: variable.defaultValue,
+              } as ITextField
+            }
+          />
+        );
       case EBlockType.BOOLEAN:
         return (
-          <BooleanField key={name} name={name} type={type} label={label} />
+          <BooleanField
+            key={variable.name}
+            data={
+              {
+                label: variable.label,
+                name: variable.name,
+                defaultValue: variable.defaultValue,
+              } as IBooleanField
+            }
+          />
         );
       case EBlockType.ARRAY:
-        return <ArrayField key={name} name={name} type={type} label={label} />;
+        return (
+          <ArrayField
+            key={variable.name}
+            data={
+              {
+                label: variable.label,
+                name: variable.name,
+                defaultValue: variable.defaultValue,
+              } as IArrayField
+            }
+          />
+        );
       default:
         return null;
     }
@@ -67,10 +69,12 @@ const GenericForm: React.FC<{
     >
       {(props: FormikProps<any>) => (
         <Form>
-          {generateBlock(fields)}
-          <Button type="submit" variant="contained" color="primary">
-            Submit
-          </Button>
+          <Stack py={6} spacing={6}>
+            {generateBlock(fields)}
+            <Button type="submit" variant="outline" color="primary">
+              Submit
+            </Button>
+          </Stack>
         </Form>
       )}
     </Formik>
