@@ -14,6 +14,33 @@ const Blocks: React.FC<{
       {templateBlocks.map((block: IFunction, index) => {
         return (
           <div>
+            {/* Up Button */}
+            <Button
+              onClick={() => {
+                if (index !== 0) {
+                  const temp = templateBlocks[index - 1];
+                  templateBlocks[index - 1] = templateBlocks[index];
+                  templateBlocks[index] = temp;
+                  setTemplateBlocks([...templateBlocks]);
+                }
+              }}
+            >
+              Up
+            </Button>
+            {/* Down Button */}
+            <Button
+              onClick={() => {
+                if (index !== templateBlocks.length - 1) {
+                  const temp = templateBlocks[index + 1];
+                  templateBlocks[index + 1] = templateBlocks[index];
+                  templateBlocks[index] = temp;
+                  setTemplateBlocks([...templateBlocks]);
+                }
+              }}
+            >
+              Down
+            </Button>
+
             <Heading as="h2" size="lg">
               {block.name}
             </Heading>

@@ -1,6 +1,6 @@
 {
   "name": "Best ReadME Template 2",
-  "author": "Othneil Drew",
+  "author": "ShaanCoding",
   "authorUrl": "http://github.com/othneildrew",
   "description": "This is a template",
   "image": "https://via.placeholder.com/150",
@@ -13,22 +13,101 @@
   ],
   "functions": [
     {
-      "name": "Project Header 2",
+      "name": "Project Header",
       "description": "This is the project header",
-      "template": "projectHeader",
-      "function": "projectHeader"
+      "function": "projectHeader",
+      "variables": [
+        {
+          "label": "Username",
+          "name": "username",
+          "defaultValue": "shaancoding",
+          "type": "text"
+        },
+        {
+          "label": "Repository Name",
+          "name": "repository",
+          "defaultValue": "ReadME-Generator",
+          "type": "text"
+        },
+        {
+          "label": "Logo URL",
+          "name": "logo",
+          "defaultValue": "https://via.placeholder.com/150",
+          "type": "text"
+        },
+        {
+          "label": "Headline",
+          "name": "headline",
+          "defaultValue": "ReadME Generator",
+          "type": "text"
+        },
+        {
+          "label": "Catchphrase",
+          "name": "catchphrase",
+          "defaultValue": "An Awesome ReadME Generator To Jumpstart Your Projects!",
+          "type": "text"
+        },
+        {
+          "label": "Enable Header Icons",
+          "name": "enableHeaderIcons",
+          "defaultValue": true,
+          "type": "boolean"
+        }
+      ]
     },
     {
       "name": "Table of Contents",
       "description": "This is the table of contents",
-      "template": "tableOfContents",
-      "function": "tableOfContents"
+      "function": "tableOfContents",
+      "variables": []
     },
     {
       "name": "About Project",
       "description": "This is the about project",
-      "template": "aboutProject",
-      "function": "aboutProject"
+      "function": "aboutProject",
+      "variables": [
+        {
+          "name": "Showcase Image URL",
+          "label": "showcaseURL",
+          "defaultValue": "https://via.placeholder.com/150",
+          "type": "text"
+        },
+        {
+          "name": "About This Project Description",
+          "label": "aboutDescription",
+          "defaultValue": "This is a description about this project",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "Built With",
+      "description": "This is the built with",
+      "function": "builtWith",
+      "variables": [
+        {
+          "name": "Built With Description",
+          "label": "builtWithDescription",
+          "defaultValue": "This project was built with the following technologies",
+          "type": "text"
+        },
+        {
+          "name": "Built With Name",
+          "label": "builtWithName",
+          "defaultValue": ["HTML", "CSS", "JavaScript"],
+          "type": "array"
+        },
+        {
+          "name": "Built With URL",
+          "label": "builtWithURL",
+          "defaultValue": [
+            "https://www.w3schools.com/html/",
+            "https://www.w3schools.com/css/",
+            "https://www.w3schools.com/js/"
+          ],
+          "type": "array"
+        }
+      ]
     }
   ]
 }

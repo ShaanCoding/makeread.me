@@ -27,13 +27,13 @@ const EditorBody: React.FC<{
   const asyncFunction = async () => {
     const specificTemplate = await useGetSpecificTemplate(templateId);
     // Combine templateBLocks in format "macro1 macro2 macro3"
-    specificTemplate.index = templateBlocks
+    const index = templateBlocks
       .map((func: IFunction) => {
         return `{{ ${func.function}() }}`;
       })
       .join(" ");
 
-    const string = `${specificTemplate.macros} ${specificTemplate.index}`;
+    const string = `${specificTemplate} ${index}`;
     const renderedString = nunjucks.renderString(string, {});
     setOutput(renderedString);
   };
