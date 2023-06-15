@@ -1,7 +1,7 @@
 import React from "react";
-import { Form, FormikProps, Formik } from "formik";
+import { Form, Formik } from "formik";
 import TextField, { ITextField } from "./TextField";
-import { Button, Heading, Stack } from "@chakra-ui/react";
+import { Button, Stack } from "@chakra-ui/react";
 import { EBlockType, IVariable } from "../../hooks/useGetBlocks";
 import BooleanField, { IBooleanField } from "./BooleanField";
 import ArrayField, { IArrayField } from "./ArrayField";
@@ -15,7 +15,7 @@ const generateBlock = (fields: IVariable[]) => {
             key={variable.name}
             data={
               {
-                label: variable.name,
+                label: variable.label,
                 name: variable.name,
                 defaultValue: variable.defaultValue,
               } as ITextField
@@ -54,21 +54,29 @@ const generateBlock = (fields: IVariable[]) => {
   });
 };
 
+const generateDefaultValues = (fields: IVariable[]) => {
+  const defaultValues: any = {};
+  fields.forEach((variable: IVariable) => {
+    defaultValues[variable.name] = variable.defaultValue;
+  });
+  return defaultValues;
+};
+
 const GenericForm: React.FC<{
   fields: IVariable[];
-  submitClickCallback: (e: any) => void;
-}> = ({ fields, submitClickCallback }) => {
+}> = ({ fields }) => {
   return fields ? (
     <Formik
-      initialValues={{}}
+      initialValues={generateDefaultValues(fields)}
       onSubmit={(values, actions) => {
-        submitClickCallback(values);
-        actions.setSubmitting(false);
-        actions.resetForm();
+        alert(JSON.stringify(values, null, 2));
+        // submitClickCallback(values);
+        // actions.setSubmitting(false);
+        // actions.resetForm();
       }}
     >
-      {(props: FormikProps<any>) => (
-        <Form>
+      {({ handleSubmit, values, errors, setFieldValue }) => (
+        <Form onSubmit={handleSubmit}>
           <Stack py={6} spacing={6}>
             {generateBlock(fields)}
             <Button type="submit" variant="outline" color="primary">

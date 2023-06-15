@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { EBlockType, IFunction, IVariable } from "../hooks/useGetBlocks";
-import { Button, Heading, Input, Stack } from "@chakra-ui/react";
-import TextField from "./Form/TextField";
-import { useFormik } from "formik";
+import { IFunction } from "../hooks/useGetBlocks";
+import { Button, Heading, Stack } from "@chakra-ui/react";
 import GenericForm from "./Form/GenericForm";
 
 const Blocks: React.FC<{
@@ -47,10 +44,7 @@ const Blocks: React.FC<{
             <Heading as="h2" size="md">
               {block.description}
             </Heading>
-            <GenericForm
-              fields={block.variables}
-              submitClickCallback={() => alert("Pressed submit")}
-            />
+            <GenericForm fields={block.variables} />
             <Button
               onClick={() => {
                 setTemplateBlocks(templateBlocks.filter((_, i) => i !== index));
