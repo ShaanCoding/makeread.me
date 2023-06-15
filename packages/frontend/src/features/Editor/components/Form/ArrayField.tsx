@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useField, FieldInputProps } from "formik";
 import {
   Button,
@@ -8,6 +8,7 @@ import {
   InputGroup,
   InputLeftAddon,
 } from "@chakra-ui/react";
+import InputControl from "./Controls/InputControl";
 
 export interface IArrayField {
   label: string;
@@ -29,6 +30,8 @@ const ArrayField: React.FC<{ data: IArrayField }> = ({
   // } as FieldInputProps<any>);
   const [array, setArray] = React.useState<string[]>(defaultValue);
 
+  // Arrays are broken for now :(
+
   return (
     <>
       <Heading as="h3" size="md">
@@ -37,7 +40,8 @@ const ArrayField: React.FC<{ data: IArrayField }> = ({
       {array?.map((item, index) => {
         return (
           <InputGroup key={index}>
-            <Input defaultValue={item} />
+            <InputLeftAddon children={label} />
+            <InputControl name={`${name}`} label={label} defaultValue={"3"} />
             <Button
               onClick={() => {
                 setArray(array.filter((_, i) => i !== index));
