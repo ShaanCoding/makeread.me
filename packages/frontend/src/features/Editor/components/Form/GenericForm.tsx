@@ -79,9 +79,6 @@ const GenericForm: React.FC<{
         <Form onSubmit={handleSubmit}>
           <Stack py={6} spacing={6}>
             {generateBlock(fields)}
-            <Button type="submit" variant="outline" color="primary">
-              Submit
-            </Button>
           </Stack>
         </Form>
       )}

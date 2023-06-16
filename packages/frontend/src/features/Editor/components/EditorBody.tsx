@@ -21,6 +21,8 @@ const EditorBody: React.FC<{
   const [blockType, setBlockType] = React.useState(BlockType.Editor);
 
   const [output, setOutput] = React.useState("");
+  const [variables, setVariables] = React.useState({});
+
   nunjucks.configure({ autoescape: true });
 
   // Make async
@@ -40,7 +42,17 @@ const EditorBody: React.FC<{
       })
       .join(" ");
 
-    const variableString = `{% set username = "Shaan" %} {% set repository = "Test" %}`;
+    // const variableString = `{% set username = "Shaan" %} {% set repository = "Test" %}`;
+
+    let variableString = "";
+    Object.keys(variables).forEach((element) => {
+      const variable: string =
+        typeof variables[element] === "string"
+          ? variables[element]
+          : JSON.stringify(variables[element]);
+
+      variableString += `{% set ${element} = "${variable}" %} `;
+    });
 
     const string = `${variableString} ${specificTemplate} ${index}`;
 
@@ -76,6 +88,7 @@ const EditorBody: React.FC<{
         <Blocks
           templateBlocks={templateBlocks}
           setTemplateBlocks={setTemplateBlocks}
+          setVariables={setVariables}
         />
       )}
       {blockType === BlockType.Preview && <Preview output={output} />}
