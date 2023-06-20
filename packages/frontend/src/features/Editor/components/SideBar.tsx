@@ -11,7 +11,6 @@ import {
 import React, { useEffect } from "react";
 import useGetBlocks, { IFunction, IReadME } from "../hooks/useGetBlocks";
 import useGetNames from "../hooks/useGetNames";
-import { Link } from "react-router-dom";
 
 interface IFilter {
   filterString: string;

@@ -1,6 +1,5 @@
 import React from "react";
-import { useField, FieldInputProps } from "formik";
-import { Checkbox, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import { CheckboxControl } from "./Controls/CheckboxControl";
 
 export interface IBooleanField {
@@ -29,6 +28,7 @@ const BooleanField: React.FC<{ data: IBooleanField }> = ({
         name={name}
         label={label}
         defaultChecked={defaultValue}
+        value={""}
       />
     </InputGroup>
   );

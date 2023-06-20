@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import TextField, { ITextField } from "./TextField";
-import { Button, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import { EBlockType, IVariable } from "../../hooks/useGetBlocks";
 import BooleanField, { IBooleanField } from "./BooleanField";
 import ArrayField, { IArrayField } from "./ArrayField";
@@ -68,14 +68,20 @@ const GenericForm: React.FC<{
   return fields ? (
     <Formik
       initialValues={generateDefaultValues(fields)}
-      onSubmit={(values, actions) => {
+      onSubmit={(
+        values
+        // , actions
+      ) => {
         alert(JSON.stringify(values, null, 2));
         // submitClickCallback(values);
         // actions.setSubmitting(false);
         // actions.resetForm();
       }}
     >
-      {({ handleSubmit, values, errors, setFieldValue }) => (
+      {({
+        handleSubmit,
+        // , values, errors, setFieldValue
+      }) => (
         <Form onSubmit={handleSubmit}>
           <Stack py={6} spacing={6}>
             {generateBlock(fields)}

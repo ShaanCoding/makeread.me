@@ -1,5 +1,9 @@
-import { Button, Container, Heading, Stack } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import {
+  Button,
+  // Container, Heading,
+  Stack,
+} from "@chakra-ui/react";
+import React from "react"; // , { useEffect }
 import Blocks from "./Blocks";
 import Preview from "./Preview";
 import Raw from "./Raw";
@@ -21,7 +25,9 @@ const EditorBody: React.FC<{
   const [blockType, setBlockType] = React.useState(BlockType.Editor);
 
   const [output, setOutput] = React.useState("");
-  const [variables, setVariables] = React.useState({});
+  const [variables, setVariables] = React.useState<
+    Record<string, string | number | boolean | object>
+  >({});
 
   nunjucks.configure({ autoescape: true });
 
@@ -45,14 +51,21 @@ const EditorBody: React.FC<{
     // const variableString = `{% set username = "Shaan" %} {% set repository = "Test" %}`;
 
     let variableString = "";
-    Object.keys(variables).forEach((element) => {
-      const variable: string =
-        typeof variables[element] === "string"
-          ? variables[element]
-          : JSON.stringify(variables[element]);
+    Object.keys(variables).forEach((element: string) => {
+      let variable: string;
+
+      if (typeof variables[element] === "string" || typeof variables[element] === "number" || typeof variables[element] === "boolean") {
+        variable = variables[element].toString();
+      } else if (typeof variables[element] === "object") {
+        variable = JSON.stringify(variables[element]);
+      } else {
+        variable = "";
+      }
 
       variableString += `{% set ${element} = "${variable}" %} `;
     });
+
+    alert(variableString);
 
     const string = `${variableString} ${specificTemplate} ${index}`;
 

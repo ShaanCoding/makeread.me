@@ -1,7 +1,0 @@
-services:
-  app:
-    build: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./config:/app/config

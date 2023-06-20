@@ -31,11 +31,17 @@ const Blocks: React.FC<{
       <Formik
         initialValues={defaultValues}
         enableReinitialize={true}
-        onSubmit={(values, actions) => {
+        onSubmit={(
+          values
+          // ,actions
+        ) => {
           setVariables(values);
         }}
       >
-        {({ handleSubmit, values, errors, setFieldValue }) => (
+        {({
+          handleSubmit,
+          // , values, errors, setFieldValue
+        }) => (
           <Form onSubmit={handleSubmit}>
             {templateBlocks.map((block: IFunction, index) => {
               return (
@@ -75,7 +81,7 @@ const Blocks: React.FC<{
                   </Heading>
                   <GenericForm
                     fields={block.variables}
-                    defaultValues={defaultValues[block.function]}
+                    // defaultValues={defaultValues[block.function]}
                   />
                   <Button
                     onClick={() => {

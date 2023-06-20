@@ -1,14 +1,17 @@
 {% macro projectHeader() %}
+
+{% if enableHeaderIcons %}
 <br/>
 <p align="center">
 <a href="https://github.com/{{ username }}/{{ repository }}">
-    <img src="https://github.com/ShaanCoding/ReadME-Generator/blob/readme-generator-2020/images/logo.png?raw=true" alt="Logo" width="80" height="80">
+    <img src="{{ logoURL }}" alt="Logo" width="80" height="80">
 </a>
+{% endif %}
 
-<h3 align="center">{{ username }}</h3>
+<h3 align="center">{{ headline }}</h3>
 
 <p align="center">
-    An Awesome ReadME Generator To Jumpstart Your Projects!
+    {{ catchphrase }}
     <br/>
     Note This Project Is Still W.I.P
     <br/>

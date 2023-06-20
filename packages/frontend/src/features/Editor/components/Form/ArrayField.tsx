@@ -1,13 +1,5 @@
-import React, { useEffect } from "react";
-import { useField, FieldInputProps } from "formik";
-import {
-  Button,
-  Checkbox,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-} from "@chakra-ui/react";
+import React from "react";
+import { Button, Heading, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import InputControl from "./Controls/InputControl";
 
 export interface IArrayField {
@@ -37,7 +29,7 @@ const ArrayField: React.FC<{ data: IArrayField }> = ({
       <Heading as="h3" size="md">
         {label}
       </Heading>
-      {array?.map((item, index) => {
+      {array?.map((_, index) => {
         return (
           <InputGroup key={index}>
             <InputLeftAddon children={label} />

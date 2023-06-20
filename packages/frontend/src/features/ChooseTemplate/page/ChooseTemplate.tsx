@@ -4,7 +4,6 @@ import {
   Card,
   CardBody,
   CardHeader,
-  Container,
   Grid,
   Heading,
   Stack,
@@ -34,14 +33,14 @@ const TemplateCard: React.FC<{
   const {
     name,
     author,
-    authorUrl,
+    // authorUrl,
     description,
-    image,
+    // image,
     folder,
-    date,
-    tags,
-    featured, // If featured then tag it with a star or something
-    contributors,
+    // date,
+    // tags,
+    // featured, // If featured then tag it with a star or something
+    // contributors,
   } = template;
 
   return (

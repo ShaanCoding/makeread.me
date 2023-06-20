@@ -31,8 +31,8 @@
         },
         {
           "label": "Logo URL",
-          "name": "logo",
-          "defaultValue": "https://via.placeholder.com/150",
+          "name": "logoURL",
+          "defaultValue": "https://github.com/ShaanCoding/ReadME-Generator/blob/readme-generator-2020/images/logo.png?raw=true",
           "type": "text"
         },
         {

@@ -17,7 +17,7 @@ export default function Editor() {
     const blocks = await useGetBlocks("Best ReadME Template");
 
     const indexMapped: IFunction[] = [];
-    index.forEach((element: string, index: number) => {
+    index.forEach((element: string) => {
       return blocks[0].functions.find((block: IFunction) => {
         if (block.function === element) {
           indexMapped.push(block);
