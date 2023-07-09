@@ -1,6 +1,10 @@
 {
   "name": "readme-generator",
-  "version": "0.1.0",
+  "version": "2.0.0",
+  "description": "Version 2 of ShaanCoding/ReadME-Generator",
+  "repository": "git@github.com:ShaanCoding/ReadME-Generator.git",
+  "author": "Shaan <22236218+ShaanCoding@users.noreply.github.com>",
+  "license": "Mozilla Public License 2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

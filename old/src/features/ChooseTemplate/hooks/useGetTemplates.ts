@@ -1,4 +1,4 @@
-import { ITemplate, templates } from "../../../data/templates.ts";
+import { ITemplate, templates } from "../../../data/templates.js";
 
 export default function useGetTemplates(): ITemplate[] {
   // We should sort this to show featured templates first
