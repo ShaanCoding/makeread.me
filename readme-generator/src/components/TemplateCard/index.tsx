@@ -1,14 +1,24 @@
 import { FC } from 'react'
 import Avatar from '@/components/ui/Avatar'
-import {format} from "date-fns"
+import { format } from "date-fns"
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/Button'
+import Contributors from './Contributors'
+interface Contributor {
+
+    name: string
+    url: string
+    social: string
+
+}
 interface TemplateCardProps {
     created_at: Date
     description: string
     title: string
     author_url: string
     tags: string[]
-    contributors: string[]
+    contributors: Contributor[]
     author: string
     href: string
 }
@@ -23,6 +33,8 @@ const TemplateCard: FC<TemplateCardProps> = ({
     author,
     href
 }) => {
+  
+
     return <Link href={href} className='min-w-[314px] min-h-[376px] max-w-[340px] max-h-[400px] shrink-0 rounded-[30px] bg-primary pt-[25px] pb-[25px] pl-[25px] pr-[30px] text-secondary'>
         <div className='flex  gap-[25px] mb-[25px]'>
             <div>
@@ -65,26 +77,20 @@ const TemplateCard: FC<TemplateCardProps> = ({
                 <h4 className='text-[0.8125rem] font-medium tracking-secondary mb-[5px]'>
                     Tags
                 </h4>
-                <p className='text-[0.6rem] tracking-primary'>
-                    {tags.join(',\u00A0\u00A0' )}
-                </p>
+                <div className='text-[0.6rem] tracking-primary flex flex-wrap gap-1'>
+                    {tags.map((tag, index) => (
+                        <span className={cn(buttonVariants({ variant: "default", size: "sm" }))} key={index}>
+                            {tag}
+                        </span>
+                    ))
+
+
+                    }
+                </div>
             </div>
 
             {/* Contributors */}
-            <div className=''>
-                <h4 className='text-[0.8125rem] font-medium tracking-secondary mb-[5px]'>
-                    Contributors
-                </h4>
-                <ul className='list-disc pl-3 flex flex-wrap gap-x-[22px] gap-y-[5px]'>
-                    {contributors.map((contributor, index) => {
-                        return <li key={index} className='text-[0.6rem] tracking-primary'>
-                            {contributor}
-                        </li>
-                    }
-                    )}
-
-                </ul>
-            </div>
+            {<Contributors  contributors={contributors}/>}
         </div>
 
     </Link>

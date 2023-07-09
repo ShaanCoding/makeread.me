@@ -11,7 +11,21 @@ const Page: FC<pageProps> = ({ }) => {
         author_url: "lorem ipsum dolor",
         tags: ['Undustry', 'ReadME', "Code of Conduct"],
 
-        contributors: ['lorem ipsum dolor', 'lorem ipsum dolor', "lorem ipsum dolor", "lorem ipsum dolor"],
+        contributors: [{
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },],
 
         author: "Furkan Emre Kozan",
         href: "/",
@@ -24,7 +38,21 @@ const Page: FC<pageProps> = ({ }) => {
         author_url: "lorem ipsum dolor",
         tags: ['Undustry', 'ReadME', "Code of Conduct"],
 
-        contributors: ['lorem ipsum dolor', 'lorem ipsum dolor', "lorem ipsum dolor", "lorem ipsum dolor"],
+        contributors: [{
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },],
 
         author: "Furkan Emre Kozan",
         href: "/",
@@ -37,7 +65,21 @@ const Page: FC<pageProps> = ({ }) => {
         author_url: "lorem ipsum dolor",
         tags: ['Undustry', 'ReadME', "Code of Conduct"],
 
-        contributors: ['lorem ipsum dolor', 'lorem ipsum dolor', "lorem ipsum dolor", "lorem ipsum dolor"],
+        contributors: [{
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },],
 
         author: "Furkan Emre Kozan",
         href: "/",
@@ -50,7 +92,21 @@ const Page: FC<pageProps> = ({ }) => {
         author_url: "lorem ipsum dolor",
         tags: ['Undustry', 'ReadME', "Code of Conduct"],
 
-        contributors: ['lorem ipsum dolor', 'lorem ipsum dolor', "lorem ipsum dolor", "lorem ipsum dolor"],
+        contributors: [{
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        },
+        {
+            name: "Emre",
+            url: "lorem ipsum dolor",
+            social: "github"
+        }],
         author: "Furkan Emre Kozan",
         href: "/",
 
@@ -64,9 +120,8 @@ const Page: FC<pageProps> = ({ }) => {
                         <TemplateCard
                         href={item.href}
                         created_at={item.created_at} description={item.description} key={index}
-                        tags={item.tags} title={item.title} author={item.author} author_url={item.author_url} contributors={item.contributors}
-                        
-                        />))
+                        tags={item.tags} title={item.title} author={item.author} author_url={item.author_url} 
+                        contributors={item.contributors}/>))
             }
         </div>
     </main>
