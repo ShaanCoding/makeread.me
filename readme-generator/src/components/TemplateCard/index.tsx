@@ -82,10 +82,7 @@ const TemplateCard: FC<TemplateCardProps> = ({
                         <span className={cn(buttonVariants({ variant: "default", size: "sm" }))} key={index}>
                             {tag}
                         </span>
-                    ))
-
-
-                    }
+                    ))}
                 </div>
             </div>
 

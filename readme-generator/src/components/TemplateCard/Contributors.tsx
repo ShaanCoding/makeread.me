@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { FC } from 'react'
 import { AiFillGithub, AiFillTwitterCircle, AiFillLinkedin, AiFillInstagram } from 'react-icons/ai'
 
@@ -7,13 +8,19 @@ interface ContributorProps {
   contributors: {
     name: string
     url: string
-    social: string
+    social: "github" | "twitter" | "linkedin" | "instagram"
   }[]
 }
 
 const Contributors: FC<ContributorProps> = ({
   contributors
 }) => {
+  const [isMounted, setIsMounted] = useState(false)
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+  if(!isMounted) return null
+  
   const socials = {
     github: <AiFillGithub className='mr-2 w-4 h-4' />,
     twitter: <AiFillTwitterCircle className='mr-2 w-4 h-4' />,
@@ -28,7 +35,9 @@ const Contributors: FC<ContributorProps> = ({
         {contributors.map((contributor, index) => (
           <li key={index} className={"text-[0.6rem] tracking-primary"}>
             <a href={contributor.url} className='flex items-center justify-center'>
-              {socials[contributor.social as keyof typeof socials]}
+              {
+                socials[contributor.social]
+              }
               {contributor.name}
             </a>
           </li>
