@@ -9,7 +9,8 @@ interface Contributor {
 
     name: string
     url: string
-    social: string
+    social:string
+
 
 }
 interface TemplateCardProps {

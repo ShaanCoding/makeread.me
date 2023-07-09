@@ -110,18 +110,16 @@ const Page: FC<pageProps> = ({ }) => {
         author: "Furkan Emre Kozan",
         href: "/",
 
-    },
-
-    ]
+    }]
     return <main>
         <div className='gap-[21px] flex flex-wrap justify-center pr-[37px] pt-[25px]'>
             {
                 mock.map((item, index) => (
-                        <TemplateCard
+                    <TemplateCard
                         href={item.href}
                         created_at={item.created_at} description={item.description} key={index}
-                        tags={item.tags} title={item.title} author={item.author} author_url={item.author_url} 
-                        contributors={item.contributors}/>))
+                        tags={item.tags} title={item.title} author={item.author} author_url={item.author_url}
+                        contributors={item.contributors} />))
             }
         </div>
     </main>
