@@ -31,7 +31,9 @@ const Page: FC<pageProps> = ({ params }) => {
           pages={[
             {
               page: "Block",
-              pageDocument: <BlocksPage blocks={blocks} setBlocks={setBlocks}/>,
+              pageDocument: (
+                <BlocksPage blocks={blocks} setBlocks={setBlocks} />
+              ),
             },
             {
               page: "Preview",
