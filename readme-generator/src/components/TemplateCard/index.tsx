@@ -8,9 +8,11 @@ import Avatar from "@/components/ui/Avatar"
 import { buttonVariants } from "@/components/ui/Button"
 import Contributors from "./Contributors"
 import { ITemplate } from "@/data/templates"
+import { Skeleton } from "@/components/ui/Skeleton"
 
 
 const TemplateCard: FC<ITemplate> = ({
+  id,
   createdAt: created,
   description,
   title,
@@ -18,13 +20,12 @@ const TemplateCard: FC<ITemplate> = ({
   tags,
   contributors,
   author,
-  href,
   imageURL,
   featured,
 }) => {
   return (
     <Link
-      href={href}
+      href={`/generator/templates/${id}`}
       className="min-w-[314px] min-h-[376px] max-w-[340px] max-h-[400px] shrink-0 rounded-[30px] bg-primary pt-[25px] pb-[25px] pl-[25px] pr-[30px] text-secondary"
     >
       <div className="flex gap-[25px] mb-[25px]">
@@ -34,7 +35,7 @@ const TemplateCard: FC<ITemplate> = ({
 
         <div className="">
           <p className="text-[0.6rem] tracking-primary mb-[5px]">
-            {format(created, "dd.mm.yyyy")}
+            {format(new Date(created), "MMM dd, yyyy")}
           </p>
           <h3 className="text-[0.8125rem] font-medium tracking-secondary mb-[10px]">
             {title}
@@ -60,15 +61,15 @@ const TemplateCard: FC<ITemplate> = ({
             Tags
           </h4>
           <div className="text-[0.6rem] tracking-primary flex flex-wrap gap-1">
-            {tags.map((tag, index) => (
+          {tags.map((tag, index) => (
               <span
-                style={{ backgroundColor: generateTagColor(tag) }}
+                style={{ backgroundColor: generateTagColor(tag.value) }}
                 className={cn(
                   buttonVariants({ variant: "default", size: "sm" })
                 )}
                 key={index}
               >
-                {tag}
+                {tag.value}
               </span>
             ))}
           </div>

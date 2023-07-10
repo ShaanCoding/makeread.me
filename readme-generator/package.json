@@ -31,11 +31,13 @@
     "date-fns": "^2.30.0",
     "next": "13.4.9",
     "nunjucks": "^3.2.4",
+    "query-string": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-markdown": "^8.0.7",
-    "tailwind-merge": "^1.13.2"
+    "tailwind-merge": "^1.13.2",
+    "use-debounce": "^9.0.4"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.0.2",

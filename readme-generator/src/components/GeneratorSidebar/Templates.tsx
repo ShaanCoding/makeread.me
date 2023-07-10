@@ -27,6 +27,7 @@ const DrewsTemplate: FC<DrewsTemplateProps> = ({ templates }) => {
             <div className="flex flex-col gap-y-[15px]">
               {templates.map((template) => (
                 <CreateTemplateButton
+                  key={template.title}
                   title={template.title}
                   content={template.content}
                 />
