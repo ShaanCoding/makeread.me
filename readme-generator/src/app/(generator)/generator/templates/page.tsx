@@ -1,5 +1,5 @@
 "use client"
-
+import TemplateCard, { CardFallback } from "@/components/TemplateCard"
 import { useGetTemplates } from "@/hooks/useGetTemplates"
 
 
@@ -10,7 +10,7 @@ const Page = () => {
   return (
     <main>
       <div className="gap-[21px] flex flex-wrap  pr-[37px] pt-[25px]">
-        {data.map((item, index) => (
+        {isLoading || isFetching ? <CardFallback /> : data?.map((item, index) => (
           <TemplateCard
             
             id={item.id}
