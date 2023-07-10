@@ -6,19 +6,9 @@ import { generateTagColor } from "@/lib/generateTagColor"
 import { cn } from "@/lib/utils"
 import Avatar from "@/components/ui/Avatar"
 import { buttonVariants } from "@/components/ui/Button"
-import Contributors, { IContributor } from "./Contributors"
+import Contributors from "./Contributors"
+import { ITemplate } from "@/data/templates"
 
-export interface ITemplate {
-  createdAt: Date
-  description: string
-  title: string
-  authorUrl: string
-  tags: string[]
-  contributors: IContributor[]
-  author: string
-  href: string
-  imageURL?: string
-}
 
 const TemplateCard: FC<ITemplate> = ({
   createdAt: created,
@@ -30,13 +20,14 @@ const TemplateCard: FC<ITemplate> = ({
   author,
   href,
   imageURL,
+  featured,
 }) => {
   return (
     <Link
       href={href}
       className="min-w-[314px] min-h-[376px] max-w-[340px] max-h-[400px] shrink-0 rounded-[30px] bg-primary pt-[25px] pb-[25px] pl-[25px] pr-[30px] text-secondary"
     >
-      <div className="flex  gap-[25px] mb-[25px]">
+      <div className="flex gap-[25px] mb-[25px]">
         <div>
           <Avatar src={imageURL} alt="" width="107" height="107" />
         </div>

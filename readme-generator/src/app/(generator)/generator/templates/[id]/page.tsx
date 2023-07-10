@@ -37,7 +37,7 @@ const Page: FC<pageProps> = ({ params }) => {
             },
             {
               page: "Preview",
-              pageDocument: <PreviewPage />,
+              pageDocument: <PreviewPage output="# Hello World" />,
             },
             {
               page: "Raw",

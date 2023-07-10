@@ -8,7 +8,6 @@ interface IBlocksPageProps {
 const BlocksPage: React.FC<IBlocksPageProps> = ({ blocks, setBlocks }) => {
   return (
     <div className="w-full">
-      {" "}
       {blocks.map((block, index) => {
         return (
           <Block

@@ -1,5 +1,6 @@
 "use client"
 
+import { IContributor } from "@/data/templates"
 import { FC, useEffect, useState } from "react"
 import {
   AiFillGithub,
@@ -8,11 +9,6 @@ import {
   AiFillTwitterCircle,
 } from "react-icons/ai"
 
-export interface IContributor {
-  name: string
-  url: string
-  social: string
-}
 
 export interface ContributorProps {
   contributors: IContributor[]
