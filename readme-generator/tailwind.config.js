@@ -12,7 +12,8 @@ module.exports = {
         secondary: "#F4F4F4",
         tertiary: "#272727",
         background: "#0A0A0A",
-        textGray: "#A0A0A0"
+        textGray: "#A0A0A0",
+        themeGreen: "#046367"
       },
       fontFamily:{
         poppins:["var(--font-poppins)"],
