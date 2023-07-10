@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:"text-white bg-[#046367]",
+        default:"text-white",
         icon:"bg-[#272727] text-secondary"
      
       },

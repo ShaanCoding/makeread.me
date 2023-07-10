@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/Button'
 import Contributors, { IContributor } from './Contributors'
+import { generateTagColor } from '@/lib/generateTagColor'
 
 export interface ITemplate {
     createdAt: Date
@@ -76,7 +77,9 @@ const TemplateCard: FC<ITemplate> = ({
                 </h4>
                 <div className='text-[0.6rem] tracking-primary flex flex-wrap gap-1'>
                     {tags.map((tag, index) => (
-                        <span className={cn(buttonVariants({ variant: "default", size: "sm" }))} key={index}>
+                        <span 
+                        style={{backgroundColor: generateTagColor(tag)}}
+                        className={cn(buttonVariants({ variant: "default", size: "sm" }))} key={index}>
                             {tag}
                         </span>
                     ))}
