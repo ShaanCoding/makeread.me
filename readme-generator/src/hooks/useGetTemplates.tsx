@@ -1,17 +1,33 @@
-import { ITemplate, templates } from "@/data/templates";
-import { useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useSearchParams } from "next/navigation";
+import { ITemplate } from "@/data/templates";
+import { useEffect } from "react";
 
-const useGetTemplates = (): ITemplate[] => {
-    const data = useMemo(() => {
-        const featuredTemplates = templates.filter((template) => template.featured);
-        const nonFeaturedTemplates = templates.filter((template) => !template.featured);
-    
-        const sortedTemplates = [...featuredTemplates, ...nonFeaturedTemplates];
-    
-        return sortedTemplates;
-    }, []);
-    
-    return data;
-}
+export const useGetTemplates = () => {
+    const params = useSearchParams();
+    const searchQuery = params.get("search");
+    const filterTags = params.get("category");
 
-export { useGetTemplates };
+    const query = useQuery({
+        queryKey: ["templates"],
+        queryFn: async () => {
+
+            const { data } = await axios.get(
+                `/api/templates?${searchQuery ? `search=${searchQuery}` : ""
+                }${!filterTags === null ? `&filter=${filterTags}` : ""}`
+            );
+
+            return data as ITemplate[];
+        },
+        refetchOnReconnect: false,
+        refetchOnWindowFocus: false,
+    });
+
+    useEffect(() => {
+        query.refetch();
+    }, [searchQuery, filterTags]);
+
+    return query;
+
+};
