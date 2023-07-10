@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { LuCheck } from "react-icons/lu"
 import ChevronDown from "public/icons/chevron-down.svg"
+import { LuCheck } from "react-icons/lu"
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/Button"
 import {
@@ -31,7 +32,6 @@ const categories: Category[] = [
     value: "code-of-conduct",
     label: "Code of conduct",
   },
-
 ]
 
 export function CategorySelector() {
@@ -40,16 +40,17 @@ export function CategorySelector() {
 
   return (
     <>
-      <p className="text-textGray text-[0.9375rem] font-medium mb-[10px]">Block Category</p>
-      <Popover open={open} onOpenChange={setOpen} >
+      <p className="text-textGray text-[0.9375rem] font-medium mb-[10px]">
+        Block Category
+      </p>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild className="mb-[15.5px]">
           <Button
             role="combobox"
             aria-expanded={open}
             className="text-[0.8125rem] font-medium  justify-between bg-tertiary w-full px-[15px] py-[12px] tracking-secondary"
           >
-            {value ? value.label
-              : "Drews Template"}
+            {value ? value.label : "Drews Template"}
             <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
@@ -61,12 +62,11 @@ export function CategorySelector() {
               {categories.map((category) => (
                 <CommandItem
                   key={category.value}
-                  onSelect={()=>{
+                  onSelect={() => {
                     setValue(category)
                     setOpen(false)
                   }}
                 >
-                 
                   {category.label}
                 </CommandItem>
               ))}

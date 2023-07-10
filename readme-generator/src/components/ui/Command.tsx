@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { DialogProps } from "@radix-ui/react-dialog"
-import { RxMagnifyingGlass } from "react-icons/rx"
 import { Command as CommandPrimitive } from "cmdk"
+import { RxMagnifyingGlass } from "react-icons/rx"
 
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent } from "@/components/ui/Dialog"
@@ -23,7 +23,7 @@ const Command = React.forwardRef<
 ))
 Command.displayName = CommandPrimitive.displayName
 
-interface CommandDialogProps extends DialogProps { }
+interface CommandDialogProps extends DialogProps {}
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
