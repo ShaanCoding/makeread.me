@@ -14,8 +14,8 @@ const Tabs: React.FC<ITabsProps> = ({ pages }) => {
 
   return (
     <>
-      <div className="w-full">
-        <div className="w-full flex items-center justify-center gap-[20px]">
+      <div className="">
+        <div className="gap-[20px]">
           {pages.map((page, index) => {
             return (
               <button
@@ -33,7 +33,7 @@ const Tabs: React.FC<ITabsProps> = ({ pages }) => {
         </div>
       </div>
 
-      <div>
+      <div className="w-full">
         {pages.map((page, index) => {
           if (currentTab === page.page) {
             return page.pageDocument

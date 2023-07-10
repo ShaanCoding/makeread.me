@@ -37,7 +37,7 @@ const Block: React.FC<IBlockProps> = ({
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
-    <div className="bg-primary w-full rounded-2xl px-[25px] py-[28px]">
+    <div className="bg-primary w-full rounded-2xl px-[25px] py-[28px] my-8">
       {/* Make a line stroke width 0.25 px of FFF of 0.5 opacity*/}
       <div className="border-b-[0.25px] border-white border-opacity-50 mb-[18px]">
         <div className="flex items-center justify-between">
