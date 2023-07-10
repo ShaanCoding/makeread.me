@@ -4,42 +4,38 @@ import { format } from "date-fns"
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/Button'
-import Contributors from './Contributors'
-interface Contributor {
+import Contributors, { IContributor } from './Contributors'
 
-    name: string
-    url: string
-    social:string
-
-
-}
-interface TemplateCardProps {
-    created_at: Date
+export interface ITemplate {
+    createdAt: Date
     description: string
     title: string
-    author_url: string
+    authorUrl: string
     tags: string[]
-    contributors: Contributor[]
+    contributors: IContributor[]
     author: string
     href: string
+    imageURL?: string
 }
 
-const TemplateCard: FC<TemplateCardProps> = ({
-    created_at: created,
+
+const TemplateCard: FC<ITemplate> = ({
+    createdAt: created,
     description,
     title,
-    author_url,
+    authorUrl,
     tags,
     contributors,
     author,
-    href
+    href,
+    imageURL
 }) => {
   
 
     return <Link href={href} className='min-w-[314px] min-h-[376px] max-w-[340px] max-h-[400px] shrink-0 rounded-[30px] bg-primary pt-[25px] pb-[25px] pl-[25px] pr-[30px] text-secondary'>
         <div className='flex  gap-[25px] mb-[25px]'>
             <div>
-                <Avatar src='' alt='' width='107' height='107' />
+                <Avatar src={imageURL} alt='' width='107' height='107' />
 
             </div>
 
@@ -55,7 +51,7 @@ const TemplateCard: FC<TemplateCardProps> = ({
                     {author}
                 </p>
                 <p className='font-medium tracking-primary text-[0.6rem]'>
-                    {author_url}
+                    {authorUrl}
                 </p>
 
             </div>

@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-[#0A0A0A] min-h-screen min-w-screen ${poppins.className} text-secondary`}>
+      <body className={`bg-background min-h-screen min-w-screen ${poppins.className} text-secondary`}>
         <GeneratorNavbar />
         {children}</body>
     </html>

@@ -16,7 +16,7 @@ const Avatar: FC<AvatarProps> = ({
 }) => {
 
 
-    return <AvatarRadix.Root className={` inline-flex h-[${height}] w-[${width}] select-none items-center justify-center overflow-hidden rounded-full align-middle`}>
+    return <AvatarRadix.Root className={`h-[${height}px] w-[${width}px] inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle`}>
         {src ? (<>
             <AvatarRadix.Image
                 className="h-full w-full rounded-[inherit] object-cover"

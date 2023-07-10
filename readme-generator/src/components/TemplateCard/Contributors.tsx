@@ -4,13 +4,21 @@ import { useEffect, useState } from 'react'
 import { FC } from 'react'
 import { AiFillGithub, AiFillTwitterCircle, AiFillLinkedin, AiFillInstagram } from 'react-icons/ai'
 
-interface ContributorProps {
-  contributors: {
-    name: string
-    url: string
-    social: string
-  }[]
+export interface IContributor {
+  name: string
+  url: string
+  social: string
+}
 
+export interface ContributorProps {
+  contributors: IContributor[]
+}
+
+const socials: {[key: string]: JSX.Element} = {
+  github: <AiFillGithub className='mr-2 w-4 h-4' />,
+  twitter: <AiFillTwitterCircle className='mr-2 w-4 h-4' />,
+  linkedin: <AiFillLinkedin className='mr-2 w-4 h-4' />,
+  instagram: <AiFillInstagram className='mr-2 w-4 h-4' />
 }
 
 const Contributors: FC<ContributorProps> = ({
@@ -22,14 +30,6 @@ const Contributors: FC<ContributorProps> = ({
   }, [])
   if (!isMounted) return null
 
-
-
-  const socials: {[key: string]: JSX.Element} = {
-    github: <AiFillGithub className='mr-2 w-4 h-4' />,
-    twitter: <AiFillTwitterCircle className='mr-2 w-4 h-4' />,
-    linkedin: <AiFillLinkedin className='mr-2 w-4 h-4' />,
-    instagram: <AiFillInstagram className='mr-2 w-4 h-4' />
-  }
   return <div className=''>
     <h4 className='text-[0.8125rem] font-medium tracking-secondary mb-[5px]'>
       Contributors
