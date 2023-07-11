@@ -1,21 +1,20 @@
-import { FC } from "react"
-
-import TemplateCard from "@/components/TemplateCard"
-import { ITemplate } from "@/data/templates"
+"use client"
+import TemplateCard, { CardFallback } from "@/components/TemplateCard"
 import { useGetTemplates } from "@/hooks/useGetTemplates"
 
-interface pageProps {}
 
-const Page: FC<pageProps> = ({}) => {
-  const data = useGetTemplates();
+
+const Page = () => {
+  const { data, isLoading, isFetching } = useGetTemplates()
 
   return (
     <main>
-      <div className="gap-[21px] flex flex-wrap justify-center pr-[37px] pt-[25px]">
-        {data.map((item, index) => (
+      <div className="gap-[21px] flex flex-wrap  pr-[37px] pt-[25px]">
+        {isLoading || isFetching ? <CardFallback /> : data?.map((item, index) => (
           <TemplateCard
+            
+            id={item.id}
             imageURL={item.imageURL}
-            href={item.href}
             createdAt={item.createdAt}
             description={item.description}
             key={index}

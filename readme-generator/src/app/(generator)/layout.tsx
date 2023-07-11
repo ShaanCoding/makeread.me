@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 import GeneratorNavbar from "@/components/GeneratorNavbar"
 import GeneratorSidebar from "@/components/GeneratorSidebar"
 import { poppins } from "@/styles/fonts"
+import Providers from "@/components/Providers"
 
 export const metadata: Metadata = {
   title: {
@@ -24,11 +25,13 @@ export default function RootLayout({
       <body
         className={`bg-background min-h-screen min-w-screen ${poppins.className} text-secondary`}
       >
-        <GeneratorNavbar />
-        <div className=" w-full flex relative">
-          <GeneratorSidebar />
-          {children}
-        </div>
+        <Providers>
+          <GeneratorNavbar />
+          <div className=" w-full flex relative">
+            <GeneratorSidebar />
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   )

@@ -19,6 +19,7 @@ const Tabs: React.FC<ITabsProps> = ({ pages }) => {
           {pages.map((page, index) => {
             return (
               <button
+                key={index}
                 className={`font-poppins text-lg font-normal ${
                   currentTab === page.page
                     ? "bg-themeGreen text-white"
