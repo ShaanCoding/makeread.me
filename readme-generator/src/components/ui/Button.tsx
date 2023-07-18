@@ -10,11 +10,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "text-white",
+        defaultGreen: "text-white bg-themeGreen",
         icon: "bg-tertiary text-secondary",
       },
       size: {
         default:
-          "h-9 px-4 py-[10px] text-[0.9375rem] rounded-[9px]  tracking-[0.00938rem]",
+          "h-9 px-4 py-[10px] text-[0.9375rem] rounded-[9px] tracking-[0.00938rem]",
         sm: "h-4 py-1 rounded-md px-1 text-[0.5rem]",
         lg: "h-10 rounded-md px-8",
         icon: "rounded-full p-[13px] w-[43px] h-[43px] ",

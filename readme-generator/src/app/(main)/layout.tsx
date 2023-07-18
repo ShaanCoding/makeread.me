@@ -2,6 +2,9 @@ import "@/styles/globals.css"
 
 import type { Metadata } from "next"
 
+import GeneratorNavbar from "@/components/GeneratorNavbar"
+import GeneratorSidebar from "@/components/GeneratorSidebar"
+import Providers from "@/components/Providers"
 import { poppins } from "@/styles/fonts"
 
 export const metadata: Metadata = {
@@ -22,7 +25,10 @@ export default function RootLayout({
       <body
         className={`bg-background min-h-screen min-w-screen ${poppins.className} text-secondary`}
       >
-        {children}
+        <Providers>
+          <GeneratorNavbar />
+          <div className=" w-full flex relative">{children}</div>
+        </Providers>
       </body>
     </html>
   )

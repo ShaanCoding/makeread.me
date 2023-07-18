@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server"
 import { templates } from "@/data/templates"
 
+/*
+  GETS all templates from the templates folder
+  - reads all templates
+  - filters by template
+  - searches by query
+  - sorts by name or date
+*/
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   let templatesResponse = templates
