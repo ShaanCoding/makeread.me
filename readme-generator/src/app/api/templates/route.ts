@@ -1,5 +1,5 @@
-import { templates } from '@/data/templates';
 import { NextResponse } from "next/server"
+import { templates } from "@/data/templates"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -9,21 +9,18 @@ export async function GET(request: Request) {
   const filter = searchParams.get("filter")
   if (search) {
     /* check for spaces  */
-    if (search.includes("-")){
+    if (search.includes("-")) {
       const searchSplit = search.split("-")
       templatesResponse = templatesResponse.filter((template) =>
-        template.title.toLowerCase().includes(searchSplit
-          .map((word) => word.toLowerCase())
-          .join(" "))
+        template.title
+          .toLowerCase()
+          .includes(searchSplit.map((word) => word.toLowerCase()).join(" "))
       )
-
-    }
-    else{
+    } else {
       templatesResponse = templatesResponse.filter((template) =>
         template.title.toLowerCase().includes(search.toLowerCase())
       )
     }
-
   }
   if (sort) {
     templatesResponse = templatesResponse.sort((a, b) => {
@@ -41,7 +38,6 @@ export async function GET(request: Request) {
       template.tags.some((tag) => tag.value === filter)
     )
   }
-  
 
   return NextResponse.json(templatesResponse, {
     status: 200,
