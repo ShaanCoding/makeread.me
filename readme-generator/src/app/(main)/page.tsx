@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 
+import CallToAction from "@/components/Home/CallToAction"
 import Demo from "@/components/Home/Demo"
 import KeyFeatures from "@/components/Home/KeyFeatures"
 import Splashscreen from "@/components/Home/Splashscreen"
@@ -13,6 +14,7 @@ export default function Home() {
       <Splashscreen />
       <Demo />
       <KeyFeatures />
+      <CallToAction />
       <Link href={"/generator"}>
         <Button variant={"defaultGreen"}>ReadME Generator</Button>
       </Link>
