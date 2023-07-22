@@ -31,6 +31,7 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["var(--font-poppins)"],
+        jakarta: ["var(--font-jakarta)"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
