@@ -3,6 +3,7 @@ import "@/styles/globals.css"
 import type { Metadata } from "next"
 
 import GeneratorNavbar from "@/components/GeneratorNavbar"
+import Footer from "@/components/Home/Footer"
 import Navbar from "@/components/Home/Navbar"
 import Providers from "@/components/Providers"
 import { poppins } from "@/styles/fonts"
@@ -23,11 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-background min-h-screen min-w-screen ${poppins.className} text-secondary mx-20`}
+        className={`bg-background min-h-screen min-w-screen ${poppins.className} text-secondary flex flex-col h-screen justify-between`}
       >
         <Providers>
-          <Navbar />
-          <div className=" w-full flex relative">{children}</div>
+          <div className="mx-20">
+            <Navbar />
+            <div className="w-full flex relative">{children}</div>
+          </div>
+          <Footer />
         </Providers>
       </body>
     </html>

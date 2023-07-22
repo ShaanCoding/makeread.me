@@ -17,9 +17,6 @@ export default function Home() {
       <KeyFeatures />
       <CallToAction />
       <Testimonials />
-      <Link href={"/generator"}>
-        <Button variant={"defaultGreen"}>ReadME Generator</Button>
-      </Link>
     </main>
   )
 }
