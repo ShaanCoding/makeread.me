@@ -1,10 +1,28 @@
 import { NextResponse } from "next/server"
 
+export type Category = {
+  value: string
+  label: string
+}
+
 /*
     GET all the dropdown options for the navbar
 */
 export async function GET(request: Request) {
-  return
+  return [
+    {
+      value: "readme",
+      label: "Read ME",
+    },
+    {
+      value: "codeofconduct",
+      label: "Code of conduct",
+    },
+    {
+      value: "industry",
+      label: "Industry",
+    },
+  ]
 }
 
 /*

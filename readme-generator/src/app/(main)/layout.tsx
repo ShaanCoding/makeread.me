@@ -3,7 +3,6 @@ import "@/styles/globals.css"
 import type { Metadata } from "next"
 
 import GeneratorNavbar from "@/components/GeneratorNavbar"
-import GeneratorSidebar from "@/components/GeneratorSidebar"
 import Providers from "@/components/Providers"
 import { poppins } from "@/styles/fonts"
 

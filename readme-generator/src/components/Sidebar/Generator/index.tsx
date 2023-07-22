@@ -3,9 +3,9 @@
 import { FC } from "react"
 
 import { Separator } from "@/components/ui/Separator"
-import { CategorySelector } from "./CatogorySelector"
-import SearchBar from "./SearchBar"
-import Templates from "./Templates"
+import { CategorySelector } from "../CategorySelector"
+import SearchBar from "../SearchBar"
+import Templates from "../Templates"
 
 interface indexProps {}
 
@@ -29,7 +29,7 @@ const GeneratorSidebar: FC<indexProps> = ({}) => {
   return (
     <aside className="py-[25px]">
       <div className="rounded-[15px] bg-primary sticky w-[285px]  ml-[60px] mx-[20px] h-[800px] p-[20px]">
-        <CategorySelector />
+        {/* <CategorySelector /> */}
         <Separator className="bg-[#FFF]/10 w-[245px] mb-[15.5px]" />
         <SearchBar />
         <Separator className="bg-[#FFF]/10 w-[245px] my-[15px]" />

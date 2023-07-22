@@ -3,9 +3,9 @@ import "@/styles/globals.css"
 import type { Metadata } from "next"
 
 import GeneratorNavbar from "@/components/GeneratorNavbar"
-import GeneratorSidebar from "@/components/GeneratorSidebar"
-import { poppins } from "@/styles/fonts"
 import Providers from "@/components/Providers"
+import SelectTemplateSidebar from "@/components/Sidebar/SelectTemplate"
+import { poppins } from "@/styles/fonts"
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +28,7 @@ export default function RootLayout({
         <Providers>
           <GeneratorNavbar />
           <div className=" w-full flex relative">
-            <GeneratorSidebar />
+            <SelectTemplateSidebar />
             {children}
           </div>
         </Providers>
