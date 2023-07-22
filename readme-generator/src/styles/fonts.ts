@@ -1,4 +1,4 @@
-import { Plus_Jakarta_Sans, Poppins } from "next/font/google"
+import { Manrope, Plus_Jakarta_Sans, Poppins } from "next/font/google"
 
 export const poppins = Poppins({
   subsets: ["latin"],
@@ -10,6 +10,13 @@ export const poppins = Poppins({
 export const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
+  weight: "500",
+  display: "swap",
+})
+
+export const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
   weight: "500",
   display: "swap",
 })

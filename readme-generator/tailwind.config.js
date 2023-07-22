@@ -28,10 +28,14 @@ module.exports = {
         background: "#0A0A0A",
         textGray: "#A0A0A0",
         themeGreen: "#046367",
+
+        // Home Page
+        homeBlue: "#C1FDFF",
       },
       fontFamily: {
         poppins: ["var(--font-poppins)"],
         jakarta: ["var(--font-jakarta)"],
+        manrope: ["var(--font-manrope)"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
