@@ -6,6 +6,7 @@ import CallToAction from "@/components/Home/CallToAction"
 import Demo from "@/components/Home/Demo"
 import KeyFeatures from "@/components/Home/KeyFeatures"
 import Splashscreen from "@/components/Home/Splashscreen"
+import Testimonials from "@/components/Home/Testimonials"
 import { Button } from "@/components/ui/Button"
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Demo />
       <KeyFeatures />
       <CallToAction />
+      <Testimonials />
       <Link href={"/generator"}>
         <Button variant={"defaultGreen"}>ReadME Generator</Button>
       </Link>

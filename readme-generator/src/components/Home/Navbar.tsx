@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="w-full my-16 flex items-center justify-between">
       <h1 className="w-1/3 text-white font-poppins text-xl font-bold">
-        Readme Generator
+        ReadME Generator
       </h1>
       <div className="w-2/3 flex justify-end items-center">
         <div className="mx-8">

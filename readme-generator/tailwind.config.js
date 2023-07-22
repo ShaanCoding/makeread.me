@@ -36,6 +36,7 @@ module.exports = {
         poppins: ["var(--font-poppins)"],
         jakarta: ["var(--font-jakarta)"],
         manrope: ["var(--font-manrope)"],
+        inter: ["var(--font-inter)"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

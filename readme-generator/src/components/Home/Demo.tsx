@@ -35,7 +35,7 @@ const Demo = () => {
         <h2 className="text-white opacity-20 font-jakarta text-8xl font-extrabold tracking-[-3px] text-right">
           ReadME Generator
         </h2>
-        <div className="w-full absolute inset-0">
+        <div className="w-full absolute inset-0 pointer-events-none select-none">
           <img className="w-full h-full" src="/Demo.svg" alt="Demo" />
         </div>
       </div>

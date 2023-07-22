@@ -18,7 +18,7 @@ const GeneratorNavbar: FC<GeneratorNavbarProps> = ({}) => {
     <div className="bg-primary py-[25px] px-[80px] flex items-center">
       <Link href={"/"} className="flex items-center gap-3">
         <Logo />
-        ReadMe Generator
+        ReadME Generator
       </Link>
       <div className="ml-auto flex items-center gap-[30px]  ">
         <Button className="gap-[15.6px]">
