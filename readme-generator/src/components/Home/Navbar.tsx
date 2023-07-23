@@ -1,5 +1,6 @@
 import React from "react"
 import Link from "next/link"
+import DropDownButton from "public/icons/collapse-button.svg"
 
 const Navbar = () => {
   return (
@@ -12,7 +13,8 @@ const Navbar = () => {
           <div className="mx-8">
             <Link
               href="/"
-              className="text-white font-poppins text-xl font-normal"
+              className="text-white font-poppins text-xl font-normal hover:opacity-90
+              px-4 py-2 hover:bg-themeGreen hover:rounded-[30px] transition-all"
             >
               Home
             </Link>
@@ -20,7 +22,8 @@ const Navbar = () => {
           <div className="mx-8">
             <Link
               href="/"
-              className="text-white font-poppins text-xl font-normal"
+              className="text-white font-poppins text-xl font-normal hover:opacity-90
+              px-4 py-2 hover:bg-themeGreen hover:rounded-[30px] transition-all"
             >
               ReadME Editor
             </Link>
@@ -28,7 +31,8 @@ const Navbar = () => {
           <div className="mx-8">
             <Link
               href="/"
-              className="text-white font-poppins text-xl font-normal"
+              className="text-white font-poppins text-xl font-normal hover:opacity-90
+              px-4 py-2 hover:bg-themeGreen hover:rounded-[30px] transition-all"
             >
               Contact Us
             </Link>
@@ -36,17 +40,24 @@ const Navbar = () => {
           <div className="mx-8">
             <Link
               href="/"
-              className="text-white font-poppins text-xl font-normal"
+              className="text-white font-poppins text-xl font-normal hover:opacity-90
+              px-4 py-2 hover:bg-themeGreen hover:rounded-[30px] transition-all
+              "
             >
               ReadME Examples
             </Link>
           </div>
           <div className="mx-8">
+            {/* On hover we need chevron to spin */}
             <Link
               href="/"
-              className="text-white font-poppins text-xl font-normal"
+              className="text-white font-poppins text-xl font-normal hover:opacity-90 flex items-center justify-center
+              px-4 py-2 hover:bg-themeGreen hover:rounded-[30px] transition-all"
             >
-              Guides
+              <div className="mr-4">Guides</div>
+              <div>
+                <DropDownButton />
+              </div>
             </Link>
           </div>
         </div>
