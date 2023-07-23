@@ -59,7 +59,7 @@ const keyFeatureMap: IFeatureGridElement[] = [
 
 const KeyFeatures = () => {
   return (
-    <div className="my-5">
+    <div className="my-5 relative">
       <h2 className="text-themeGreen font-poppins text-center text-base font-semibold">
         Features
       </h2>
@@ -80,6 +80,12 @@ const KeyFeatures = () => {
           )
         })}
       </div>
+      <div
+        className="absolute bg-themeGreen
+          left-[50%] bottom-0 translate-x-[-50%] translate-y-[50%]
+          w-[780px] h-[729px] rounded-[780px] opacity-50 blur-[367px]
+          z-[-1]"
+      ></div>
     </div>
   )
 }

@@ -21,7 +21,7 @@ const Splashscreen = () => {
           makeread.me - the ultimate tool to enhance your projects.
         </p>
         <Link href={"/generator"}>
-          <button className="py-4 px-8 bg-themeGreen rounded-xl">
+          <button className="py-4 px-8 bg-themeGreen rounded-xl hover:bg-opacity-90">
             Start Generating ReadMEs Now!
           </button>
         </Link>

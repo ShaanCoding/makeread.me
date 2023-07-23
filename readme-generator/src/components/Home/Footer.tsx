@@ -43,7 +43,7 @@ const Footer = () => {
   return (
     <div
       className="
-    bg-gradient-to-t from-[#16474A] to-[#16474A00]
+    bg-gradient-to-t from-[#16474A] to-[#16474A40]
     
     w-full mt-20 pt-20 px-[90px] rounded-t-[30px]"
     >
