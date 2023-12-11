@@ -59,7 +59,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 ## Built With
 
-Whilst I was the main developer of this project, this project couldn't of even started without the help of these open source projects, special thanks to:
+Whilst I was the main developer of this project, this project couldn't have even started without the help of these open source projects, special thanks to:
 
 - [JavaScript](https://www.javascript.com/)
 - [VueJS](https://vuejs.org/)
