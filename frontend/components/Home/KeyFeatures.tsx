@@ -60,7 +60,7 @@ const keyFeatureMap: IFeatureGridElement[] = [
 const KeyFeatures = () => {
   return (
     <div className="relative my-5">
-      <h2 className="text-themeGreen font-poppins text-center text-base font-semibold">
+      <h2 className="font-poppins text-center text-base font-semibold text-themeGreen">
         Features
       </h2>
       <h1 className="font-manrope mb-16 text-center text-6xl font-bold text-white">
@@ -81,9 +81,9 @@ const KeyFeatures = () => {
         })}
       </div>
       <div
-        className="bg-themeGreen absolute
-          bottom-0 left-[50%] z-[-1] h-[729px]
-          w-[780px] translate-x-[-50%] translate-y-[50%] rounded-[780px] opacity-50
+        className="absolute bottom-0
+          left-[50%] z-[-1] h-[729px] w-[780px]
+          translate-x-[-50%] translate-y-[50%] rounded-[780px] bg-themeGreen opacity-50
           blur-[367px]"
       ></div>
     </div>
@@ -106,7 +106,7 @@ const FeatureGridElement: React.FC<IFeatureGridElement> = ({
       <div>
         <img className="mb-[15px] h-auto w-[60px]" src={image} alt={title} />
       </div>
-      <h3 className="text-homeBlue font-poppins mb-4 text-base font-semibold">
+      <h3 className="font-poppins mb-4 text-base font-semibold text-homeBlue">
         {title}
       </h3>
       <p className="tex-twhite font-poppins mb-4 text-sm font-light leading-[175%]">

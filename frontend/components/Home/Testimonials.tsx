@@ -3,7 +3,7 @@ import React from "react"
 const Testimonials = () => {
   return (
     <div className="my-5">
-      <h2 className="text-themeGreen font-poppins text-center text-base font-semibold">
+      <h2 className="font-poppins text-center text-base font-semibold text-themeGreen">
         Testimonials
       </h2>
       <h1 className="font-manrope mb-16 text-center text-6xl font-bold text-white">
@@ -36,7 +36,7 @@ const Testimonials = () => {
 
       {/* Testimonials Carasoul - Controls */}
       <div className="my-[50px] flex items-center justify-center space-x-4">
-        <div className="bg-themeGreen size-[10px] rounded-full"></div>
+        <div className="size-[10px] rounded-full bg-themeGreen"></div>
         <div className="size-[10px] rounded-full bg-[#56555F]"></div>
         <div className="size-[10px] rounded-full bg-[#56555F]"></div>
       </div>

@@ -20,7 +20,7 @@ export const SocialButton: React.FC<{
     <Link href={url}>
       <Button className={twMerge(className)}>
         <SocialMediaIcon url={url} />
-        View {name}'s {typeMapped}
+        View {name}&apos;s {typeMapped}
       </Button>
     </Link>
   )

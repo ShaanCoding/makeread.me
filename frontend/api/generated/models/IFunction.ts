@@ -10,7 +10,7 @@ export type IFunction = {
         label: string;
         name: string;
         defaultValue: (string | boolean | Array<string>);
-        _type: 'text' | 'boolean' | 'array';
+        _type: string;
     }>;
 };
 

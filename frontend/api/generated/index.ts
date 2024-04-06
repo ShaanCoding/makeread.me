@@ -10,10 +10,10 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
-export { IFullTemplate } from './models/IFullTemplate';
+export type { IFullTemplate } from './models/IFullTemplate';
 export type { IFunction } from './models/IFunction';
-export { ITemplate } from './models/ITemplate';
-export { IUser } from './models/IUser';
+export type { ITemplate } from './models/ITemplate';
+export type { IUser } from './models/IUser';
 
 export { HealthCheckService } from './services/HealthCheckService';
 export { TemplateService } from './services/TemplateService';

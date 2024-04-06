@@ -9,14 +9,14 @@ export type IFullTemplate = {
         name: string;
         url: {
             url: string;
-            _type: IFullTemplate._type;
+            _type: string;
         };
     };
     contributors: Array<{
         name: string;
         url: {
             url: string;
-            _type: 'Facebook' | 'Instagram' | 'Twitter' | 'Github' | 'LinkedIn' | 'Other';
+            _type: string;
         };
     }>;
     image: string;
@@ -36,18 +36,8 @@ export type IFullTemplate = {
             label: string;
             name: string;
             defaultValue: (string | boolean | Array<string>);
-            _type: 'text' | 'boolean' | 'array';
+            _type: string;
         }>;
     }>;
 };
-export namespace IFullTemplate {
-    export enum _type {
-        FACEBOOK = 'Facebook',
-        INSTAGRAM = 'Instagram',
-        TWITTER = 'Twitter',
-        GITHUB = 'Github',
-        LINKED_IN = 'LinkedIn',
-        OTHER = 'Other',
-    }
-}
 

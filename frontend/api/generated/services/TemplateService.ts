@@ -20,14 +20,14 @@ export class TemplateService {
                 name: string;
                 url: {
                     url: string;
-                    _type: 'Facebook' | 'Instagram' | 'Twitter' | 'Github' | 'LinkedIn' | 'Other';
+                    _type: string;
                 };
             };
             contributors: Array<{
                 name: string;
                 url: {
                     url: string;
-                    _type: 'Facebook' | 'Instagram' | 'Twitter' | 'Github' | 'LinkedIn' | 'Other';
+                    _type: string;
                 };
             }>;
             image: string;
@@ -65,7 +65,7 @@ export class TemplateService {
                 label: string;
                 name: string;
                 defaultValue: (string | boolean | Array<string>);
-                _type: 'text' | 'boolean' | 'array';
+                _type: string;
             }>;
         }>;
         statusCode: number;
@@ -95,14 +95,14 @@ export class TemplateService {
                 name: string;
                 url: {
                     url: string;
-                    _type: 'Facebook' | 'Instagram' | 'Twitter' | 'Github' | 'LinkedIn' | 'Other';
+                    _type: string;
                 };
             };
             contributors: Array<{
                 name: string;
                 url: {
                     url: string;
-                    _type: 'Facebook' | 'Instagram' | 'Twitter' | 'Github' | 'LinkedIn' | 'Other';
+                    _type: string;
                 };
             }>;
             image: string;
@@ -122,7 +122,7 @@ export class TemplateService {
                     label: string;
                     name: string;
                     defaultValue: (string | boolean | Array<string>);
-                    _type: 'text' | 'boolean' | 'array';
+                    _type: string;
                 }>;
             }>;
         }>;

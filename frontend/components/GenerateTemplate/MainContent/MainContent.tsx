@@ -45,6 +45,7 @@ const GeneratorMainContent: React.FC<{
   useEffect(() => {
     PopulateTemplateData()
     PopulateMacrosData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const generateOutput = () => {

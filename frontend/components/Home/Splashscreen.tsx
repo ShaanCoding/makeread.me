@@ -15,10 +15,10 @@ const Splashscreen = () => {
         <p className="font-poppins mb-10 text-base font-normal leading-[175%] text-white">
           Elevate your project presentations with captivating ReadME files. Our
           intuitive ReadME Generator makes creating professional documentation a
-          breeze, whether you're a beginner or an experienced developer. Choose
-          from our extensive collection of customizable templates and streamline
-          your workflow. Experience the simplicity and effectiveness of
-          makeread.me - the ultimate tool to enhance your projects.
+          breeze, whether you&apos;re a beginner or an experienced developer.
+          Choose from our extensive collection of customizable templates and
+          streamline your workflow. Experience the simplicity and effectiveness
+          of makeread.me - the ultimate tool to enhance your projects.
         </p>
 
         <Link href="/select-template">

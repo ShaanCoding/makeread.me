@@ -6,7 +6,7 @@ import Testimonials from "@/components/Home/Testimonials"
 
 export default function IndexPage() {
   return (
-    <section className="px-[5%] grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <section className="grid items-center gap-6 px-[5%] pb-8 pt-6 md:py-10">
       <Splashscreen />
       <Demo />
       <KeyFeatures />

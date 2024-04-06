@@ -9,14 +9,14 @@ export type ITemplate = {
         name: string;
         url: {
             url: string;
-            _type: ITemplate._type;
+            _type: string;
         };
     };
     contributors: Array<{
         name: string;
         url: {
             url: string;
-            _type: 'Facebook' | 'Instagram' | 'Twitter' | 'Github' | 'LinkedIn' | 'Other';
+            _type: string;
         };
     }>;
     image: string;
@@ -29,14 +29,4 @@ export type ITemplate = {
     featured: boolean;
     folder: string;
 };
-export namespace ITemplate {
-    export enum _type {
-        FACEBOOK = 'Facebook',
-        INSTAGRAM = 'Instagram',
-        TWITTER = 'Twitter',
-        GITHUB = 'Github',
-        LINKED_IN = 'LinkedIn',
-        OTHER = 'Other',
-    }
-}
 

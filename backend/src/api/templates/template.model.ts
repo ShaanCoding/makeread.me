@@ -12,7 +12,8 @@ export const UserSchema = z.object({
     name: z.string(),
     url: z.object({
         url: z.string().url(),
-        _type: z.enum(['Facebook', 'Instagram', 'Twitter', 'Github', 'LinkedIn', 'Other']),
+        // z.enum(['Facebook', 'Instagram', 'Twitter', 'Github', 'LinkedIn', 'Other']),
+        _type: z.string(),
     }),
 })
 
@@ -47,7 +48,8 @@ export const FunctionSchema = z.object({
             label: z.string(),
             name: z.string(),
             defaultValue: z.union([z.string(), z.boolean(), z.array(z.string())]),
-            _type: z.enum(['text', 'boolean', 'array']),
+            // z.enum(['text', 'boolean', 'array']),
+            _type: z.string(),
         })
     ),
 })

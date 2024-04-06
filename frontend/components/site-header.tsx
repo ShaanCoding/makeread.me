@@ -34,7 +34,7 @@ export function SiteHeader() {
               rel="noreferrer"
             >
               <div
-                className={buttonVariants({
+              className={buttonVariants({
                   size: "icon",
                   variant: "ghost",
                 })}
@@ -43,7 +43,7 @@ export function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
           </nav>
         </div>
       </div>
