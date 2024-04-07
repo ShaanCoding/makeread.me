@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { IFunction } from "@/api/generated"
 import { SubmitHandler, useForm } from "react-hook-form"
 
@@ -22,11 +23,16 @@ const Editor = ({
     })
   })
 
-  const { register, handleSubmit } = useForm<any>()
+  const { register, handleSubmit, watch } = useForm<any>()
   const onSubmit: SubmitHandler<any> = (data) => {
     console.log(data)
     setVariables(data)
   }
+
+  useEffect(() => {
+    const subscription = watch(() => handleSubmit(onSubmit)())
+    return () => subscription.unsubscribe()
+  }, [handleSubmit, watch])
 
   const moveBlockUp = (index: number) => {
     if (index === 0) return
@@ -53,8 +59,8 @@ const Editor = ({
   }
 
   return (
-    <div className="grid size-full grid-cols-1 gap-6 p-6">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="grid lg:size-full grid-cols-1 gap-6 p-6">
+      <form onChange={handleSubmit(onSubmit)}>
         {templateBlocks.map((block: IFunction, index: number) => (
           <EditorBlock
             block={block}
@@ -65,10 +71,6 @@ const Editor = ({
             register={register}
           />
         ))}
-
-        <div className="pt-6">
-          <Button type="submit">Generate</Button>
-        </div>
       </form>
     </div>
   )

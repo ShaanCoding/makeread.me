@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react"
 import { IFunction, readMeGenerator } from "@/api/generated"
+import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
+import CopyButton from "./CopyButton"
+import DownloadButton from "./DownloadButton"
 import Editor from "./Editor"
 import Preview from "./Preview"
 import { compileString } from "./generator"
 
-const GeneratorMainContent: React.FC<{
+const MainContent: React.FC<{
   templateId: string
   templateBlocks: IFunction[]
   setTemplateBlocks: React.Dispatch<React.SetStateAction<IFunction[]>>
 }> = ({ templateId, templateBlocks, setTemplateBlocks }) => {
-  const [viewMode, setViewMode] = useState<"editor" | "preview">("editor")
-
   const [macros, setMacros] = useState<string>("")
   const [variables, setVariables] = useState<Record<string, any>>({})
   const [output, setOutput] = useState<string>("")
@@ -49,37 +50,35 @@ const GeneratorMainContent: React.FC<{
   }, [])
 
   const generateOutput = () => {
-    const data = compileString(macros, templateBlocks, variables)
-    setOutput(data)
+    if (macros && templateBlocks && variables) {
+      const data = compileString(macros, templateBlocks, variables)
+      setOutput(data)
+    }
   }
+
+  useEffect(() => {
+    generateOutput()
+  }, [variables, templateBlocks])
 
   return (
     <div className="flex flex-col">
       <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
         {/* Sub-navbar */}
-        <div className="flex items-center justify-start gap-6">
-          <Button onClick={() => setViewMode("editor")}>Edit Template</Button>
-          <Button onClick={() => setViewMode("preview")}>Preview</Button>
-          <Button>Copy To Clipboard</Button>
-          <Button>Download Markdown File</Button>
-
-          {/* Temp Button */}
-          <Button onClick={generateOutput}>Generate</Button>
+        <div className="flex items-center justify-end gap-6">
+          <CopyButton copiedText={output} />
+          <DownloadButton downloadText={output} fileName={"README.md"} />
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 items-start justify-center rounded-lg border border-dashed shadow-sm">
+        <div className="lg:flex lg:flex-1 lg:items-start lg:justify-center rounded-lg border border-dashed shadow-sm">
           {/* Place Content Here */}
-          {/* {viewMode === "editor" && ( */}
           <Editor
             templateBlocks={templateBlocks}
             setTemplateBlocks={setTemplateBlocks}
             variables={variables}
             setVariables={setVariables}
           />
-          {/* )} */}
 
-          {/* {viewMode === "preview" &&  */}
           <Preview output={output} />
         </div>
       </main>
@@ -87,4 +86,4 @@ const GeneratorMainContent: React.FC<{
   )
 }
 
-export default GeneratorMainContent
+export default MainContent

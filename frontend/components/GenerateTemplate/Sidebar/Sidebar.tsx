@@ -1,16 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import {
-  IFullTemplate,
-  IFunction,
-  ITemplate,
-  readMeGenerator,
-} from "@/api/generated"
-import { Package2 } from "lucide-react"
+import { IFullTemplate, IFunction, readMeGenerator } from "@/api/generated"
 
 import MappedBlocks from "./MappedBlocks"
-import UpgradePrompt from "./UpgradePrompt"
 
 const GeneratorSideBar: React.FC<{
   templateId: string

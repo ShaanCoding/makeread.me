@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useParams } from "next/navigation"
-import { IFunction, readMeGenerator } from "@/api/generated"
+import { IFunction } from "@/api/generated"
 
-import GeneratorMainContent from "@/components/GenerateTemplate/MainContent/MainContent"
-import GeneratorSideBar from "@/components/GenerateTemplate/Sidebar/GeneratorSidebar"
+import MainContent from "@/components/GenerateTemplate/MainContent/MainContent"
+import GeneratorSideBar from "@/components/GenerateTemplate/Sidebar/Sidebar"
 
 export default function ReadMEGeneratorPage() {
   const router = useParams()
@@ -23,7 +23,7 @@ export default function ReadMEGeneratorPage() {
       />
 
       {/* Main Content */}
-      <GeneratorMainContent
+      <MainContent
         templateId="readme-one"
         templateBlocks={templateBlocks}
         setTemplateBlocks={setTemplateBlocks}

@@ -1,8 +1,8 @@
 const Preview = ({ output }: { output: string }) => {
   return (
-    <div className="size-full gap-6 p-6">
+    <div className="lg:size-full gap-6 p-6">
       <div
-        className="size-full  flex-col rounded-lg border border-dashed shadow-sm"
+        className="p-6 lg:size-full flex-col rounded-lg border border-dashed shadow-sm"
         dangerouslySetInnerHTML={{ __html: output }}
       ></div>
     </div>
