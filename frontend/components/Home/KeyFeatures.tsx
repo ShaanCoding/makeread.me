@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 
 const keyFeatureMap: IFeatureGridElement[] = [
   {
@@ -59,16 +60,13 @@ const keyFeatureMap: IFeatureGridElement[] = [
 
 const KeyFeatures = () => {
   return (
-    <div className="relative my-5">
-      <h2 className="font-poppins text-center text-base font-semibold text-themeGreen">
-        Features
-      </h2>
-      <h1 className="font-manrope mb-16 text-center text-6xl font-bold text-white">
-        Key Features
-      </h1>
+    <div className="my-5">
+      <div className="mb-12 text-center">
+        <h2 className="text-themeGreen font-semibold">Features</h2>
+        <h1 className="text-6xl font-bold text-white">Key Features</h1>
+      </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {keyFeatureMap.map((feature: IFeatureGridElement, index: number) => {
           return (
             <FeatureGridElement
@@ -80,12 +78,6 @@ const KeyFeatures = () => {
           )
         })}
       </div>
-      <div
-        className="absolute bottom-0
-          left-[50%] z-[-1] h-[729px] w-[780px]
-          translate-x-[-50%] translate-y-[50%] rounded-[780px] bg-themeGreen opacity-50
-          blur-[367px]"
-      ></div>
     </div>
   )
 }
@@ -102,11 +94,17 @@ const FeatureGridElement: React.FC<IFeatureGridElement> = ({
   description,
 }) => {
   return (
-    <div className="rounded-[30px] border-DEFAULT border-white bg-white bg-opacity-[0.08] p-8">
+    <div className="rounded-[30px] bg-white bg-opacity-[0.08] p-8">
       <div>
-        <img className="mb-[15px] h-auto w-[60px]" src={image} alt={title} />
+        <Image
+          className="mb-4 h-auto w-[60px]"
+          src={image}
+          alt={title}
+          width={100}
+          height={100}
+        />
       </div>
-      <h3 className="font-poppins mb-4 text-base font-semibold text-homeBlue">
+      <h3 className="font-poppins text-homeBlue mb-4 text-base font-semibold">
         {title}
       </h3>
       <p className="tex-twhite font-poppins mb-4 text-sm font-light leading-[175%]">

@@ -1,82 +1,33 @@
-const socialMediaLists: ISocialMedia[] = [
-  {
-    name: "Github",
-    url: "https://github.com/ShaanCoding/",
-    icon: "/icons/home/social/github.svg",
-  },
-  {
-    name: "LinkedIn",
-    icon: "/icons/home/social/linkedin.svg",
-    url: "https://www.linkedin.com/in/shaancoding/",
-  },
-  {
-    name: "Twitter",
-    icon: "/icons/home/social/twitter.svg",
-    url: "https://twitter.com/ShaanCoding",
-  },
-]
+import Link from "next/link"
 
-const quickLinks: IQuickLinks[] = [
-  {
-    name: "Editor Page",
-    url: "/editor",
-  },
-  {
-    name: "List of Templates",
-    url: "/templates",
-  },
-  {
-    name: "Contact Us",
-    url: "/contact",
-  },
-  {
-    name: "Technical Writing Tips",
-    url: "/tips",
-  },
-]
+import { siteConfig } from "@/config/site"
 
 const Footer = () => {
   return (
     <div
       className="
-    mt-20 w-full rounded-t-[30px]
-    bg-gradient-to-t from-[#16474A] to-[#16474A40] px-[90px] pt-20"
+    mt-20 w-full rounded-t-[30px] bg-gradient-to-t
+    from-[#16474A] to-[#16474A40] px-6 pb-6 pt-20 xl:px-[80px]"
     >
-      <div className="mb-[78px] flex w-full items-center justify-between">
-        <div className="w-1/3">
-          <h1 className="font-poppins mb-[30px] text-xl font-bold text-white">
-            ReadMe Generator
-          </h1>
-          <p className="font-inter leading[213%] text-base font-normal text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            fermentum orci sapien. Fusce sed lacus eget orci tempus tincidunt.
-            Nullam orci quam sollicitudin sit amet.
-          </p>
+      <div className="flex flex-col lg:flex-row items-start justify-start lg:justify-between">
+        <div className="pb-6">
+          <h1 className="text-xl font-semibold">{siteConfig.footer.title}</h1>
+          <p className="text-lg">{siteConfig.footer.description}</p>
         </div>
 
-        <div className="flex w-2/3 items-center justify-end">
-          <div className="mr-[200px]">
-            <h1 className="font-poppins mb-5 text-lg font-[500] uppercase tracking-[0.4px] text-white">
-              Quick Links
-            </h1>
-
-            <ul className="list-inside list-disc">
-              {quickLinks.map((quickLink, index) => (
-                <QuickLinks key={index} {...quickLink} />
-              ))}
-            </ul>
+        <div className="lg:flex lg:gap-6">
+          <div className="pb-6">
+            <h1 className="text-lg font-semibold">Quick Links</h1>
+            {siteConfig.footer.quickLinks.map((quickLink, index) => (
+              <QuickLinks key={index} {...quickLink} />
+            ))}
           </div>
 
           <div className="">
-            <h1 className="font-poppins mb-5 text-lg font-[500] uppercase tracking-[0.4px] text-white">
-              Social Media
-            </h1>
-
-            <div className="flex flex-col">
-              {socialMediaLists.map((socialMedia, index) => (
-                <SocialMedia key={index} {...socialMedia} />
-              ))}
-            </div>
+            <h1 className="pb-2 text-lg font-semibold">Social Media</h1>
+            {siteConfig.footer.socialMedia.map((socialMedia, index) => (
+              <SocialMedia key={index} {...socialMedia} />
+            ))}
           </div>
         </div>
       </div>
@@ -94,20 +45,15 @@ const Footer = () => {
 }
 
 interface IQuickLinks {
-  name: string
-  url: string
+  title: string
+  href: string
 }
 
-const QuickLinks: React.FC<IQuickLinks> = ({ name, url }) => {
+const QuickLinks: React.FC<IQuickLinks> = ({ title, href }) => {
   return (
-    <li
-      className="font-poppins mb-3 text-base font-normal text-white hover:cursor-pointer hover:opacity-90"
-      // onClick={() => {
-      // navigate(url)
-      // }}
-    >
-      {name}
-    </li>
+    <Link href={href}>
+      <p className="mb-2 hover:cursor-pointer hover:opacity-90">{title}</p>
+    </Link>
   )
 }
 
@@ -119,17 +65,16 @@ interface ISocialMedia {
 
 const SocialMedia: React.FC<ISocialMedia> = ({ icon, name, url }) => {
   return (
-    <div
-      // onClick={() => {
-      // navigate(url)
-      // }}
-      className="hover:cursor-pointer hover:opacity-90"
-    >
-      <div className="mb-3 flex items-center space-x-4">
-        <img className="size-[30px]" src={icon} alt={name} />
-        <p className="font-poppins text-base font-normal text-white">{name}</p>
+    <Link href={url}>
+      <div className="hover:cursor-pointer hover:opacity-90">
+        <div className="mb-3 flex items-center space-x-4">
+          <img className="size-[30px]" src={icon} alt={name} />
+          <p className="font-poppins text-base font-normal text-white">
+            {name}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

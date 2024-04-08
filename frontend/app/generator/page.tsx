@@ -9,7 +9,7 @@ import GeneratorSideBar from "@/components/GenerateTemplate/Sidebar/Sidebar"
 
 export default function ReadMEGeneratorPage() {
   const router = useParams()
-  const templateId: string = router.id?.[0] as string
+  const templateId: string = (router.id?.[0] as string) ?? "undefined"
 
   const [templateBlocks, setTemplateBlocks] = useState<IFunction[]>([])
 
@@ -17,14 +17,14 @@ export default function ReadMEGeneratorPage() {
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       {/* Sidebar */}
       <GeneratorSideBar
-        templateId="readme-one"
+        templateId={templateId}
         templateBlocks={templateBlocks}
         setTemplateBlocks={setTemplateBlocks}
       />
 
       {/* Main Content */}
       <MainContent
-        templateId="readme-one"
+        templateId={templateId}
         templateBlocks={templateBlocks}
         setTemplateBlocks={setTemplateBlocks}
       />
