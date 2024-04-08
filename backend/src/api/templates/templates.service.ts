@@ -8,7 +8,6 @@ import { FullTemplate, IFunction, Template } from './template.model'
 export default class TemplateController {
     public async getAllTemplates(): Promise<ServiceResponse<Template[] | null>> {
         try {
-            // const data: Template = await new TemplateRepository().getAllTemplates()
             const folders: string[] = fs.readdirSync('./public')
 
             const blocksData: FullTemplate[] = folders.map((folder: string) => {
@@ -24,7 +23,7 @@ export default class TemplateController {
 
     public async getTemplateInitialisedComponentList(id: string): Promise<ServiceResponse<IFunction[] | null>> {
         try {
-            if (!id) return new ServiceResponse(ResponseStatus.Success, 'Success', [], StatusCodes.OK)
+            if (!id || id == "undefined") return new ServiceResponse(ResponseStatus.Success, 'Success', [], StatusCodes.OK)
 
             const blocksData: FullTemplate = JSON.parse(fs.readFileSync(`./public/${id}/blocks.json`, 'utf8'))
             const indexData: string[] = blocksData.startupBlocks
@@ -58,7 +57,9 @@ export default class TemplateController {
 
     public async getTemplateMacros(id: string): Promise<ServiceResponse<string | null>> {
         try {
-            const data = fs.readFileSync(`./public/${id}/macros.njk`, 'utf8')
+            if (!id || id == "undefined") return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
+            
+                const data = fs.readFileSync(`./public/${id}/macros.njk`, 'utf8')
 
             return new ServiceResponse<string>(ResponseStatus.Success, 'Success', data, StatusCodes.OK)
         } catch (ex) {

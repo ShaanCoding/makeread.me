@@ -33,7 +33,7 @@
         }
     ],
     "featured": true,
-    "folder": "tests",
+    "folder": "readme-one",
     "startupBlocks": ["projectHeader", "tableOfContents", "aboutProject", "builtWith"],
     "functions": [
         {

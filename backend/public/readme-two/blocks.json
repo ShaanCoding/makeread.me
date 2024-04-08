@@ -33,7 +33,7 @@
         }
     ],
     "featured": true,
-    "folder": "tests",
+    "folder": "readme-two",
     "startupBlocks": ["projectHeader", "tableOfContents", "aboutProject", "builtWith"],
     "functions": [
         {
