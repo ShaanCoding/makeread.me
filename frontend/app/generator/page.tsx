@@ -11,6 +11,7 @@ export default function ReadMEGeneratorPage() {
   const router = useParams()
   const templateId: string = (router.id?.[0] as string) ?? "undefined"
 
+  // These are the blocks that render on the main content page
   const [templateBlocks, setTemplateBlocks] = useState<IFunction[]>([])
 
   return (
