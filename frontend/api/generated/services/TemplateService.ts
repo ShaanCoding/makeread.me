@@ -30,6 +30,7 @@ export class TemplateService {
                     _type: string;
                 };
             }>;
+            startupBlocks: Array<string>;
             image: string;
             dateCreated: string;
             lastUpdated: string;
@@ -105,6 +106,7 @@ export class TemplateService {
                     _type: string;
                 };
             }>;
+            startupBlocks: Array<string>;
             image: string;
             dateCreated: string;
             lastUpdated: string;

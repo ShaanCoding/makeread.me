@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"
 import { IFunction, readMeGenerator } from "@/api/generated"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
 
 import CopyButton from "./CopyButton"
 import DownloadButton from "./DownloadButton"

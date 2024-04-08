@@ -16,13 +16,6 @@ const Editor = ({
   variables: Record<string, any>
   setVariables: React.Dispatch<React.SetStateAction<Record<string, any>>>
 }) => {
-  templateBlocks.map((element: any) => {
-    console.log("element", element.name)
-    element.variables.map((variable: any) => {
-      console.log("variable", variable.name)
-    })
-  })
-
   const { register, handleSubmit, watch } = useForm<any>()
   const onSubmit: SubmitHandler<any> = (data) => {
     console.log(data)
@@ -60,7 +53,10 @@ const Editor = ({
 
   return (
     <div className="grid lg:size-full grid-cols-1 gap-6 p-6">
-      <form onChange={handleSubmit(onSubmit)}>
+      <form
+        onChange={handleSubmit(onSubmit)}
+        onSubmit={(e) => e.preventDefault()}
+      >
         {templateBlocks.map((block: IFunction, index: number) => (
           <EditorBlock
             block={block}

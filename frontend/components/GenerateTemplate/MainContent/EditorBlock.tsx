@@ -77,10 +77,11 @@ const EditorBlock = ({
               return (
                 <div className="flex items-center justify-start pb-2">
                   <h4 className="pr-2 font-semibold">{variables.label}</h4>
-                  <Checkbox
+                  <input
+                    type="checkbox"
                     {...register(variables.name)}
                     name={variables.name}
-                    checked={variables.defaultValue}
+                    defaultChecked={variables.defaultValue}
                   />
                 </div>
               )

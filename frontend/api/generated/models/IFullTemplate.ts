@@ -19,6 +19,7 @@ export type IFullTemplate = {
             _type: string;
         };
     }>;
+    startupBlocks: Array<string>;
     image: string;
     dateCreated: string;
     lastUpdated: string;
