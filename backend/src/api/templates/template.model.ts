@@ -29,6 +29,7 @@ export const TemplateSchema = z.object({
     description: z.string(),
     author: UserSchema,
     contributors: z.array(UserSchema),
+    startupBlocks: z.array(z.string()),
     image: z.string().url(),
     dateCreated: z.date(),
     lastUpdated: z.date(),
@@ -37,7 +38,7 @@ export const TemplateSchema = z.object({
     folder: z.string(),
 })
 
-export type Function = z.infer<typeof FunctionSchema>
+export type IFunction = z.infer<typeof FunctionSchema>
 
 export const FunctionSchema = z.object({
     name: z.string(),

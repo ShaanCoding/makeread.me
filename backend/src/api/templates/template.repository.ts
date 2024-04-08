@@ -1,7 +1,7 @@
-import { Template } from './template.model'
+import { Template } from "./template.model"
 
 export default class TemplateRepository {
-    getTemplateData = async (): Template => {
+    getAllTemplates = (): Template => {
         const data = {
             title: 'Sample Test Data adasdadasdasdadsa',
             description: 'This is a sample description for the test data.',

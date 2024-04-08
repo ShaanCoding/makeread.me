@@ -71,7 +71,7 @@ export const templateController: Router = (() => {
 
     router.get('/:id/index', async (req: Request, res: Response) => {
         const controller = new TemplateController()
-        const serviceResponse = await controller.getTemplateById(req.params.id)
+        const serviceResponse = await controller.getTemplateInitialisedComponentList(req.params.id)
 
         handleServiceResponse(serviceResponse, res)
     })

@@ -1,13 +1,13 @@
 // Imports secrets from .env file and validates them
 require('./common/utils/env')
 
+import cors from 'cors'
 import express, { Express } from 'express'
 import helmet from 'helmet'
-import cors from 'cors'
 
 // Controllers (route handlers)
 import { healthCheckRouter } from './api/healthCheck/healthCheck.routes'
-import { templateController } from './api/templates/template.routes'
+import { templateController } from './api/templates/template.controller'
 import { openAPIRouter } from './api-docs/openAPIRouter'
 // Middleware
 // Helpers
