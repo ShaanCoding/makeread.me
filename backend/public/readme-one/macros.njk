@@ -1,76 +1,118 @@
-{% macro projectHeader() %}
-
-{% if enableHeaderIcons %}
+{% macro projectHeaderMacro() %}
+{% if logoURL or headline or catchphrase or exploreTheDocsURL or viewDemoURL or reportBugURL or requestFeatureURL %}<br/>
+<div align="center">
+{% if logoURL %}<a href="https://github.com/ShaanCoding/ReadME-Generator">
+<img src="{{ logoURL }}" alt="Logo" width="80" height="80">
+</a>{% endif %}
+{% if headline %}<h3 align="center">{{ headline }}</h3>{% endif %}
+{% if catchphrase or exploreTheDocsURL or viewDemoURL or reportBugURL or requestFeatureURL %}<p align="center">
+{{ catchphrase }}
+{% if exploreTheDocsURL %}<br/>
 <br/>
-<p align="center">
-<a href="https://github.com/{{ username }}/{{ repository }}">
-    <img src="{{ logoURL }}" alt="Logo" width="80" height="80">
-</a>
+<a href="{{ exploreTheDocsURL }}"><strong>Explore the docs »</strong></a>{% endif %}
+{% if viewDemoURL or reportBugURL or requestFeatureURL %}<br/>
+<br/>{% endif %}
+{% if viewDemoURL %}<a href="{{ viewDemoURL }}">View Demo .</a>{% endif %}  
+{% if reportBugURL %}<a href="{{ reportBugURL }}">Report Bug .</a>{% endif %}
+{% if requestFeatureURL %}<a href="{{ requestFeatureURL }}">Request Feature</a>{% endif %}
+</p>{% endif %}
+</div>
 {% endif %}
-
-<h3 align="center">{{ headline }}</h3>
-
-<p align="center">
-    {{ catchphrase }}
-    <br/>
-    Note This Project Is Still W.I.P
-    <br/>
-    <br/>
-    <a href="https://readme.shaankhan.dev"><strong>View Demo »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator">Explore the docs</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Report Bug</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Request Feature</a>
-</p>
-</p>
 {% endmacro %}
 
-{% macro tableOfContents() %}
-## Table Of Contents
 
-- [Table Of Contents](#table-of-contents)
-- [About The Project](#about-the-project)
-- [Built With](#built-with)
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Creating A Pull Request](#creating-a-pull-request)
-- [License](#license)
-- [Authors](#authors)
-- [Acknowledgements](#acknowledgements)
+
+
+{% macro aboutTheProjectMacro() %}{% if productScreenshot_altTag and productScreenshot_url or aboutTheProjectDescription %}## About The Project{% if productScreenshot_altTag and productScreenshot_url %}
+
+[![{{ productScreenshot_altTag }}][Screenshot]]({{ productScreenshot_url }}){% endif %}{% if aboutTheProjectDescription %}
+
+{{ aboutTheProjectDescription }}{% endif %}
+{% endif %}{% endmacro %}
+
+
+
+
+{% macro builtWithMacro() %}{% if builtWithDescription or builtWithList %}### Built With{% if builtWithDescription %}
+
+{{ builtWithDescription }}{% endif %}{% if builtWithList %}
+{% for item in builtWithList %}
+- [{{ item.name }}]({{ item.url }}){% endfor %}{% endif %}
+{% endif %}{% endmacro %}
+
+
+
+
+{% macro gettingStartedMacro() %}{% if gettingStartedDescription %}## Getting Started
+
+{{ gettingStartedDescription }}{% endif %}
 {% endmacro %}
 
-{% macro aboutProject() %}
-## About The Project
 
-![Screen Shot](https://github.com/ShaanCoding/ReadME-Generator/blob/readme-generator-2020/images/screenshot.png?raw=true)
 
-There are many great ReadME templates available on GitHub, however, I struggled to find any ReadME generators. Throughout my open source project contributions, I've had to spend numerous hours editing README files which I could've spent developing instead. This paired with me often forgetting to change links, titles, and sections made me look for a README generator.
 
-Whilst alternative options existed, I struggled to find one that could suit my needs whilst being fast and easy to use, the ones I found were command-line based, only taking a limited input with the inability to go back on, as such I've built this, a README Generator!
+{% macro prerequisitesMacro() %}{% if prerequisitesDescription %}### Prerequisites
 
-With this open-source project, I hope to allow you to save as much time as it saved me, the benefits of this project are huge and here's why:
-
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. Whilst this template has served my needs, it may not serve yours, so I'll be continuing to work on this to make a more "Universal" and "Flexible" ReadME Generator in the future. Feel free to suggest changes by opening a new issue, or if you want to implement your own, feel free to fork this repo and create a pull request.
+{{ prerequisitesDescription }}{% endif %}
 {% endmacro %}
 
-{% macro builtWith() %}
 
-## Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [AAA](AA)
-* [BBB](BB)
+{% macro installationMacro() %}{% if installationDescription %}### Installation
 
+{{ installationDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro usageMacro() %}{% if usageDescription %}## Usage
+
+{{ usageDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro roadmapMacro() %}{% if roadmapDescription or openIssuesURL %}## Roadmap{% if roadmapDescription %}
+
+{{ roadmapDescription }}{% endif %}{% if openIssuesURL %}
+
+See the [open issues]({{ openIssuesURL }}) for a full list of proposed features (and known issues).{% endif %}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro contributingMacro() %}{% if contributingDescription %}## Contributing
+
+{{ contributingDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro licenseMacro() %}{% if licenseName and licenseURL_url %}## License
+
+Distributed under the {{ licenseName }} License. See [{{ licenseName }} License]({{ licenseURL_url }}) for more information.{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro contactMacro() %}{% if contactDescription %}## Contact
+
+{{ contactDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro acknowledgmentsMacro() %}{% if acknowledgmentsDescription or acknowledgmentsList %}## Acknowledgments{% if acknowledgmentsDescription %}
+
+{{ acknowledgmentsDescription }}{% endif %}{% if acknowledgmentsList %}
+
+{% for item in acknowledgmentsList %}
+- [{{ item.name }}]({{ item.url }}){% endfor %}{% endif %}{% endif %}
 {% endmacro %}

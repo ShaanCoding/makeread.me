@@ -34,29 +34,17 @@
     ],
     "featured": true,
     "folder": "readme-one",
-    "startupBlocks": ["projectHeader", "tableOfContents", "aboutProject", "builtWith"],
+    "startupBlocks": ["projectHeaderMacro", "aboutTheProjectMacro", "builtWithMacro", "gettingStartedMacro", "prerequisitesMacro", "installationMacro", "usageMacro", "roadmapMacro", "contributingMacro", "licenseMacro", "contactMacro", "acknowledgmentsMacro"],
     "functions": [
         {
             "name": "Project Header",
             "description": "This is the project header",
-            "function": "projectHeader",
+            "function": "projectHeaderMacro",
             "variables": [
-                {
-                    "label": "Username",
-                    "name": "username",
-                    "defaultValue": "shaancoding",
-                    "_type": "text"
-                },
-                {
-                    "label": "Repository Name",
-                    "name": "repository",
-                    "defaultValue": "ReadME-Generator",
-                    "_type": "text"
-                },
                 {
                     "label": "Logo URL",
                     "name": "logoURL",
-                    "defaultValue": "https://github.com/ShaanCoding/ReadME-Generator/blob/readme-generator-2020/images/logo.png?raw=true",
+                    "defaultValue": "https://source.unsplash.com/random",
                     "_type": "text"
                 },
                 {
@@ -72,60 +60,232 @@
                     "_type": "text"
                 },
                 {
-                    "label": "Enable Header Icons",
-                    "name": "enableHeaderIcons",
-                    "defaultValue": true,
-                    "_type": "boolean"
+                    "label": "Explore The Docs URL",
+                    "name": "exploreTheDocsURL",
+                    "defaultValue": "https://github.com/ShaanCoding/ReadME-Generator/",
+                    "_type": "text"
+                },
+                {
+                    "label": "View Demo URL",
+                    "name": "viewDemoURL",
+                    "defaultValue": "https://github.com/ShaanCoding/ReadME-Generator/",
+                    "_type": "text"
+                },
+                {
+                    "label": "Report Bug URL",
+                    "name": "reportBugURL",
+                    "defaultValue": "https://github.com/ShaanCoding/ReadME-Generator/",
+                    "_type": "text"
+                },
+                {
+                    "label": "Request Feature URL",
+                    "name": "requestFeatureURL",
+                    "defaultValue": "https://github.com/ShaanCoding/ReadME-Generator/",
+                    "_type": "text"
                 }
             ]
         },
         {
-            "name": "Table of Contents",
-            "description": "This is the table of contents",
-            "function": "tableOfContents",
-            "variables": []
-        },
-        {
-            "name": "About Project",
-            "description": "This is the about project",
-            "function": "aboutProject",
+            "name": "About The Project",
+            "description": "This is the about the project section",
+            "function": "aboutTheProjectMacro",
             "variables": [
                 {
-                    "label": "Showcase Image URL",
-                    "name": "showcaseURL",
-                    "defaultValue": "https://via.placeholder.com/150",
+                    "label": "Product Screenshot Alt Tag",
+                    "name": "productScreenshot_altTag",
+                    "defaultValue": "Product Screenshot",
                     "_type": "text"
                 },
                 {
-                    "label": "About This Project Description",
-                    "name": "aboutDescription",
-                    "defaultValue": "This is a description about this project",
+                    "label": "Product Screenshot URL",
+                    "name": "productScreenshot_url",
+                    "defaultValue": "https://source.unsplash.com/random",
+                    "_type": "text"
+                },
+                {
+                    "label": "Description",
+                    "name": "aboutTheProjectDescription",
+                    "defaultValue": "This is a sample description for the test data.",
                     "_type": "text"
                 }
             ]
         },
         {
             "name": "Built With",
-            "description": "This is the built with",
-            "function": "builtWith",
+            "description": "This is the built with section",
+            "function": "builtWithMacro",
             "variables": [
                 {
-                    "label": "Built With Description",
+                    "label": "Description",
                     "name": "builtWithDescription",
-                    "defaultValue": "This project was built with the following technologies",
+                    "defaultValue": "This is a sample description for the test data.",
                     "_type": "text"
                 },
                 {
-                    "label": "Built With Name",
-                    "name": "builtWithName",
-                    "defaultValue": ["HTML", "CSS", "JavaScript"],
-                    "_type": "array"
+                    "label": "Built With List",
+                    "name": "builtWithList",
+                    "defaultValue": [
+                        {
+                            "name": "React",
+                            "url": "https://reactjs.org/"
+                        },
+                        {
+                            "name": "Node.js",
+                            "url": "https://nodejs.org/"
+                        },
+                        {
+                            "name": "Express",
+                            "url": "https://expressjs.com/"
+                        },
+                        {
+                            "name": "MongoDB",
+                            "url": "https://www.mongodb.com/"
+                        }
+                    ],
+                    "_type": "list"
+                }
+            ]
+        },
+        {
+            "name": "Getting Started",
+            "description": "This is the getting started section",
+            "function": "gettingStartedMacro",
+            "variables": [
+                {
+                    "label": "Description",
+                    "name": "gettingStartedDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "Prerequisites",
+            "description": "This is the prerequisites section",
+            "function": "prerequisitesMacro",
+            "variables": [
+                {
+                    "label": "Prerequisites Description",
+                    "name": "prerequisitesDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "Installation",
+            "description": "This is the installation section",
+            "function": "installationMacro",
+            "variables": [
+                {
+                    "label": "Installation Description",
+                    "name": "installationDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "Usage",
+            "description": "This is the usage section",
+            "function": "usageMacro",
+            "variables": [
+                {
+                    "label": "Usage Description",
+                    "name": "usageDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "Roadmap",
+            "description": "This is the roadmap section",
+            "function": "roadmapMacro",
+            "variables": [
+                {
+                    "label": "Roadmap Description",
+                    "name": "roadmapDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
                 },
                 {
-                    "label": "Built With URL",
-                    "name": "builtWithURL",
-                    "defaultValue": ["https://www.w3schools.com/html/", "https://www.w3schools.com/css/", "https://www.w3schools.com/js/"],
-                    "_type": "array"
+                    "label": "Open Issues URL",
+                    "name": "openIssuesURL",
+                    "defaultValue": "https://github.com/ShaanCoding/ReadME-Generator/issues",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "Contributing",
+            "description": "This is the contributing section",
+            "function": "contributingMacro",
+            "variables": [
+                {
+                    "label": "Contributing Description",
+                    "name": "contributingDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "License",
+            "description": "This is the license section",
+            "function": "licenseMacro",
+            "variables": [
+                {
+                    "label": "License Name",
+                    "name": "licenseName",
+                    "defaultValue": "MIT",
+                    "_type": "text"
+                },
+                {
+                    "label": "License URL",
+                    "name": "licenseURL_url",
+                    "defaultValue": "https://opensource.org/licenses/MIT",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "Contact",
+            "description": "This is the contact section",
+            "function": "contactMacro",
+            "variables": [
+                {
+                    "label": "Contact Description",
+                    "name": "contactDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
+                }
+            ]
+        },
+        {
+            "name": "Acknowledgments",
+            "description": "This is the acknowledgments section",
+            "function": "acknowledgmentsMacro",
+            "variables": [
+                {
+                    "label": "Acknowledgments Description",
+                    "name": "acknowledgmentsDescription",
+                    "defaultValue": "This is a sample description for the test data.",
+                    "_type": "text"
+                },
+                {
+                    "label": "Acknowledgments List",
+                    "name": "acknowledgmentsList",
+                    "defaultValue": [
+                        {
+                            "name": "Choose an Open Source License",
+                            "url": "https://choosealicense.com"
+                        },
+                        {
+                            "name": "makeread.me",
+                            "url": "https://github.com/ShaanCoding/ReadME-Generator"
+                        }
+                    ]
                 }
             ]
         }
