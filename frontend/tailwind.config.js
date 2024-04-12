@@ -17,6 +17,7 @@ module.exports = {
         // Home Page
         themeGreen: "#046367",
         homeBlue: "#C1FDFF",
+        hoverBlue: "#4493f8",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

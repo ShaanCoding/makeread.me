@@ -19,21 +19,7 @@ export const mapVariableObjectToString = (variables: Record<string, any>) => {
   let variablesString = ""
 
   Object.keys(variables).forEach((element: string) => {
-    let variable: string
-
-    if (
-      typeof variables[element] === "string" ||
-      typeof variables[element] === "number" ||
-      typeof variables[element] === "boolean"
-    ) {
-      variable = variables[element].toString()
-    } else if (typeof variables[element] === "object") {
-      variable = JSON.stringify(variables[element])
-    } else {
-      variable = ""
-    }
-
-    variablesString += `{% set ${element} = "${variable}" %} `
+    variablesString += `{% set ${element} = ${JSON.stringify(variables[element])} %} `
   })
 
   return variablesString
@@ -54,6 +40,9 @@ export const compileString = (macros: string, templateBlocks: IFunction[], varia
     // const variableString = `{% set username = "Shaan" %} {% set repository = "Test" %}`;
 
     let variableString = mapVariableObjectToString(variables)
+
+    console.log(variableString)
+
     const string = `${variableString} ${specificTemplate} ${index}`
     const renderedString = nunjucks.renderString(string, {})
     return renderedString;

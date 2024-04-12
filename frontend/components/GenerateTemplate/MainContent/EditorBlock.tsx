@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 
 const EditorBlock = ({
   block,
@@ -62,11 +63,23 @@ const EditorBlock = ({
       <CardContent>
         {block.variables.map((variables: any) => {
           switch (variables._type) {
-            case "text":
+            case "input":
               return (
-                <div className="pb-2">
-                  <h4 className="font-semibold">{variables.label}</h4>
+                <div className="pb-4">
+                  <h4 className="font-semibold pb-2">{variables.label}</h4>
                   <Input
+                    {...register(variables.name)}
+                    name={variables.name}
+                    defaultValue={variables.defaultValue}
+                  />
+                </div>
+              )
+            case "textArea":
+              return (
+                <div className="pb-4">
+                  <h4 className="font-semibold pb-2">{variables.label}</h4>
+                  {/* TODO: Replace with AutoTextarea */}
+                  <Textarea
                     {...register(variables.name)}
                     name={variables.name}
                     defaultValue={variables.defaultValue}
@@ -75,7 +88,7 @@ const EditorBlock = ({
               )
             case "boolean":
               return (
-                <div className="flex items-center justify-start pb-2">
+                <div className="flex items-center justify-start pb-4">
                   <h4 className="pr-2 font-semibold">{variables.label}</h4>
                   <input
                     type="checkbox"
@@ -85,8 +98,26 @@ const EditorBlock = ({
                   />
                 </div>
               )
+            case "list":
+              {
+                /* TODO: Add implementation */
+              }
+              console.log(Object.keys(variables.defaultValue[0]))
+              return (
+                <div className="pb-4">
+                  <h4 className="font-semibold pb-2">
+                    {variables.label} - LIST
+                  </h4>
+                  {/* TODO: Replace with AutoTextarea */}
+                  <Textarea
+                    {...register(variables.name)}
+                    name={variables.name}
+                    defaultValue={variables.defaultValue}
+                  />
+                </div>
+              )
             default:
-              break
+              return <h1>{variables._type}</h1>
           }
         })}
       </CardContent>

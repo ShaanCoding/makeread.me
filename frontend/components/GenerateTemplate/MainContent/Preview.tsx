@@ -49,13 +49,19 @@ const Preview = ({ output }: { output: string }) => {
               <blockquote {...props} className="my-4 text-base" />
             ),
             code: ({ node, ...props }) => (
-              <code {...props} className="my-4 text-base" />
+              <code
+                {...props}
+                className="my-4 text-base bg-white bg-opacity-10 p-1 rounded-md"
+              />
             ),
             pre: ({ node, ...props }) => (
               <pre {...props} className="my-4 text-base" />
             ),
             a: ({ node, ...props }) => (
-              <a {...props} className="my-4 text-base" />
+              <a
+                {...props}
+                className="my-4 text-base hover:underline text-hoverBlue"
+              />
             ),
             img: ({ node, ...props }) => (
               <img {...props} className="my-4 rounded-xl text-base" />
