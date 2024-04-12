@@ -1,5 +1,13 @@
 import ReactMarkdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
+import remarkGfm from "remark-gfm"
+
+// TODO:
+// https://github.com/rehypejs/rehype-sanitize
+// To sanitise
+// To add table formatting
+// To add code formatting
+// To add image formatting & github image formatting
 
 const Preview = ({ output }: { output: string }) => {
   return (
@@ -7,7 +15,7 @@ const Preview = ({ output }: { output: string }) => {
       <div className="flex-col rounded-lg border border-dashed p-6 shadow-sm lg:size-full">
         <ReactMarkdown
           skipHtml={false}
-          rehypePlugins={[rehypeRaw]}
+          rehypePlugins={[rehypeRaw, remarkGfm]}
           components={{
             html: ({ node, ...props }) => (
               <div
@@ -37,14 +45,18 @@ const Preview = ({ output }: { output: string }) => {
               <p {...props} className="my-4 text-base" />
             ),
             ul: ({ node, ...props }) => (
-              <ul {...props} className="my-4 list-inside list-disc" />
+              <ul {...props} className="my-4 list-inside list-disc pl-6" />
             ),
             ol: ({ node, ...props }) => (
-              <ol {...props} className="my-4 list-inside list-decimal" />
+              <ol {...props} className="my-4 list-inside list-decimal pl-6" />
             ),
-            li: ({ node, ...props }) => (
-              <li {...props} className="my-4 text-base" />
-            ),
+            li: ({ node, ...props }) => {
+              if (props.children?.[0]?.props?.type === "checkbox") {
+                return <li {...props} className="my-4 text-base list-none" />
+              } else {
+                return <li {...props} className="my-4 text-base" />
+              }
+            },
             blockquote: ({ node, ...props }) => (
               <blockquote {...props} className="my-4 text-base" />
             ),

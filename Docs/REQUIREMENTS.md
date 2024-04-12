@@ -41,6 +41,7 @@
 ## Additional Features Ideas
 
 - Additional Documentation Templates: Offer templates for various documentation types, such as:
+  - Terms of service
   - Changelogs
   - Contributing
   - Code of Conduct

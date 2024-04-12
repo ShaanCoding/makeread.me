@@ -26,7 +26,7 @@ const GeneratorSideBar: React.FC<{
 
   return (
     <div className="bg-muted/40 hidden border-r md:block">
-      <nav className="mt-6 grid items-start px-2 text-sm font-medium lg:px-4">
+      <nav className="mt-6 grid gap-6 items-start px-2 text-sm font-medium lg:px-4">
         <MappedBlocks
           blocks={blocks}
           templateBlocks={templateBlocks}
