@@ -1,5 +1,12 @@
+import { useState } from "react"
 import { IFunction, IVariable } from "@/api/generated"
-import { ChevronDownIcon, ChevronUpIcon, Trash2Icon } from "lucide-react"
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  MinusIcon,
+  PlusIcon,
+  Trash2Icon,
+} from "lucide-react"
 import {
   Control,
   Controller,
@@ -34,6 +41,8 @@ const EditorBlock = ({
   deleteBlock: () => void
   control: Control<FieldValues, any>
 }) => {
+  const [isMinimized, setIsMinimized] = useState<boolean>(true)
+
   return (
     <Card>
       <CardHeader>
@@ -64,10 +73,26 @@ const EditorBlock = ({
               <Trash2Icon className="mr-2" />
               Delete
             </Button>
+            <Button
+              variant={"outline"}
+              onClick={() => setIsMinimized(!isMinimized)}
+            >
+              {isMinimized ? (
+                <>
+                  <PlusIcon className="mr-2" />
+                  Show
+                </>
+              ) : (
+                <>
+                  <MinusIcon className="mr-2" />
+                  Hide
+                </>
+              )}
+            </Button>
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className={`${isMinimized ? "hidden" : ""}`}>
         {block.variables.map((variables: IVariable, index: number) => {
           return (
             <InputGenerator
@@ -163,24 +188,31 @@ const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {
 
   return (
     <div className="pb-4">
-      <h4 className="font-semibold pb-2">{variables.label} - LIST</h4>
+      <h4 className="font-semibold pb-2">{variables.label}</h4>
 
       <div className="">
         {fields.map((field, index) => (
           <div className="flex gap-4 w-full" key={field.id}>
-            {variables?.listSchema.map((schema, subIndex) => (
-              <InputGenerator
-                variables={{
-                  name: `${variables.name}[${index}].${schema.name}`,
-                  defaultValue:
-                    variables.defaultValue?.[index]?.[schema.name] ?? "",
-                  _type: schema._type,
-                  label: schema.label,
-                }}
-                control={control}
-                key={`${index}-${subIndex}`}
-              />
-            ))}
+            {variables.listSchema &&
+              variables.listSchema.map((schema, subIndex) => {
+                let defaultValue: any =
+                  variables.defaultValue?.[
+                    index as keyof typeof variables.defaultValue
+                  ]?.[schema.name] ?? ""
+
+                return (
+                  <InputGenerator
+                    variables={{
+                      name: `${variables.name}[${index}].${schema.name}`,
+                      defaultValue: defaultValue as string | boolean | string[],
+                      _type: schema._type,
+                      label: schema.label,
+                    }}
+                    control={control}
+                    key={`${index}-${subIndex}`}
+                  />
+                )
+              })}
             <div className="mt-8">
               <Button variant={"outline"} onClick={() => remove(index)}>
                 Delete

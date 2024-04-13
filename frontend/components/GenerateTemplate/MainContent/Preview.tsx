@@ -1,3 +1,4 @@
+import { LegacyRef } from "react"
 import ReactMarkdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
@@ -17,12 +18,6 @@ const Preview = ({ output }: { output: string }) => {
           skipHtml={false}
           rehypePlugins={[rehypeRaw, remarkGfm]}
           components={{
-            html: ({ node, ...props }) => (
-              <div
-                {...props}
-                className="flex-col rounded-lg border border-dashed p-6 shadow-sm lg:size-full"
-              />
-            ),
             h1: ({ node, ...props }) => (
               <h1 {...props} className="my-4 text-center text-4xl font-bold" />
             ),
@@ -51,7 +46,10 @@ const Preview = ({ output }: { output: string }) => {
               <ol {...props} className="my-4 list-inside list-decimal pl-6" />
             ),
             li: ({ node, ...props }) => {
-              if (props.children?.[0]?.props?.type === "checkbox") {
+              if (
+                Array.isArray(props.children) &&
+                props.children[0]?.props?.type === "checkbox"
+              ) {
                 return <li {...props} className="my-4 text-base list-none" />
               } else {
                 return <li {...props} className="my-4 text-base" />
