@@ -1,68 +1,67 @@
 <br/>
+<div align="center">
+<a href="https://github.com/ShaanCoding/ReadME-Generator">
+<img src="images/logo.png" alt="Logo" width="80" height="80">
+</a>
+<h3 align="center">makeread.me</h3>
 <p align="center">
-  <a href="https://github.com/ShaanCoding/ReadME-Generator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">ReadME Generator</h3>
-
-  <p align="center">
-    An Awesome ReadME Generator To Jumpstart Your Projects!
-    <br/>
-    Note This Project Is Still W.I.P
-    <br/>
-    <br/>
-    <a href="https://readme.shaankhan.dev"><strong>View Demo »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator">Explore the docs</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Report Bug</a>
-    .
-    <a href="https://github.com/ShaanCoding/ReadME-Generator/issues">Request Feature</a>
-  </p>
+An awesome ReadMe Generator to Jumpstart your Projects!
+<br/>
+<br/>
+<a href="https://github.com/ShaanCoding/makeread.me/wiki"><strong>Explore the docs »</strong></a>
+<br/>
+<br/>
+<a href="https://www.makeread.me/">View Demo .</a>  
+<a href="https://github.com/ShaanCoding/makeread.me/issues/new?labels=bug&amp;template=bug-report---.md">Report Bug .</a>
+<a href="https://github.com/ShaanCoding/makeread.me/issues/new?labels=enhancement&amp;template=feature-request---.md">Request Feature</a>
 </p>
+</div>
 
-![Downloads](https://img.shields.io/github/downloads/ShaanCoding/ReadME-Generator/total) ![Contributors](https://img.shields.io/github/contributors/ShaanCoding/ReadME-Generator?color=dark-green) ![Issues](https://img.shields.io/github/issues/ShaanCoding/ReadME-Generator) ![License](https://img.shields.io/github/license/ShaanCoding/ReadME-Generator) [![Discord](https://img.shields.io/discord/199663269106024449)](https://discord.gg/6Kf422a)
+![Contributors](https://img.shields.io/github/contributors/ShaanCoding/ReadME-Generator?color=dark-green) ![Issues](https://img.shields.io/github/issues/ShaanCoding/ReadME-Generator) ![License](https://img.shields.io/github/license/ShaanCoding/ReadME-Generator)
 
-## Table Of Contents
+## Table of Contents
 
-- [Table Of Contents](#table-of-contents)
+- [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-- [Built With](#built-with)
+  - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
-  - [Creating A Pull Request](#creating-a-pull-request)
 - [License](#license)
-- [Authors](#authors)
-- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
+- [Notice](#notice)
 
 ## About The Project
 
-![Screen Shot](images/screenshot.png)
+![Screenshot](images/demo.gif)
 
-There are many great ReadME templates available on GitHub, however, I struggled to find any ReadME generators. Throughout my open source project contributions, I've had to spend numerous hours editing README files which I could've spent developing instead. This paired with me often forgetting to change links, titles and sections made me look for a README generator.
+One of the challenges with building and contributing to open source software is that while many projects have amazing functionalities, they often miss out on reaching a wider audience due to lack of clear and user-friendly installation instructions. In addition, lack of efficient showcase of their use cases also contribute to the lower reach of these projects.
 
-Whilst alternative options existed, I struggled to find one that could suit my needs whilst being fast and easy to use, the ones I found were command-line based, only taking a limited input with the inability to go back on, as such I've built this, a README Generator!
+While there are ReadME templates that can help address this, the process of manually filling out these templates can be time-consuming and tedious. That&#39;s where our project makeread.me comes in.
 
-With this open-source project, I hope to allow you to save as much time as it saved me, the benefits of this project are huge and here's why:
+Introducing makeread.me, an automated ReadMe Generator that can revolutionize how you create your project documentation. It is designed to:
 
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should element DRY principles to the rest of your life :smile:
+- Save your valuable time enhancing your focus on development,
+- Automate redundant tasks, and,
+- Implement DRY (Don&#39;t Repeat Yourself) principles to your documentation.
 
-Of course, no one template will serve all projects since your needs may be different. Whilst this template has served my needs, it may not serve yours so I'll be continuing to work on this to make a more "Universal" and "Flexible" ReadME Generator in the future. Feel free to suggest changes by opening a new issue, or if you want to implement your own, feel free to fork this repo and create a pull request.
+It&#39;s free, open-source, and highly customizable. Feel free to modify our templates to fit your needs. If you find that a particular component is missing, you are more than welcome to contribute and expand the project.
 
-## Built With
+We&#39;ve made it easy for you to contribute to the project by using Nunjucks and JSON templates for programmatic mapping. Enjoy the benefits of clear and concise project documentation with makeread.me!
 
-Whilst I was the main developer of this project, this project couldn't of even started without the help of these open source projects, special thanks to:
+### Built With
 
-- [JavaScript](https://www.javascript.com/)
-- [VueJS](https://vuejs.org/)
+This project was built with the following technologies:
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Shadcn/ui](https://ui.shadcn.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/)
 
 ## Getting Started
 
@@ -71,55 +70,125 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This program has no pre-requisites
+This project requires Yarn to be installed in your system. If you don&#39;t have it installed, you can follow these steps:
+
+- Install Yarn globally using npm (Node Package Manager). Open your terminal and run:
+
+  ```sh
+  npm install -g yarn
+  ```
+
+  Please ensure that you have Node.js and npm installed before running Yarn.
+
+- Verify that Yarn has been installed on your machine by running the following command in your terminal:
+
+  ```sh
+  yarn --version
+  ```
+
+  If Yarn has been installed correctly, your terminal should display the version of Yarn installed on your machine.
+
+Now you are ready to use Yarn for managing and versioning your project dependencies!
 
 ### Installation
 
-1. Clone the repo
+Please follow the following steps for successful installation:
 
-```sh
-git clone https://github.com/ShaanCoding/ReadME-Generator.git
-```
+1. **Clone the Repository:** Get started by cloning the repository to your local machine.
 
-2. Open The index.HTML file
+   ```
+   https://github.com/ShaanCoding/makeread.me
+   ```
 
-3. Have fun!
+2. **Install Frontend Packages:** Navigate to the &quot;/frontend&quot; directory and install the required yarn packages by executing the following command in your terminal:
+   ```sh
+   yarn install
+   ```
+3. **Install Backend Packages:** Similarly, navigate to the &quot;/backend&quot; directory and install the required yarn packages by executing the following command in your terminal:
 
-## Usage
+   ```sh
+   yarn install
+   ```
 
-Coming Soon!
+4. **Set Up Environment:**
+
+   - In the &quot;/backend&quot; directory, copy the content of &quot;.env.example&quot; file and create a new file named &quot;.env&quot;. Adjust the environment variables according to your requirements or you can leave them as it is.
+
+   - Navigate to &quot;frontend/api/generated/readMeGenerator.ts&quot; and set the BASE parameter to your backend API route. For instance, if you are running backend on your local server at port 8080, you should set:
+     ```javascript
+     BASE: &quot;http://localhost:8080/api&quot;
+     ```
+
+5. **Run the Backend:** Navigate to &quot;/backend&quot; directory and type the following command in your terminal to run your backend server:
+
+   ```sh
+   yarn dev
+   ```
+
+6. **Run the Frontend:** Finally, navigate to &quot;/frontend&quot; directory and type the following command in your terminal to run your frontend server:
+   ```sh
+   yarn dev
+   ```
+   Now, your application should be successfully up and running!
 
 ## Roadmap
 
-See the [open issues](https://github.com/ShaanCoding/ReadME-Generator/issues) for a list of proposed features (and known issues).
+The roadmap includes both completed and future goals. Here&#39;s what we have accomplished and looking forward to:
+
+- [x] Add backend swagger generation
+- [x] Add backend
+- [x] Set up CI/CD on railway
+- [x] Allow dynamic input field generation based off a JSON file
+  - [x] Textarea
+  - [x] Input
+  - [ ] Objects
+  - [x] Array
+- [x] Allow users to set the order of components or delete them
+- [x] Allow templating via Nunjucks
+- [ ] Add Plausable Analytics
+- [x] Add old readme generator template
+- [ ] Add more templates
+- [ ] Move rendering logic to the backend with debounce
+- [ ] Replace useEffect with react query
+- [ ] Add caching
+- [ ] Write up README best practice articles
+- [ ] Avoid key collisions when using non-unique-names as Ids in templates
+
+We continue our commitment to improving and expanding the capabilities of makeread.me to provide an efficient and seamless readme generation experience to our users.
+
+See the [open issues](https://github.com/ShaanCoding/makeread.me/issues) for a full list of proposed features (and known issues).
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-- If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/ShaanCoding/ReadME-Generator/issues/new) to discuss it, or directly create a pull request after you edit the _README.md_ file with necessary changes.
-- Please make sure you check your spelling and grammar.
-- Create individual PR for each suggestion.
-- Please also read through the [Code Of Conduct](https://github.com/ShaanCoding/ReadME-Generator/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
-
-### Creating A Pull Request
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag &quot;enhancement&quot;.
+Don&#39;t forget to give the project a star! Thanks again!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your Changes (`git commit -m &#39;Add some AmazingFeature&#39;`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## License
 
-Distributed under the MPL-2.0 License. See [LICENSE](https://github.com/ShaanCoding/ReadME-Generator/blob/main/LICENSE.md) for more information.
+Distributed under the Mozilla Public License 2.0 License. See [Mozilla Public License 2.0 License](https://github.com/ShaanCoding/makeread.me/blob/main/LICENSE.md) for more information.
 
-## Authors
+## Contact
 
-- **Shaan Khan** - _Comp Sci Student_ - [Shaan Khan](https://github.com/ShaanCoding/) - _All Work_
+If you have any questions or suggestions, feel free to reach out to us:
 
-## Acknowledgements
+- Raise an issue on the repository: [GitHub Repository](https://github.com/ShaanCoding/makeread.me)
+- Connect with us on Twitter: [@ShaanCoding](https://twitter.com/ShaanCoding)
 
-- [ShaanCoding](https://github.com/ShaanCoding/)
+## Acknowledgments
+
+A special thanks to the following for their contributions, support and inspiration:
+
+- [makeread.me](https://github.com/ShaanCoding/ReadME-Generator)
 - [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
-- [ImgShields](https://shields.io/)
+
+## Notice
+
+This ReadMe was generated using [makeread.me](https://www.makeread.me/) 🚀
