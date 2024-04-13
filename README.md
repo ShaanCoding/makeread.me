@@ -150,7 +150,7 @@ The roadmap includes both completed and future goals. Here&#39;s what we have ac
   - [x] Array
 - [x] Allow users to set the order of components or delete them
 - [x] Allow templating via Nunjucks
-- [ ] Add Plausable Analytics
+- [x] Add Plausible Analytics
 - [x] Add old readme generator template
 - [ ] Add more templates
 - [ ] Move rendering logic to the backend with debounce

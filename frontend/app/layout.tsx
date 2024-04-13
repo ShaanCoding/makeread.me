@@ -35,8 +35,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-
-  // Open Graph
   openGraph: {
     type: "website",
     url: "https://makeread.me/",
@@ -44,8 +42,6 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: "/og-image.png",
   },
-
-  // Twitter
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
@@ -54,6 +50,7 @@ export const metadata: Metadata = {
     site: "@ShaanCoding",
     creator: "@ShaanCoding",
   },
+  referrer: "no-referrer-when-downgrade",
 }
 
 interface RootLayoutProps {
