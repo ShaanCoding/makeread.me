@@ -3,7 +3,7 @@ import { IFunction, readMeGenerator } from "@/api/generated"
 
 import CopyButton from "./CopyButton"
 import DownloadButton from "./DownloadButton"
-import Editor from "./Editor"
+import Editor from "./Editor/Editor"
 import Preview from "./Preview"
 import { compileString } from "./generator"
 

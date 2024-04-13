@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { createApiResponse } from '@/api-docs/openAPIResponseBuilders'
 import { handleServiceResponse } from '@/common/utils/httpHandlers'
 
-import { FullTemplateSchema, FunctionSchema, TemplateSchema, UserSchema } from './template.model'
+import { FullTemplateSchema, FunctionSchema, TemplateSchema, UserSchema, VariableSchema } from './template.model'
 import TemplateController from './templates.service'
 
 export const templateRegistry = new OpenAPIRegistry()
@@ -14,6 +14,7 @@ templateRegistry.register('IUser', UserSchema)
 templateRegistry.register('ITemplate', TemplateSchema)
 templateRegistry.register('IFunction', FunctionSchema)
 templateRegistry.register('IFullTemplate', FullTemplateSchema)
+templateRegistry.register('IVariable', VariableSchema)
 
 export const templateController: Router = (() => {
     const router = express.Router()

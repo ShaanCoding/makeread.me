@@ -1,5 +1,5 @@
 {
-    "title": "Best-README-Template",
+    "title": "Best README Template",
     "description": "An awesome README template to jumpstart your projects!",
     "author": {
         "name": "Othneil Drew",
@@ -154,7 +154,19 @@
                             "url": "https://jquery.com"
                         }
                     ],
-                    "_type": "list"
+                    "_type": "list",
+                    "listSchema": [
+                        {
+                            "label": "Name",
+                            "name": "name",
+                            "_type": "input"
+                        },
+                        {
+                            "label": "URL",
+                            "name": "url",
+                            "_type": "input"
+                        }
+                    ]
                 }
             ]
         },
@@ -296,6 +308,19 @@
                         {
                             "name": "othneildrew",
                             "url": "https://github.com/othneildrew/Best-README-Template"
+                        }
+                    ],
+                    "_type": "list",
+                    "listSchema": [
+                        {
+                            "label": "Name",
+                            "name": "name",
+                            "_type": "input"
+                        },
+                        {
+                            "label": "URL",
+                            "name": "url",
+                            "_type": "input"
                         }
                     ]
                 }

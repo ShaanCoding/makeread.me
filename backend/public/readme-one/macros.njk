@@ -36,8 +36,8 @@
 {% macro builtWithMacro() %}{% if builtWithDescription or builtWithList %}### Built With{% if builtWithDescription %}
 
 {{ builtWithDescription }}{% endif %}{% if builtWithList %}
-{% for item in builtWithList %}
-- [{{ item.name }}]({{ item.url }}){% endfor %}{% endif %}
+{% for item in builtWithList %}{% if item.name|length and item.url|length %}
+- [{{ item.name }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}
 {% endif %}{% endmacro %}
 
 
@@ -113,6 +113,6 @@ Distributed under the {{ licenseName }} License. See [{{ licenseName }} License]
 
 {{ acknowledgmentsDescription }}{% endif %}{% if acknowledgmentsList %}
 
-{% for item in acknowledgmentsList %}
-- [{{ item.name }}]({{ item.url }}){% endfor %}{% endif %}{% endif %}
+{% for item in acknowledgmentsList %}{% if item.name|length and item.url|length %}
+- [{{ item.name }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}{% endif %}
 {% endmacro %}

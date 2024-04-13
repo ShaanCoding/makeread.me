@@ -38,6 +38,11 @@ export type IFullTemplate = {
             name: string;
             defaultValue: (string | boolean | Array<string>);
             _type: string;
+            listSchema?: Array<{
+                label: string;
+                name: string;
+                _type: string;
+            }>;
         }>;
     }>;
 };

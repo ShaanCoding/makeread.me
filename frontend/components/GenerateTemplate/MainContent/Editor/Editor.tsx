@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { IFunction } from "@/api/generated"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
 
@@ -16,9 +16,13 @@ const Editor = ({
   variables: Record<string, any>
   setVariables: React.Dispatch<React.SetStateAction<Record<string, any>>>
 }) => {
-  const { register, handleSubmit, watch } = useForm<any>()
+  const methods = useForm()
+  const { register, control, handleSubmit, watch } = methods
+
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data)
+    console.log({
+      ...data,
+    })
     setVariables(data)
   }
 
@@ -53,21 +57,24 @@ const Editor = ({
 
   return (
     <div className="grid lg:size-full grid-cols-1 gap-6 p-6">
-      <form
-        onChange={handleSubmit(onSubmit)}
-        onSubmit={(e) => e.preventDefault()}
-      >
-        {templateBlocks.map((block: IFunction, index: number) => (
-          <EditorBlock
-            block={block}
-            moveBlockUp={() => moveBlockUp(index)}
-            moveBlockDown={() => moveBlockDown(index)}
-            deleteBlock={() => deleteBlock(index)}
-            key={index}
-            register={register}
-          />
-        ))}
-      </form>
+      <FormProvider {...methods}>
+        <form
+          onChange={handleSubmit(onSubmit)}
+          onSubmit={(e) => e.preventDefault()}
+          className="grid gap-6 grid-cols-1"
+        >
+          {templateBlocks.map((block: IFunction, index: number) => (
+            <EditorBlock
+              block={block}
+              moveBlockUp={() => moveBlockUp(index)}
+              moveBlockDown={() => moveBlockDown(index)}
+              deleteBlock={() => deleteBlock(index)}
+              key={index}
+              control={control}
+            />
+          ))}
+        </form>
+      </FormProvider>
     </div>
   )
 }

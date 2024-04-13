@@ -41,8 +41,6 @@ export const compileString = (macros: string, templateBlocks: IFunction[], varia
 
     let variableString = mapVariableObjectToString(variables)
 
-    console.log(variableString)
-
     const string = `${variableString} ${specificTemplate} ${index}`
     const renderedString = nunjucks.renderString(string, {})
     return renderedString;
