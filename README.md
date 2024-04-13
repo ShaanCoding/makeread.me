@@ -1,6 +1,6 @@
 <br/>
 <div align="center">
-<a href="https://github.com/ShaanCoding/ReadME-Generator">
+<a href="https://github.com/ShaanCoding/makeread.me">
 <img src="images/logo.png" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">makeread.me</h3>
@@ -12,12 +12,12 @@ An awesome ReadMe Generator to Jumpstart your Projects!
 <br/>
 <br/>
 <a href="https://www.makeread.me/">View Demo .</a>  
-<a href="https://github.com/ShaanCoding/makeread.me/issues/new?labels=bug&amp;template=bug-report---.md">Report Bug .</a>
-<a href="https://github.com/ShaanCoding/makeread.me/issues/new?labels=enhancement&amp;template=feature-request---.md">Request Feature</a>
+<a href="https://github.com/ShaanCoding/makeread.me/issues/new?labels=bug&amp;template=bug_report.md">Report Bug .</a>
+<a href="https://github.com/ShaanCoding/makeread.me/issues/new?labels=enhancement&amp;&template=feature_request.md">Request Feature</a>
 </p>
 </div>
 
-![Contributors](https://img.shields.io/github/contributors/ShaanCoding/ReadME-Generator?color=dark-green) ![Issues](https://img.shields.io/github/issues/ShaanCoding/ReadME-Generator) ![License](https://img.shields.io/github/license/ShaanCoding/ReadME-Generator)
+![Contributors](https://img.shields.io/github/contributors/ShaanCoding/makeread.me?color=dark-green) ![Issues](https://img.shields.io/github/issues/ShaanCoding/makeread.me) ![License](https://img.shields.io/github/license/ShaanCoding/makeread.me)
 
 ## Table of Contents
 
@@ -101,9 +101,11 @@ Please follow the following steps for successful installation:
    ```
 
 2. **Install Frontend Packages:** Navigate to the &quot;/frontend&quot; directory and install the required yarn packages by executing the following command in your terminal:
+
    ```sh
    yarn install
    ```
+
 3. **Install Backend Packages:** Similarly, navigate to the &quot;/backend&quot; directory and install the required yarn packages by executing the following command in your terminal:
 
    ```sh
@@ -115,8 +117,9 @@ Please follow the following steps for successful installation:
    - In the &quot;/backend&quot; directory, copy the content of &quot;.env.example&quot; file and create a new file named &quot;.env&quot;. Adjust the environment variables according to your requirements or you can leave them as it is.
 
    - Navigate to &quot;frontend/api/generated/readMeGenerator.ts&quot; and set the BASE parameter to your backend API route. For instance, if you are running backend on your local server at port 8080, you should set:
+
      ```javascript
-     BASE: &quot;http://localhost:8080/api&quot;
+     BASE: "http://localhost:8080/api";
      ```
 
 5. **Run the Backend:** Navigate to &quot;/backend&quot; directory and type the following command in your terminal to run your backend server:
@@ -126,9 +129,11 @@ Please follow the following steps for successful installation:
    ```
 
 6. **Run the Frontend:** Finally, navigate to &quot;/frontend&quot; directory and type the following command in your terminal to run your frontend server:
+
    ```sh
    yarn dev
    ```
+
    Now, your application should be successfully up and running!
 
 ## Roadmap
@@ -186,7 +191,7 @@ If you have any questions or suggestions, feel free to reach out to us:
 
 A special thanks to the following for their contributions, support and inspiration:
 
-- [makeread.me](https://github.com/ShaanCoding/ReadME-Generator)
+- [makeread.me](https://github.com/ShaanCoding/makeread.me)
 - [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
 
 ## Notice
