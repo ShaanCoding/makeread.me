@@ -15,6 +15,17 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: [
+    "ReadME",
+    "ReadME Generator",
+    "ReadME Template",
+    "Markdown",
+    "Template",
+    "ReadME.md",
+  ],
+  robots: "follow, index",
+  authors: [{ name: "Shaan Khan", url: "https://twitter.com/ShaanCoding" }],
+  creator: "Shaan Khan",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -23,6 +34,25 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
+  },
+
+  // Open Graph
+  openGraph: {
+    type: "website",
+    url: "https://makeread.me/",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: "/og-image.png",
+  },
+
+  // Twitter
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: "/og-image.png",
+    site: "@ShaanCoding",
+    creator: "@ShaanCoding",
   },
 }
 
@@ -34,7 +64,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        {/* <head /> */}
+        <head>
+          <script
+            defer
+            data-domain="makeread.me"
+            src="https://plausible.io/js/script.js"
+          ></script>
+        </head>
+
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
