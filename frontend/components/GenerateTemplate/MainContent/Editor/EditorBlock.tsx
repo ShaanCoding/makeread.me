@@ -23,6 +23,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 
 const EditorBlock = ({
@@ -122,7 +123,7 @@ const InputGenerator: React.FC<{
       return <TextField variables={variables} control={control} />
 
     case "checkBox":
-      return <BooleanField variables={variables} control={control} />
+      return <CheckBoxField variables={variables} control={control} />
 
     case "list":
       return <ListField variables={variables} control={control} />
@@ -130,7 +131,7 @@ const InputGenerator: React.FC<{
       return <ObjectField variables={variables} control={control} />
     default:
       return (
-        <h1 className="font-semibold pb-2 text-red-600">
+        <h1 className="pb-2 font-semibold text-red-600">
           Non-Supported Type: {variables._type}
         </h1>
       )
@@ -151,8 +152,8 @@ const InputField: React.FC<IListFieldProps> = ({ variables, control }) => {
       name={variables.name}
       defaultValue={variables.defaultValue as string}
       render={({ field }) => (
-        <div className="pb-4 w-full">
-          <h4 className="font-semibold pb-2">{variables.label}</h4>
+        <div className="w-full pb-4">
+          <h4 className="pb-2 font-semibold">{variables.label}</h4>
           <Input {...field} name={variables.name} />
         </div>
       )}
@@ -167,8 +168,8 @@ const TextField: React.FC<IListFieldProps> = ({ variables, control }) => {
       name={variables.name}
       defaultValue={variables.defaultValue as string}
       render={({ field }) => (
-        <div className="pb-4 w-full">
-          <h4 className="font-semibold pb-2">{variables.label}</h4>
+        <div className="w-full pb-4">
+          <h4 className="pb-2 font-semibold">{variables.label}</h4>
           <AutosizeTextarea {...field} name={variables.name} />
         </div>
       )}
@@ -176,16 +177,22 @@ const TextField: React.FC<IListFieldProps> = ({ variables, control }) => {
   )
 }
 
-const BooleanField: React.FC<IListFieldProps> = ({ variables, control }) => {
+const CheckBoxField: React.FC<IListFieldProps> = ({ variables, control }) => {
   return (
     <Controller
       control={control}
       name={variables.name}
       defaultValue={variables.defaultValue as boolean}
       render={({ field }) => (
-        <div className="flex items-center justify-start pb-4 w-full">
+        <div className="flex w-full items-center justify-start pb-4">
           <h4 className="pr-2 font-semibold">{variables.label}</h4>
-          <input type="checkbox" {...field} />
+
+          <Checkbox
+            {...field}
+            name={variables.name}
+            checked={field.value}
+            onCheckedChange={(isChecked) => field.onChange(isChecked)}
+          />
         </div>
       )}
     />
@@ -195,9 +202,9 @@ const BooleanField: React.FC<IListFieldProps> = ({ variables, control }) => {
 const ObjectField: React.FC<IListFieldProps> = ({ variables, control }) => {
   return (
     <div className="pb-4">
-      <h4 className="font-semibold pb-2">{variables.label}</h4>
+      <h4 className="pb-2 font-semibold">{variables.label}</h4>
 
-      <div className="flex gap-4 w-full">
+      <div className="flex w-full gap-4">
         {variables.objectSchema &&
           variables.objectSchema.map((schema, index) => {
             let defaultValue: any =
@@ -231,11 +238,11 @@ const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {
 
   return (
     <div className="pb-4">
-      <h4 className="font-semibold pb-2">{variables.label}</h4>
+      <h4 className="pb-2 font-semibold">{variables.label}</h4>
 
       <div className="">
         {fields.map((field, index) => (
-          <div className="flex gap-4 w-full" key={field.id}>
+          <div className="flex w-full gap-4" key={field.id}>
             {variables.listSchema &&
               variables.listSchema.map((schema, subIndex) => {
                 let defaultValue: any =
