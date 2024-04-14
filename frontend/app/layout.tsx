@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+  metadataBase: new URL("https://makeread.me"),
   openGraph: {
     type: "website",
     url: "https://makeread.me/",

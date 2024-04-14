@@ -11,7 +11,6 @@ import {
   Control,
   Controller,
   FieldValues,
-  UseFormRegister,
   useFieldArray,
 } from "react-hook-form"
 
@@ -24,9 +23,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 
 const EditorBlock = ({
   block,
