@@ -32,8 +32,8 @@
             "url": "backend"
         }
     ],
-    "featured": true,
-    "folder": "readme-templates-backend",
+    "featured": false,
+    "folder": "fernanda-kipper-readme-templates-backend",
     "startupBlocks": ["projectHeaderMacro", "technologiesMacro", "gettingStartedMacro", "prerequisitesMacro", "cloningMacro", "configEnvironmentVariablesMacro", "startingMacro", "apiEndpointsMacro", "collaboratorsMacro", "contributeMacro", "documentationThatMightHelpMacro"],
     "functions": [
         {

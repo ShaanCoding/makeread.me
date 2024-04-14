@@ -14,6 +14,11 @@ export default class TemplateController {
                 return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
             })
 
+            // Sort by featured first
+            blocksData.sort((a: FullTemplate, b: FullTemplate) => {
+                return a.featured === b.featured ? 0 : a.featured ? -1 : 1
+            })
+
             return new ServiceResponse<Template[]>(ResponseStatus.Success, 'Success', blocksData, StatusCodes.OK)
         } catch (ex) {
             console.log(ex)
