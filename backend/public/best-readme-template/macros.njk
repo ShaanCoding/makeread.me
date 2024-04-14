@@ -23,9 +23,9 @@
 
 
 
-{% macro aboutTheProjectMacro() %}{% if productScreenshot_altTag and productScreenshot_url or aboutTheProjectDescription %}## About The Project{% if productScreenshot_altTag and productScreenshot_url %}
+{% macro aboutTheProjectMacro() %}{% if productScreenshot.altTag and productScreenshot.url or aboutTheProjectDescription %}## About The Project{% if productScreenshot.altTag and productScreenshot.url %}
 
-[![{{ productScreenshot_altTag }}][Screenshot]]({{ productScreenshot_url }}){% endif %}{% if aboutTheProjectDescription %}
+![{{ productScreenshot.altTag }}]({{ productScreenshot.url }}){% endif %}{% if aboutTheProjectDescription %}
 
 {{ aboutTheProjectDescription }}{% endif %}
 {% endif %}{% endmacro %}

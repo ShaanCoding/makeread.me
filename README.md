@@ -146,7 +146,7 @@ The roadmap includes both completed and future goals. Here&#39;s what we have ac
 - [x] Allow dynamic input field generation based off a JSON file
   - [x] Textarea
   - [x] Input
-  - [ ] Objects
+  - [x] Objects
   - [x] Array
 - [x] Allow users to set the order of components or delete them
 - [x] Allow templating via Nunjucks

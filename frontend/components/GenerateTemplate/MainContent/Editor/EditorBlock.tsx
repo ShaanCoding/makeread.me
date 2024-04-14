@@ -119,57 +119,24 @@ const InputGenerator: React.FC<{
 
   switch (variables._type) {
     case "input":
-      return (
-        <Controller
-          control={control}
-          name={variables.name}
-          defaultValue={variables.defaultValue as string}
-          render={({ field }) => (
-            <div className="pb-4 w-full">
-              <h4 className="font-semibold pb-2">{variables.label}</h4>
-              <Input {...field} name={variables.name} />
-            </div>
-          )}
-        />
-      )
+      return <InputField variables={variables} control={control} />
 
     case "textArea":
-      return (
-        <Controller
-          control={control}
-          name={variables.name}
-          defaultValue={variables.defaultValue as string}
-          render={({ field }) => (
-            <div className="pb-4 w-full">
-              <h4 className="font-semibold pb-2">{variables.label}</h4>
-              <AutosizeTextarea {...field} name={variables.name} />
-            </div>
-          )}
-        />
-      )
+      return <TextField variables={variables} control={control} />
 
     case "boolean":
-      return (
-        <Controller
-          control={control}
-          name={variables.name}
-          defaultValue={variables.defaultValue as boolean}
-          render={({ field }) => (
-            <div className="flex items-center justify-start pb-4 w-full">
-              <h4 className="pr-2 font-semibold">{variables.label}</h4>
-              <input type="checkbox" {...field} />
-            </div>
-          )}
-        />
-      )
+      return <BooleanField variables={variables} control={control} />
 
     case "list":
-      {
-        /* TODO: Add implementation */
-      }
       return <ListField variables={variables} control={control} />
+    case "object":
+      return <ObjectField variables={variables} control={control} />
     default:
-      return <h1>{variables._type}</h1>
+      return (
+        <h1 className="font-semibold pb-2 text-red-600">
+          Non-Supported Type: {variables._type}
+        </h1>
+      )
   }
 }
 
@@ -178,6 +145,85 @@ export default EditorBlock
 interface IListFieldProps {
   variables: IVariable
   control: Control
+}
+
+const InputField: React.FC<IListFieldProps> = ({ variables, control }) => {
+  return (
+    <Controller
+      control={control}
+      name={variables.name}
+      defaultValue={variables.defaultValue as string}
+      render={({ field }) => (
+        <div className="pb-4 w-full">
+          <h4 className="font-semibold pb-2">{variables.label}</h4>
+          <Input {...field} name={variables.name} />
+        </div>
+      )}
+    />
+  )
+}
+
+const TextField: React.FC<IListFieldProps> = ({ variables, control }) => {
+  return (
+    <Controller
+      control={control}
+      name={variables.name}
+      defaultValue={variables.defaultValue as string}
+      render={({ field }) => (
+        <div className="pb-4 w-full">
+          <h4 className="font-semibold pb-2">{variables.label}</h4>
+          <AutosizeTextarea {...field} name={variables.name} />
+        </div>
+      )}
+    />
+  )
+}
+
+const BooleanField: React.FC<IListFieldProps> = ({ variables, control }) => {
+  return (
+    <Controller
+      control={control}
+      name={variables.name}
+      defaultValue={variables.defaultValue as boolean}
+      render={({ field }) => (
+        <div className="flex items-center justify-start pb-4 w-full">
+          <h4 className="pr-2 font-semibold">{variables.label}</h4>
+          <input type="checkbox" {...field} />
+        </div>
+      )}
+    />
+  )
+}
+
+const ObjectField: React.FC<IListFieldProps> = ({ variables, control }) => {
+  return (
+    <div className="pb-4">
+      <h4 className="font-semibold pb-2">{variables.label}</h4>
+
+      <div className="flex gap-4 w-full">
+        {variables.objectSchema &&
+          variables.objectSchema.map((schema, index) => {
+            let defaultValue: any =
+              variables.defaultValue?.[
+                schema.name as keyof typeof variables.defaultValue
+              ] ?? ""
+
+            return (
+              <InputGenerator
+                variables={{
+                  name: `${variables.name}.${schema.name}`,
+                  defaultValue: defaultValue as string | boolean | string[],
+                  _type: schema._type,
+                  label: schema.label,
+                }}
+                control={control}
+                key={index}
+              />
+            )
+          })}
+      </div>
+    </div>
+  )
 }
 
 const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {

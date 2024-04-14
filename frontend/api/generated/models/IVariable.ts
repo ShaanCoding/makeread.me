@@ -12,5 +12,10 @@ export type IVariable = {
         name: string;
         _type: string;
     }>;
+    objectSchema?: Array<{
+        label: string;
+        name: string;
+        _type: string;
+    }>;
 };
 

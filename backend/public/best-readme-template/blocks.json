@@ -12,8 +12,8 @@
         }
     ],
     "image": "https://github.com/othneildrew/Best-README-Template/raw/master/images/logo.png",
-    "dateCreated": "2022-01-01T00:00:00.000Z", 
-    "lastUpdated": "2022-01-15T12:00:00.000Z",
+    "dateCreated": "2024-04-13T00:00:00.000Z", 
+    "lastUpdated": "2024-04-14T12:00:00.000Z",
     "tags": [
         {
             "name": "Read Me",
@@ -29,7 +29,7 @@
         }
     ],
     "featured": true,
-    "folder": "readme-one",
+    "folder": "best-readme-template",
     "startupBlocks": ["projectHeaderMacro", "aboutTheProjectMacro", "builtWithMacro", "gettingStartedMacro", "prerequisitesMacro", "installationMacro", "usageMacro", "roadmapMacro", "contributingMacro", "licenseMacro", "contactMacro", "acknowledgmentsMacro"],
     "functions": [
         {
@@ -87,16 +87,25 @@
             "function": "aboutTheProjectMacro",
             "variables": [
                 {
-                    "label": "Product Screenshot Alt Tag",
-                    "name": "productScreenshot_altTag",
-                    "defaultValue": "Product Screenshot",
-                    "_type": "input"
-                },
-                {
-                    "label": "Product Screenshot URL",
-                    "name": "productScreenshot_url",
-                    "defaultValue": "https://source.unsplash.com/random/1920x1080",
-                    "_type": "input"
+                    "label": "Product Screenshot",
+                    "name": "productScreenshot",
+                    "defaultValue": {
+                        "altTag": "Product Screenshot",
+                        "url": "https://source.unsplash.com/random/1920x1080"
+                    },
+                    "_type": "object",
+                    "objectSchema": [
+                        {
+                            "label": "Product Screenshot Alt Tag",
+                            "name": "altTag",
+                            "_type": "input"
+                        },
+                        {
+                            "label": "Product Screenshot URL",
+                            "name": "url",
+                            "_type": "input"
+                        }
+                    ]
                 },
                 {
                     "label": "Description",
