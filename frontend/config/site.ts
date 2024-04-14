@@ -13,10 +13,10 @@ export const siteConfig = {
       title: "Template",
       href: "/select-template",
     },
-    {
-      title: "Scratch",
-      href: "/generator",
-    },
+    // {
+    //   title: "Scratch",
+    //   href: "/generator",
+    // },
   ],
   links: {
     twitter: "https://twitter.com/ShaanCoding",

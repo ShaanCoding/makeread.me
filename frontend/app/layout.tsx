@@ -1,5 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import PlausibleProvider from "next-plausible"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+  metadataBase: new URL("https://makeread.me"),
   openGraph: {
     type: "website",
     url: "https://makeread.me/",
@@ -62,11 +64,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <script
-            defer
-            data-domain="makeread.me"
-            src="https://plausible.io/js/script.js"
-          ></script>
+          <PlausibleProvider domain="makeread.me" />
         </head>
 
         <body

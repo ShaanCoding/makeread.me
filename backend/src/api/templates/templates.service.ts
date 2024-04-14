@@ -23,7 +23,7 @@ export default class TemplateController {
 
     public async getTemplateInitialisedComponentList(id: string): Promise<ServiceResponse<IFunction[] | null>> {
         try {
-            if (!id || id == "undefined") return new ServiceResponse(ResponseStatus.Success, 'Success', [], StatusCodes.OK)
+            if (!id || id == 'undefined') return new ServiceResponse(ResponseStatus.Success, 'Success', [], StatusCodes.OK)
 
             const blocksData: FullTemplate = JSON.parse(fs.readFileSync(`./public/${id}/blocks.json`, 'utf8'))
             const indexData: string[] = blocksData.startupBlocks
@@ -43,13 +43,18 @@ export default class TemplateController {
 
     public async getTemplateSidebar(id: string): Promise<ServiceResponse<FullTemplate[] | null>> {
         try {
-            const folders: string[] = fs.readdirSync('./public')
-          
-            const blocksData: FullTemplate[] = folders.map((folder: string) => {
-                return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
-            })
+            if (id && id !== 'undefined') {
+                const blocksData: FullTemplate = JSON.parse(fs.readFileSync(`./public/${id}/blocks.json`, 'utf8'))
+                return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', [blocksData], StatusCodes.OK)
+            } else {
+                const folders: string[] = fs.readdirSync('./public')
 
-            return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', blocksData, StatusCodes.OK)
+                const blocksData: FullTemplate[] = folders.map((folder: string) => {
+                    return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
+                })
+
+                return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', blocksData, StatusCodes.OK)
+            }
         } catch (ex) {
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
@@ -57,9 +62,9 @@ export default class TemplateController {
 
     public async getTemplateMacros(id: string): Promise<ServiceResponse<string | null>> {
         try {
-            if (!id || id == "undefined") return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
-            
-                const data = fs.readFileSync(`./public/${id}/macros.njk`, 'utf8')
+            if (!id || id == 'undefined') return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
+
+            const data = fs.readFileSync(`./public/${id}/macros.njk`, 'utf8')
 
             return new ServiceResponse<string>(ResponseStatus.Success, 'Success', data, StatusCodes.OK)
         } catch (ex) {

@@ -72,6 +72,11 @@ export class TemplateService {
                     name: string;
                     _type: string;
                 }>;
+                objectSchema?: Array<{
+                    label: string;
+                    name: string;
+                    _type: string;
+                }>;
             }>;
         }>;
         statusCode: number;
@@ -131,6 +136,11 @@ export class TemplateService {
                     defaultValue: (string | boolean | Array<string>);
                     _type: string;
                     listSchema?: Array<{
+                        label: string;
+                        name: string;
+                        _type: string;
+                    }>;
+                    objectSchema?: Array<{
                         label: string;
                         name: string;
                         _type: string;

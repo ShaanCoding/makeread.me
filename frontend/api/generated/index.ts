@@ -12,6 +12,7 @@ export type { OpenAPIConfig } from './core/OpenAPI';
 
 export type { IFullTemplate } from './models/IFullTemplate';
 export type { IFunction } from './models/IFunction';
+export type { IObject } from './models/IObject';
 export type { ITemplate } from './models/ITemplate';
 export type { IUser } from './models/IUser';
 export type { IVariable } from './models/IVariable';

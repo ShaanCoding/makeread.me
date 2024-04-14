@@ -38,6 +38,16 @@ export const TemplateSchema = z.object({
     folder: z.string(),
 })
 
+export type Object = z.infer<typeof ObjectSchema>
+
+export const ObjectSchema = z
+    .object({
+        label: z.string(),
+        name: z.string(),
+        _type: z.string(),
+    })
+    .optional()
+
 export type Variable = z.infer<typeof VariableSchema>
 
 export const VariableSchema = z.object({
@@ -46,15 +56,8 @@ export const VariableSchema = z.object({
     defaultValue: z.union([z.string(), z.boolean(), z.array(z.string())]),
     // z.enum(['text', 'boolean', 'array']),
     _type: z.string(),
-    listSchema: z
-        .array(
-            z.object({
-                label: z.string(),
-                name: z.string(),
-                _type: z.string(),
-            })
-        )
-        .optional(),
+    listSchema: z.array(ObjectSchema).optional(),
+    objectSchema: z.array(ObjectSchema).optional(),
 })
 
 export type IFunction = z.infer<typeof FunctionSchema>
