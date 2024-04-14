@@ -26,8 +26,7 @@ export const mapVariableObjectToString = (variables: Record<string, any>) => {
 }
 
 export const compileString = (macros: string, templateBlocks: IFunction[], variables: Record<string, any>): string => {
-  
-  nunjucks.configure({ autoescape: true })
+  nunjucks.configure({ autoescape: false })
 
     // Contains the macro definitions used
     const specificTemplate = macros
