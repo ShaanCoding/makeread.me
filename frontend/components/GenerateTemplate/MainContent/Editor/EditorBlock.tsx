@@ -121,7 +121,7 @@ const InputGenerator: React.FC<{
     case "textArea":
       return <TextField variables={variables} control={control} />
 
-    case "boolean":
+    case "checkBox":
       return <BooleanField variables={variables} control={control} />
 
     case "list":
