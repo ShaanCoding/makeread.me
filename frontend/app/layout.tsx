@@ -1,5 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import PlausibleProvider from "next-plausible"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -63,11 +64,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <script
-            defer
-            data-domain="makeread.me"
-            src="https://plausible.io/js/script.js"
-          ></script>
+          <PlausibleProvider domain="makeread.me" />
         </head>
 
         <body

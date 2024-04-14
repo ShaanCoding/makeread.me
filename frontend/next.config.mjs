@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+import { withPlausibleProxy } from "next-plausible"
+
+const nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -8,6 +10,6 @@ const nextConfig = {
       },
     ],
   },
-}
+})
 
 export default nextConfig
