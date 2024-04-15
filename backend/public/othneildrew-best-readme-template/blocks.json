@@ -12,7 +12,7 @@
         }
     ],
     "image": "https://github.com/othneildrew/Best-README-Template/raw/master/images/logo.png",
-    "dateCreated": "2024-04-13T00:00:00.000Z", 
+    "dateCreated": "2024-04-13T00:00:00.000Z",
     "lastUpdated": "2024-04-14T12:00:00.000Z",
     "tags": [
         {
@@ -30,7 +30,20 @@
     ],
     "featured": true,
     "folder": "othneildrew-best-readme-template",
-    "startupBlocks": ["projectHeaderMacro", "aboutTheProjectMacro", "builtWithMacro", "gettingStartedMacro", "prerequisitesMacro", "installationMacro", "usageMacro", "roadmapMacro", "contributingMacro", "licenseMacro", "contactMacro", "acknowledgmentsMacro"],
+    "startupBlocks": [
+        "projectHeaderMacro",
+        "aboutTheProjectMacro",
+        "builtWithMacro",
+        "gettingStartedMacro",
+        "prerequisitesMacro",
+        "installationMacro",
+        "usageMacro",
+        "roadmapMacro",
+        "contributingMacro",
+        "licenseMacro",
+        "contactMacro",
+        "acknowledgmentsMacro"
+    ],
     "functions": [
         {
             "name": "Project Header",
@@ -213,7 +226,7 @@
                 {
                     "label": "Installation Description",
                     "name": "installationDescription",
-                    "defaultValue": "_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._\n\n1. Get a free API Key at [https:\/\/example.com](https:\/\/example.com)\n2. Clone the repo\n   ```sh\n   git clone https:\/\/github.com\/your_username_\/Project-Name.git\n   ```\n3. Install NPM packages\n   ```sh\n   npm install\n   ```\n4. Enter your API in `config.js`\n   ```js\n   const API_KEY = \"ENTER YOUR API\";\n   ```",
+                    "defaultValue": "_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._\n\n1. Get a free API Key at [https://example.com](https://example.com)\n2. Clone the repo\n   ```sh\n   git clone https://github.com/your_username_/Project-Name.git\n   ```\n3. Install NPM packages\n   ```sh\n   npm install\n   ```\n4. Enter your API in `config.js`\n   ```js\n   const API_KEY = \"ENTER YOUR API\";\n   ```",
                     "_type": "textArea"
                 }
             ]
@@ -226,7 +239,7 @@
                 {
                     "label": "Usage Description",
                     "name": "usageDescription",
-                    "defaultValue": "Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.\n\n_For more examples, please refer to the [Documentation](https:\/\/example.com)_",
+                    "defaultValue": "Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.\n\n_For more examples, please refer to the [Documentation](https://example.com)_",
                     "_type": "textArea"
                 }
             ]
@@ -239,7 +252,7 @@
                 {
                     "label": "Roadmap Description",
                     "name": "roadmapDescription",
-                    "defaultValue": "- [x] Add Changelog\n- [x] Add back to top links\n- [ ] Add Additional Templates w\/ Examples\n- [ ] Add \"components\" document to easily copy & paste sections of the readme\n- [ ] Multi-language Support\n  - [ ] Chinese\n  - [ ] Spanish",
+                    "defaultValue": "- [x] Add Changelog\n- [x] Add back to top links\n- [ ] Add Additional Templates w/ Examples\n- [ ] Add \"components\" document to easily copy & paste sections of the readme\n- [ ] Multi-language Support\n  - [ ] Chinese\n  - [ ] Spanish",
                     "_type": "textArea"
                 },
                 {
@@ -258,7 +271,7 @@
                 {
                     "label": "Contributing Description",
                     "name": "contributingDescription",
-                    "defaultValue": "Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n\nIf you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag \"enhancement\".\nDon't forget to give the project a star! Thanks again!\n\n1. Fork the Project\n2. Create your Feature Branch (`git checkout -b feature\/AmazingFeature`)\n3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)\n4. Push to the Branch (`git push origin feature\/AmazingFeature`)\n5. Open a Pull Request",
+                    "defaultValue": "Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.\n\nIf you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag \"enhancement\".\nDon't forget to give the project a star! Thanks again!\n\n1. Fork the Project\n2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)\n3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)\n4. Push to the Branch (`git push origin feature/AmazingFeature`)\n5. Open a Pull Request",
                     "_type": "textArea"
                 }
             ]
@@ -290,7 +303,7 @@
                 {
                     "label": "Contact Description",
                     "name": "contactDescription",
-                    "defaultValue": "Your Name - [@your_twitter](https:\/\/twitter.com\/your_username) - email@example.com\n\nProject Link: [https:\/\/github.com\/your_username\/repo_name](https:\/\/github.com\/your_username\/repo_name)",
+                    "defaultValue": "Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com\n\nProject Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)",
                     "_type": "textArea"
                 }
             ]

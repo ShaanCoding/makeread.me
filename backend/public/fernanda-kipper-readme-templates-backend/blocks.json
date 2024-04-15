@@ -12,7 +12,7 @@
         }
     ],
     "image": "https://github.com/Fernanda-Kipper/Readme-Templates/raw/main/.github/logo.png",
-    "dateCreated": "2024-04-14T00:00:00.000Z", 
+    "dateCreated": "2024-04-14T00:00:00.000Z",
     "lastUpdated": "2024-04-14T12:00:00.000Z",
     "tags": [
         {
@@ -34,7 +34,19 @@
     ],
     "featured": false,
     "folder": "fernanda-kipper-readme-templates-backend",
-    "startupBlocks": ["projectHeaderMacro", "technologiesMacro", "gettingStartedMacro", "prerequisitesMacro", "cloningMacro", "configEnvironmentVariablesMacro", "startingMacro", "apiEndpointsMacro", "collaboratorsMacro", "contributeMacro", "documentationThatMightHelpMacro"],
+    "startupBlocks": [
+        "projectHeaderMacro",
+        "technologiesMacro",
+        "gettingStartedMacro",
+        "prerequisitesMacro",
+        "cloningMacro",
+        "configEnvironmentVariablesMacro",
+        "startingMacro",
+        "apiEndpointsMacro",
+        "collaboratorsMacro",
+        "contributeMacro",
+        "documentationThatMightHelpMacro"
+    ],
     "functions": [
         {
             "name": "Header",
