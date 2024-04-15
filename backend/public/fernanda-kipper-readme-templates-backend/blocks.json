@@ -1,5 +1,5 @@
 {
-    "title": "Readme Templates - Frontend",
+    "title": "Readme Templates - Backend",
     "description": "This repository provides a series of README templates to help developers document their projects 🚀👩‍💻",
     "author": {
         "name": "Fernanda Kipper",
@@ -12,7 +12,7 @@
         }
     ],
     "image": "https://github.com/Fernanda-Kipper/Readme-Templates/raw/main/.github/logo.png",
-    "dateCreated": "2024-04-14T00:00:00.000Z", 
+    "dateCreated": "2024-04-14T00:00:00.000Z",
     "lastUpdated": "2024-04-14T12:00:00.000Z",
     "tags": [
         {
@@ -28,13 +28,25 @@
             "url": "mit"
         },
         {
-            "name": "Frontend",
-            "url": "frontend"
+            "name": "Backend",
+            "url": "backend"
         }
     ],
-    "featured": true,
-    "folder": "readme-templates-frontend",
-    "startupBlocks": ["projectHeaderMacro", "layoutMacro", "technologiesMacro", "gettingStartedMacro", "prerequisitesMacro", "cloningMacro", "startingMacro", "collaboratorsMacro", "contributeMacro", "documentationThatMightHelpMacro"],
+    "featured": false,
+    "folder": "fernanda-kipper-readme-templates-backend",
+    "startupBlocks": [
+        "projectHeaderMacro",
+        "technologiesMacro",
+        "gettingStartedMacro",
+        "prerequisitesMacro",
+        "cloningMacro",
+        "configEnvironmentVariablesMacro",
+        "startingMacro",
+        "apiEndpointsMacro",
+        "collaboratorsMacro",
+        "contributeMacro",
+        "documentationThatMightHelpMacro"
+    ],
     "functions": [
         {
             "name": "Header",
@@ -59,6 +71,13 @@
                     "label": "Enable Getting Started Section",
                     "name": "isGettingStartedSection",
                     "description": "Enable the getting started section.",
+                    "defaultValue": true,
+                    "_type": "checkBox"
+                },
+                {
+                    "label": "Enable API Endpoints Section",
+                    "name": "isAPIEndpointsSection",
+                    "description": "Enable the API endpoints section.",
                     "defaultValue": true,
                     "_type": "checkBox"
                 },
@@ -101,41 +120,6 @@
                         {
                             "label": "Text",
                             "name": "text",
-                            "_type": "input"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Layout",
-            "description": "This function creates a layout for the README file.",
-            "function": "layoutMacro",
-            "variables": [
-                {
-                    "label": "Image List",
-                    "name": "layoutImageList",
-                    "description": "A list of images to display in the README.",
-                    "_type": "list",
-                    "defaultValue": [
-                        {
-                            "url": "https://source.unsplash.com/random",
-                            "altTag": "Random Image"
-                        },
-                        {
-                            "url": "https://source.unsplash.com/random",
-                            "altTag": "Random Image"
-                        }
-                    ],
-                    "listSchema": [
-                        {
-                            "label": "Image",
-                            "name": "url",
-                            "_type": "input"
-                        },
-                        {
-                            "label": "Alt Tag",
-                            "name": "altTag",
                             "_type": "input"
                         }
                     ]
@@ -199,6 +183,20 @@
             ]
         },
         {
+            "name": "Configure Environment Variables",
+            "description": "This function provides a guide on how to configure environment variables.",
+            "function": "configEnvironmentVariablesMacro",
+            "variables": [
+                {
+                    "label": "Environment Variables Description",
+                    "name": "configEnvironmentVariablesDescription",
+                    "description": "A description of how to configure environment variables.",
+                    "defaultValue": "Use the `.env.example` as reference to create your configuration file `.env` with your AWS Credentials\r\n\r\n```yaml\r\nNODE_AWS_REGION=us-east-1\r\nNODE_AWS_KEY_ID={YOUR_AWS_KEY_ID}\r\nNODE_AWS_SECRET={YOUR_AWS_SECRET}\r\n```",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
             "name": "Starting",
             "description": "This function provides a guide on how to start the project.",
             "function": "startingMacro",
@@ -208,6 +206,20 @@
                     "name": "startingDescription",
                     "description": "A description of how to start the project.",
                     "defaultValue": "How to start your project\r\n\r\n```bash\r\ncd project-name\r\nnpm some-command-to-run\r\n```",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
+            "name": "API Endpoints",
+            "description": "This function provides a list of API endpoints.",
+            "function": "apiEndpointsMacro",
+            "variables": [
+                {
+                    "label": "API Endpoints Description",
+                    "name": "apiEndpointsDescription",
+                    "description": "A description of the API endpoints.",
+                    "defaultValue": "Here you can list the main routes of your API, and what are their expected request bodies.\r\n​\r\n| route               | description                                          \r\n|----------------------|-----------------------------------------------------\r\n| <kbd>GET /authenticate</kbd>     | retrieves user info see [response details](#get-auth-detail)\r\n| <kbd>POST /authenticate</kbd>     | authenticate user into the api see [request details](#post-auth-detail)\r\n\r\n<h3 id=\"get-auth-detail\">GET /authenticate</h3>\r\n\r\n**RESPONSE**\r\n```json\r\n{\r\n  \"name\": \"Fernanda Kipper\",\r\n  \"age\": 20,\r\n  \"email\": \"her-email@gmail.com\"\r\n}\r\n```\r\n\r\n<h3 id=\"post-auth-detail\">POST /authenticate</h3>\r\n\r\n**REQUEST**\r\n```json\r\n{\r\n  \"username\": \"fernandakipper\",\r\n  \"password\": \"4444444\"\r\n}\r\n```\r\n\r\n**RESPONSE**\r\n```json\r\n{\r\n  \"token\": \"OwoMRHsaQwyAgVoc3OXmL1JhMVUYXGGBbCTK0GBgiYitwQwjf0gVoBmkbuyy0pSi\"\r\n}\r\n```",
                     "_type": "textArea"
                 }
             ]

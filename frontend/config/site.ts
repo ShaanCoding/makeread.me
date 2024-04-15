@@ -36,10 +36,10 @@ export const siteConfig = {
         title: "Select Template",
         href: "/select-template",
       },
-      {
-        title: "Make My Own",
-        href: "/generator",
-      },
+      // {
+      //   title: "Make My Own",
+      //   href: "/generator",
+      // },
     ],
     socialMedia: [
       {
