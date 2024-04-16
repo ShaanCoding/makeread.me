@@ -13,6 +13,7 @@ const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {
   })
 
   useEffect(() => {
+    remove() // Remove the default value (if there was any)
     if (variables.defaultValue && Array.isArray(variables.defaultValue)) {
       variables.defaultValue.forEach((value) => {
         append(value)
