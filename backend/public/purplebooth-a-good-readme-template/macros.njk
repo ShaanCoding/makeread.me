@@ -1,0 +1,110 @@
+{% macro projectHeaderMacro() %}{% if projectTitle or projectDescription %}{% if projectTitle %}
+# {{ projectTitle }}{% endif %}{% if projectDescription %}
+
+{{ projectDescription }}{% endif %}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro gettingStartedMacro() %}{% if gettingStartedDescription %}
+## Getting Started
+
+{{ gettingStartedDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro prerequisitesMacro() %}{% if prerequisitesDescription %}
+### Prerequisites
+
+{{ prerequisitesDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro installationMacro() %}{% if installationDescription %}
+### Installing
+
+{{ installationDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro runningTheTestsMacro() %}{% if runningTheTestsDescription %}
+## Running the tests
+
+{{ runningTheTestsDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro deploymentMacro() %}{% if deploymentDescription %}
+## Deployment
+
+{{ deploymentDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro builtWithMacro() %}{% if builtWithDescription or builtWithList|length %}
+## Built With{% if builtWithDescription %}
+
+{{ builtWithDescription }}{% endif %}{% if builtWithList|length %}
+{% for item in builtWithList %}{% if item.url and item.altTag %}
+- [{{ item.altTag }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}
+{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro contributingMacro() %}{% if contributingDescription %}
+## Contributing
+
+{{ contributingDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro versioningMacro() %}{% if versioningDescription %}
+## Versioning
+
+{{ versioningDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro authorsMacro() %}{% if authorsDescription or authorsList|length %}
+## Authors{% if authorsDescription %}
+
+{{ authorsDescription }}{% endif %}{% if authorsList|length %}
+{% for item in authorsList %}{% if item.url and item.name %}
+- {% if item.description %}{{ item.description }} - {% endif %}[{{ item.name }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}
+{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro licenseMacro() %}{% if licenseDescription %}
+## License
+
+{{ licenseDescription }}{% endif %}
+{% endmacro %}
+
+
+
+
+{% macro acknowledgmentsMacro() %}{% if acknowledgmentsDescription %}
+## Acknowledgments
+
+{{ acknowledgmentsDescription }}{% endif %}
+{% endmacro %}
