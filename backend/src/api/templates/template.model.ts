@@ -58,6 +58,7 @@ export const VariableSchema = z.object({
     _type: z.string(),
     listSchema: z.array(ObjectSchema).optional(),
     objectSchema: z.array(ObjectSchema).optional(),
+    optionsList: z.array(z.object({ label: z.string(), value: z.string() })).optional(),
 })
 
 export type IFunction = z.infer<typeof FunctionSchema>
