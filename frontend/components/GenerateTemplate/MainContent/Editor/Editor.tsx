@@ -2,8 +2,6 @@ import { useEffect } from "react"
 import { IFunction } from "@/api/generated"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
-import { Button } from "@/components/ui/button"
-
 import EditorBlock from "./EditorBlock"
 
 const Editor = ({
