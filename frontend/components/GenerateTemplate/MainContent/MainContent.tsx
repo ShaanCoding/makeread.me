@@ -55,7 +55,7 @@ const MainContent: React.FC<{
 
   useEffect(() => {
     generateOutput()
-  }, [variables, templateBlocks])
+  }, [variables, templateBlocks, macros])
 
   return (
     <div className="flex flex-col">
