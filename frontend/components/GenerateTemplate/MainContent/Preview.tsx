@@ -1,4 +1,3 @@
-import { LegacyRef } from "react"
 import ReactMarkdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
@@ -50,7 +49,7 @@ const Preview = ({ output }: { output: string }) => {
                 Array.isArray(props.children) &&
                 props.children[0]?.props?.type === "checkbox"
               ) {
-                return <li {...props} className="my-4 text-base list-none" />
+                return <li {...props} className="my-4 list-none text-base" />
               } else {
                 return <li {...props} className="my-4 text-base" />
               }
@@ -61,7 +60,7 @@ const Preview = ({ output }: { output: string }) => {
             code: ({ node, ...props }) => (
               <code
                 {...props}
-                className="my-4 text-base bg-white bg-opacity-10 p-1 rounded-md"
+                className="my-4 rounded-md bg-white bg-opacity-10 p-1 text-base"
               />
             ),
             pre: ({ node, ...props }) => (
@@ -70,7 +69,7 @@ const Preview = ({ output }: { output: string }) => {
             a: ({ node, ...props }) => (
               <a
                 {...props}
-                className="my-4 text-base hover:underline text-hoverBlue"
+                className="text-hoverBlue my-4 text-base hover:underline"
               />
             ),
             img: ({ node, ...props }) => (

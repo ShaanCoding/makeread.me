@@ -24,9 +24,9 @@ const CopyButton: React.FC<{ copiedText: string; className?: string }> = ({
     >
       {isCopied ? "Copied!" : "Copy To Clipboard"}
       {isCopied ? (
-        <CheckIcon className="ml-2 h-4 w-4" />
+        <CheckIcon className="ml-2 size-4" />
       ) : (
-        <ClipboardIcon className="ml-2 h-4 w-4" />
+        <ClipboardIcon className="ml-2 size-4" />
       )}
     </Button>
   )

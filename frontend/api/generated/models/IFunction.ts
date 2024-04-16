@@ -21,6 +21,10 @@ export type IFunction = {
             name: string;
             _type: string;
         }>;
+        optionsList?: Array<{
+            label: string;
+            value: string;
+        }>;
     }>;
 };
 

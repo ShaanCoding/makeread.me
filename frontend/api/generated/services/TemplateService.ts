@@ -77,6 +77,10 @@ export class TemplateService {
                     name: string;
                     _type: string;
                 }>;
+                optionsList?: Array<{
+                    label: string;
+                    value: string;
+                }>;
             }>;
         }>;
         statusCode: number;
@@ -144,6 +148,10 @@ export class TemplateService {
                         label: string;
                         name: string;
                         _type: string;
+                    }>;
+                    optionsList?: Array<{
+                        label: string;
+                        value: string;
                     }>;
                 }>;
             }>;

@@ -67,7 +67,7 @@ const MainContent: React.FC<{
         </div>
 
         {/* Content */}
-        <div className="lg:flex lg:flex-1 lg:items-start lg:justify-center rounded-lg border border-dashed shadow-sm">
+        <div className="rounded-lg border border-dashed shadow-sm lg:flex lg:flex-1 lg:items-start lg:justify-center">
           {/* Place Content Here */}
           <Editor
             templateBlocks={templateBlocks}

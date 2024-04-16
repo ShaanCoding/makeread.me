@@ -4,7 +4,6 @@ import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
-import { ThemeToggle } from "@/components/theme-toggle"
 
 export function SiteHeader() {
   return (
@@ -12,7 +11,7 @@ export function SiteHeader() {
       <div className="mx-6 flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="sm:flex hidden items-center space-x-1">
+          <nav className="hidden items-center space-x-1 sm:flex">
             <Link
               href={siteConfig.links.github}
               target="_blank"

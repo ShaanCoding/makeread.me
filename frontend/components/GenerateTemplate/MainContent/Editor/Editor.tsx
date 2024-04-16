@@ -2,8 +2,6 @@ import { useEffect } from "react"
 import { IFunction } from "@/api/generated"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
-import { Button } from "@/components/ui/button"
-
 import EditorBlock from "./EditorBlock"
 
 const Editor = ({
@@ -56,12 +54,12 @@ const Editor = ({
   }
 
   return (
-    <div className="grid lg:size-full grid-cols-1 gap-6 p-6">
+    <div className="grid grid-cols-1 gap-6 p-6 lg:size-full">
       <FormProvider {...methods}>
         <form
           onChange={handleSubmit(onSubmit)}
           onSubmit={(e) => e.preventDefault()}
-          className="grid gap-6 grid-cols-1"
+          className="grid grid-cols-1 gap-6"
         >
           {templateBlocks.map((block: IFunction, index: number) => (
             <EditorBlock
