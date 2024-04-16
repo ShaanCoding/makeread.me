@@ -18,7 +18,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-import InputGenerator from "./InputGenerator"
+import InputGenerator from "./Factory/InputGenerator"
 
 const EditorBlock = ({
   block,
