@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button"
+import { useEffect } from "react"
 import { useFieldArray } from "react-hook-form"
+
+import { Button } from "@/components/ui/button"
+
 import InputGenerator from "./InputGenerator"
 import { IListFieldProps } from "./types"
 
@@ -8,6 +11,14 @@ const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {
     control,
     name: variables.name,
   })
+
+  useEffect(() => {
+    if (variables.defaultValue && Array.isArray(variables.defaultValue)) {
+      variables.defaultValue.forEach((value) => {
+        append(value)
+      })
+    }
+  }, [append, variables.defaultValue])
 
   return (
     <div className="pb-4">
