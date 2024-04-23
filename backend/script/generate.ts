@@ -40,7 +40,7 @@ const processDirectory = (directoryPath: string) => {
     }
 
     // if windows, we have to add file:// to the path
-    if(process.platform === 'win32') {
+    if (process.platform === 'win32') {
         blocksFilePath = 'file://' + blocksFilePath
     }
 

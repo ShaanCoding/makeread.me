@@ -6,25 +6,45 @@ export type IFunction = {
     name: string;
     description: string;
     function: string;
-    variables: Array<{
+    variables: Array<({
         label: string;
         name: string;
-        defaultValue: (string | boolean | Array<string>);
-        _type: string;
-        listSchema?: Array<{
+        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select';
+        defaultValue: string;
+    } | {
+        label: string;
+        name: string;
+        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select';
+        defaultValue: boolean;
+    } | {
+        label: string;
+        name: string;
+        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select';
+        defaultValue: Array<Record<string, any>>;
+        listSchema: Array<{
             label: string;
             name: string;
             _type: string;
         }>;
-        objectSchema?: Array<{
+    } | {
+        label: string;
+        name: string;
+        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select';
+        defaultValue: Record<string, any>;
+        objectSchema: Array<{
             label: string;
             name: string;
             _type: string;
         }>;
-        optionsList?: Array<{
+    } | {
+        label: string;
+        name: string;
+        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select';
+        defaultValue: string;
+        optionsList: Array<{
             label: string;
             value: string;
         }>;
-    }>;
+    })>;
 };
 

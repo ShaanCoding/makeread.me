@@ -2,12 +2,17 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type IVariable = {
+export type IVariableSelect = {
     label: string;
     name: string;
-    _type: IVariable._type;
+    _type: IVariableSelect._type;
+    defaultValue: string;
+    optionsList: Array<{
+        label: string;
+        value: string;
+    }>;
 };
-export namespace IVariable {
+export namespace IVariableSelect {
     export enum _type {
         INPUT = 'input',
         TEXT_AREA = 'textArea',

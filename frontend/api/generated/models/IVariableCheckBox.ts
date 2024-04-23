@@ -2,12 +2,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type IVariable = {
+export type IVariableCheckBox = {
     label: string;
     name: string;
-    _type: IVariable._type;
+    _type: IVariableCheckBox._type;
+    defaultValue: boolean;
 };
-export namespace IVariable {
+export namespace IVariableCheckBox {
     export enum _type {
         INPUT = 'input',
         TEXT_AREA = 'textArea',

@@ -5,7 +5,22 @@ import { z } from 'zod'
 import { createApiResponse } from '@/api-docs/openAPIResponseBuilders'
 import { handleServiceResponse } from '@/common/utils/httpHandlers'
 
-import { FullTemplateSchema, FunctionSchema, ObjectSchema, TemplateSchema, UserSchema, VariableSchema } from './template.model'
+import {
+    FullTemplateSchema,
+    FunctionSchema,
+    ObjectSchema,
+    TemplateSchema,
+    URLTypeSchema,
+    UserSchema,
+    VariableCheckBoxSchema,
+    VariableInputSchema,
+    VariableListSchema,
+    VariableObjectSchema,
+    VariableSchema,
+    VariableSelectSchema,
+    VariableTextAreaSchema,
+    VariableTypeSchema,
+} from './template.model'
 import TemplateController from './templates.service'
 
 export const templateRegistry = new OpenAPIRegistry()
@@ -16,6 +31,16 @@ templateRegistry.register('IFunction', FunctionSchema)
 templateRegistry.register('IFullTemplate', FullTemplateSchema)
 templateRegistry.register('IVariable', VariableSchema)
 templateRegistry.register('IObject', ObjectSchema)
+
+templateRegistry.register('IVariableType', VariableTypeSchema)
+templateRegistry.register('IVariableInput', VariableInputSchema)
+templateRegistry.register('IVariableTextArea', VariableTextAreaSchema)
+templateRegistry.register('IVariableCheckBox', VariableCheckBoxSchema)
+templateRegistry.register('IVariableList', VariableListSchema)
+templateRegistry.register('IVariableObject', VariableObjectSchema)
+templateRegistry.register('IVariableSelect', VariableSelectSchema)
+
+templateRegistry.register('IURLType', URLTypeSchema)
 
 export const templateController: Router = (() => {
     const router = express.Router()
