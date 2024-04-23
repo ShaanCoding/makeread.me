@@ -38,50 +38,48 @@ const EditorBlock = ({
   return (
     <Card>
       <CardHeader>
-        <div className="lg:flex lg:items-start lg:justify-between">
-          <div className="mb-2 lg:mb-0">
-            <CardTitle>{block.name}</CardTitle>
-            <CardDescription>{block.description}</CardDescription>
-          </div>
-          <div className="flex items-center justify-start gap-6">
-            <Button
-              variant={"outline"}
-              onClick={() => {
-                moveBlockUp()
-              }}
-            >
-              <ChevronUpIcon className="mr-2" />
-              Up
-            </Button>
-            <Button variant={"outline"} onClick={() => moveBlockDown()}>
-              <ChevronDownIcon className="mr-2" />
-              Down
-            </Button>
-            <Button
-              variant={"outline"}
-              className="text-red-500"
-              onClick={() => deleteBlock()}
-            >
-              <Trash2Icon className="mr-2" />
-              Delete
-            </Button>
-            <Button
-              variant={"outline"}
-              onClick={() => setIsMinimized(!isMinimized)}
-            >
-              {isMinimized ? (
-                <>
-                  <PlusIcon className="mr-2" />
-                  Show
-                </>
-              ) : (
-                <>
-                  <MinusIcon className="mr-2" />
-                  Hide
-                </>
-              )}
-            </Button>
-          </div>
+        <div className="mb-2 lg:mb-4">
+          <CardTitle>{block.name}</CardTitle>
+          <CardDescription>{block.description}</CardDescription>
+        </div>
+        <div className="flex flex-wrap items-center justify-start gap-6">
+          <Button
+            variant={"outline"}
+            onClick={() => {
+              moveBlockUp()
+            }}
+          >
+            <ChevronUpIcon className="mr-2" />
+            Up
+          </Button>
+          <Button variant={"outline"} onClick={() => moveBlockDown()}>
+            <ChevronDownIcon className="mr-2" />
+            Down
+          </Button>
+          <Button
+            variant={"outline"}
+            className="text-red-500"
+            onClick={() => deleteBlock()}
+          >
+            <Trash2Icon className="mr-2" />
+            Delete
+          </Button>
+          <Button
+            variant={"outline"}
+            onClick={() => setIsMinimized(!isMinimized)}
+          >
+            {isMinimized ? (
+              <>
+                <PlusIcon className="mr-2" />
+                Show
+              </>
+            ) : (
+              <>
+                <MinusIcon className="mr-2" />
+                Hide
+              </>
+            )}
+          </Button>
         </div>
       </CardHeader>
       <CardContent className={`${isMinimized ? "hidden" : ""}`}>
