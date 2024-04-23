@@ -1,7 +1,7 @@
-import { IVariable } from "@/api/generated"
+import { IVariable, IVariableSelect } from "@/api/generated"
 import { Control } from "react-hook-form"
 
 export interface IListFieldProps {
-    variables: IVariable
+    variables: IVariableSelect
     control: Control
 }

@@ -11,8 +11,8 @@ import remarkGfm from "remark-gfm"
 
 const Preview = ({ output }: { output: string }) => {
   return (
-    <div className="gap-6 p-6 lg:size-full">
-      <div className="flex-col rounded-lg border border-dashed p-6 shadow-sm lg:size-full">
+    <div className="gap-6 p-6 xl:size-full">
+      <div className="flex-col rounded-lg border border-dashed p-6 shadow-sm xl:size-full">
         <ReactMarkdown
           skipHtml={false}
           rehypePlugins={[rehypeRaw, remarkGfm]}

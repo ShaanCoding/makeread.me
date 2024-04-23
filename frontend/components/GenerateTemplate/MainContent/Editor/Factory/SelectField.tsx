@@ -30,8 +30,8 @@ const SelectField: React.FC<IListFieldProps> = ({ variables, control }) => {
               <SelectValue placeholder={field.name} />
             </SelectTrigger>
             <SelectContent>
-              {variables?.optionsList &&
-                variables.optionsList.map((option, index) => (
+              {variables?.selectList &&
+                variables.selectList.map((option, index) => (
                   <SelectItem value={option.value} key={index}>
                     {option.label}
                   </SelectItem>

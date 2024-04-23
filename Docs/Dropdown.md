@@ -11,7 +11,7 @@
       "name": "exampleSelectList",
       "defaultValue": "example-1",
       "_type": "select",
-      "optionsList": [
+      "selectList": [
         {
           "label": "Example 1",
           "value": "example-1"

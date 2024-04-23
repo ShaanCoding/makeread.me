@@ -21,7 +21,7 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/ShaanCoding",
     linkedin: "https://www.linkedin.com/in/shaancoding/",
-    github: "https://github.com/ShaanCoding/",
+    github: "https://github.com/ShaanCoding/makeread.me",
   },
   footer: {
     title: "makeread.me",
@@ -44,7 +44,7 @@ export const siteConfig = {
     socialMedia: [
       {
         name: "Github",
-        url: "https://github.com/ShaanCoding/",
+        url: "https://github.com/ShaanCoding/makeread.me",
         icon: "/icons/home/social/github.svg",
       },
       {

@@ -10,12 +10,20 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
-export type { IFullTemplate } from './models/IFullTemplate';
+export { IFullTemplate } from './models/IFullTemplate';
 export type { IFunction } from './models/IFunction';
 export type { IObject } from './models/IObject';
-export type { ITemplate } from './models/ITemplate';
-export type { IUser } from './models/IUser';
+export { ITemplate } from './models/ITemplate';
+export { IURLType } from './models/IURLType';
+export { IUser } from './models/IUser';
 export type { IVariable } from './models/IVariable';
+export { IVariableCheckBox } from './models/IVariableCheckBox';
+export { IVariableInput } from './models/IVariableInput';
+export { IVariableList } from './models/IVariableList';
+export { IVariableObject } from './models/IVariableObject';
+export { IVariableSelect } from './models/IVariableSelect';
+export { IVariableTextArea } from './models/IVariableTextArea';
+export { IVariableType } from './models/IVariableType';
 
 export { HealthCheckService } from './services/HealthCheckService';
 export { TemplateService } from './services/TemplateService';
