@@ -16,7 +16,7 @@ export type { IObject } from './models/IObject';
 export { ITemplate } from './models/ITemplate';
 export { IURLType } from './models/IURLType';
 export { IUser } from './models/IUser';
-export { IVariable } from './models/IVariable';
+export type { IVariable } from './models/IVariable';
 export { IVariableCheckBox } from './models/IVariableCheckBox';
 export { IVariableInput } from './models/IVariableInput';
 export { IVariableList } from './models/IVariableList';

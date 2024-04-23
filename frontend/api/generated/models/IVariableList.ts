@@ -5,22 +5,17 @@
 export type IVariableList = {
     label: string;
     name: string;
-    _type: IVariableList._type;
     defaultValue: Array<Record<string, any>>;
     listSchema: Array<{
         label: string;
         name: string;
         _type: string;
     }>;
+    _type: IVariableList._type;
 };
 export namespace IVariableList {
     export enum _type {
-        INPUT = 'input',
-        TEXT_AREA = 'textArea',
-        CHECK_BOX = 'checkBox',
         LIST = 'list',
-        OBJECT = 'object',
-        SELECT = 'select',
     }
 }
 

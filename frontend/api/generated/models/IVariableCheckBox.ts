@@ -5,17 +5,12 @@
 export type IVariableCheckBox = {
     label: string;
     name: string;
-    _type: IVariableCheckBox._type;
     defaultValue: boolean;
+    _type: IVariableCheckBox._type;
 };
 export namespace IVariableCheckBox {
     export enum _type {
-        INPUT = 'input',
-        TEXT_AREA = 'textArea',
         CHECK_BOX = 'checkBox',
-        LIST = 'list',
-        OBJECT = 'object',
-        SELECT = 'select',
     }
 }
 

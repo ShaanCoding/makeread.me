@@ -44,7 +44,6 @@ export type Variable = z.infer<typeof VariableSchema>
 export const VariableSchema = z.object({
     label: z.string(),
     name: z.string(),
-    _type: VariableTypeSchema,
 })
 
 // input
@@ -52,6 +51,7 @@ export type VariableInput = z.infer<typeof VariableInputSchema>
 
 export const VariableInputSchema = VariableSchema.extend({
     defaultValue: z.string(),
+    _type: z.literal('input'),
 })
 
 // textArea
@@ -59,6 +59,7 @@ export type VariableTextArea = z.infer<typeof VariableTextAreaSchema>
 
 export const VariableTextAreaSchema = VariableSchema.extend({
     defaultValue: z.string(),
+    _type: z.literal('textArea'),
 })
 
 // checkBox
@@ -66,6 +67,7 @@ export type VariableCheckBox = z.infer<typeof VariableCheckBoxSchema>
 
 export const VariableCheckBoxSchema = VariableSchema.extend({
     defaultValue: z.boolean(),
+    _type: z.literal('checkBox'),
 })
 
 // list
@@ -74,6 +76,7 @@ export type VariableList = z.infer<typeof VariableListSchema>
 export const VariableListSchema = VariableSchema.extend({
     defaultValue: z.array(z.record(z.any())),
     listSchema: z.array(ObjectSchema),
+    _type: z.literal('list'),
 })
 
 // object
@@ -82,6 +85,7 @@ export type VariableObject = z.infer<typeof VariableObjectSchema>
 export const VariableObjectSchema = VariableSchema.extend({
     defaultValue: z.record(z.any()),
     objectSchema: z.array(ObjectSchema),
+    _type: z.literal('object'),
 })
 
 // select
@@ -89,7 +93,8 @@ export type VariableSelect = z.infer<typeof VariableSelectSchema>
 
 export const VariableSelectSchema = VariableSchema.extend({
     defaultValue: z.string(),
-    optionsList: z.array(z.object({ label: z.string(), value: z.string() })),
+    selectList: z.array(z.object({ label: z.string(), value: z.string() })),
+    _type: z.literal('select'),
 })
 
 export type IFunction = z.infer<typeof FunctionSchema>

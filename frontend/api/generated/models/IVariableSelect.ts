@@ -5,20 +5,15 @@
 export type IVariableSelect = {
     label: string;
     name: string;
-    _type: IVariableSelect._type;
     defaultValue: string;
-    optionsList: Array<{
+    selectList: Array<{
         label: string;
         value: string;
     }>;
+    _type: IVariableSelect._type;
 };
 export namespace IVariableSelect {
     export enum _type {
-        INPUT = 'input',
-        TEXT_AREA = 'textArea',
-        CHECK_BOX = 'checkBox',
-        LIST = 'list',
-        OBJECT = 'object',
         SELECT = 'select',
     }
 }
