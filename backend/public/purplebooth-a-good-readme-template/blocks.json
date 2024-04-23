@@ -30,7 +30,20 @@
     ],
     "featured": false,
     "folder": "purplebooth-a-good-readme-template",
-    "startupBlocks": ["projectHeaderMacro", "gettingStartedMacro", "prerequisitesMacro", "installationMacro", "runningTheTestsMacro", "deploymentMacro", "builtWithMacro", "contributingMacro", "versioningMacro", "authorsMacro", "licenseMacro", "acknowledgmentsMacro"],
+    "startupBlocks": [
+        "projectHeaderMacro",
+        "gettingStartedMacro",
+        "prerequisitesMacro",
+        "installationMacro",
+        "runningTheTestsMacro",
+        "deploymentMacro",
+        "builtWithMacro",
+        "contributingMacro",
+        "versioningMacro",
+        "authorsMacro",
+        "licenseMacro",
+        "acknowledgmentsMacro"
+    ],
     "functions": [
         {
             "name": "Header",
