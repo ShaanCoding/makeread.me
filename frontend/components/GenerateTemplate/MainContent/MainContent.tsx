@@ -59,7 +59,7 @@ const MainContent: React.FC<{
 
   return (
     <div className="flex flex-col">
-      <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+      <main className="flex flex-1 flex-col gap-4 p-4 xl:gap-6 xl:p-6">
         {/* Sub-navbar */}
         <div className="flex items-center justify-end gap-6">
           <CopyButton copiedText={output} />
@@ -67,7 +67,7 @@ const MainContent: React.FC<{
         </div>
 
         {/* Content */}
-        <div className="rounded-lg border border-dashed shadow-sm lg:flex lg:flex-1 lg:items-start lg:justify-center">
+        <div className="rounded-lg border border-dashed shadow-sm xl:flex xl:flex-1 xl:items-start xl:justify-center">
           {/* Place Content Here */}
           <Editor
             templateBlocks={templateBlocks}

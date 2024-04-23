@@ -38,7 +38,7 @@ const EditorBlock = ({
   return (
     <Card>
       <CardHeader>
-        <div className="mb-2 lg:mb-4">
+        <div className="mb-2 xl:mb-4">
           <CardTitle>{block.name}</CardTitle>
           <CardDescription>{block.description}</CardDescription>
         </div>

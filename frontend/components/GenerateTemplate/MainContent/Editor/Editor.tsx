@@ -54,7 +54,7 @@ const Editor = ({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 p-6 lg:w-full">
+    <div className="grid grid-cols-1 gap-6 p-6 xl:w-full">
       <FormProvider {...methods}>
         <form
           onChange={handleSubmit(onSubmit)}
