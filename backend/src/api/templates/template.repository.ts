@@ -1,4 +1,4 @@
-import { Template } from "./template.model"
+import { Template } from './template.model'
 
 export default class TemplateRepository {
     getAllTemplates = (): Template => {
