@@ -53,7 +53,7 @@ export type Variable = z.infer<typeof VariableSchema>
 export const VariableSchema = z.object({
     label: z.string(),
     name: z.string(),
-    defaultValue: z.union([z.string(), z.boolean(), z.array(z.string())]),
+    defaultValue: z.union([z.string(), z.boolean(), z.array(z.string()), z.record(z.any())]),
     // z.enum(['text', 'boolean', 'array']),
     _type: z.string(),
     listSchema: z.array(ObjectSchema).optional(),
