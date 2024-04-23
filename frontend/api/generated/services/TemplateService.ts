@@ -102,6 +102,7 @@ export class TemplateService {
             variables: Array<({
                 label: string;
                 name: string;
+<<<<<<< HEAD
                 description?: string;
                 defaultValue: string;
                 _type: 'input';
@@ -121,6 +122,23 @@ export class TemplateService {
                 label: string;
                 name: string;
                 description?: string;
+=======
+                defaultValue: string;
+                _type: 'input';
+            } | {
+                label: string;
+                name: string;
+                defaultValue: string;
+                _type: 'textArea';
+            } | {
+                label: string;
+                name: string;
+                defaultValue: boolean;
+                _type: 'checkBox';
+            } | {
+                label: string;
+                name: string;
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                 defaultValue: Array<Record<string, any>>;
                 listSchema: Array<{
                     label: string;
@@ -132,7 +150,10 @@ export class TemplateService {
             } | {
                 label: string;
                 name: string;
+<<<<<<< HEAD
                 description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                 defaultValue: Record<string, any>;
                 objectSchema: Array<{
                     label: string;
@@ -144,13 +165,17 @@ export class TemplateService {
             } | {
                 label: string;
                 name: string;
+<<<<<<< HEAD
                 description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                 defaultValue: string;
                 selectList: Array<{
                     label: string;
                     value: string;
                 }>;
                 _type: 'select';
+<<<<<<< HEAD
             } | {
                 label: string;
                 name: string;
@@ -161,6 +186,8 @@ export class TemplateService {
                     value: string;
                 }>;
                 _type: 'radio';
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
             })>;
         }>;
         statusCode: number;
@@ -222,25 +249,37 @@ export class TemplateService {
                 variables: Array<({
                     label: string;
                     name: string;
+<<<<<<< HEAD
                     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                     defaultValue: string;
                     _type: 'input';
                 } | {
                     label: string;
                     name: string;
+<<<<<<< HEAD
                     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                     defaultValue: string;
                     _type: 'textArea';
                 } | {
                     label: string;
                     name: string;
+<<<<<<< HEAD
                     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                     defaultValue: boolean;
                     _type: 'checkBox';
                 } | {
                     label: string;
                     name: string;
+<<<<<<< HEAD
                     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                     defaultValue: Array<Record<string, any>>;
                     listSchema: Array<{
                         label: string;
@@ -252,7 +291,10 @@ export class TemplateService {
                 } | {
                     label: string;
                     name: string;
+<<<<<<< HEAD
                     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                     defaultValue: Record<string, any>;
                     objectSchema: Array<{
                         label: string;
@@ -264,13 +306,17 @@ export class TemplateService {
                 } | {
                     label: string;
                     name: string;
+<<<<<<< HEAD
                     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                     defaultValue: string;
                     selectList: Array<{
                         label: string;
                         value: string;
                     }>;
                     _type: 'select';
+<<<<<<< HEAD
                 } | {
                     label: string;
                     name: string;
@@ -281,6 +327,8 @@ export class TemplateService {
                         value: string;
                     }>;
                     _type: 'radio';
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
                 })>;
             }>;
         }>;

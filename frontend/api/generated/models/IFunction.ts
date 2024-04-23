@@ -9,25 +9,37 @@ export type IFunction = {
     variables: Array<({
         label: string;
         name: string;
+<<<<<<< HEAD
         description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
         defaultValue: string;
         _type: 'input';
     } | {
         label: string;
         name: string;
+<<<<<<< HEAD
         description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
         defaultValue: string;
         _type: 'textArea';
     } | {
         label: string;
         name: string;
+<<<<<<< HEAD
         description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
         defaultValue: boolean;
         _type: 'checkBox';
     } | {
         label: string;
         name: string;
+<<<<<<< HEAD
         description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
         defaultValue: Array<Record<string, any>>;
         listSchema: Array<{
             label: string;
@@ -39,7 +51,10 @@ export type IFunction = {
     } | {
         label: string;
         name: string;
+<<<<<<< HEAD
         description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
         defaultValue: Record<string, any>;
         objectSchema: Array<{
             label: string;
@@ -51,6 +66,7 @@ export type IFunction = {
     } | {
         label: string;
         name: string;
+<<<<<<< HEAD
         description?: string;
         defaultValue: string;
         selectList: Array<{
@@ -68,6 +84,14 @@ export type IFunction = {
             value: string;
         }>;
         _type: 'radio';
+=======
+        defaultValue: string;
+        selectList: Array<{
+            label: string;
+            value: string;
+        }>;
+        _type: 'select';
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
     })>;
 };
 

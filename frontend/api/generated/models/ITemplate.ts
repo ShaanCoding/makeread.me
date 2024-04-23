@@ -40,11 +40,14 @@ export namespace ITemplate {
         LINKED_IN = 'LinkedIn',
         OTHER = 'Other',
     }
+<<<<<<< HEAD
     export enum pageType {
         NONE = 'None',
         READ_ME = 'ReadME',
         CODE_OF_CONDUCT = 'Code of Conduct',
         PRIVACY_POLICY = 'Privacy Policy',
     }
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
 }
 

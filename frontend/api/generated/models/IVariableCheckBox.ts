@@ -5,7 +5,10 @@
 export type IVariableCheckBox = {
     label: string;
     name: string;
+<<<<<<< HEAD
     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
     defaultValue: boolean;
     _type: IVariableCheckBox._type;
 };

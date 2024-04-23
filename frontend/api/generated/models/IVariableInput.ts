@@ -5,7 +5,10 @@
 export type IVariableInput = {
     label: string;
     name: string;
+<<<<<<< HEAD
     description?: string;
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
     defaultValue: string;
     _type: IVariableInput._type;
 };

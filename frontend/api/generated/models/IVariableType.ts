@@ -9,5 +9,8 @@ export enum IVariableType {
     LIST = 'list',
     OBJECT = 'object',
     SELECT = 'select',
+<<<<<<< HEAD
     RADIO = 'radio',
+=======
+>>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
 }
