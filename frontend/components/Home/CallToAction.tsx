@@ -27,6 +27,10 @@ const CallToAction = () => {
           layout="responsive"
           alt="Call To Action - Background"
         />
+        <div
+          className="bg-themeGreen absolute
+          left-[100%] top-[100%] z-[-2] size-[75%] translate-x-[-100%] translate-y-[-100%] rounded-[780px] opacity-80 blur-[350px]"
+        ></div>
       </div>
     </div>
   )

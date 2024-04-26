@@ -4,14 +4,18 @@ import { siteConfig } from "@/config/site"
 
 const Demo = () => {
   return (
-    <div className="my-24 flex w-full items-center justify-center">
+    <div className="my-24 flex w-full items-center justify-center relative">
       <Image
-        className="size-full"
+        className="h-full lg:w-3/4"
         width={1920}
         height={1080}
         src={siteConfig.homePage.demo}
         alt="Demo"
       />
+      <div
+        className="bg-themeGreen absolute
+          left-[50%] top-[75%] z-[-1] size-[75%] translate-x-[-50%] translate-y-[-50%] rounded-[780px] opacity-80 blur-[350px]"
+      ></div>
     </div>
   )
 }
