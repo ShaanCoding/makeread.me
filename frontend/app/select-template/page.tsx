@@ -10,7 +10,7 @@ export default function IndexPage() {
 
   useEffect(() => {
     ;(async () => {
-      const templateService: ITemplate[] | undefined = await (
+      const templateService: any[] | undefined = await (
         await new readMeGenerator().template.getTemplate()
       ).responseObject
 
