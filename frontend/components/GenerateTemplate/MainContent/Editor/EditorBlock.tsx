@@ -49,7 +49,7 @@ const EditorBlock = ({
   return (
     <Card
       id="editor-block"
-      className={`p-4 cursor-pointer transition-transform duration-300 transform ${
+      className={`p-4 transition-transform duration-300 transform ${
         !isTransitionDown && !isTransitionUp && "hover:scale-[1.02]"
       }
       `}
