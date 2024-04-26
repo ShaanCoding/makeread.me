@@ -28,7 +28,7 @@ const TopThreeTemplates = () => {
         <h2 className="text-themeGreen font-semibold">Try them out!</h2>
         <h1 className="text-6xl font-bold text-white">Featured Templates</h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-6 lg:grid-cols-3">
         {template.map((template: ITemplate, index: number) => (
           <Card {...template} key={index} />
         ))}
