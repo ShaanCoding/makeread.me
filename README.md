@@ -94,7 +94,7 @@ Now you are ready to use Yarn for managing and versioning your project dependenc
 
 Please follow the following steps for successful installation:
 
-1. **Clone the Repository:** Get started by cloning the repository to your local machine.
+1. **Fork the Repository:** Get started by forking the repository to your local machine.
 
    ```
    https://github.com/ShaanCoding/makeread.me
