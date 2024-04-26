@@ -17,7 +17,7 @@ const GeneratorSideBar: React.FC<{
       )
 
       if (request.success && request.responseObject) {
-        const data: IFullTemplate[] = request.responseObject
+        const data: IFullTemplate[] = request.responseObject as IFullTemplate[]
         setBlocks(data)
       }
     })()

@@ -83,7 +83,7 @@ const EditorBlock = ({
         </div>
       </CardHeader>
       <CardContent className={`${isMinimized ? "hidden" : ""}`}>
-        {block.variables.map((variables: IVariable, index: number) => {
+        {block.variables.map((variables: any, index: number) => {
           return (
             <InputGenerator
               key={variables.name}

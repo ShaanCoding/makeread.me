@@ -8,9 +8,9 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-import { IListFieldProps } from "./types"
+import { ISelectFieldProps } from "./types"
 
-const SelectField: React.FC<IListFieldProps> = ({ variables, control }) => {
+const SelectField: React.FC<ISelectFieldProps> = ({ variables, control }) => {
   return (
     <Controller
       control={control}

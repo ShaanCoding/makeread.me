@@ -1,4 +1,12 @@
-import { IVariable } from "@/api/generated"
+import {
+  IVariable,
+  IVariableCheckBox,
+  IVariableInput,
+  IVariableList,
+  IVariableObject,
+  IVariableSelect,
+  IVariableTextArea,
+} from "@/api/generated"
 import { Control, useFieldArray } from "react-hook-form"
 
 import CheckBoxField from "./CheckboxField"
@@ -9,7 +17,15 @@ import SelectField from "./SelectField"
 import TextField from "./TextField"
 
 const InputGenerator: React.FC<{
-  variables: IVariable
+  variables: IVariable &
+    (
+      | IVariableCheckBox
+      | IVariableInput
+      | IVariableList
+      | IVariableObject
+      | IVariableSelect
+      | IVariableTextArea
+    )
   // register: UseFormRegister<any>
   control: Control<any>
 }> = ({ variables, control }) => {
