@@ -5,26 +5,32 @@ import { siteConfig } from "@/config/site"
 
 const KeyFeatures = () => {
   return (
-    <div className="my-5">
-      <div className="mb-12 text-center">
-        <h2 className="text-themeGreen font-semibold">Features</h2>
-        <h1 className="text-6xl font-bold text-white">Key Features</h1>
-      </div>
+    <div className="my-5 relative">
+      <div>
+        <div className="mb-12 text-center">
+          <h2 className="text-themeGreen font-semibold">Features</h2>
+          <h1 className="text-6xl font-bold text-white">Key Features</h1>
+        </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {siteConfig.homePage.keyFeatures.map(
-          (feature: IFeatureGridElement, index: number) => {
-            return (
-              <FeatureGridElement
-                image={feature.image}
-                title={feature.title}
-                description={feature.description}
-                key={index}
-              />
-            )
-          }
-        )}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {siteConfig.homePage.keyFeatures.map(
+            (feature: IFeatureGridElement, index: number) => {
+              return (
+                <FeatureGridElement
+                  image={feature.image}
+                  title={feature.title}
+                  description={feature.description}
+                  key={index}
+                />
+              )
+            }
+          )}
+        </div>
       </div>
+      <div
+        className="bg-themeGreen absolute
+          left-[50%] top-[50%] z-[-1] size-[75%] translate-x-[-50%] translate-y-[-50%] rounded-[780px] opacity-45 blur-[350px]"
+      ></div>
     </div>
   )
 }

@@ -6,9 +6,9 @@ import { Button } from "../ui/button"
 
 const Splashscreen = () => {
   return (
-    <div className="my-12 flex w-full items-center justify-between">
+    <div className="relative my-12 flex w-full items-center justify-between">
       <div className="lg:flex lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-12">
-        <div className="pb-12 lg:pb-0 lg:flex lg:w-1/3 xl:w-1/2 lg:flex lg:items-start lg:justify-end">
+        <div className="pb-12 lg:flex lg:w-1/3 lg:items-start lg:justify-end lg:pb-0 xl:w-1/2">
           <img
             className="w-full lg:h-[496px] lg:w-auto"
             src="/icons/hero.svg"
@@ -19,7 +19,7 @@ const Splashscreen = () => {
           <h2 className="pb-2 text-xl font-semibold">
             {siteConfig.homePage.splashScreen.subtitle}
           </h2>
-          <h1 className="pb-6 text-4xl font-bold md:text-6xl 2xl:text-8xl text-white">
+          <h1 className="pb-6 text-4xl font-bold text-white md:text-6xl 2xl:text-8xl">
             {siteConfig.homePage.splashScreen.title}
           </h1>
           <p className="mb-6">{siteConfig.homePage.splashScreen.description}</p>
@@ -30,6 +30,10 @@ const Splashscreen = () => {
           </Link>
         </div>
       </div>
+      <div
+        className="bg-themeGreen absolute
+          left-[10%] top-0 z-[-1] size-full translate-x-[-50%] translate-y-[-50%] rounded-[780px] opacity-80 blur-[350px]"
+      ></div>
     </div>
   )
 }
