@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { IFunction } from "@/api/generated"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
@@ -31,20 +31,26 @@ const Editor = ({
 
   const moveBlockUp = (index: number) => {
     if (index === 0) return
-    const newBlocks = [...templateBlocks]
-    const temp = newBlocks[index]
-    newBlocks[index] = newBlocks[index - 1]
-    newBlocks[index - 1] = temp
-    setTemplateBlocks(newBlocks)
+    fadeOutOnClick([index, index - 1])
+    setTimeout(() => {
+      const newBlocks = [...templateBlocks]
+      const temp = newBlocks[index]
+      newBlocks[index] = newBlocks[index - 1]
+      newBlocks[index - 1] = temp
+      setTemplateBlocks(newBlocks)
+    }, 250)
   }
 
   const moveBlockDown = (index: number) => {
     if (index === templateBlocks.length - 1) return
-    const newBlocks = [...templateBlocks]
-    const temp = newBlocks[index]
-    newBlocks[index] = newBlocks[index + 1]
-    newBlocks[index + 1] = temp
-    setTemplateBlocks(newBlocks)
+    fadeOutOnClick([index + 1, index])
+    setTimeout(() => {
+      const newBlocks = [...templateBlocks]
+      const temp = newBlocks[index]
+      newBlocks[index] = newBlocks[index + 1]
+      newBlocks[index + 1] = temp
+      setTemplateBlocks(newBlocks)
+    }, 250)
   }
 
   const deleteBlock = (index: number) => {
@@ -52,6 +58,15 @@ const Editor = ({
     newBlocks.splice(index, 1)
     setTemplateBlocks(newBlocks)
   }
+
+  const fadeOutOnClick = (index: number[]) => {
+    setTransitionIndex(index)
+    setTimeout(() => {
+      setTransitionIndex([])
+    }, 100)
+  }
+
+  const [transitionIndex, setTransitionIndex] = useState<number[]>([])
 
   return (
     <div className="grid grid-cols-1 gap-6 p-6 xl:w-full">
@@ -63,6 +78,8 @@ const Editor = ({
         >
           {templateBlocks.map((block: IFunction, index: number) => (
             <EditorBlock
+              isTransitionUp={transitionIndex[0] === index}
+              isTransitionDown={transitionIndex[1] === index}
               block={block}
               moveBlockUp={() => moveBlockUp(index)}
               moveBlockDown={() => moveBlockDown(index)}
