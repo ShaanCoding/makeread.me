@@ -114,12 +114,7 @@ const EditorBlock = ({
         </div>
       </CardHeader>
       <CardContent className={`${isMinimized ? "hidden" : ""}`}>
-<<<<<<< HEAD
         {block.variables.map((variables: any, index: number) => {
-=======
-        {block.variables.map((variables: IVariable, index: number) => {
-          console.log(variables)
->>>>>>> 225fbe4 (feat: transition between two card changing position)
           return (
             <InputGenerator
               key={variables.name}
