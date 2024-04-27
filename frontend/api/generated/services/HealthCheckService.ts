@@ -10,7 +10,7 @@ export class HealthCheckService {
      * @returns any Success
      * @throws ApiError
      */
-    public getHealthCheck(): CancelablePromise<{
+    public getV1HealthCheck(): CancelablePromise<{
         success: boolean;
         message: string;
         responseObject?: any;
@@ -18,7 +18,7 @@ export class HealthCheckService {
     }> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/health-check',
+            url: '/v1/health-check',
         });
     }
 }
