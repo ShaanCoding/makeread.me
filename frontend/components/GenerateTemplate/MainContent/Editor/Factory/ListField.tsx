@@ -1,4 +1,12 @@
 import { useEffect } from "react"
+import {
+  IVariableCheckBox,
+  IVariableInput,
+  IVariableList,
+  IVariableObject,
+  IVariableSelect,
+  IVariableTextArea,
+} from "@/api/generated"
 import { useFieldArray } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
@@ -31,16 +39,20 @@ const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {
             {variables.listSchema &&
               variables.listSchema.map((schema, subIndex) => {
                 let defaultValue: any =
-                  variables.defaultValue?.[
-                    index as keyof typeof variables.defaultValue
-                  ]?.[schema.name] ?? ""
+                  (
+                    variables.defaultValue?.[
+                      index as keyof typeof variables.defaultValue
+                    ] as Record<string, any>
+                  )?.[schema.name] ?? ""
 
                 return (
                   <InputGenerator
                     variables={{
                       name: `${variables.name}[${index}].${schema.name}`,
-                      defaultValue: defaultValue as string | boolean | string[],
-                      _type: schema._type,
+                      defaultValue: defaultValue,
+                      _type: schema._type as
+                        | IVariableTextArea._type
+                        | IVariableInput._type,
                       label: schema.label,
                     }}
                     control={control}

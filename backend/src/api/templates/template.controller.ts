@@ -47,7 +47,7 @@ export const templateController: Router = (() => {
 
     templateRegistry.registerPath({
         method: 'get',
-        path: '/template',
+        path: '/v1/template',
         tags: ['Template'],
         responses: createApiResponse(z.array(TemplateSchema), 'Success'),
     })
@@ -81,7 +81,7 @@ export const templateController: Router = (() => {
 
     templateRegistry.registerPath({
         method: 'get',
-        path: '/template/{id}/index',
+        path: '/v1/template/{id}/index',
         tags: ['Template'],
         parameters: [
             {
@@ -105,7 +105,7 @@ export const templateController: Router = (() => {
 
     templateRegistry.registerPath({
         method: 'get',
-        path: '/template/{id}/sidebar',
+        path: '/v1/template/{id}/sidebar',
         tags: ['Template'],
         parameters: [
             {
@@ -133,7 +133,7 @@ export const templateController: Router = (() => {
 
     templateRegistry.registerPath({
         method: 'get',
-        path: '/template/{id}/macros',
+        path: '/v1/template/{id}/macros',
         tags: ['Template'],
         parameters: [
             {

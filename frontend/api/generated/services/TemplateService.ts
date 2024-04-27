@@ -10,7 +10,7 @@ export class TemplateService {
      * @returns any Success
      * @throws ApiError
      */
-    public getTemplate(): CancelablePromise<{
+    public getV1Template(): CancelablePromise<{
         success: boolean;
         message: string;
         responseObject?: Array<{
@@ -45,7 +45,7 @@ export class TemplateService {
     }> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/template',
+            url: '/v1/template',
         });
     }
     /**
@@ -53,7 +53,7 @@ export class TemplateService {
      * @returns any Success
      * @throws ApiError
      */
-    public getTemplateIndex(
+    public getV1TemplateIndex(
         id: string,
     ): CancelablePromise<{
         success: boolean;
@@ -112,7 +112,7 @@ export class TemplateService {
     }> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/template/{id}/index',
+            url: '/v1/template/{id}/index',
             path: {
                 'id': id,
             },
@@ -123,7 +123,7 @@ export class TemplateService {
      * @returns any Success
      * @throws ApiError
      */
-    public getTemplateSidebar(
+    public getV1TemplateSidebar(
         id: string,
     ): CancelablePromise<{
         success: boolean;
@@ -210,7 +210,7 @@ export class TemplateService {
     }> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/template/{id}/sidebar',
+            url: '/v1/template/{id}/sidebar',
             path: {
                 'id': id,
             },
@@ -221,7 +221,7 @@ export class TemplateService {
      * @returns any Success
      * @throws ApiError
      */
-    public getTemplateMacros(
+    public getV1TemplateMacros(
         id: string,
     ): CancelablePromise<{
         success: boolean;
@@ -231,7 +231,7 @@ export class TemplateService {
     }> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/template/{id}/macros',
+            url: '/v1/template/{id}/macros',
             path: {
                 'id': id,
             },

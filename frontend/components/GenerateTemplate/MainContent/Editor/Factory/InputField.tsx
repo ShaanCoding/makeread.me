@@ -2,9 +2,9 @@ import { Controller } from "react-hook-form"
 
 import { Input } from "@/components/ui/input"
 
-import { IListFieldProps } from "./types"
+import { IInputFieldProps } from "./types"
 
-const InputField: React.FC<IListFieldProps> = ({ variables, control }) => {
+const InputField: React.FC<IInputFieldProps> = ({ variables, control }) => {
   return (
     <Controller
       control={control}

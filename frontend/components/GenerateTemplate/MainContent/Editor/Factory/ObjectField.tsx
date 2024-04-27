@@ -1,7 +1,17 @@
-import InputGenerator from "./InputGenerator"
-import { IListFieldProps } from "./types"
+import {
+  IVariableCheckBox,
+  IVariableInput,
+  IVariableList,
+  IVariableObject,
+  IVariableSelect,
+  IVariableTextArea,
+  IVariableType,
+} from "@/api/generated"
 
-const ObjectField: React.FC<IListFieldProps> = ({ variables, control }) => {
+import InputGenerator from "./InputGenerator"
+import { IObjectFieldProps } from "./types"
+
+const ObjectField: React.FC<IObjectFieldProps> = ({ variables, control }) => {
   return (
     <div className="pb-4">
       <h4 className="pb-2 font-semibold">{variables.label}</h4>
@@ -18,8 +28,10 @@ const ObjectField: React.FC<IListFieldProps> = ({ variables, control }) => {
               <InputGenerator
                 variables={{
                   name: `${variables.name}.${schema.name}`,
-                  defaultValue: defaultValue as string | boolean | string[],
-                  _type: schema._type,
+                  defaultValue: defaultValue,
+                  _type: schema._type as
+                    | IVariableInput._type
+                    | IVariableTextArea._type,
                   label: schema.label,
                 }}
                 control={control}

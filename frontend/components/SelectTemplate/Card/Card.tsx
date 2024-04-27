@@ -25,7 +25,7 @@ export const Card: React.FC<Omit<ITemplate, "functions" | "image">> = ({
   tags,
 }) => {
   return (
-    <UICard>
+    <UICard className="bg-card/35">
       <CardHeader title={title} author={author} featured={featured} />
       <CardContent>
         <CardDescriptions description={description} />
