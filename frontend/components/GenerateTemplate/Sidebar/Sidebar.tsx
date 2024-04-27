@@ -12,7 +12,7 @@ const GeneratorSideBar: React.FC<{
 
   useEffect(() => {
     ;(async () => {
-      let request = await new readMeGenerator().template.getTemplateSidebar(
+      let request = await new readMeGenerator().template.getV1TemplateSidebar(
         templateId
       )
 
