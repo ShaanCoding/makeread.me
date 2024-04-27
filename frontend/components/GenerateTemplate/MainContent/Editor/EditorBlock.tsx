@@ -49,8 +49,11 @@ const EditorBlock = ({
   return (
     <Card
       id="editor-block"
-      className={`p-4 transition-transform duration-300 transform ${
-        !isTransitionDown && !isTransitionUp && "hover:scale-[1.02]"
+      className={`group px-3 py-1 p-0 transition-transform duration-300 transform ${
+        !isTransitionDown &&
+        !isTransitionUp &&
+        isMinimized &&
+        "hover:scale-[1.02]"
       }
       `}
       style={
@@ -62,51 +65,55 @@ const EditorBlock = ({
       }
     >
       <CardHeader>
-        <div className="mb-2 xl:mb-4">
+        <div>
           <CardTitle>{block.name}</CardTitle>
           <CardDescription>{block.description}</CardDescription>
         </div>
-        <div className="flex flex-wrap items-center justify-start gap-6">
+        <div className="invisible group-hover:visible flex flex-wrap items-center justify-start gap-1">
           <Button
             variant={"outline"}
+            size={"sx"}
             onClick={() => {
               moveBlockUp()
               setIsMinimized(true)
             }}
           >
-            <ChevronUpIcon className="mr-2" />
+            <ChevronUpIcon className="mr-1 w-5" />
             Up
           </Button>
           <Button
             variant={"outline"}
+            size={"sx"}
             onClick={() => {
               moveBlockDown()
               setIsMinimized(true)
             }}
           >
-            <ChevronDownIcon className="mr-2" />
+            <ChevronDownIcon className="mr-1 w-5" />
             Down
           </Button>
           <Button
             variant={"outline"}
+            size={"sx"}
             className="text-red-500"
             onClick={() => deleteBlock()}
           >
-            <Trash2Icon className="mr-2" />
+            <Trash2Icon className="mr-1 w-5" />
             Delete
           </Button>
           <Button
             variant={"outline"}
+            size={"sx"}
             onClick={() => setIsMinimized(!isMinimized)}
           >
             {isMinimized ? (
               <>
-                <PlusIcon className="mr-2" />
+                <PlusIcon className="mr-1 w-5" />
                 Show
               </>
             ) : (
               <>
-                <MinusIcon className="mr-2" />
+                <MinusIcon className="mr-1 w-5" />
                 Hide
               </>
             )}
