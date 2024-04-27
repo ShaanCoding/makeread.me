@@ -113,7 +113,9 @@ export const FunctionSchema = z.object({
     name: z.string(),
     description: z.string(),
     function: z.string(),
-    variables: z.array(z.union([VariableInputSchema, VariableTextAreaSchema, VariableCheckBoxSchema, VariableListSchema, VariableObjectSchema, VariableSelectSchema])),
+    variables: z.array(
+        z.union([VariableInputSchema, VariableTextAreaSchema, VariableCheckBoxSchema, VariableListSchema, VariableObjectSchema, VariableSelectSchema, VariableRadioSchema])
+    ),
 })
 
 export type Template = z.infer<typeof TemplateSchema>

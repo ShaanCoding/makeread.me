@@ -4,6 +4,7 @@ import {
   IVariableInput,
   IVariableList,
   IVariableObject,
+  IVariableRadio,
   IVariableSelect,
   IVariableTextArea,
 } from "@/api/generated"
@@ -13,6 +14,7 @@ import CheckBoxField from "./CheckboxField"
 import InputField from "./InputField"
 import ListField from "./ListField"
 import ObjectField from "./ObjectField"
+import RadioField from "./RadioField"
 import SelectField from "./SelectField"
 import TextField from "./TextField"
 
@@ -25,6 +27,7 @@ const InputGenerator: React.FC<{
       | IVariableObject
       | IVariableSelect
       | IVariableTextArea
+      | IVariableRadio
     )
   // register: UseFormRegister<any>
   control: Control<any>
@@ -50,6 +53,8 @@ const InputGenerator: React.FC<{
       return <ObjectField variables={variables} control={control} />
     case "select":
       return <SelectField variables={variables} control={control} />
+    case "radio":
+      return <RadioField variables={variables} control={control} />
     default:
       return (
         <h1 className="pb-2 font-semibold text-red-600">
