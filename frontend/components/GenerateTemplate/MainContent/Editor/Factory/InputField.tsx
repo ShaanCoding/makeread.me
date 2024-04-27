@@ -2,6 +2,7 @@ import { Controller } from "react-hook-form"
 
 import { Input } from "@/components/ui/input"
 
+import ContextTitle from "./ContextTitle"
 import { IInputFieldProps } from "./types"
 
 const InputField: React.FC<IInputFieldProps> = ({ variables, control }) => {
@@ -12,7 +13,7 @@ const InputField: React.FC<IInputFieldProps> = ({ variables, control }) => {
       defaultValue={variables.defaultValue as string}
       render={({ field }) => (
         <div className="w-full pb-4">
-          <h4 className="pb-2 font-semibold">{variables.label}</h4>
+          <ContextTitle title={variables.label} description={variables.label} />
           <Input {...field} name={variables.name} />
         </div>
       )}

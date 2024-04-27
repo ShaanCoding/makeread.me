@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+import ContextTitle from "./ContextTitle"
 import { ISelectFieldProps } from "./types"
 
 const SelectField: React.FC<ISelectFieldProps> = ({ variables, control }) => {
@@ -18,7 +19,7 @@ const SelectField: React.FC<ISelectFieldProps> = ({ variables, control }) => {
       defaultValue={variables.defaultValue as string}
       render={({ field }) => (
         <div className="w-full pb-4">
-          <h4 className="pb-2 font-semibold">{variables.label}</h4>
+          <ContextTitle title={variables.label} description={variables.label} />
           <Select
             {...field}
             name={variables.name}
