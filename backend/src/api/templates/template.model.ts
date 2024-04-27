@@ -25,19 +25,20 @@ export const TagSchema = z.object({
     url: z.string(),
 })
 
+export type VariableType = z.infer<typeof VariableTypeSchema>
+
+export const VariableTypeSchema = z.enum(['input', 'textArea', 'checkBox', 'list', 'object', 'select', 'radio'])
+
+// object
 export type Object = z.infer<typeof ObjectSchema>
 
 export const ObjectSchema = z
     .object({
         label: z.string(),
         name: z.string(),
-        _type: z.string(),
+        _type: VariableTypeSchema,
     })
     .optional()
-
-export type VariableType = z.infer<typeof VariableTypeSchema>
-
-export const VariableTypeSchema = z.enum(['input', 'textArea', 'checkBox', 'list', 'object', 'select'])
 
 export type Variable = z.infer<typeof VariableSchema>
 
@@ -95,6 +96,15 @@ export const VariableSelectSchema = VariableSchema.extend({
     defaultValue: z.string(),
     selectList: z.array(z.object({ label: z.string(), value: z.string() })),
     _type: z.literal('select'),
+})
+
+// radio
+export type VariableRadio = z.infer<typeof VariableRadioSchema>
+
+export const VariableRadioSchema = VariableSchema.extend({
+    defaultValue: z.string(),
+    radioList: z.array(z.object({ label: z.string(), value: z.string() })),
+    _type: z.literal('radio'),
 })
 
 export type IFunction = z.infer<typeof FunctionSchema>

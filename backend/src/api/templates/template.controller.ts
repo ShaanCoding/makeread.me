@@ -16,6 +16,7 @@ import {
     VariableInputSchema,
     VariableListSchema,
     VariableObjectSchema,
+    VariableRadioSchema,
     VariableSchema,
     VariableSelectSchema,
     VariableTextAreaSchema,
@@ -39,6 +40,7 @@ templateRegistry.register('IVariableCheckBox', VariableCheckBoxSchema)
 templateRegistry.register('IVariableList', VariableListSchema)
 templateRegistry.register('IVariableObject', VariableObjectSchema)
 templateRegistry.register('IVariableSelect', VariableSelectSchema)
+templateRegistry.register('IVariableRadio', VariableRadioSchema)
 
 templateRegistry.register('IURLType', URLTypeSchema)
 

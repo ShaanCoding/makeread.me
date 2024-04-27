@@ -84,7 +84,7 @@ export class TemplateService {
                 listSchema: Array<{
                     label: string;
                     name: string;
-                    _type: string;
+                    _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                 }>;
                 _type: 'list';
             } | {
@@ -94,7 +94,7 @@ export class TemplateService {
                 objectSchema: Array<{
                     label: string;
                     name: string;
-                    _type: string;
+                    _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                 }>;
                 _type: 'object';
             } | {
@@ -181,7 +181,7 @@ export class TemplateService {
                     listSchema: Array<{
                         label: string;
                         name: string;
-                        _type: string;
+                        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                     }>;
                     _type: 'list';
                 } | {
@@ -191,7 +191,7 @@ export class TemplateService {
                     objectSchema: Array<{
                         label: string;
                         name: string;
-                        _type: string;
+                        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                     }>;
                     _type: 'object';
                 } | {
