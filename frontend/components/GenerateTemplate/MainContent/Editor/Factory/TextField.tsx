@@ -2,9 +2,9 @@ import { Controller } from "react-hook-form"
 
 import { AutosizeTextarea } from "@/components/ui/autosize-textarea"
 
-import { IListFieldProps } from "./types"
+import { ITextFieldProps } from "./types"
 
-const TextField: React.FC<IListFieldProps> = ({ variables, control }) => {
+const TextField: React.FC<ITextFieldProps> = ({ variables, control }) => {
   return (
     <Controller
       control={control}

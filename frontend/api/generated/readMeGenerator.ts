@@ -14,7 +14,7 @@ export class readMeGenerator {
     public readonly request: BaseHttpRequest;
     constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = FetchHttpRequest) {
         this.request = new HttpRequest({
-            BASE: config?.BASE ?? 'https://readme-generator-backend-production.up.railway.app/api',
+            BASE: config?.BASE ?? 'https://api.makeread.me',
             VERSION: config?.VERSION ?? '1.0.0',
             WITH_CREDENTIALS: config?.WITH_CREDENTIALS ?? false,
             CREDENTIALS: config?.CREDENTIALS ?? 'include',

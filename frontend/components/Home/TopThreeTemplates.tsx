@@ -5,7 +5,7 @@ import { ITemplate, readMeGenerator } from "@/api/generated"
 
 import Card from "@/components/SelectTemplate/Card"
 
-export default function IndexPage() {
+const TopThreeTemplates = () => {
   const [template, setTemplates] = useState<ITemplate[]>([])
 
   useEffect(() => {
@@ -18,17 +18,23 @@ export default function IndexPage() {
         return
       }
 
-      setTemplates(templateService)
+      setTemplates(templateService.slice(0, 3))
     })()
   }, [])
 
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <div>
+      <div className="mb-12 text-center">
+        <h2 className="text-themeGreen font-semibold">Try them out!</h2>
+        <h1 className="text-6xl font-bold text-white">Featured Templates</h1>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-6 lg:grid-cols-3">
         {template.map((template: ITemplate, index: number) => (
           <Card {...template} key={index} />
         ))}
       </div>
-    </section>
+    </div>
   )
 }
+
+export default TopThreeTemplates
