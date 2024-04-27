@@ -24,8 +24,8 @@ app.use(cors())
 app.set('port', PORT!)
 
 // Primary app routes
-app.use('/api/health-check', healthCheckRouter)
-app.use('/api/template', templateController)
+app.use('/v1/health-check', healthCheckRouter)
+app.use('/v1/template', templateController)
 
 // Swagger UI
 app.use(openAPIRouter)
