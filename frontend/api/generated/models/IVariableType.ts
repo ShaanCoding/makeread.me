@@ -9,4 +9,5 @@ export enum IVariableType {
     LIST = 'list',
     OBJECT = 'object',
     SELECT = 'select',
+    RADIO = 'radio',
 }

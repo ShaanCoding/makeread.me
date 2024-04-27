@@ -9,7 +9,7 @@ export type IVariableList = {
     listSchema: Array<{
         label: string;
         name: string;
-        _type: string;
+        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
     }>;
     _type: IVariableList._type;
 };
