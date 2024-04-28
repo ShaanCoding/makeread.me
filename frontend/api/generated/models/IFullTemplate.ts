@@ -29,6 +29,7 @@ export type IFullTemplate = {
     }>;
     featured: boolean;
     folder: string;
+    pageType: IFullTemplate.pageType;
     functions: Array<{
         name: string;
         description: string;
@@ -97,6 +98,12 @@ export namespace IFullTemplate {
         GITHUB = 'Github',
         LINKED_IN = 'LinkedIn',
         OTHER = 'Other',
+    }
+    export enum pageType {
+        NONE = 'None',
+        READ_ME = 'ReadME',
+        CODE_OF_CONDUCT = 'Code of Conduct',
+        PRIVACY_POLICY = 'Privacy Policy',
     }
 }
 

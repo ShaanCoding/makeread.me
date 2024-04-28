@@ -38,6 +38,7 @@ const templateHeadData: Template = {
     ],
     featured: false,
     folder: 'purplebooth-a-good-readme-template',
+    pageType: 'ReadME',
     startupBlocks: [
         'projectHeaderMacro',
         'gettingStartedMacro',

@@ -7,10 +7,17 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class TemplateService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
+     * @param search
+     * @param filter
+     * @param pageType
      * @returns any Success
      * @throws ApiError
      */
-    public getV1Template(): CancelablePromise<{
+    public getV1Template(
+        search?: string,
+        filter?: Array<string>,
+        pageType?: string,
+    ): CancelablePromise<{
         success: boolean;
         message: string;
         responseObject?: Array<{
@@ -40,12 +47,42 @@ export class TemplateService {
             }>;
             featured: boolean;
             folder: string;
+            pageType: 'None' | 'ReadME' | 'Code of Conduct' | 'Privacy Policy';
         }>;
         statusCode: number;
     }> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/v1/template',
+            query: {
+                'search': search,
+                'filter': filter,
+                'pageType': pageType,
+            },
+        });
+    }
+    /**
+     * @param id
+     * @returns any Success
+     * @throws ApiError
+     */
+    public getV1TemplateGetAllSidebar(
+        id: string,
+    ): CancelablePromise<{
+        success: boolean;
+        message: string;
+        responseObject?: Array<{
+            label: string;
+            value: string;
+        }>;
+        statusCode: number;
+    }> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/v1/template/{id}/getAllSidebar',
+            path: {
+                'id': id,
+            },
         });
     }
     /**
@@ -168,6 +205,7 @@ export class TemplateService {
             }>;
             featured: boolean;
             folder: string;
+            pageType: 'None' | 'ReadME' | 'Code of Conduct' | 'Privacy Policy';
             functions: Array<{
                 name: string;
                 description: string;
