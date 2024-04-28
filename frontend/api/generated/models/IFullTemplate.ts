@@ -77,6 +77,15 @@ export type IFullTemplate = {
                 value: string;
             }>;
             _type: 'select';
+        } | {
+            label: string;
+            name: string;
+            defaultValue: string;
+            radioList: Array<{
+                label: string;
+                value: string;
+            }>;
+            _type: 'radio';
         })>;
     }>;
 };

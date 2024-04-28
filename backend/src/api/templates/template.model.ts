@@ -140,3 +140,10 @@ export const FullTemplateSchema = z.object({
     ...TemplateSchema.shape,
     functions: z.array(FunctionSchema),
 })
+
+export type SideBarOptions = z.infer<typeof SideBarOptionsSchema>
+
+export const SideBarOptionsSchema = z.object({
+    label: z.string(),
+    value: z.string(),
+})
