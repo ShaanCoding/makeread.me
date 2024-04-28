@@ -9,6 +9,7 @@ import {
     FullTemplateSchema,
     FunctionSchema,
     ObjectSchema,
+    PageTypeSchema,
     SideBarOptionsSchema,
     TemplateSchema,
     URLTypeSchema,
@@ -45,6 +46,7 @@ templateRegistry.register('IVariableRadio', VariableRadioSchema)
 
 templateRegistry.register('IURLType', URLTypeSchema)
 templateRegistry.register('ISideBarOptions', SideBarOptionsSchema)
+templateRegistry.register('IPageType', PageTypeSchema)
 
 export const templateController: Router = (() => {
     const router = express.Router()
@@ -53,6 +55,35 @@ export const templateController: Router = (() => {
         method: 'get',
         path: '/v1/template',
         tags: ['Template'],
+        parameters: [
+            {
+                name: 'search',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'string',
+                },
+            },
+            {
+                name: 'filter',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                    },
+                },
+            },
+            {
+                name: 'pageType',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'string',
+                },
+            },
+        ],
         responses: createApiResponse(z.array(TemplateSchema), 'Success'),
     })
 
@@ -64,8 +95,43 @@ export const templateController: Router = (() => {
     // TODO: Sort by featured as first
 
     router.get('/', async (req: Request, res: Response) => {
+        const search: string = req.query.search || ''
+        const filter: string[] = req.query.filter || []
+        const pageType: string = req.query.pageType || []
+
+        console.log({ search, filter, pageType })
+
         const controller = new TemplateController()
-        const serviceResponse = await controller.getAllTemplates()
+        const serviceResponse = await controller.getAllTemplates(search, filter, pageType)
+
+        handleServiceResponse(serviceResponse, res)
+    })
+
+    // we want to get all categories for all templates & page types
+    templateRegistry.registerPath({
+        method: 'get',
+        path: '/v1/template/{id}/getAllSidebar',
+        tags: ['Template'],
+        parameters: [
+            {
+                name: 'id',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'string',
+                },
+            },
+        ],
+        responses: createApiResponse(z.array(SideBarOptionsSchema), 'Success'),
+    })
+
+    /*
+     * @route GET /api/sidebar
+     * @desc Get all categories for all templates & page types
+     */
+    router.get('/:id/getAllSidebar', async (req: Request, res: Response) => {
+        const controller = new TemplateController()
+        const serviceResponse = await controller.getAllSidebar()
 
         handleServiceResponse(serviceResponse, res)
     })
@@ -156,7 +222,6 @@ export const templateController: Router = (() => {
         const queryFilter = req.query.filter || []
 
         console.table({ paramId, querySearch, queryFilter })
-        
 
         const serviceResponse = await controller.getTemplateSidebar(paramId, querySearch, queryFilter)
 

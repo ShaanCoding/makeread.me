@@ -29,6 +29,7 @@ export type ITemplate = {
     }>;
     featured: boolean;
     folder: string;
+    pageType: ITemplate.pageType;
 };
 export namespace ITemplate {
     export enum _type {
@@ -38,6 +39,12 @@ export namespace ITemplate {
         GITHUB = 'Github',
         LINKED_IN = 'LinkedIn',
         OTHER = 'Other',
+    }
+    export enum pageType {
+        NONE = 'None',
+        READ_ME = 'ReadME',
+        CODE_OF_CONDUCT = 'Code of Conduct',
+        PRIVACY_POLICY = 'Privacy Policy',
     }
 }
 

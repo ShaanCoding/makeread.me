@@ -20,6 +20,8 @@ export const UserSchema = z.object({
     }),
 })
 
+export type Tag = z.infer<typeof TagSchema>
+
 export const TagSchema = z.object({
     name: z.string(),
     url: z.string(),
@@ -118,6 +120,10 @@ export const FunctionSchema = z.object({
     ),
 })
 
+export type PageType = z.infer<typeof PageTypeSchema>
+
+export const PageTypeSchema = z.enum(['None', 'ReadME', 'Code of Conduct', 'Privacy Policy'])
+
 export type Template = z.infer<typeof TemplateSchema>
 
 export const TemplateSchema = z.object({
@@ -132,6 +138,7 @@ export const TemplateSchema = z.object({
     tags: z.array(TagSchema),
     featured: z.boolean(),
     folder: z.string(),
+    pageType: PageTypeSchema,
 })
 
 export type FullTemplate = z.infer<typeof FullTemplateSchema>

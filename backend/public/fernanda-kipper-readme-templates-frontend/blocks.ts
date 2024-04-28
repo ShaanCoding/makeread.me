@@ -42,6 +42,7 @@ const templateHeadData: Template = {
     ],
     featured: false,
     folder: 'fernanda-kipper-readme-templates-frontend',
+    pageType: 'ReadME',
     startupBlocks: [
         'projectHeaderMacro',
         'layoutMacro',
