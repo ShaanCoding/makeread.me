@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
 
-import { FullTemplate, IFunction, Template } from './template.model'
+import { FullTemplate, IFunction, SideBarOptions, Template } from './template.model'
 
 export default class TemplateController {
     public async getAllTemplates(): Promise<ServiceResponse<Template[] | null>> {
@@ -46,7 +46,26 @@ export default class TemplateController {
         }
     }
 
-    public async getTemplateSidebar(id: string): Promise<ServiceResponse<FullTemplate[] | null>> {
+    private findTemplateWithFunction(templates: FullTemplate[], search: string): FullTemplate[] {
+        // Filter templates first
+        const filteredTemplates = templates.filter((template: FullTemplate) => {
+            return template.functions.some((func: IFunction) => {
+                return func.name.toLowerCase().includes(search.toLowerCase()) || func.description.toLowerCase().includes(search.toLowerCase())
+            })
+        })
+    
+        // Then map through each template and within each, filter the functions array 
+        const transformedTemplates = filteredTemplates.map((template: FullTemplate) => {
+            let filteredFunctions = template.functions.filter(func => {
+                return func.name.toLowerCase().includes(search.toLowerCase()) || func.description.toLowerCase().includes(search.toLowerCase())
+            })
+            return {...template, functions: filteredFunctions}
+        })
+    
+        return transformedTemplates;
+    }
+
+    public async getTemplateSidebar(id: string, search: string, filter: string[]): Promise<ServiceResponse<FullTemplate[] | null>> {
         try {
             if (id && id !== 'undefined') {
                 const blocksData: FullTemplate = JSON.parse(fs.readFileSync(`./public/${id}/blocks.json`, 'utf8'))
@@ -54,14 +73,58 @@ export default class TemplateController {
             } else {
                 const folders: string[] = fs.readdirSync('./public')
 
-                const blocksData: FullTemplate[] = folders.map((folder: string) => {
+                let blocksData: FullTemplate[] = folders.map((folder: string) => {
                     return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
                 })
+
+                // Sort by featured first
+                blocksData = blocksData.sort((a: FullTemplate, b: FullTemplate) => {
+                    return a.featured === b.featured ? 0 : a.featured ? -1 : 1
+                })
+
+                // search goes through all templates and filters by function.name and function.description
+                // Only show that block if it has a function that matches the search and not the other related ones
+
+                if (search.length) {
+                    blocksData = this.findTemplateWithFunction(blocksData, search)
+                }
+
+
+                // filter by template (folder name)
+                if (filter.length) {
+                    blocksData = blocksData.filter((block: FullTemplate) => {
+                        return filter.includes(block.folder)
+                    })
+                }
 
                 return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', blocksData, StatusCodes.OK)
             }
         } catch (ex) {
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template', null, StatusCodes.INTERNAL_SERVER_ERROR)
+        }
+    }
+
+
+    public async getAllTemplateFolders(): Promise<ServiceResponse<SideBarOptions[] | null>> {
+        try {
+            const folders: string[] = fs.readdirSync('./public')
+
+            // Needs to read the blocks.json file and get the folder name and the title
+            // This is to show the folder name and the title of the template
+            const blocksData: FullTemplate[] = folders.map((folder: string) => {
+                return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
+            })
+
+            const sidebarOptions: SideBarOptions[] = blocksData.map((block: FullTemplate) => {
+                return {
+                    label: block.title,
+                    value: block.folder,
+                }
+            })
+
+            return new ServiceResponse<SideBarOptions[]>(ResponseStatus.Success, 'Success', sidebarOptions, StatusCodes.OK)
+        } catch (ex) {
+            return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template folders', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
     }
 

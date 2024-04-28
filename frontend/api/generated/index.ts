@@ -13,6 +13,7 @@ export type { OpenAPIConfig } from './core/OpenAPI';
 export { IFullTemplate } from './models/IFullTemplate';
 export type { IFunction } from './models/IFunction';
 export { IObject } from './models/IObject';
+export type { ISideBarOptions } from './models/ISideBarOptions';
 export { ITemplate } from './models/ITemplate';
 export { IURLType } from './models/IURLType';
 export { IUser } from './models/IUser';

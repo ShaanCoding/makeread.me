@@ -106,6 +106,15 @@ export class TemplateService {
                     value: string;
                 }>;
                 _type: 'select';
+            } | {
+                label: string;
+                name: string;
+                defaultValue: string;
+                radioList: Array<{
+                    label: string;
+                    value: string;
+                }>;
+                _type: 'radio';
             })>;
         }>;
         statusCode: number;
@@ -120,11 +129,15 @@ export class TemplateService {
     }
     /**
      * @param id
+     * @param search
+     * @param filter
      * @returns any Success
      * @throws ApiError
      */
     public getV1TemplateSidebar(
         id: string,
+        search?: string,
+        filter?: Array<string>,
     ): CancelablePromise<{
         success: boolean;
         message: string;
@@ -203,6 +216,15 @@ export class TemplateService {
                         value: string;
                     }>;
                     _type: 'select';
+                } | {
+                    label: string;
+                    name: string;
+                    defaultValue: string;
+                    radioList: Array<{
+                        label: string;
+                        value: string;
+                    }>;
+                    _type: 'radio';
                 })>;
             }>;
         }>;
@@ -211,6 +233,34 @@ export class TemplateService {
         return this.httpRequest.request({
             method: 'GET',
             url: '/v1/template/{id}/sidebar',
+            path: {
+                'id': id,
+            },
+            query: {
+                'search': search,
+                'filter': filter,
+            },
+        });
+    }
+    /**
+     * @param id
+     * @returns any Success
+     * @throws ApiError
+     */
+    public getV1TemplateSideBarOptions(
+        id: string,
+    ): CancelablePromise<{
+        success: boolean;
+        message: string;
+        responseObject?: Array<{
+            label: string;
+            value: string;
+        }>;
+        statusCode: number;
+    }> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/v1/template/{id}/sideBarOptions',
             path: {
                 'id': id,
             },

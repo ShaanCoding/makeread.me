@@ -9,6 +9,7 @@ import {
     FullTemplateSchema,
     FunctionSchema,
     ObjectSchema,
+    SideBarOptionsSchema,
     TemplateSchema,
     URLTypeSchema,
     UserSchema,
@@ -43,6 +44,7 @@ templateRegistry.register('IVariableSelect', VariableSelectSchema)
 templateRegistry.register('IVariableRadio', VariableRadioSchema)
 
 templateRegistry.register('IURLType', URLTypeSchema)
+templateRegistry.register('ISideBarOptions', SideBarOptionsSchema)
 
 export const templateController: Router = (() => {
     const router = express.Router()
@@ -105,6 +107,8 @@ export const templateController: Router = (() => {
         handleServiceResponse(serviceResponse, res)
     })
 
+    // search for name / description
+    // filter by template
     templateRegistry.registerPath({
         method: 'get',
         path: '/v1/template/{id}/sidebar',
@@ -118,6 +122,25 @@ export const templateController: Router = (() => {
                     type: 'string',
                 },
             },
+            {
+                name: 'search',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'string',
+                },
+            },
+            {
+                name: 'filter',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                    },
+                },
+            },
         ],
         responses: createApiResponse(z.array(FullTemplateSchema), 'Success'),
     })
@@ -128,7 +151,44 @@ export const templateController: Router = (() => {
      */
     router.get('/:id/sidebar', async (req: Request, res: Response) => {
         const controller = new TemplateController()
-        const serviceResponse = await controller.getTemplateSidebar(req.params.id)
+        const paramId = req.params.id || 'undefined'
+        const querySearch = req.query.search || ''
+        const queryFilter = req.query.filter || []
+
+        console.table({ paramId, querySearch, queryFilter })
+        
+
+        const serviceResponse = await controller.getTemplateSidebar(paramId, querySearch, queryFilter)
+
+        handleServiceResponse(serviceResponse, res)
+    })
+
+    // getAllTemplateFolders
+
+    templateRegistry.registerPath({
+        method: 'get',
+        path: '/v1/template/{id}/sideBarOptions',
+        tags: ['Template'],
+        parameters: [
+            {
+                name: 'id',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'string',
+                },
+            },
+        ],
+        responses: createApiResponse(z.array(SideBarOptionsSchema), 'Success'),
+    })
+
+    /*
+     * @route GET /api/template/:id/sidebar/options
+     * @desc Get a specific template by id
+     */
+    router.get('/:id/sideBarOptions', async (req: Request, res: Response) => {
+        const controller = new TemplateController()
+        const serviceResponse = await controller.getAllTemplateFolders()
 
         handleServiceResponse(serviceResponse, res)
     })
