@@ -2,6 +2,7 @@ import { Controller } from "react-hook-form"
 
 import { AutosizeTextarea } from "@/components/ui/autosize-textarea"
 
+import ContextTitle from "./ContextTitle"
 import { ITextFieldProps } from "./types"
 
 const TextField: React.FC<ITextFieldProps> = ({ variables, control }) => {
@@ -12,8 +13,8 @@ const TextField: React.FC<ITextFieldProps> = ({ variables, control }) => {
       defaultValue={variables.defaultValue as string}
       render={({ field }) => (
         <div className="w-full pb-4">
-          <h4 className="pb-2 font-semibold">{variables.label}</h4>
-          <AutosizeTextarea {...field} name={variables.name} />
+          <ContextTitle title={variables.label} description={variables.description} />
+          <AutosizeTextarea {...field} name={variables.name} minHeight={100} />
         </div>
       )}
     />

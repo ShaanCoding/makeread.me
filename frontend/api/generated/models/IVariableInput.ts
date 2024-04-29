@@ -5,6 +5,7 @@
 export type IVariableInput = {
     label: string;
     name: string;
+    description?: string;
     defaultValue: string;
     _type: IVariableInput._type;
 };

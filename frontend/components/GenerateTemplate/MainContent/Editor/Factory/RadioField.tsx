@@ -3,6 +3,7 @@ import { Controller } from "react-hook-form"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
+import ContextTitle from "./ContextTitle"
 import { IRadioFieldProps } from "./types"
 
 const RadioField: React.FC<IRadioFieldProps> = ({ variables, control }) => {
@@ -13,7 +14,10 @@ const RadioField: React.FC<IRadioFieldProps> = ({ variables, control }) => {
       defaultValue={variables.defaultValue as string}
       render={({ field }) => (
         <div className="w-full pb-4">
-          <h4 className="pb-2 font-semibold">{variables.label}</h4>
+          <ContextTitle
+            title={variables.label}
+            description={variables.description}
+          />
 
           <RadioGroup
             {...field}

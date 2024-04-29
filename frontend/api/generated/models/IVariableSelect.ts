@@ -5,6 +5,7 @@
 export type IVariableSelect = {
     label: string;
     name: string;
+    description?: string;
     defaultValue: string;
     selectList: Array<{
         label: string;

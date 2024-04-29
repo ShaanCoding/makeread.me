@@ -5,6 +5,7 @@
 export type IVariableTextArea = {
     label: string;
     name: string;
+    description?: string;
     defaultValue: string;
     _type: IVariableTextArea._type;
 };

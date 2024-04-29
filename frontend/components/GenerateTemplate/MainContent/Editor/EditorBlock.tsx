@@ -50,7 +50,10 @@ const EditorBlock = ({
     <Card
       id="editor-block"
       className={`p-4 transition-transform duration-300 transform ${
-        !isTransitionDown && !isTransitionUp && "hover:scale-[1.02]"
+        !isTransitionDown &&
+        !isTransitionUp &&
+        isMinimized &&
+        "hover:scale-[1.02]"
       }
       `}
       style={
