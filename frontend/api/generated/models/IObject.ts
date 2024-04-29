@@ -6,7 +6,7 @@ export type IObject = {
     label: string;
     name: string;
     _type: IObject._type;
-    description: string;
+    description?: string;
 };
 export namespace IObject {
     export enum _type {

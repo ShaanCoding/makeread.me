@@ -5,6 +5,6 @@
 export type IVariable = {
     label: string;
     name: string;
-    description: string;
+    description?: string;
 };
 

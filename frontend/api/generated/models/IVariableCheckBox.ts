@@ -5,7 +5,7 @@
 export type IVariableCheckBox = {
     label: string;
     name: string;
-    description: string;
+    description?: string;
     defaultValue: boolean;
     _type: IVariableCheckBox._type;
 };

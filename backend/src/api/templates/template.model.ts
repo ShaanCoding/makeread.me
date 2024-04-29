@@ -39,7 +39,7 @@ export const ObjectSchema = z
         label: z.string(),
         name: z.string(),
         _type: VariableTypeSchema,
-        description: z.string(),
+        description: z.string().optional(),
     })
     .optional()
 
@@ -48,7 +48,7 @@ export type Variable = z.infer<typeof VariableSchema>
 export const VariableSchema = z.object({
     label: z.string(),
     name: z.string(),
-    description: z.string(),
+    description: z.string().optional(),
 })
 
 // input

@@ -12,21 +12,23 @@ const ContextTitle = ({
   description,
 }: {
   title: string
-  description: string
+  description: string | undefined
 }) => {
   return (
     <span className="mb-2 flex flex-row items-center gap-x-2">
       <h4 className="font-semibold">{title}</h4>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>
-            <Info className="size-5" />
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{description}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      {description && (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Info className="size-5" />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{description}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      )}
     </span>
   )
 }
