@@ -1,5 +1,11 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
-import { IFullTemplate, IFunction, readMeGenerator } from "@/api/generated"
+import {
+  IFullTemplate,
+  IFunction,
+  IPageType,
+  ITemplate,
+  readMeGenerator,
+} from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
 
 import { Input } from "@/components/ui/input"
@@ -12,32 +18,30 @@ import {
   MultiSelectorTrigger,
 } from "@/components/ui/multiselect"
 
-import MappedBlocks from "./MappedBlocks"
-
 interface IOption {
   label: string
   value: string
 }
 
-const GeneratorSideBar: React.FC<{
-  templateId: string
-  templateBlocks: IFunction[]
-  setTemplateBlocks: Dispatch<SetStateAction<IFunction[]>>
-}> = ({ templateId, templateBlocks, setTemplateBlocks }) => {
-  const [inputValue, setInputValue] = useState<string>("")
+const SelectTemplateSideBar: React.FC<{
+  setTemplateBlocks: Dispatch<SetStateAction<ITemplate[]>>
+  pageType: IPageType
+}> = ({ pageType, setTemplateBlocks }) => {
   const [multiSelectValue, setMultiSelectValue] = useState<string[]>([
-    templateId,
+    // templateId,
   ])
   const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
 
   // Make it so that it changes on text change
-  const sidebarResults = useQuery({
-    queryKey: ["getV1SidebarOptions", inputValue, multiSelectValue],
+  const [search, setSearch] = useState<string>("")
+
+  const templateMaps = useQuery({
+    queryKey: ["getV1Template", search, multiSelectValue, pageType],
     queryFn: async () => {
-      let request = await new readMeGenerator().template.getV1TemplateSidebar(
-        "undefined",
-        inputValue,
-        multiSelectValue
+      let request = await new readMeGenerator().template.getV1Template(
+        search,
+        multiSelectValue,
+        pageType
       )
 
       return request.responseObject as IFullTemplate[]
@@ -46,10 +50,10 @@ const GeneratorSideBar: React.FC<{
   })
 
   const sidebarOptions = useQuery({
-    queryKey: ["getV1SidebarOptionsInitial"],
+    queryKey: ["getV1TemplateGetAllSidebar", search],
     queryFn: async () => {
       let request =
-        await new readMeGenerator().template.getV1TemplateSideBarOptions(
+        await new readMeGenerator().template.getV1TemplateGetAllSidebar(
           "undefined"
         )
 
@@ -58,29 +62,35 @@ const GeneratorSideBar: React.FC<{
     staleTime: 5 * 1000,
   })
 
+  // We need 3 filters
+  // 1. Search blocks which does by title, description
+  // Multiselect for tags
+  // Page type for the page type i.e. 'ReadME', 'Code of Conduct', 'Privacy Policy'
+
   useEffect(() => {
     if (sidebarOptions.status === "success") {
       setMultiSelectList(sidebarOptions.data!)
     }
   }, [sidebarOptions.status, sidebarOptions.data])
 
+  useEffect(() => {
+    if (templateMaps.status === "success") {
+      setTemplateBlocks(templateMaps.data!)
+    }
+  }, [templateMaps.status, templateMaps.data])
+
   return (
     <div className="bg-muted/40 hidden border-r md:block">
       <nav className="mt-6 grid gap-6 items-start px-2 text-sm font-medium lg:px-4">
         <Input
           placeholder="Search blocks"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <MultiSelectorComponent
           values={multiSelectValue}
           onValuesChange={setMultiSelectValue}
           options={multiSelectList}
-        />
-        <MappedBlocks
-          blocks={sidebarResults.data ?? []}
-          templateBlocks={templateBlocks}
-          setTemplateBlocks={setTemplateBlocks}
         />
       </nav>
 
@@ -113,4 +123,4 @@ const MultiSelectorComponent: React.FC<{
   )
 }
 
-export default GeneratorSideBar
+export default SelectTemplateSideBar

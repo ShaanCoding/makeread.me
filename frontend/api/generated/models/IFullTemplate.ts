@@ -29,6 +29,7 @@ export type IFullTemplate = {
     }>;
     featured: boolean;
     folder: string;
+    pageType: IFullTemplate.pageType;
     functions: Array<{
         name: string;
         description: string;
@@ -55,7 +56,7 @@ export type IFullTemplate = {
             listSchema: Array<{
                 label: string;
                 name: string;
-                _type: string;
+                _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
             }>;
             _type: 'list';
         } | {
@@ -65,7 +66,7 @@ export type IFullTemplate = {
             objectSchema: Array<{
                 label: string;
                 name: string;
-                _type: string;
+                _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
             }>;
             _type: 'object';
         } | {
@@ -77,6 +78,15 @@ export type IFullTemplate = {
                 value: string;
             }>;
             _type: 'select';
+        } | {
+            label: string;
+            name: string;
+            defaultValue: string;
+            radioList: Array<{
+                label: string;
+                value: string;
+            }>;
+            _type: 'radio';
         })>;
     }>;
 };
@@ -88,6 +98,12 @@ export namespace IFullTemplate {
         GITHUB = 'Github',
         LINKED_IN = 'LinkedIn',
         OTHER = 'Other',
+    }
+    export enum pageType {
+        NONE = 'None',
+        READ_ME = 'ReadME',
+        CODE_OF_CONDUCT = 'Code of Conduct',
+        PRIVACY_POLICY = 'Privacy Policy',
     }
 }
 

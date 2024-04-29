@@ -38,6 +38,7 @@ const templateHeadData: Template = {
     ],
     featured: true,
     folder: 'othneildrew-best-readme-template',
+    pageType: 'ReadME',
     startupBlocks: [
         'projectHeaderMacro',
         'aboutTheProjectMacro',

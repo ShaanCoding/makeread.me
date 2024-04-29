@@ -20,24 +20,27 @@ export const UserSchema = z.object({
     }),
 })
 
+export type Tag = z.infer<typeof TagSchema>
+
 export const TagSchema = z.object({
     name: z.string(),
     url: z.string(),
 })
 
+export type VariableType = z.infer<typeof VariableTypeSchema>
+
+export const VariableTypeSchema = z.enum(['input', 'textArea', 'checkBox', 'list', 'object', 'select', 'radio'])
+
+// object
 export type Object = z.infer<typeof ObjectSchema>
 
 export const ObjectSchema = z
     .object({
         label: z.string(),
         name: z.string(),
-        _type: z.string(),
+        _type: VariableTypeSchema,
     })
     .optional()
-
-export type VariableType = z.infer<typeof VariableTypeSchema>
-
-export const VariableTypeSchema = z.enum(['input', 'textArea', 'checkBox', 'list', 'object', 'select'])
 
 export type Variable = z.infer<typeof VariableSchema>
 
@@ -97,14 +100,29 @@ export const VariableSelectSchema = VariableSchema.extend({
     _type: z.literal('select'),
 })
 
+// radio
+export type VariableRadio = z.infer<typeof VariableRadioSchema>
+
+export const VariableRadioSchema = VariableSchema.extend({
+    defaultValue: z.string(),
+    radioList: z.array(z.object({ label: z.string(), value: z.string() })),
+    _type: z.literal('radio'),
+})
+
 export type IFunction = z.infer<typeof FunctionSchema>
 
 export const FunctionSchema = z.object({
     name: z.string(),
     description: z.string(),
     function: z.string(),
-    variables: z.array(z.union([VariableInputSchema, VariableTextAreaSchema, VariableCheckBoxSchema, VariableListSchema, VariableObjectSchema, VariableSelectSchema])),
+    variables: z.array(
+        z.union([VariableInputSchema, VariableTextAreaSchema, VariableCheckBoxSchema, VariableListSchema, VariableObjectSchema, VariableSelectSchema, VariableRadioSchema])
+    ),
 })
+
+export type PageType = z.infer<typeof PageTypeSchema>
+
+export const PageTypeSchema = z.enum(['None', 'ReadME', 'Code of Conduct', 'Privacy Policy'])
 
 export type Template = z.infer<typeof TemplateSchema>
 
@@ -120,6 +138,7 @@ export const TemplateSchema = z.object({
     tags: z.array(TagSchema),
     featured: z.boolean(),
     folder: z.string(),
+    pageType: PageTypeSchema,
 })
 
 export type FullTemplate = z.infer<typeof FullTemplateSchema>
@@ -127,4 +146,11 @@ export type FullTemplate = z.infer<typeof FullTemplateSchema>
 export const FullTemplateSchema = z.object({
     ...TemplateSchema.shape,
     functions: z.array(FunctionSchema),
+})
+
+export type SideBarOptions = z.infer<typeof SideBarOptionsSchema>
+
+export const SideBarOptionsSchema = z.object({
+    label: z.string(),
+    value: z.string(),
 })

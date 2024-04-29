@@ -38,6 +38,7 @@ const templateHeadData: Template = {
     ],
     featured: true,
     folder: 'pottekkat-awesome-readme',
+    pageType: 'ReadME',
     startupBlocks: [
         'bannerMacro',
         'headerMacro',

@@ -10,6 +10,8 @@ import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
+import { ReactQueryClientProvider } from "./ReactQueryClientProvider"
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -36,10 +38,10 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://www.makeread.me"),
+  metadataBase: new URL("https://makeread.me"),
   openGraph: {
     type: "website",
-    url: "https://www.makeread.me/",
+    url: "https://makeread.me/",
     title: siteConfig.name,
     description: siteConfig.description,
     images: "/og-image.png",
@@ -73,14 +75,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
-              <Footer />
-            </div>
-            <TailwindIndicator />
-          </ThemeProvider>
+          <ReactQueryClientProvider>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+              <div className="relative flex min-h-screen flex-col">
+                <SiteHeader />
+                <div className="flex-1">{children}</div>
+                <Footer />
+              </div>
+              <TailwindIndicator />
+            </ThemeProvider>
+          </ReactQueryClientProvider>
         </body>
       </html>
     </>

@@ -517,6 +517,27 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+"@radix-ui/react-dialog@1.0.5", "@radix-ui/react-dialog@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-1.0.5.tgz#71657b1b116de6c7a0b03242d7d43e01062c7300"
+  integrity sha512-GjWJX/AUpB703eEBanuBnIWdIXg6NvJFCXcNlSZk4xdszCdhrJgBoUd1cGk67vFO+WdA2pfI/plOpqz/5GUP6Q==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.1"
+    "@radix-ui/react-compose-refs" "1.0.1"
+    "@radix-ui/react-context" "1.0.1"
+    "@radix-ui/react-dismissable-layer" "1.0.5"
+    "@radix-ui/react-focus-guards" "1.0.1"
+    "@radix-ui/react-focus-scope" "1.0.4"
+    "@radix-ui/react-id" "1.0.1"
+    "@radix-ui/react-portal" "1.0.4"
+    "@radix-ui/react-presence" "1.0.1"
+    "@radix-ui/react-primitive" "1.0.3"
+    "@radix-ui/react-slot" "1.0.2"
+    "@radix-ui/react-use-controllable-state" "1.0.1"
+    aria-hidden "^1.1.1"
+    react-remove-scroll "2.5.5"
+
 "@radix-ui/react-direction@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-direction/-/react-direction-1.0.1.tgz#9cb61bf2ccf568f3421422d182637b7f47596c9b"
@@ -574,6 +595,14 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "1.0.1"
+
+"@radix-ui/react-label@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-2.0.2.tgz#9c72f1d334aac996fdc27b48a8bdddd82108fb6d"
+  integrity sha512-N5ehvlM7qoTLx7nWPodsPYPgMzA5WM8zZChQg8nyFJKnDO5WHdba1vv5/H6IO5LtJMfD2Q3wh1qHFGNtK0w3bQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-primitive" "1.0.3"
 
 "@radix-ui/react-menu@2.0.6":
   version "2.0.6"
@@ -641,6 +670,23 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-slot" "1.0.2"
+
+"@radix-ui/react-radio-group@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-radio-group/-/react-radio-group-1.1.3.tgz#3197f5dcce143bcbf961471bf89320735c0212d3"
+  integrity sha512-x+yELayyefNeKeTx4fjK6j99Fs6c4qKm3aY38G3swQVTN6xMpsrbigC0uHs2L//g8q4qR7qOcww8430jJmi2ag==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.1"
+    "@radix-ui/react-compose-refs" "1.0.1"
+    "@radix-ui/react-context" "1.0.1"
+    "@radix-ui/react-direction" "1.0.1"
+    "@radix-ui/react-presence" "1.0.1"
+    "@radix-ui/react-primitive" "1.0.3"
+    "@radix-ui/react-roving-focus" "1.0.4"
+    "@radix-ui/react-use-controllable-state" "1.0.1"
+    "@radix-ui/react-use-previous" "1.0.1"
+    "@radix-ui/react-use-size" "1.0.1"
 
 "@radix-ui/react-roving-focus@1.0.4":
   version "1.0.4"
@@ -792,6 +838,18 @@
   integrity sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==
   dependencies:
     tslib "^2.4.0"
+
+"@tanstack/query-core@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.32.0.tgz#e097ec2b394a2f64de33c98cd8baf3525c99641a"
+  integrity sha512-Z3flEgCat55DRXU5UMwYU1U+DgFZKA3iufyOKs+II7iRAo0uXkeU7PH5e6sOH1CGEag0IpKmZxlUFpCg6roSKw==
+
+"@tanstack/react-query@^5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.32.0.tgz#52d441e7ad2a0098dc426f3834f68150c13f265b"
+  integrity sha512-+E3UudQtarnx9A6xhpgMZapyF+aJfNBGFMgI459FnduEZqT/9KhOWnMOneZahLRt52yzskSA0AuOyLkXHK0yBA==
+  dependencies:
+    "@tanstack/query-core" "5.32.0"
 
 "@types/debug@^4.0.0":
   version "4.1.12"
@@ -1349,6 +1407,14 @@ clsx@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
+
+cmdk@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/cmdk/-/cmdk-1.0.0.tgz#0a095fdafca3dfabed82d1db78a6262fb163ded9"
+  integrity sha512-gDzVf0a09TvoJ5jnuPvygTB77+XdOSwEmJ88L6XPFPlv7T3RxbP9jgenfylrAMD0+Le1aO0nVjQUzl2g+vjz5Q==
+  dependencies:
+    "@radix-ui/react-dialog" "1.0.5"
+    "@radix-ui/react-primitive" "1.0.3"
 
 color-convert@^1.9.0:
   version "1.9.3"

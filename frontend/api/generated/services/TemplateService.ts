@@ -7,10 +7,17 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class TemplateService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
+     * @param search
+     * @param filter
+     * @param pageType
      * @returns any Success
      * @throws ApiError
      */
-    public getV1Template(): CancelablePromise<{
+    public getV1Template(
+        search?: string,
+        filter?: Array<string>,
+        pageType?: string,
+    ): CancelablePromise<{
         success: boolean;
         message: string;
         responseObject?: Array<{
@@ -40,12 +47,42 @@ export class TemplateService {
             }>;
             featured: boolean;
             folder: string;
+            pageType: 'None' | 'ReadME' | 'Code of Conduct' | 'Privacy Policy';
         }>;
         statusCode: number;
     }> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/v1/template',
+            query: {
+                'search': search,
+                'filter': filter,
+                'pageType': pageType,
+            },
+        });
+    }
+    /**
+     * @param id
+     * @returns any Success
+     * @throws ApiError
+     */
+    public getV1TemplateGetAllSidebar(
+        id: string,
+    ): CancelablePromise<{
+        success: boolean;
+        message: string;
+        responseObject?: Array<{
+            label: string;
+            value: string;
+        }>;
+        statusCode: number;
+    }> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/v1/template/{id}/getAllSidebar',
+            path: {
+                'id': id,
+            },
         });
     }
     /**
@@ -84,7 +121,7 @@ export class TemplateService {
                 listSchema: Array<{
                     label: string;
                     name: string;
-                    _type: string;
+                    _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                 }>;
                 _type: 'list';
             } | {
@@ -94,7 +131,7 @@ export class TemplateService {
                 objectSchema: Array<{
                     label: string;
                     name: string;
-                    _type: string;
+                    _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                 }>;
                 _type: 'object';
             } | {
@@ -106,6 +143,15 @@ export class TemplateService {
                     value: string;
                 }>;
                 _type: 'select';
+            } | {
+                label: string;
+                name: string;
+                defaultValue: string;
+                radioList: Array<{
+                    label: string;
+                    value: string;
+                }>;
+                _type: 'radio';
             })>;
         }>;
         statusCode: number;
@@ -120,11 +166,15 @@ export class TemplateService {
     }
     /**
      * @param id
+     * @param search
+     * @param filter
      * @returns any Success
      * @throws ApiError
      */
     public getV1TemplateSidebar(
         id: string,
+        search?: string,
+        filter?: Array<string>,
     ): CancelablePromise<{
         success: boolean;
         message: string;
@@ -155,6 +205,7 @@ export class TemplateService {
             }>;
             featured: boolean;
             folder: string;
+            pageType: 'None' | 'ReadME' | 'Code of Conduct' | 'Privacy Policy';
             functions: Array<{
                 name: string;
                 description: string;
@@ -181,7 +232,7 @@ export class TemplateService {
                     listSchema: Array<{
                         label: string;
                         name: string;
-                        _type: string;
+                        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                     }>;
                     _type: 'list';
                 } | {
@@ -191,7 +242,7 @@ export class TemplateService {
                     objectSchema: Array<{
                         label: string;
                         name: string;
-                        _type: string;
+                        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
                     }>;
                     _type: 'object';
                 } | {
@@ -203,6 +254,15 @@ export class TemplateService {
                         value: string;
                     }>;
                     _type: 'select';
+                } | {
+                    label: string;
+                    name: string;
+                    defaultValue: string;
+                    radioList: Array<{
+                        label: string;
+                        value: string;
+                    }>;
+                    _type: 'radio';
                 })>;
             }>;
         }>;
@@ -211,6 +271,34 @@ export class TemplateService {
         return this.httpRequest.request({
             method: 'GET',
             url: '/v1/template/{id}/sidebar',
+            path: {
+                'id': id,
+            },
+            query: {
+                'search': search,
+                'filter': filter,
+            },
+        });
+    }
+    /**
+     * @param id
+     * @returns any Success
+     * @throws ApiError
+     */
+    public getV1TemplateSideBarOptions(
+        id: string,
+    ): CancelablePromise<{
+        success: boolean;
+        message: string;
+        responseObject?: Array<{
+            label: string;
+            value: string;
+        }>;
+        statusCode: number;
+    }> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/v1/template/{id}/sideBarOptions',
             path: {
                 'id': id,
             },

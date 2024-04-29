@@ -28,7 +28,7 @@ export type IFunction = {
         listSchema: Array<{
             label: string;
             name: string;
-            _type: string;
+            _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
         }>;
         _type: 'list';
     } | {
@@ -38,7 +38,7 @@ export type IFunction = {
         objectSchema: Array<{
             label: string;
             name: string;
-            _type: string;
+            _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
         }>;
         _type: 'object';
     } | {
@@ -50,6 +50,15 @@ export type IFunction = {
             value: string;
         }>;
         _type: 'select';
+    } | {
+        label: string;
+        name: string;
+        defaultValue: string;
+        radioList: Array<{
+            label: string;
+            value: string;
+        }>;
+        _type: 'radio';
     })>;
 };
 
