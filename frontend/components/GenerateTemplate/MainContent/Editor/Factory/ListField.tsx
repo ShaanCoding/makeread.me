@@ -32,7 +32,10 @@ const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {
 
   return (
     <div className="pb-4">
-      <ContextTitle title={variables.label} description={variables.label} />
+      <ContextTitle
+        title={variables.label}
+        description={variables.description}
+      />
       <div>
         {fields.map((field, index) => (
           <div className="flex w-full gap-4" key={field.id}>

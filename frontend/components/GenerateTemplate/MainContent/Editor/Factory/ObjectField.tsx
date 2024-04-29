@@ -7,7 +7,10 @@ import { IObjectFieldProps } from "./types"
 const ObjectField: React.FC<IObjectFieldProps> = ({ variables, control }) => {
   return (
     <div className="pb-4">
-      <ContextTitle title={variables.label} description={variables.label} />
+      <ContextTitle
+        title={variables.label}
+        description={variables.description}
+      />
       <div className="flex w-full gap-4">
         {variables.objectSchema &&
           variables.objectSchema.map((schema, index) => {
@@ -25,6 +28,7 @@ const ObjectField: React.FC<IObjectFieldProps> = ({ variables, control }) => {
                     | IVariableInput._type
                     | IVariableTextArea._type,
                   label: schema.label,
+                  description: schema.description,
                 }}
                 control={control}
                 key={index}

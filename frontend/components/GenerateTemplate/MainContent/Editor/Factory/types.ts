@@ -1,4 +1,4 @@
-import { IVariable, IVariableCheckBox, IVariableInput, IVariableList, IVariableObject, IVariableSelect, IVariableTextArea } from "@/api/generated"
+import { IVariable, IVariableCheckBox, IVariableInput, IVariableList, IVariableObject, IVariableRadio, IVariableSelect, IVariableTextArea } from "@/api/generated"
 import { Control } from "react-hook-form"
 
 export interface IInputFieldProps {
@@ -28,5 +28,10 @@ export interface IObjectFieldProps {
 
 export interface ISelectFieldProps {
     variables: IVariableSelect
+    control: Control
+}
+
+export interface IRadioFieldProps {
+    variables: IVariableRadio
     control: Control
 }

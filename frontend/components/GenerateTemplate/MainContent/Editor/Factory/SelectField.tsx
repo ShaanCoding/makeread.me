@@ -19,7 +19,10 @@ const SelectField: React.FC<ISelectFieldProps> = ({ variables, control }) => {
       defaultValue={variables.defaultValue as string}
       render={({ field }) => (
         <div className="w-full pb-4">
-          <ContextTitle title={variables.label} description={variables.label} />
+          <ContextTitle
+            title={variables.label}
+            description={variables.description}
+          />
           <Select
             {...field}
             name={variables.name}

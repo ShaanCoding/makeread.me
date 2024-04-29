@@ -16,7 +16,10 @@ const CheckBoxField: React.FC<ICheckBoxFieldProps> = ({
       defaultValue={variables.defaultValue}
       render={({ field }) => (
         <div className="flex w-full items-center justify-start pb-4">
-          <ContextTitle title={variables.label} description={variables.label} />
+          <ContextTitle
+            title={variables.label}
+            description={variables.description}
+          />
           <Checkbox
             {...field}
             name={variables.name}

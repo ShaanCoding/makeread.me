@@ -5,6 +5,7 @@
 export type IVariableRadio = {
     label: string;
     name: string;
+    description: string;
     defaultValue: string;
     radioList: Array<{
         label: string;
