@@ -12,13 +12,9 @@ export type { OpenAPIConfig } from './core/OpenAPI';
 
 export { IFullTemplate } from './models/IFullTemplate';
 export type { IFunction } from './models/IFunction';
-<<<<<<< HEAD
 export { IObject } from './models/IObject';
 export { IPageType } from './models/IPageType';
 export type { ISideBarOptions } from './models/ISideBarOptions';
-=======
-export type { IObject } from './models/IObject';
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
 export { ITemplate } from './models/ITemplate';
 export { IURLType } from './models/IURLType';
 export { IUser } from './models/IUser';
@@ -27,10 +23,7 @@ export { IVariableCheckBox } from './models/IVariableCheckBox';
 export { IVariableInput } from './models/IVariableInput';
 export { IVariableList } from './models/IVariableList';
 export { IVariableObject } from './models/IVariableObject';
-<<<<<<< HEAD
 export { IVariableRadio } from './models/IVariableRadio';
-=======
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
 export { IVariableSelect } from './models/IVariableSelect';
 export { IVariableTextArea } from './models/IVariableTextArea';
 export { IVariableType } from './models/IVariableType';

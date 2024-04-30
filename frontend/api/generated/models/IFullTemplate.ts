@@ -37,37 +37,25 @@ export type IFullTemplate = {
         variables: Array<({
             label: string;
             name: string;
-<<<<<<< HEAD
             description?: string;
-=======
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
             defaultValue: string;
             _type: 'input';
         } | {
             label: string;
             name: string;
-<<<<<<< HEAD
             description?: string;
-=======
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
             defaultValue: string;
             _type: 'textArea';
         } | {
             label: string;
             name: string;
-<<<<<<< HEAD
             description?: string;
-=======
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
             defaultValue: boolean;
             _type: 'checkBox';
         } | {
             label: string;
             name: string;
-<<<<<<< HEAD
             description?: string;
-=======
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
             defaultValue: Array<Record<string, any>>;
             listSchema: Array<{
                 label: string;
@@ -79,10 +67,7 @@ export type IFullTemplate = {
         } | {
             label: string;
             name: string;
-<<<<<<< HEAD
             description?: string;
-=======
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
             defaultValue: Record<string, any>;
             objectSchema: Array<{
                 label: string;
@@ -94,7 +79,6 @@ export type IFullTemplate = {
         } | {
             label: string;
             name: string;
-<<<<<<< HEAD
             description?: string;
             defaultValue: string;
             selectList: Array<{
@@ -112,14 +96,6 @@ export type IFullTemplate = {
                 value: string;
             }>;
             _type: 'radio';
-=======
-            defaultValue: string;
-            selectList: Array<{
-                label: string;
-                value: string;
-            }>;
-            _type: 'select';
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
         })>;
     }>;
 };
@@ -132,14 +108,11 @@ export namespace IFullTemplate {
         LINKED_IN = 'LinkedIn',
         OTHER = 'Other',
     }
-<<<<<<< HEAD
     export enum pageType {
         NONE = 'None',
         READ_ME = 'ReadME',
         CODE_OF_CONDUCT = 'Code of Conduct',
         PRIVACY_POLICY = 'Privacy Policy',
     }
-=======
->>>>>>> 966f4ae ([Release] Editor Block & Schema Overhaul (#46))
 }
 
