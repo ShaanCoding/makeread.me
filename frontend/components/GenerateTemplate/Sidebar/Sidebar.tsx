@@ -67,8 +67,8 @@ const GeneratorSideBar: React.FC<{
   }, [sidebarOptions.status, sidebarOptions.data])
 
   return (
-    <div className="bg-muted/40 hidden border-r md:block">
-      <nav className="mt-6 grid gap-6 items-start px-2 text-sm font-medium lg:px-4">
+    <div className="bg-muted/40 mb-4 hidden rounded-br-lg border md:block xl:mb-6">
+      <nav className="mt-6 grid items-start gap-6 px-2 text-sm font-medium lg:px-4">
         <Input
           placeholder="Search blocks"
           value={inputValue}
