@@ -47,7 +47,15 @@ export const siteConfig = {
       {
         title: "Our team",
         href: "/team"
-      }
+      },
+      {
+        title: "Contributions",
+        href: "/contributions",
+      },
+      // {
+      //   title: "Make My Own",
+      //   href: "/generator",
+      // },
     ],
     socialMedia: [
       {
