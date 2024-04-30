@@ -19,9 +19,6 @@ const Editor = ({
   const { register, control, handleSubmit, watch } = methods
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log({
-      ...data,
-    })
     setVariables(data)
   }
 

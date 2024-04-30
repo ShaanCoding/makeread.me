@@ -45,7 +45,6 @@ export default class TemplateController {
 
             return new ServiceResponse<Template[]>(ResponseStatus.Success, 'Success', blocksData, StatusCodes.OK)
         } catch (ex) {
-            console.log(ex)
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get templates', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
     }
@@ -72,7 +71,6 @@ export default class TemplateController {
 
             return new ServiceResponse<SideBarOptions[]>(ResponseStatus.Success, 'Success', sidebarOptions, StatusCodes.OK)
         } catch (ex) {
-            console.log(ex)
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get sidebar options', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
     }
@@ -92,7 +90,6 @@ export default class TemplateController {
 
             return new ServiceResponse<IFunction[]>(ResponseStatus.Success, 'Success', functions, StatusCodes.OK)
         } catch (ex) {
-            console.log(ex)
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
     }

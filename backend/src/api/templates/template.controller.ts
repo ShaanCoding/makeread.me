@@ -221,8 +221,6 @@ export const templateController: Router = (() => {
         const querySearch = req.query.search || ''
         const queryFilter = req.query.filter || []
 
-        console.table({ paramId, querySearch, queryFilter })
-
         const serviceResponse = await controller.getTemplateSidebar(paramId, querySearch, queryFilter)
 
         handleServiceResponse(serviceResponse, res)
