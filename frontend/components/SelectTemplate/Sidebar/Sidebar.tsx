@@ -7,6 +7,7 @@ import {
   readMeGenerator,
 } from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
+import { useDebounce } from "use-debounce"
 
 import { Input } from "@/components/ui/input"
 import {
@@ -27,19 +28,17 @@ const SelectTemplateSideBar: React.FC<{
   setTemplateBlocks: Dispatch<SetStateAction<ITemplate[]>>
   pageType: IPageType
 }> = ({ pageType, setTemplateBlocks }) => {
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([
-    // templateId,
-  ])
+  const [search, setSearch] = useState<string>("")
+  const [searchDebounced] = useDebounce<string>(search, 500)
+
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([])
   const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
 
-  // Make it so that it changes on text change
-  const [search, setSearch] = useState<string>("")
-
   const templateMaps = useQuery({
-    queryKey: ["getV1Template", search, multiSelectValue, pageType],
+    queryKey: ["getV1Template", searchDebounced, multiSelectValue, pageType],
     queryFn: async () => {
       let request = await new readMeGenerator().template.getV1Template(
-        search,
+        searchDebounced,
         multiSelectValue,
         pageType
       )

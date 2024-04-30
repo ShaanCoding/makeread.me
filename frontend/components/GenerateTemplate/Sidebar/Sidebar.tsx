@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { IFullTemplate, IFunction, readMeGenerator } from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
+import { useDebounce } from "use-debounce"
 
 import { Input } from "@/components/ui/input"
 import {
@@ -25,18 +26,19 @@ const GeneratorSideBar: React.FC<{
   setTemplateBlocks: Dispatch<SetStateAction<IFunction[]>>
 }> = ({ templateId, templateBlocks, setTemplateBlocks }) => {
   const [inputValue, setInputValue] = useState<string>("")
+  const [debouncedInputValue] = useDebounce<string>(inputValue, 500)
+
   const [multiSelectValue, setMultiSelectValue] = useState<string[]>([
     templateId,
   ])
   const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
 
-  // Make it so that it changes on text change
   const sidebarResults = useQuery({
-    queryKey: ["getV1SidebarOptions", inputValue, multiSelectValue],
+    queryKey: ["getV1SidebarOptions", debouncedInputValue, multiSelectValue],
     queryFn: async () => {
       let request = await new readMeGenerator().template.getV1TemplateSidebar(
         "undefined",
-        inputValue,
+        debouncedInputValue,
         multiSelectValue
       )
 

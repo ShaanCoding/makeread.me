@@ -1,13 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import {
-  IFullTemplate,
-  IPageType,
-  ITemplate,
-  readMeGenerator,
-} from "@/api/generated"
-import { useQuery } from "@tanstack/react-query"
+import { useState } from "react"
+import { IPageType, ITemplate } from "@/api/generated"
 
 import { Button } from "@/components/ui/button"
 import Card from "@/components/SelectTemplate/Card"
