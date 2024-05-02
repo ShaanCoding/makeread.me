@@ -1,0 +1,19 @@
+{% macro projectHeaderMacro() %}{% if projectTitle %}{% if projectTitle %}
+<h1 align="center" style="font-weight: bold;">{{ projectTitle }}</h1>{% endif %}
+{% if isTechnologiesSection or isGettingStartedSection or isAPIEndpointsSection or isCollaboratorsSection or isContributeSection %}
+<p align="center">
+{% if isTechnologiesSection %}<a href="#tech">Technologies</a>{% endif %}
+{% if isGettingStartedSection %}<a href="#started">Getting Started</a>{% endif %}
+{% if isAPIEndpointsSection %}<a href="#routes">API Endpoints</a>{% endif %}
+{% if isCollaboratorsSection %}<a href="#colab">Collaborators</a>{% endif %}
+{% if isContributeSection %}<a href="#contribute">Contribute</a>{% endif %} 
+</p>
+{% endif %}
+
+{% if projectDescription %}<p align="center">{{ projectDescription }}</p>
+{% endif %}
+
+{% if projectCallToAction.url and projectCallToAction.text %}<p align="center">
+<a href="{{ projectCallToAction.url }}">{{ projectCallToAction.text }}</a>
+</p>
+{% endif %}{% endif %}{% endmacro %}

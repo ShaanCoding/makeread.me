@@ -60,6 +60,7 @@ const functionsList: IFunction[] = [
         name: 'Header',
         description: 'A header for the README',
         function: 'projectHeaderMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Project Title',
@@ -80,6 +81,7 @@ const functionsList: IFunction[] = [
         name: 'Getting Started',
         description: 'A section to describe how to get started with the project',
         function: 'gettingStartedMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Getting Started Description',
@@ -94,6 +96,7 @@ const functionsList: IFunction[] = [
         name: 'Prerequisites',
         description: 'A section to describe the prerequisites for the project',
         function: 'prerequisitesMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Prerequisites Description',
@@ -108,6 +111,7 @@ const functionsList: IFunction[] = [
         name: 'Installation',
         description: 'A section to describe how to install the project',
         function: 'installationMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Installation Description',
@@ -122,6 +126,7 @@ const functionsList: IFunction[] = [
         name: 'Running The Tests',
         description: 'A section to describe how to run the tests for the project',
         function: 'runningTheTestsMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Running The Tests Description',
@@ -136,6 +141,7 @@ const functionsList: IFunction[] = [
         name: 'Deployment',
         description: 'A section to describe how to deploy the project',
         function: 'deploymentMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Deployment Description',
@@ -149,6 +155,7 @@ const functionsList: IFunction[] = [
         name: 'Built With',
         description: 'A section to describe what the project was built with',
         function: 'builtWithMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Built With Description',
@@ -189,6 +196,7 @@ const functionsList: IFunction[] = [
         name: 'Contributing',
         description: 'A section to describe how to contribute to the project',
         function: 'contributingMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Contributing Description',
@@ -202,6 +210,7 @@ const functionsList: IFunction[] = [
         name: 'Versioning',
         description: 'A section to describe the versioning of the project',
         function: 'versioningMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Versioning Description',
@@ -216,6 +225,7 @@ const functionsList: IFunction[] = [
         name: 'Authors',
         description: 'A section to describe the authors of the project',
         function: 'authorsMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Authors Description',
@@ -263,6 +273,7 @@ const functionsList: IFunction[] = [
         name: 'License',
         description: 'A section to describe the license of the project',
         function: 'licenseMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'License Description',
@@ -277,6 +288,7 @@ const functionsList: IFunction[] = [
         name: 'Acknowledgments',
         description: 'A section to describe the acknowledgments of the project',
         function: 'acknowledgmentsMacro',
+        folder: 'purplebooth-a-good-readme-template',
         variables: [
             {
                 label: 'Acknowledgments Description',

@@ -1,0 +1,19 @@
+{% macro collaboratorsMacro() %}{% if collaboratorsDescription or collaboratorsList|length %}
+<h2 id="colab">🤝 Collaborators</h2>{% if collaboratorsDescription %}
+
+<p>{{ collaboratorsDescription }}</p>{% endif %}{% if collaboratorsList|length %}
+<table>
+<tr>
+{% for item in collaboratorsList %}
+<td align="center">
+<a href="{{ item.githubURL }}">
+<img src="{{ item.profilePictureURL }}" width="100px;" alt="{{ item.name }} Profile Picture"/><br>
+<sub>
+<b>{{ item.name }}</b>
+</sub>
+</a>
+</td>
+{% endfor %}
+</tr>
+</table>{% endif %}{% endif %}
+{% endmacro %}
