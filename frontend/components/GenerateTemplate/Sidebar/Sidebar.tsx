@@ -36,11 +36,7 @@ const GeneratorSideBar: React.FC<{
   const sidebarResults = useQuery({
     queryKey: ["getV1SidebarOptions", debouncedInputValue, multiSelectValue],
     queryFn: async () => {
-      let request = await new readMeGenerator().template.getV1TemplateSidebar(
-        "undefined",
-        debouncedInputValue,
-        multiSelectValue
-      )
+      let request = await new readMeGenerator().sidebar.getV1SidebarTemplate(debouncedInputValue, multiSelectValue)
 
       return request.responseObject as IFullTemplate[]
     },
@@ -51,9 +47,7 @@ const GeneratorSideBar: React.FC<{
     queryKey: ["getV1SidebarOptionsInitial"],
     queryFn: async () => {
       let request =
-        await new readMeGenerator().template.getV1TemplateSideBarOptions(
-          "undefined"
-        )
+        await new readMeGenerator().sidebar.getV1SidebarTemplateOptions()
 
       return request.responseObject as IOption[]
     },

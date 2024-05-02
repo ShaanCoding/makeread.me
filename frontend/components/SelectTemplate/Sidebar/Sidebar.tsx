@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import {
   IFullTemplate,
-  IFunction,
   IPageType,
   ITemplate,
   readMeGenerator,
@@ -37,7 +36,7 @@ const SelectTemplateSideBar: React.FC<{
   const templateMaps = useQuery({
     queryKey: ["getV1Template", searchDebounced, multiSelectValue, pageType],
     queryFn: async () => {
-      let request = await new readMeGenerator().template.getV1Template(
+      let request = await new readMeGenerator().sidebar.getV1SidebarAll(
         searchDebounced,
         multiSelectValue,
         pageType
@@ -52,9 +51,7 @@ const SelectTemplateSideBar: React.FC<{
     queryKey: ["getV1TemplateGetAllSidebar", search],
     queryFn: async () => {
       let request =
-        await new readMeGenerator().template.getV1TemplateGetAllSidebar(
-          "undefined"
-        )
+        await new readMeGenerator().sidebar.getV1SidebarAllOptions()
 
       return request.responseObject as IOption[]
     },

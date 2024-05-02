@@ -19,7 +19,7 @@ const MainContent: React.FC<{
   const PopulateTemplateData = async () => {
     // For now lets hardcode the templateId -> Should grab from the URL
 
-    let index = await new readMeGenerator().template.getV1TemplateIndex(
+    let index = await new readMeGenerator().template.getV1TemplateTemplateDefaultBlocks(
       templateId
     )
 
@@ -30,7 +30,7 @@ const MainContent: React.FC<{
   }
 
   const PopulateMacrosData = async () => {
-    const request = await new readMeGenerator().template.getV1TemplateMacros(
+    const request = await new readMeGenerator().template.postV1TemplateTemplateMacros(
       templateId
     )
 

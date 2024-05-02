@@ -29,4 +29,5 @@ export { IVariableTextArea } from './models/IVariableTextArea';
 export { IVariableType } from './models/IVariableType';
 
 export { HealthCheckService } from './services/HealthCheckService';
+export { SidebarService } from './services/SidebarService';
 export { TemplateService } from './services/TemplateService';

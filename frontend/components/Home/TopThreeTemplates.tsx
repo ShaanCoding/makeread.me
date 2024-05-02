@@ -9,7 +9,7 @@ const TopThreeTemplates = () => {
   const templateMaps = useQuery({
     queryKey: ["getV1Template"],
     queryFn: async () => {
-      let request = await new readMeGenerator().template.getV1Template()
+      let request = await new readMeGenerator().template.getV1TemplateAll()
 
       return request.responseObject?.slice(0, 3) as IFullTemplate[]
     },

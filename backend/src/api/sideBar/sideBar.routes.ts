@@ -5,17 +5,73 @@ import { z } from 'zod'
 import { createApiResponse } from '@/api-docs/openAPIResponseBuilders'
 import { handleServiceResponse } from '@/common/utils/httpHandlers'
 import SideBarController from './sideBar.controller'
-import { SideBarOptionsSchema, FullTemplateSchema } from '../templates/template.model'
+import { SideBarOptionsSchema, FullTemplateSchema, TemplateSchema } from '../templates/template.model'
 
 export const sideBarRegistry = new OpenAPIRegistry()
 
 export const sideBarRouter: Router = (() => {
     const router = express.Router()
 
-    // we want to get all categories for all templates & page types
     sideBarRegistry.registerPath({
         method: 'get',
         path: '/v1/sidebar/all',
+        tags: ['Sidebar'],
+        parameters: [
+            {
+                name: 'search',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'string',
+                },
+            },
+            {
+                name: 'filter',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                    },
+                },
+            },
+            {
+                name: 'pageType',
+                in: 'query',
+                required: false,
+                schema: {
+                    type: 'string',
+                },
+            },
+        ],
+        responses: createApiResponse(z.array(TemplateSchema), 'Success'),
+    })
+
+    /*
+     * @route GET /api/templates
+     * @desc Get all templates available
+     */
+
+    // TODO: Sort by featured as first
+
+    router.get('/all', async (req: Request, res: Response) => {
+        const search: string = req.query.search?.toString() || ''
+        const filter: string[] = req.query.filter?.toString().split(',') || []
+        const pageType: string = req.query.pageType?.toString() || ''
+
+        console.log({ search, filter, pageType })
+
+        const controller = new SideBarController()
+        const serviceResponse = await controller.getAllTemplates(search, filter, pageType)
+
+        handleServiceResponse(serviceResponse, res)
+    })
+
+    // we want to get all categories for all templates & page types
+    sideBarRegistry.registerPath({
+        method: 'get',
+        path: '/v1/sidebar/all/options',
         tags: ['Sidebar'],
         responses: createApiResponse(z.array(SideBarOptionsSchema), 'Success'),
     })
@@ -24,7 +80,7 @@ export const sideBarRouter: Router = (() => {
      * @route GET /api/sidebar
      * @desc Get all categories for all templates & page types
      */
-    router.get('/all', async (req: Request, res: Response) => {
+    router.get('/all/options', async (req: Request, res: Response) => {
         const controller = new SideBarController()
         const serviceResponse = await controller.getAllSidebar()
 
@@ -35,17 +91,9 @@ export const sideBarRouter: Router = (() => {
     // filter by template
     sideBarRegistry.registerPath({
         method: 'get',
-        path: '/v1/sidebar/template/{id}',
+        path: '/v1/sidebar/template/',
         tags: ['Sidebar'],
         parameters: [
-            {
-                name: 'id',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'string',
-                },
-            },
             {
                 name: 'search',
                 in: 'query',
@@ -73,7 +121,7 @@ export const sideBarRouter: Router = (() => {
      * @route GET /api/template/:id/sidebar
      * @desc Get a specific template by id
      */
-    router.get('/template/:id', async (req: Request, res: Response) => {
+    router.get('/template', async (req: Request, res: Response) => {
         const controller = new SideBarController()
         const paramId: string = req.params.id || 'undefined'
         const querySearch: string = req.query.search?.toString() || ''
@@ -88,18 +136,8 @@ export const sideBarRouter: Router = (() => {
 
     sideBarRegistry.registerPath({
         method: 'get',
-        path: '/v1/sidebar/template/{id}/options',
+        path: '/v1/sidebar/template/options',
         tags: ['Sidebar'],
-        parameters: [
-            {
-                name: 'id',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'string',
-                },
-            },
-        ],
         responses: createApiResponse(z.array(SideBarOptionsSchema), 'Success'),
     })
 
@@ -107,7 +145,8 @@ export const sideBarRouter: Router = (() => {
      * @route GET /api/template/:id/sidebar/options
      * @desc Get a specific template by id
      */
-    router.get('/v1/sidebar/template/:id/options', async (req: Request, res: Response) => {
+    router.get('/template/options', async (req: Request, res: Response) => {
+        console.log('TRIGGERED')
         const controller = new SideBarController()
         const serviceResponse = await controller.getAllTemplateFolders()
 
