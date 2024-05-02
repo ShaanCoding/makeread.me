@@ -186,6 +186,7 @@ export class SidebarService {
                     }>;
                     _type: 'radio';
                 })>;
+                folder: string;
             }>;
         }>;
         statusCode: number;

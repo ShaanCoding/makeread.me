@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
 
-import { FullTemplate, IFunction, Template } from './template.model'
+import { DefaultBlockInput, FullTemplate, IFunction, Template } from './template.model'
 
 export default class TemplateController {
     public async getTemplateInitialisedComponentList(id: string): Promise<ServiceResponse<IFunction[] | null>> {
@@ -25,13 +25,42 @@ export default class TemplateController {
         }
     }
 
-    public async getTemplateMacros(id: string): Promise<ServiceResponse<string | null>> {
+    public async getTemplateMacros(body: DefaultBlockInput[]): Promise<ServiceResponse<string | null>> {
         try {
-            if (!id || id == 'undefined') return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
+            // From this, we want to find every UNIQUE macro per folder and then append them to an array
+            // Then we want to go through those folders only and get the macros in the fewest amount of reads
+            if(!body || body.length == 0) return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
 
-            const data = fs.readFileSync(`./public/${id}/macros.njk`, 'utf8')
+            const bodyMapped: Map<string, Set<string>> = new Map<string, Set<string>>()
 
-            return new ServiceResponse<string>(ResponseStatus.Success, 'Success', data, StatusCodes.OK)
+            // Why is object undefined?
+
+            
+
+            body.forEach((block: DefaultBlockInput) => {
+                if(bodyMapped.has(block.folder)) {
+                    bodyMapped.get(block.folder).add(block.function)
+                } else {
+                    bodyMapped.set(block.folder, new Set<string>().add(block.function))
+                }
+            })
+
+            const macros: string[] = []
+
+            bodyMapped.forEach((value: Set<string>, key: string) => {
+                const data: Record<string, string> = JSON.parse(fs.readFileSync(`./public/${key}/macros.json`, 'utf8'))
+
+                value.forEach((macro: string) => {
+                    macros.push(data[macro])
+                })
+            })
+
+            
+
+
+            return new ServiceResponse<string>(ResponseStatus.Success, 'Success', macros.join(''), StatusCodes.OK)
+
+            // return new ServiceResponse<string>(ResponseStatus.Success, 'Success', data, StatusCodes.OK)
         } catch (ex) {
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template macros', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }

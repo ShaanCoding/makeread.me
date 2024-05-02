@@ -1,7 +1,7 @@
 import { ServiceResponse, ResponseStatus } from '@/common/models/serviceResponse'
 import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
-import { SideBarOptions, FullTemplate, IFunction } from '../templates/template.model'
+import { SideBarOptions, FullTemplate, IFunction, Template } from '../templates/template.model'
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
 import { FullTemplate, SideBarOptions } from '../templates/template.model'
 

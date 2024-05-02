@@ -6,6 +6,8 @@ import { createApiResponse } from '@/api-docs/openAPIResponseBuilders'
 import { handleServiceResponse } from '@/common/utils/httpHandlers'
 
 import {
+    DefaultBlockInput,
+    DefaultBlockInputSchema,
     FullTemplateSchema,
     FunctionSchema,
     ObjectSchema,
@@ -48,6 +50,8 @@ templateRegistry.register('IURLType', URLTypeSchema)
 templateRegistry.register('ISideBarOptions', SideBarOptionsSchema)
 templateRegistry.register('IPageType', PageTypeSchema)
 
+templateRegistry.register('IDefaultBlockInput', DefaultBlockInputSchema)
+
 export const templateController: Router = (() => {
     const router = express.Router()
 
@@ -79,22 +83,27 @@ export const templateController: Router = (() => {
         method: 'post',
         path: '/v1/template/template/{id}/macros',
         tags: ['Template'],
-        parameters: [
-            {
-                name: 'id',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'string',
+        requestBody: {
+            required: true,
+            content: {
+                'application/json': {
+                    schema: {
+                        type: 'array',
+                        items: {
+                            $ref: '#/components/schemas/IDefaultBlockInput',
+                        },
+                    },
                 },
             },
-        ],
+        },
         responses: createApiResponse(z.string(), 'Success'),
     })
 
     router.post('/template/:id/macros', async (req: Request, res: Response) => {
+        const body: DefaultBlockInput[] = req.body as DefaultBlockInput[]
+
         const controller = new TemplateController()
-        const serviceResponse = await controller.getTemplateMacros(req.params.id)
+        const serviceResponse = await controller.getTemplateMacros(body)
 
         handleServiceResponse(serviceResponse, res)
     })

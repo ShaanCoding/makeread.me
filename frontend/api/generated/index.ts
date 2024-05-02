@@ -10,6 +10,7 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
+export type { IDefaultBlockInput } from './models/IDefaultBlockInput';
 export { IFullTemplate } from './models/IFullTemplate';
 export type { IFunction } from './models/IFunction';
 export { IObject } from './models/IObject';

@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { IDefaultBlockInput } from '../models/IDefaultBlockInput';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class TemplateService {
@@ -83,6 +84,7 @@ export class TemplateService {
                 }>;
                 _type: 'radio';
             })>;
+            folder: string;
         }>;
         statusCode: number;
     }> {
@@ -95,12 +97,12 @@ export class TemplateService {
         });
     }
     /**
-     * @param id
+     * @param requestBody
      * @returns any Success
      * @throws ApiError
      */
     public postV1TemplateTemplateMacros(
-        id: string,
+        requestBody: Array<IDefaultBlockInput>,
     ): CancelablePromise<{
         success: boolean;
         message: string;
@@ -110,9 +112,8 @@ export class TemplateService {
         return this.httpRequest.request({
             method: 'POST',
             url: '/v1/template/template/{id}/macros',
-            path: {
-                'id': id,
-            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 }
