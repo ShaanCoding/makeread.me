@@ -1,0 +1,4 @@
+{% macro licenseMacro() %}{% if licenseName and licenseURL_url %}## License
+
+Distributed under the {{ licenseName }} License. See [{{ licenseName }} License]({{ licenseURL_url }}) for more information.{% endif %}
+{% endmacro %}
