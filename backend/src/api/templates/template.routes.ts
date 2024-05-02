@@ -1,5 +1,5 @@
 import { OpenAPIRegistry } from '@asteasolutions/zod-to-openapi'
-import express, { Router } from 'express'
+import express, { Request, Response, Router } from 'express'
 import { z } from 'zod'
 
 import { createApiResponse } from '@/api-docs/openAPIResponseBuilders'
@@ -24,7 +24,7 @@ import {
     VariableTextAreaSchema,
     VariableTypeSchema,
 } from './template.model'
-import TemplateController from './templates.service'
+import TemplateController from './templates.controller'
 
 export const templateRegistry = new OpenAPIRegistry()
 
@@ -53,7 +53,7 @@ export const templateController: Router = (() => {
 
     templateRegistry.registerPath({
         method: 'get',
-        path: '/v1/template',
+        path: '/v1/template/all',
         tags: ['Template'],
         parameters: [
             {
@@ -94,44 +94,15 @@ export const templateController: Router = (() => {
 
     // TODO: Sort by featured as first
 
-    router.get('/', async (req: Request, res: Response) => {
-        const search: string = req.query.search || ''
-        const filter: string[] = req.query.filter || []
-        const pageType: string = req.query.pageType || []
+    router.get('/all', async (req: Request, res: Response) => {
+        const search: string = req.query.search?.toString() || ''
+        const filter: string[] = req.query.filter?.toString().split(',') || []
+        const pageType: string = req.query.pageType?.toString() || ''
 
         console.log({ search, filter, pageType })
 
         const controller = new TemplateController()
         const serviceResponse = await controller.getAllTemplates(search, filter, pageType)
-
-        handleServiceResponse(serviceResponse, res)
-    })
-
-    // we want to get all categories for all templates & page types
-    templateRegistry.registerPath({
-        method: 'get',
-        path: '/v1/template/{id}/getAllSidebar',
-        tags: ['Template'],
-        parameters: [
-            {
-                name: 'id',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'string',
-                },
-            },
-        ],
-        responses: createApiResponse(z.array(SideBarOptionsSchema), 'Success'),
-    })
-
-    /*
-     * @route GET /api/sidebar
-     * @desc Get all categories for all templates & page types
-     */
-    router.get('/:id/getAllSidebar', async (req: Request, res: Response) => {
-        const controller = new TemplateController()
-        const serviceResponse = await controller.getAllSidebar()
 
         handleServiceResponse(serviceResponse, res)
     })
@@ -151,7 +122,7 @@ export const templateController: Router = (() => {
 
     templateRegistry.registerPath({
         method: 'get',
-        path: '/v1/template/{id}/index',
+        path: '/v1/template/template/{id}/defaultBlocks',
         tags: ['Template'],
         parameters: [
             {
@@ -166,99 +137,16 @@ export const templateController: Router = (() => {
         responses: createApiResponse(z.array(FunctionSchema), 'Success'),
     })
 
-    router.get('/:id/index', async (req: Request, res: Response) => {
+    router.get('/template/:id/defaultBlocks', async (req: Request, res: Response) => {
         const controller = new TemplateController()
         const serviceResponse = await controller.getTemplateInitialisedComponentList(req.params.id)
 
         handleServiceResponse(serviceResponse, res)
     })
 
-    // search for name / description
-    // filter by template
     templateRegistry.registerPath({
-        method: 'get',
-        path: '/v1/template/{id}/sidebar',
-        tags: ['Template'],
-        parameters: [
-            {
-                name: 'id',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'string',
-                },
-            },
-            {
-                name: 'search',
-                in: 'query',
-                required: false,
-                schema: {
-                    type: 'string',
-                },
-            },
-            {
-                name: 'filter',
-                in: 'query',
-                required: false,
-                schema: {
-                    type: 'array',
-                    items: {
-                        type: 'string',
-                    },
-                },
-            },
-        ],
-        responses: createApiResponse(z.array(FullTemplateSchema), 'Success'),
-    })
-
-    /*
-     * @route GET /api/template/:id/sidebar
-     * @desc Get a specific template by id
-     */
-    router.get('/:id/sidebar', async (req: Request, res: Response) => {
-        const controller = new TemplateController()
-        const paramId = req.params.id || 'undefined'
-        const querySearch = req.query.search || ''
-        const queryFilter = req.query.filter || []
-
-        const serviceResponse = await controller.getTemplateSidebar(paramId, querySearch, queryFilter)
-
-        handleServiceResponse(serviceResponse, res)
-    })
-
-    // getAllTemplateFolders
-
-    templateRegistry.registerPath({
-        method: 'get',
-        path: '/v1/template/{id}/sideBarOptions',
-        tags: ['Template'],
-        parameters: [
-            {
-                name: 'id',
-                in: 'path',
-                required: true,
-                schema: {
-                    type: 'string',
-                },
-            },
-        ],
-        responses: createApiResponse(z.array(SideBarOptionsSchema), 'Success'),
-    })
-
-    /*
-     * @route GET /api/template/:id/sidebar/options
-     * @desc Get a specific template by id
-     */
-    router.get('/:id/sideBarOptions', async (req: Request, res: Response) => {
-        const controller = new TemplateController()
-        const serviceResponse = await controller.getAllTemplateFolders()
-
-        handleServiceResponse(serviceResponse, res)
-    })
-
-    templateRegistry.registerPath({
-        method: 'get',
-        path: '/v1/template/{id}/macros',
+        method: 'post',
+        path: '/v1/template/template/{id}/macros',
         tags: ['Template'],
         parameters: [
             {
@@ -277,7 +165,7 @@ export const templateController: Router = (() => {
      * @route GET /api/template/:id/macros
      * @desc Get a specific templates macros
      */
-    router.get('/:id/macros', async (req: Request, res: Response) => {
+    router.post('/template/:id/macros', async (req: Request, res: Response) => {
         const controller = new TemplateController()
         const serviceResponse = await controller.getTemplateMacros(req.params.id)
 
