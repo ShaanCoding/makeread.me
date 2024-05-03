@@ -80,6 +80,12 @@ const GeneratorSideBar: React.FC<{
         />
       </nav>
 
+      {sidebarOptions.data?.length === 0 && (
+        <div className="py-3 text-center">
+          <h4 className="text-xl font-semibold">No blocks found</h4>
+        </div>
+      )}
+
       {/* Upgrade to pro prompt */}
       {/* <UpgradePrompt /> */}
     </div>
