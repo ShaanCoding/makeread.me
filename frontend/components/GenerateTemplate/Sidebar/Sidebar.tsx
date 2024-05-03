@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
+import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react"
 import { IFullTemplate, IFunction, readMeGenerator } from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
 import { useDebounce } from "use-debounce"
@@ -28,9 +28,11 @@ const GeneratorSideBar: React.FC<{
   const [inputValue, setInputValue] = useState<string>("")
   const [debouncedInputValue] = useDebounce<string>(inputValue, 500)
 
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([
-    templateId,
-  ])
+  const selectorValue = useMemo(() => {
+    return templateId !== "undefined" ? [templateId] : []
+  }, [templateId])
+
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>(selectorValue)
   const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
 
   const sidebarResults = useQuery({

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { useParams } from "next/navigation"
 import { IFunction } from "@/api/generated"
 
@@ -9,7 +9,9 @@ import GeneratorSideBar from "@/components/GenerateTemplate/Sidebar/Sidebar"
 
 export default function ReadMEGeneratorPage() {
   const router = useParams()
-  const templateId: string = (router.id?.[0] as string) ?? "undefined"
+  const templateId: string = useMemo(() => {
+    return (router.id?.[0] as string) ?? "undefined"
+  }, [router.id])
 
   // These are the blocks that render on the main content page
   const [templateBlocks, setTemplateBlocks] = useState<IFunction[]>([])
