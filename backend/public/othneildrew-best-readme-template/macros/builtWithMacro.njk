@@ -1,0 +1,6 @@
+{% macro builtWithMacro() %}{% if builtWithDescription or builtWithList %}### Built With{% if builtWithDescription %}
+
+{{ builtWithDescription }}{% endif %}{% if builtWithList %}
+{% for item in builtWithList %}{% if item.name|length and item.url|length %}
+- [{{ item.name }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}
+{% endif %}{% endmacro %}

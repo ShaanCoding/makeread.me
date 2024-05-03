@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { IFullTemplate, IFunction, readMeGenerator } from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
+import { useDebounce } from "use-debounce"
 
 import { Input } from "@/components/ui/input"
 import {
@@ -25,20 +26,17 @@ const GeneratorSideBar: React.FC<{
   setTemplateBlocks: Dispatch<SetStateAction<IFunction[]>>
 }> = ({ templateId, templateBlocks, setTemplateBlocks }) => {
   const [inputValue, setInputValue] = useState<string>("")
+  const [debouncedInputValue] = useDebounce<string>(inputValue, 500)
+
   const [multiSelectValue, setMultiSelectValue] = useState<string[]>([
     templateId,
   ])
   const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
 
-  // Make it so that it changes on text change
   const sidebarResults = useQuery({
-    queryKey: ["getV1SidebarOptions", inputValue, multiSelectValue],
+    queryKey: ["getV1SidebarOptions", debouncedInputValue, multiSelectValue],
     queryFn: async () => {
-      let request = await new readMeGenerator().template.getV1TemplateSidebar(
-        "undefined",
-        inputValue,
-        multiSelectValue
-      )
+      let request = await new readMeGenerator().sidebar.getV1SidebarTemplate(debouncedInputValue, multiSelectValue)
 
       return request.responseObject as IFullTemplate[]
     },
@@ -49,9 +47,7 @@ const GeneratorSideBar: React.FC<{
     queryKey: ["getV1SidebarOptionsInitial"],
     queryFn: async () => {
       let request =
-        await new readMeGenerator().template.getV1TemplateSideBarOptions(
-          "undefined"
-        )
+        await new readMeGenerator().sidebar.getV1SidebarTemplateOptions()
 
       return request.responseObject as IOption[]
     },
@@ -65,8 +61,8 @@ const GeneratorSideBar: React.FC<{
   }, [sidebarOptions.status, sidebarOptions.data])
 
   return (
-    <div className="bg-muted/40 hidden border-r md:block">
-      <nav className="mt-6 grid gap-6 items-start px-2 text-sm font-medium lg:px-4">
+    <div className="bg-muted/40 mb-4 hidden rounded-br-lg border md:block xl:mb-6">
+      <nav className="mt-6 grid items-start gap-6 px-2 text-sm font-medium lg:px-4">
         <Input
           placeholder="Search blocks"
           value={inputValue}
@@ -83,6 +79,12 @@ const GeneratorSideBar: React.FC<{
           setTemplateBlocks={setTemplateBlocks}
         />
       </nav>
+
+      {sidebarOptions.data?.length === 0 && (
+        <div className="py-3 text-center">
+          <h4 className="text-xl font-semibold">No blocks found</h4>
+        </div>
+      )}
 
       {/* Upgrade to pro prompt */}
       {/* <UpgradePrompt /> */}

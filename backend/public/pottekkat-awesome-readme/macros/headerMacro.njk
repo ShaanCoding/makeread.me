@@ -1,0 +1,7 @@
+{% macro headerMacro() %}{% if headerTitle or badgeList|length or headerDescription %}{% if headerTitle %}
+# {{ headerTitle }}{% endif %}{% if badgeList|length %}
+{% for item in badgeList %}{% if item.altTag|length and item.url|length %}
+[![{{ item.altTag }}]({{ item.url }})]({{ item.url }}){% endif %}{% endfor %}{% endif %}
+{% endif %}{% if headerDescription %}
+{{ headerDescription }}{% endif %}
+{% endmacro %}

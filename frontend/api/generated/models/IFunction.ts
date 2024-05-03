@@ -69,5 +69,6 @@ export type IFunction = {
         }>;
         _type: 'radio';
     })>;
+    folder: string;
 };
 

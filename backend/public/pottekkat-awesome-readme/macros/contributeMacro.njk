@@ -1,0 +1,7 @@
+{% macro contributeMacro() %}{% if isBackToTopEnabled or contributeDescription %}
+# Contribute{% if isBackToTopEnabled %}
+[(Back to top)](#table-of-contents){% endif %}{% if contributeDescription %}
+
+{{ contributeDescription }}{% endif %}
+{% endif %}
+{% endmacro %}

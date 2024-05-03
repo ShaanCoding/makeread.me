@@ -97,6 +97,7 @@ export type IFullTemplate = {
             }>;
             _type: 'radio';
         })>;
+        folder: string;
     }>;
 };
 export namespace IFullTemplate {

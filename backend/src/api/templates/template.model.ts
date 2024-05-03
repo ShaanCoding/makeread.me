@@ -120,6 +120,7 @@ export const FunctionSchema = z.object({
     variables: z.array(
         z.union([VariableInputSchema, VariableTextAreaSchema, VariableCheckBoxSchema, VariableListSchema, VariableObjectSchema, VariableSelectSchema, VariableRadioSchema])
     ),
+    folder: z.string(),
 })
 
 export type PageType = z.infer<typeof PageTypeSchema>
@@ -155,4 +156,11 @@ export type SideBarOptions = z.infer<typeof SideBarOptionsSchema>
 export const SideBarOptionsSchema = z.object({
     label: z.string(),
     value: z.string(),
+})
+
+export type DefaultBlockInput = z.infer<typeof DefaultBlockInputSchema>
+
+export const DefaultBlockInputSchema = z.object({
+    function: z.string(),
+    folder: z.string(),
 })

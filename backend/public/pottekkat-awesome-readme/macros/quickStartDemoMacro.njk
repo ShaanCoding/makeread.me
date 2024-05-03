@@ -1,0 +1,7 @@
+{% macro quickStartDemoMacro() %}{% if (demoPreview.altTag and demoPreview.url) or demoDescription %}
+# Quick Start Demo{% if demoPreview.altTag and demoPreview.url %}
+
+![{{ demoPreview.altTag }}]({{ demoPreview.url }}){% endif %}{% if demoDescription %}
+
+{{ demoDescription }}{% endif %}{% endif %}
+{% endmacro %}

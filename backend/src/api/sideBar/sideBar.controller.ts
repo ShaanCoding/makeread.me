@@ -1,11 +1,11 @@
+import { ServiceResponse, ResponseStatus } from '@/common/models/serviceResponse'
 import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
-
+import { SideBarOptions, FullTemplate, IFunction, Template } from '../templates/template.model'
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
+import { FullTemplate, SideBarOptions } from '../templates/template.model'
 
-import { FullTemplate, IFunction, PageType, SideBarOptions, SideBarOptions, Template } from './template.model'
-
-export default class TemplateController {
+export default class SideBarController {
     public async getAllTemplates(search: string, filter: string[], pageType: string): Promise<ServiceResponse<Template[] | null>> {
         try {
             const folders: string[] = fs.readdirSync('./public')
@@ -45,7 +45,6 @@ export default class TemplateController {
 
             return new ServiceResponse<Template[]>(ResponseStatus.Success, 'Success', blocksData, StatusCodes.OK)
         } catch (ex) {
-            console.log(ex)
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get templates', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
     }
@@ -72,28 +71,7 @@ export default class TemplateController {
 
             return new ServiceResponse<SideBarOptions[]>(ResponseStatus.Success, 'Success', sidebarOptions, StatusCodes.OK)
         } catch (ex) {
-            console.log(ex)
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get sidebar options', null, StatusCodes.INTERNAL_SERVER_ERROR)
-        }
-    }
-
-    public async getTemplateInitialisedComponentList(id: string): Promise<ServiceResponse<IFunction[] | null>> {
-        try {
-            if (!id || id == 'undefined') return new ServiceResponse(ResponseStatus.Success, 'Success', [], StatusCodes.OK)
-
-            const blocksData: FullTemplate = JSON.parse(fs.readFileSync(`./public/${id}/blocks.json`, 'utf8'))
-            const indexData: string[] = blocksData.startupBlocks
-
-            const functions: IFunction[] = blocksData.functions.map((block: IFunction) => {
-                if (indexData.includes(block.function)) {
-                    return block
-                }
-            })
-
-            return new ServiceResponse<IFunction[]>(ResponseStatus.Success, 'Success', functions, StatusCodes.OK)
-        } catch (ex) {
-            console.log(ex)
-            return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
     }
 
@@ -174,18 +152,6 @@ export default class TemplateController {
             return new ServiceResponse<SideBarOptions[]>(ResponseStatus.Success, 'Success', sidebarOptions, StatusCodes.OK)
         } catch (ex) {
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template folders', null, StatusCodes.INTERNAL_SERVER_ERROR)
-        }
-    }
-
-    public async getTemplateMacros(id: string): Promise<ServiceResponse<string | null>> {
-        try {
-            if (!id || id == 'undefined') return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
-
-            const data = fs.readFileSync(`./public/${id}/macros.njk`, 'utf8')
-
-            return new ServiceResponse<string>(ResponseStatus.Success, 'Success', data, StatusCodes.OK)
-        } catch (ex) {
-            return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template macros', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
     }
 }

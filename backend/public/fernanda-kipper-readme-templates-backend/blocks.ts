@@ -63,6 +63,7 @@ const functionsList: IFunction[] = [
         name: 'Header',
         description: 'This function creates a project header with the project title.',
         function: 'projectHeaderMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Project Title',
@@ -133,6 +134,7 @@ const functionsList: IFunction[] = [
         name: 'Technologies',
         description: 'This function lists the technologies used in the project.',
         function: 'technologiesMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Technology Description',
@@ -146,6 +148,7 @@ const functionsList: IFunction[] = [
         name: 'Getting Started',
         description: 'This function provides a guide on how to get started with the project.',
         function: 'gettingStartedMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Getting Started Description',
@@ -159,6 +162,7 @@ const functionsList: IFunction[] = [
         name: 'Prerequisites',
         description: 'This function provides a guide on the prerequisites for the project.',
         function: 'prerequisitesMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Prerequisites Description',
@@ -173,6 +177,7 @@ const functionsList: IFunction[] = [
         name: 'Cloning',
         description: 'This function provides a guide on how to clone the project.',
         function: 'cloningMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Cloning Description',
@@ -186,6 +191,7 @@ const functionsList: IFunction[] = [
         name: 'Configure Environment Variables',
         description: 'This function provides a guide on how to configure environment variables.',
         function: 'configEnvironmentVariablesMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Environment Variables Description',
@@ -200,6 +206,7 @@ const functionsList: IFunction[] = [
         name: 'Starting',
         description: 'This function provides a guide on how to start the project.',
         function: 'startingMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Starting Description',
@@ -213,6 +220,7 @@ const functionsList: IFunction[] = [
         name: 'API Endpoints',
         description: 'This function provides a list of API endpoints.',
         function: 'apiEndpointsMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'API Endpoints Description',
@@ -227,6 +235,7 @@ const functionsList: IFunction[] = [
         name: 'Collaborators',
         description: 'This function lists the collaborators of the project.',
         function: 'collaboratorsMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Collaborators Description',
@@ -274,6 +283,7 @@ const functionsList: IFunction[] = [
         name: 'Contribute',
         description: 'This function provides a guide on how to contribute to the project.',
         function: 'contributeMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Contribute Description',
@@ -288,6 +298,7 @@ const functionsList: IFunction[] = [
         name: 'Documentation That Might Help',
         description: 'This function provides a list of documentation that might help the user.',
         function: 'documentationThatMightHelpMacro',
+        folder: 'fernanda-kipper-readme-templates-backend',
         variables: [
             {
                 label: 'Documentation Description',

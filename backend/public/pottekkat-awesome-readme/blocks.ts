@@ -57,6 +57,7 @@ const functionsList: IFunction[] = [
         name: 'Banner',
         description: 'A banner for your project.',
         function: 'bannerMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Banner Image',
@@ -85,6 +86,7 @@ const functionsList: IFunction[] = [
         name: 'Header',
         description: 'A header for your project.',
         function: 'headerMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Title',
@@ -144,6 +146,7 @@ const functionsList: IFunction[] = [
         name: 'Quick Start / Demo',
         description: 'A quick start guide or a demo for your project.',
         function: 'quickStartDemoMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Demo Preview',
@@ -179,6 +182,7 @@ const functionsList: IFunction[] = [
         name: 'Table of Contents',
         description: 'A table of contents for your project.',
         function: 'tableOfContentsMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Table of Contents Description',
@@ -261,6 +265,7 @@ const functionsList: IFunction[] = [
         name: 'Installation',
         description: 'Instructions on how to install your project.',
         function: 'installationMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Is Back to Top Enabled',
@@ -281,6 +286,7 @@ const functionsList: IFunction[] = [
         name: 'Usage',
         description: 'Instructions on how to use your project.',
         function: 'usageMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Is Back to Top Enabled',
@@ -300,6 +306,7 @@ const functionsList: IFunction[] = [
         name: 'Development',
         description: 'Instructions on how to develop your project.',
         function: 'developmentMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Is Back to Top Enabled',
@@ -320,6 +327,7 @@ const functionsList: IFunction[] = [
         name: 'Contribute',
         description: 'Instructions on how to contribute to your project.',
         function: 'contributeMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Is Back to Top Enabled',
@@ -340,6 +348,7 @@ const functionsList: IFunction[] = [
         name: 'License',
         description: 'The license for your project.',
         function: 'licenseMacro',
+        folder: 'pottekkat-awesome-readme',
         variables: [
             {
                 label: 'Is Back to Top Enabled',

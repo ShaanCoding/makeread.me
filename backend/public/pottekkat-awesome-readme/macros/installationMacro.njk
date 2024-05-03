@@ -1,0 +1,7 @@
+{% macro installationMacro() %}{% if isBackToTopEnabled or installationDescription %}
+# Installation{% if isBackToTopEnabled %}
+[(Back to top)](#table-of-contents){% endif %}{% if installationDescription %}
+
+{{ installationDescription }}{% endif %}
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,3 @@
+{% macro bannerMacro() %}{% if bannerImage.url and bannerImage.altTag %}
+![{{ bannerImage.altTag }}]({{ bannerImage.url }}){% endif %}
+{% endmacro %}

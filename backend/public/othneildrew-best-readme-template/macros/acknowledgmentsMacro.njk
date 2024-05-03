@@ -1,0 +1,7 @@
+{% macro acknowledgmentsMacro() %}{% if acknowledgmentsDescription or acknowledgmentsList %}## Acknowledgments{% if acknowledgmentsDescription %}
+
+{{ acknowledgmentsDescription }}{% endif %}{% if acknowledgmentsList %}
+
+{% for item in acknowledgmentsList %}{% if item.name|length and item.url|length %}
+- [{{ item.name }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}{% endif %}
+{% endmacro %}

@@ -1,0 +1,8 @@
+{% macro layoutMacro() %}{% if layoutImageList|length %}
+<h2 id="layout">🎨 Layout</h2>
+
+<p align="center">
+{% for item in layoutImageList %}
+<img src="{{ item.url }}" alt="{{ item.altTag }}" width="400px">{% endfor %}
+</p>{% endif %}
+{% endmacro %}

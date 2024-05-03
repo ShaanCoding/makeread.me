@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import {
   IFullTemplate,
-  IFunction,
   IPageType,
   ITemplate,
   readMeGenerator,
 } from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
+import { useDebounce } from "use-debounce"
 
 import { Input } from "@/components/ui/input"
 import {
@@ -27,19 +27,17 @@ const SelectTemplateSideBar: React.FC<{
   setTemplateBlocks: Dispatch<SetStateAction<ITemplate[]>>
   pageType: IPageType
 }> = ({ pageType, setTemplateBlocks }) => {
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([
-    // templateId,
-  ])
+  const [search, setSearch] = useState<string>("")
+  const [searchDebounced] = useDebounce<string>(search, 500)
+
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([])
   const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
 
-  // Make it so that it changes on text change
-  const [search, setSearch] = useState<string>("")
-
   const templateMaps = useQuery({
-    queryKey: ["getV1Template", search, multiSelectValue, pageType],
+    queryKey: ["getV1Template", searchDebounced, multiSelectValue, pageType],
     queryFn: async () => {
-      let request = await new readMeGenerator().template.getV1Template(
-        search,
+      let request = await new readMeGenerator().sidebar.getV1SidebarAll(
+        searchDebounced,
         multiSelectValue,
         pageType
       )
@@ -53,9 +51,7 @@ const SelectTemplateSideBar: React.FC<{
     queryKey: ["getV1TemplateGetAllSidebar", search],
     queryFn: async () => {
       let request =
-        await new readMeGenerator().template.getV1TemplateGetAllSidebar(
-          "undefined"
-        )
+        await new readMeGenerator().sidebar.getV1SidebarAllOptions()
 
       return request.responseObject as IOption[]
     },
@@ -80,7 +76,7 @@ const SelectTemplateSideBar: React.FC<{
   }, [templateMaps.status, templateMaps.data])
 
   return (
-    <div className="bg-muted/40 hidden border-r md:block">
+    <div className="bg-muted/40 mb-4 hidden rounded-br-lg border md:block xl:mb-6">
       <nav className="mt-6 grid gap-6 items-start px-2 text-sm font-medium lg:px-4">
         <Input
           placeholder="Search blocks"

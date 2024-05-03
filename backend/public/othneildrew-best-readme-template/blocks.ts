@@ -59,6 +59,7 @@ const projectHeaderFunction: IFunction = {
     name: 'Project Header',
     description: 'This is the project header',
     function: 'projectHeaderMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Logo URL',
@@ -109,6 +110,7 @@ const aboutTheProjectFunction: IFunction = {
     name: 'About The Project',
     description: 'This is the about the project section',
     function: 'aboutTheProjectMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Product Screenshot',
@@ -145,6 +147,7 @@ const builtWithFunction: IFunction = {
     name: 'Built With',
     description: 'This is the built with section',
     function: 'builtWithMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Description',
@@ -211,6 +214,7 @@ const gettingStartedFunction: IFunction = {
     name: 'Getting Started',
     description: 'This is the getting started section',
     function: 'gettingStartedMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Description',
@@ -226,6 +230,7 @@ const prerequisitesFunction: IFunction = {
     name: 'Prerequisites',
     description: 'This is the prerequisites section',
     function: 'prerequisitesMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Prerequisites Description',
@@ -240,6 +245,7 @@ const installationFunction: IFunction = {
     name: 'Installation',
     description: 'This is the installation section',
     function: 'installationMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Installation Description',
@@ -255,6 +261,7 @@ const usageFunction: IFunction = {
     name: 'Usage',
     description: 'This is the usage section',
     function: 'usageMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Usage Description',
@@ -270,6 +277,7 @@ const roadmapFunction: IFunction = {
     name: 'Roadmap',
     description: 'This is the roadmap section',
     function: 'roadmapMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Roadmap Description',
@@ -291,6 +299,7 @@ const contributingFunction: IFunction = {
     name: 'Contributing',
     description: 'This is the contributing section',
     function: 'contributingMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Contributing Description',
@@ -306,6 +315,7 @@ const licenseFunction: IFunction = {
     name: 'License',
     description: 'This is the license section',
     function: 'licenseMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'License Name',
@@ -326,6 +336,7 @@ const contactFunction: IFunction = {
     name: 'Contact',
     description: 'This is the contact section',
     function: 'contactMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Contact Description',
@@ -341,6 +352,7 @@ const acknowledgementsFunction: IFunction = {
     name: 'Acknowledgments',
     description: 'This is the acknowledgments section',
     function: 'acknowledgmentsMacro',
+    folder: 'othneildrew-best-readme-template',
     variables: [
         {
             label: 'Acknowledgments Description',

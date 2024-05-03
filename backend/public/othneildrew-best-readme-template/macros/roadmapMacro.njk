@@ -1,0 +1,6 @@
+{% macro roadmapMacro() %}{% if roadmapDescription or openIssuesURL %}## Roadmap{% if roadmapDescription %}
+
+{{ roadmapDescription }}{% endif %}{% if openIssuesURL %}
+
+See the [open issues]({{ openIssuesURL }}) for a full list of proposed features (and known issues).{% endif %}{% endif %}
+{% endmacro %}

@@ -62,6 +62,7 @@ const functionsList: IFunction[] = [
         name: 'Header',
         description: 'This function creates a project header with the project title.',
         function: 'projectHeaderMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Project Title',
@@ -126,6 +127,7 @@ const functionsList: IFunction[] = [
         name: 'Layout',
         description: 'This function creates a layout for the README file.',
         function: 'layoutMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Image List',
@@ -160,6 +162,7 @@ const functionsList: IFunction[] = [
         name: 'Technologies',
         description: 'This function lists the technologies used in the project.',
         function: 'technologiesMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Technology Description',
@@ -173,6 +176,7 @@ const functionsList: IFunction[] = [
         name: 'Getting Started',
         description: 'This function provides a guide on how to get started with the project.',
         function: 'gettingStartedMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Getting Started Description',
@@ -186,6 +190,7 @@ const functionsList: IFunction[] = [
         name: 'Prerequisites',
         description: 'This function provides a guide on the prerequisites for the project.',
         function: 'prerequisitesMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Prerequisites Description',
@@ -200,6 +205,7 @@ const functionsList: IFunction[] = [
         name: 'Cloning',
         description: 'This function provides a guide on how to clone the project.',
         function: 'cloningMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Cloning Description',
@@ -213,6 +219,7 @@ const functionsList: IFunction[] = [
         name: 'Starting',
         description: 'This function provides a guide on how to start the project.',
         function: 'startingMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Starting Description',
@@ -226,6 +233,7 @@ const functionsList: IFunction[] = [
         name: 'Collaborators',
         description: 'This function lists the collaborators of the project.',
         function: 'collaboratorsMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Collaborators Description',
@@ -273,6 +281,7 @@ const functionsList: IFunction[] = [
         name: 'Contribute',
         description: 'This function provides a guide on how to contribute to the project.',
         function: 'contributeMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Contribute Description',
@@ -287,6 +296,7 @@ const functionsList: IFunction[] = [
         name: 'Documentation That Might Help',
         description: 'This function provides a list of documentation that might help the user.',
         function: 'documentationThatMightHelpMacro',
+        folder: 'fernanda-kipper-readme-templates-frontend',
         variables: [
             {
                 label: 'Documentation Description',
