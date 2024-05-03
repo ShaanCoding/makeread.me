@@ -9,6 +9,7 @@ import { ChevronsUpDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import SocialButton from "@/components/common/SocialButton"
+import ContextTitle from "../MainContent/Editor/Factory/ContextTitle"
 
 const MappedBlocks: React.FC<{
   blocks: IFullTemplate[]
@@ -60,14 +61,14 @@ const MappedBlocks: React.FC<{
                       className="rounded-md border px-4 py-3 text-sm"
                       key={index}
                     >
-                      <h4 className="pb-2 font-semibold">{func.name}</h4>
-                      <p className="pb-2">{func.description}</p>
+                      <ContextTitle title={func.name} description={func.description} />
                       <Button
                         onClick={() => {
                           setTemplateBlocks([...templateBlocks, func])
                         }}
+                        className="w-full"
                       >
-                        Add To Template
+                        Add Block
                       </Button>
                     </div>
                   )
