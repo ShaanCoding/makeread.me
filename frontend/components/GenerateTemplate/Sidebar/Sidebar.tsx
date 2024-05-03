@@ -28,25 +28,10 @@ const GeneratorSideBar: React.FC<{
   const [inputValue, setInputValue] = useState<string>("")
   const [debouncedInputValue] = useDebounce<string>(inputValue, 500)
 
-  const selectorValue = useMemo(() => {
-    return templateId !== "undefined" ? [templateId] : []
-  }, [templateId])
-
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>(selectorValue)
-  const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
-
-  const sidebarResults = useQuery({
-    queryKey: ["getV1SidebarOptions", debouncedInputValue, multiSelectValue],
-    queryFn: async () => {
-      let request = await new readMeGenerator().sidebar.getV1SidebarTemplate(debouncedInputValue, multiSelectValue)
-
-      return request.responseObject as IFullTemplate[]
-    },
-    staleTime: 5 * 1000,
-  })
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([])
 
   const sidebarOptions = useQuery({
-    queryKey: ["getV1SidebarOptionsInitial"],
+    queryKey: ["getV1SidebarTemplateOptions"],
     queryFn: async () => {
       let request =
         await new readMeGenerator().sidebar.getV1SidebarTemplateOptions()
@@ -58,9 +43,26 @@ const GeneratorSideBar: React.FC<{
 
   useEffect(() => {
     if (sidebarOptions.status === "success") {
-      setMultiSelectList(sidebarOptions.data!)
+      const templateOption: IOption | undefined = sidebarOptions.data?.find(
+        (option: IOption) => option.value === templateId
+      )
+
+      if (templateOption) {
+        setMultiSelectValue([templateOption.value])
+      }
     }
   }, [sidebarOptions.status, sidebarOptions.data])
+
+  const sidebarResults = useQuery({
+    queryKey: ["getV1SidebarTemplate", debouncedInputValue, multiSelectValue],
+    queryFn: async () => {
+      let request = await new readMeGenerator().sidebar.getV1SidebarTemplate(debouncedInputValue, multiSelectValue)
+
+      return request.responseObject as IFullTemplate[]
+    },
+    staleTime: 5 * 1000,
+    enabled: sidebarOptions.status === "success" && !!sidebarOptions.data,
+  })
 
   return (
     <div className="bg-muted/40 mb-4 hidden rounded-br-lg border md:block xl:mb-6">
@@ -73,7 +75,7 @@ const GeneratorSideBar: React.FC<{
         <MultiSelectorComponent
           values={multiSelectValue}
           onValuesChange={setMultiSelectValue}
-          options={multiSelectList}
+          options={sidebarOptions.data ?? []}
         />
         <MappedBlocks
           blocks={sidebarResults.data ?? []}
