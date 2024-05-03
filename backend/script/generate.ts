@@ -21,15 +21,15 @@ const readDirectoriesAndConvertToJSON = (directoryPath: string) => {
                 }
 
                 if (stats.isDirectory()) {
-                    processDirectory(filePath)
+                    generateBlockJSON(filePath)
+                    generateMacroJSON(filePath)
                 }
             })
         })
     })
 }
 
-// Process directory
-const processDirectory = (directoryPath: string) => {
+const generateBlockJSON = (directoryPath: string) => {
     // Check if block.ts file exists
     let blocksFilePath: string = path.join(directoryPath, 'blocks.ts')
     const doesBlockFileExist: boolean = fs.existsSync(blocksFilePath)
@@ -53,6 +53,27 @@ const processDirectory = (directoryPath: string) => {
         })
     })
 }
+
+
+function generateMacroJSON(directoryUrl: string): void {
+    const macrosDirectory = path.join(directoryUrl, 'macros');
+
+    const filesAreArray: string[] = fs.readdirSync(macrosDirectory);
+    const result: { [key: string]: string } = {};
+
+    for (const file of filesAreArray) {
+        const filePath = path.join(macrosDirectory, file);
+        if (fs.lstatSync(filePath).isFile()) {
+            result[file.replace('.njk', '')] = fs.readFileSync(filePath, { encoding: 'utf8' });
+        }
+    }
+
+    const outputFile = path.join(directoryUrl, 'macros.json');
+
+    fs.writeFileSync(outputFile, JSON.stringify(result));
+}
+
+
 
 const rootDirectory: string = path.join(__dirname, '..')
 readDirectoriesAndConvertToJSON(rootDirectory)

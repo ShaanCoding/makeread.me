@@ -1,0 +1,7 @@
+{% macro developmentMacro() %}{% if isBackToTopEnabled or developmentDescription %}
+# Development{% if isBackToTopEnabled %}
+[(Back to top)](#table-of-contents){% endif %}{% if developmentDescription %}
+
+{{ developmentDescription }}{% endif %}
+{% endif %}
+{% endmacro %}
