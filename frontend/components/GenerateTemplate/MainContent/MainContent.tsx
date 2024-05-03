@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { IFunction, readMeGenerator } from "@/api/generated"
+import { IDefaultBlockInput, IFunction, readMeGenerator } from "@/api/generated"
 
 import CopyButton from "./CopyButton"
 import DownloadButton from "./DownloadButton"
 import Editor from "./Editor/Editor"
 import Preview from "./Preview"
 import { compileString } from "./generator"
+import { useQuery } from "@tanstack/react-query"
 
 const MainContent: React.FC<{
   templateId: string
@@ -16,45 +17,61 @@ const MainContent: React.FC<{
   const [variables, setVariables] = useState<Record<string, any>>({})
   const [output, setOutput] = useState<string>("")
 
-  const PopulateTemplateData = async () => {
-    // For now lets hardcode the templateId -> Should grab from the URL
+  const populateTemplateData = useQuery({
+    queryKey: ["getV1TemplateTemplateDefaultBlocks", templateId],
+    queryFn: async () => {
+      let index = await new readMeGenerator().template.getV1TemplateTemplateDefaultBlocks(
+        templateId
+      )
 
-    let index = await new readMeGenerator().template.getV1TemplateTemplateDefaultBlocks(
-      templateId
-    )
-
-    if (index.success && index.responseObject) {
-      const data: IFunction[] = index.responseObject
-      setTemplateBlocks(data)
-    }
-  }
-
-  const PopulateMacrosData = async () => {
-    const request = await new readMeGenerator().template.postV1TemplateTemplateMacros(
-      templateId
-    )
-
-    if (request.success && request.responseObject) {
-      const data: string = request.responseObject
-      setMacros(data)
-    }
-  }
+      return index.responseObject as IFunction[]
+    },
+  })
 
   useEffect(() => {
-    PopulateTemplateData()
-    PopulateMacrosData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (populateTemplateData.status === "success") {
+      setTemplateBlocks(populateTemplateData.data!)
+    }
+  }, [populateTemplateData.data, populateTemplateData.status])
+
+  const populateMacrosData = useQuery({
+    queryKey: ["postV1TemplateTemplateMacros", templateBlocks],
+    queryFn: async () => {
+      const blocksMapped: IDefaultBlockInput[] = templateBlocks.map(
+        (block: IFunction) => ({
+          function: block.function,
+          folder: block.folder,
+        })
+      )
+
+      let request = await new readMeGenerator().template.postV1TemplateTemplateMacros(blocksMapped)
+
+      return request.responseObject as string
+    },
+    enabled: populateTemplateData.data && populateTemplateData.status === "success",
+  })
+
+  useEffect(() => {
+    if (populateMacrosData.status === "success") { 
+      setMacros(populateMacrosData.data!)
+    }
+  }, [populateMacrosData.data, populateMacrosData.status])
 
   const generateOutput = () => {
-    if (macros && templateBlocks && variables) {
-      const data = compileString(macros, templateBlocks, variables)
-      setOutput(data)
-    }
+      if (macros && templateBlocks && variables) {
+        const data = compileString(macros, templateBlocks, variables)
+        setOutput(data)
+      }
   }
 
   useEffect(() => {
-    generateOutput()
+      generateOutput()
+  }, [macros])
+
+  useEffect(() => {
+    if(populateTemplateData.isLoading === false && populateMacrosData.isLoading === false) {
+      generateOutput()
+    }
   }, [variables, templateBlocks, macros])
 
   return (
