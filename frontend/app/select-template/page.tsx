@@ -39,12 +39,12 @@ export default function IndexPage() {
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4">
                 {Object.keys(IPageType).map((page: string, index: number) => (
                   <Button
-                    variant={`${pageType === IPageType[page] ? "default" : "outline"
+                    variant={`${pageType === (IPageType as any)[page] ? "default" : "outline"
                       }`}
                     key={index}
-                    onClick={() => setPageType(IPageType[page] as IPageType)}
+                    onClick={() => setPageType((IPageType as any)[page])}
                   >
-                    {IPageType[page]}
+                    {(IPageType as any)[page]}
                   </Button>
                 ))}
               </div>
