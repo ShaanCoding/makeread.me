@@ -30,6 +30,8 @@ const TopThreeTemplates = () => {
         </div>
       </div>
     )
+  } else {
+    return <></>
   }
 }
 
