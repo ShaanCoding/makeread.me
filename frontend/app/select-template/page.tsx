@@ -36,7 +36,7 @@ export default function IndexPage() {
             <div className="xl:flex xl:items-center xl:justify-center gap-6">
               <h4 className="text-lg font-semibold mb-2 xl:mb-0">Page Type</h4>
 
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4">
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {Object.keys(IPageType).map((page: string, index: number) => (
                   <Button
                     variant={`${pageType === (IPageType as any)[page] ? "default" : "outline"
