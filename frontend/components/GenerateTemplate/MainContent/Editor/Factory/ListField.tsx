@@ -11,6 +11,7 @@ import { useFieldArray } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
 
+import ContextTitle from "./ContextTitle"
 import InputGenerator from "./InputGenerator"
 import { IListFieldProps } from "./types"
 
@@ -31,9 +32,11 @@ const ListField: React.FC<IListFieldProps> = ({ variables, control }) => {
 
   return (
     <div className="pb-4">
-      <h4 className="pb-2 font-semibold">{variables.label}</h4>
-
-      <div className="">
+      <ContextTitle
+        title={variables.label}
+        description={variables.description}
+      />
+      <div>
         {fields.map((field, index) => (
           <div className="flex w-full gap-4" key={field.id}>
             {variables.listSchema &&

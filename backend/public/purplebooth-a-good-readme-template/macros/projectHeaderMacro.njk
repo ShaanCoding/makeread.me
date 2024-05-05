@@ -1,0 +1,5 @@
+{% macro projectHeaderMacro() %}{% if projectTitle or projectDescription %}{% if projectTitle %}
+# {{ projectTitle }}{% endif %}{% if projectDescription %}
+
+{{ projectDescription }}{% endif %}{% endif %}
+{% endmacro %}

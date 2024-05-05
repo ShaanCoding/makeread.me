@@ -1,0 +1,14 @@
+{% macro tableOfContentsMacro() %}{% if tableOfContentsDescription or isTitleEnabled or isQuickstartDemoEnabled or isTableOfContentsEnabled or isInstallationEnabled or isUsageEnabled or isDevelopmentEnabled or isContributeEnabled or isLicenseEnabled %}
+# Table of Contents{% if tableOfContentsDescription %}
+
+{{ tableOfContentsDescription }}{% endif %}{% if (isTitleEnabled.title and isTitleEnabled.url) and isTitleEnabled.isEnabled %}
+- [{{ isTitleEnabled.title }}](#{{ isTitleEnabled.url }}){% endif %}{% if isQuickstartDemoEnabled %}
+- [Quick Start Demo](#quick-start-demo){% endif %}{% if isTableOfContentsEnabled %}
+- [Table of Contents](#table-of-contents){% endif %}{% if isInstallationEnabled %}
+- [Installation](#installation){% endif %}{% if isUsageEnabled %}
+- [Usage](#usage){% endif %}{% if isDevelopmentEnabled %}
+- [Development](#development){% endif %}{% if isContributeEnabled %}
+- [Contribute](#contribute){% endif %}{% if isLicenseEnabled %}
+- [License](#license){% endif %}
+{% endif %}
+{% endmacro %}

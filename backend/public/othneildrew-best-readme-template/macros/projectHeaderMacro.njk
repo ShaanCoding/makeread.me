@@ -1,0 +1,21 @@
+{% macro projectHeaderMacro() %}
+{% if logoURL or headline or catchphrase or exploreTheDocsURL or viewDemoURL or reportBugURL or requestFeatureURL %}<br/>
+<div align="center">
+{% if logoURL %}<a href="https://github.com/ShaanCoding/ReadME-Generator">
+<img src="{{ logoURL }}" alt="Logo" width="80" height="80">
+</a>{% endif %}
+{% if headline %}<h3 align="center">{{ headline }}</h3>{% endif %}
+{% if catchphrase or exploreTheDocsURL or viewDemoURL or reportBugURL or requestFeatureURL %}<p align="center">
+{{ catchphrase }}
+{% if exploreTheDocsURL %}<br/>
+<br/>
+<a href="{{ exploreTheDocsURL }}"><strong>Explore the docs »</strong></a>{% endif %}
+{% if viewDemoURL or reportBugURL or requestFeatureURL %}<br/>
+<br/>{% endif %}
+{% if viewDemoURL %}<a href="{{ viewDemoURL }}">View Demo .</a>{% endif %}  
+{% if reportBugURL %}<a href="{{ reportBugURL }}">Report Bug .</a>{% endif %}
+{% if requestFeatureURL %}<a href="{{ requestFeatureURL }}">Request Feature</a>{% endif %}
+</p>{% endif %}
+</div>
+{% endif %}
+{% endmacro %}

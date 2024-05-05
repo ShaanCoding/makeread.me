@@ -154,7 +154,7 @@ The roadmap includes both completed and future goals. Here&#39;s what we have ac
 - [x] Add old readme generator template
 - [ ] Add more templates
 - [ ] Move rendering logic to the backend with debounce
-- [ ] Replace useEffect with react query
+- [x] Replace useEffect with react query
 - [ ] Add caching
 - [ ] Write up README best practice articles
 - [ ] Avoid key collisions when using non-unique-names as Ids in templates

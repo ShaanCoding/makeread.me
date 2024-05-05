@@ -1,0 +1,8 @@
+{% macro builtWithMacro() %}{% if builtWithDescription or builtWithList|length %}
+## Built With{% if builtWithDescription %}
+
+{{ builtWithDescription }}{% endif %}{% if builtWithList|length %}
+{% for item in builtWithList %}{% if item.url and item.altTag %}
+- [{{ item.altTag }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}
+{% endif %}
+{% endmacro %}

@@ -1,1 +1,212 @@
-{"title":"Readme Templates - Frontend","description":"This repository provides a series of README templates to help developers document their projects 🚀👩‍💻","author":{"name":"Fernanda Kipper","url":{"url":"https://github.com/Fernanda-Kipper","_type":"Github"}},"contributors":[{"name":"Shaan Khan","url":{"url":"https://github.com/ShaanCoding","_type":"Github"}}],"image":"https://github.com/Fernanda-Kipper/Readme-Templates/raw/main/.github/logo.png","dateCreated":"2024-04-14T00:00:00.000Z","lastUpdated":"2024-04-14T12:00:00.000Z","tags":[{"name":"Read Me","url":"read-me"},{"name":"Recommended","url":"recommended"},{"name":"MIT","url":"mit"},{"name":"Frontend","url":"frontend"}],"featured":false,"folder":"fernanda-kipper-readme-templates-frontend","startupBlocks":["projectHeaderMacro","layoutMacro","technologiesMacro","gettingStartedMacro","prerequisitesMacro","cloningMacro","startingMacro","collaboratorsMacro","contributeMacro","documentationThatMightHelpMacro"],"functions":[{"name":"Header","description":"This function creates a project header with the project title.","function":"projectHeaderMacro","variables":[{"label":"Project Title","name":"projectTitle","defaultValue":"Project name 💻","_type":"input"},{"label":"Enable Technologies Section","name":"isTechnologiesSection","defaultValue":true,"_type":"checkBox"},{"label":"Enable Getting Started Section","name":"isGettingStartedSection","defaultValue":true,"_type":"checkBox"},{"label":"Enable Collaborators Section","name":"isCollaboratorsSection","defaultValue":true,"_type":"checkBox"},{"label":"Enable Contribute Section","name":"isContributeSection","defaultValue":true,"_type":"checkBox"},{"label":"Project Description","name":"projectDescription","defaultValue":"Simple description of what your project do or how to use it","_type":"textArea"},{"label":"Call to Action","name":"projectCallToAction","_type":"object","defaultValue":{"url":"https://github.com/ShaanCoding","text":"📱 Visit this Project"},"objectSchema":[{"label":"URL","name":"url","_type":"input"},{"label":"Text","name":"text","_type":"input"}]}]},{"name":"Layout","description":"This function creates a layout for the README file.","function":"layoutMacro","variables":[{"label":"Image List","name":"layoutImageList","_type":"list","defaultValue":[{"url":"https://source.unsplash.com/random","altTag":"Random Image"},{"url":"https://source.unsplash.com/random","altTag":"Random Image"}],"listSchema":[{"label":"Image","name":"url","_type":"input"},{"label":"Alt Tag","name":"altTag","_type":"input"}]}]},{"name":"Technologies","description":"This function lists the technologies used in the project.","function":"technologiesMacro","variables":[{"label":"Technology Description","name":"technologyDescription","defaultValue":"- list of all technologies you used\r\n- react\r\n- styled components\r\n- another example","_type":"textArea"}]},{"name":"Getting Started","description":"This function provides a guide on how to get started with the project.","function":"gettingStartedMacro","variables":[{"label":"Getting Started Description","name":"gettingStartedDescription","defaultValue":"Here you describe how to run your project locally","_type":"textArea"}]},{"name":"Prerequisites","description":"This function provides a guide on the prerequisites for the project.","function":"prerequisitesMacro","variables":[{"label":"Prerequisites Description","name":"prerequisitesDescription","defaultValue":"Here you list all prerequisites necessary for running your project. For example:\r\n\r\n- [NodeJS](https://github.com/)\r\n- [Git 2](https://github.com)","_type":"textArea"}]},{"name":"Cloning","description":"This function provides a guide on how to clone the project.","function":"cloningMacro","variables":[{"label":"Cloning Description","name":"cloningDescription","defaultValue":"How to clone your project\r\n\r\n```bash\r\ngit clone your-project-url-in-github\r\n```","_type":"textArea"}]},{"name":"Starting","description":"This function provides a guide on how to start the project.","function":"startingMacro","variables":[{"label":"Starting Description","name":"startingDescription","defaultValue":"How to start your project\r\n\r\n```bash\r\ncd project-name\r\nnpm some-command-to-run\r\n```","_type":"textArea"}]},{"name":"Collaborators","description":"This function lists the collaborators of the project.","function":"collaboratorsMacro","variables":[{"label":"Collaborators Description","name":"collaboratorsDescription","defaultValue":"Special thank you for all people that contributed for this project.","_type":"textArea"},{"label":"Collaborators List","name":"collaboratorsList","_type":"list","defaultValue":[{"name":"Fernanda Kipper","profilePictureURL":"https://avatars.githubusercontent.com/u/61896274?v=4","githubURL":"https://github.com/Fernanda-Kipper"},{"name":"Shaan Khan","profilePictureURL":"https://avatars.githubusercontent.com/u/22236218?v=4","githubURL":"https://github.com/ShaanCoding"}],"listSchema":[{"label":"Name","name":"name","_type":"input"},{"label":"Profile Picture URL","name":"profilePictureURL","_type":"input"},{"label":"Github URL","name":"githubURL","_type":"input"}]}]},{"name":"Contribute","description":"This function provides a guide on how to contribute to the project.","function":"contributeMacro","variables":[{"label":"Contribute Description","name":"contributeDescription","defaultValue":"Here you will explain how other developers can contribute to your project. For example, explaining how can create their branches, which patterns to follow and how to open an pull request\r\n\r\n1. `git clone https://github.com/Fernanda-Kipper/text-editor.git`\r\n2. `git checkout -b feature/NAME`\r\n3. Follow commit patterns\r\n4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!","_type":"textArea"}]},{"name":"Documentation That Might Help","description":"This function provides a list of documentation that might help the user.","function":"documentationThatMightHelpMacro","variables":[{"label":"Documentation Description","name":"documentationThatMightHelpDescription","defaultValue":"[📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)\r\n\r\n[💾 Commit pattern](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)","_type":"textArea"}]}]}
+{
+    "title": "Readme Templates - Frontend",
+    "description": "This repository provides a series of README templates to help developers document their projects 🚀👩‍💻",
+    "author": { "name": "Fernanda Kipper", "url": { "url": "https://github.com/Fernanda-Kipper", "_type": "Github" } },
+    "contributors": [{ "name": "Shaan Khan", "url": { "url": "https://github.com/ShaanCoding", "_type": "Github" } }],
+    "image": "https://github.com/Fernanda-Kipper/Readme-Templates/raw/main/.github/logo.png",
+    "dateCreated": "2024-04-14T00:00:00.000Z",
+    "lastUpdated": "2024-04-14T12:00:00.000Z",
+    "tags": [
+        { "name": "Read Me", "url": "read-me" },
+        { "name": "Recommended", "url": "recommended" },
+        { "name": "MIT", "url": "mit" },
+        { "name": "Frontend", "url": "frontend" }
+    ],
+    "featured": false,
+    "folder": "fernanda-kipper-readme-templates-frontend",
+    "pageType": "ReadME",
+    "startupBlocks": [
+        "ef9d40ec40e6497d9ea364a9c03c0f9a",
+        "076e69e874f24601b914a0e83126b9a8",
+        "1000276357a24cdda3ab07613ab01b49",
+        "0328e7f31245414498d1976515a869dd",
+        "510fb8acc8914974ae20b9ed33d7c04e",
+        "3bfe466772b4434ba0afaf85cc54b345",
+        "0ef68839210945628c569fa5182e3c47",
+        "fd910a3045d14c4bb24a30719ca0be14",
+        "ab29bd2aff6341dc9a818b2965540fc1",
+        "66140a2c858a4d06b2fc4f95143ebdd0"
+    ],
+    "functions": [
+        {
+            "name": "Header",
+            "description": "This function creates a project header with the project title.",
+            "function": "ef9d40ec40e6497d9ea364a9c03c0f9a",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                { "label": "Project Title", "name": "0e351cea0a084932b8ad6f1c0da06d67", "defaultValue": "Project name 💻", "_type": "input" },
+                { "label": "Enable Technologies Section", "name": "9bdb590d4e5c4733b02360c5e466f07a", "defaultValue": true, "_type": "checkBox" },
+                { "label": "Enable Getting Started Section", "name": "0115e681136847bd80cc3f16db1599d6", "defaultValue": true, "_type": "checkBox" },
+                { "label": "Enable Collaborators Section", "name": "54c9f912d2dd429ebad98a9186c04076", "defaultValue": true, "_type": "checkBox" },
+                { "label": "Enable Contribute Section", "name": "15d054eb83c443968ff88d3a5a8490c1", "defaultValue": true, "_type": "checkBox" },
+                {
+                    "label": "Project Description",
+                    "name": "08a0a6127d7c4e79b1ab7160d7fb3d0a",
+                    "defaultValue": "Simple description of what your project do or how to use it",
+                    "_type": "textArea"
+                },
+                {
+                    "label": "Call to Action",
+                    "name": "4be0f99ab1ce43b5a9b7a973a4ac2353",
+                    "_type": "object",
+                    "defaultValue": { "url": "https://github.com/ShaanCoding", "text": "📱 Visit this Project" },
+                    "objectSchema": [
+                        { "label": "URL", "name": "url", "_type": "input" },
+                        { "label": "Text", "name": "text", "_type": "input" }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Layout",
+            "description": "This function creates a layout for the README file.",
+            "function": "076e69e874f24601b914a0e83126b9a8",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Image List",
+                    "name": "01f24c3273364225a04f8f8d82d33b3a",
+                    "_type": "list",
+                    "defaultValue": [
+                        { "url": "https://source.unsplash.com/random", "altTag": "Random Image" },
+                        { "url": "https://source.unsplash.com/random", "altTag": "Random Image" }
+                    ],
+                    "listSchema": [
+                        { "label": "Image", "name": "url", "_type": "input" },
+                        { "label": "Alt Tag", "name": "altTag", "_type": "input" }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Technologies",
+            "description": "This function lists the technologies used in the project.",
+            "function": "1000276357a24cdda3ab07613ab01b49",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Technology Description",
+                    "name": "6f2a25ee9c82446cb48c9be5c9830bb5",
+                    "defaultValue": "- list of all technologies you used\r\n- react\r\n- styled components\r\n- another example",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
+            "name": "Getting Started",
+            "description": "This function provides a guide on how to get started with the project.",
+            "function": "0328e7f31245414498d1976515a869dd",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Getting Started Description",
+                    "name": "c3fa5b0ff6244066ba1b3e70d1dd8d5f",
+                    "defaultValue": "Here you describe how to run your project locally",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
+            "name": "Prerequisites",
+            "description": "This function provides a guide on the prerequisites for the project.",
+            "function": "510fb8acc8914974ae20b9ed33d7c04e",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Prerequisites Description",
+                    "name": "a5d9421eb8364ff8a7f0fffd3bfee687",
+                    "defaultValue": "Here you list all prerequisites necessary for running your project. For example:\r\n\r\n- [NodeJS](https://github.com/)\r\n- [Git 2](https://github.com)",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
+            "name": "Cloning",
+            "description": "This function provides a guide on how to clone the project.",
+            "function": "3bfe466772b4434ba0afaf85cc54b345",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Cloning Description",
+                    "name": "56ab4fb20f15492aa088776fb21dc011",
+                    "defaultValue": "How to clone your project\r\n\r\n```bash\r\ngit clone your-project-url-in-github\r\n```",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
+            "name": "Starting",
+            "description": "This function provides a guide on how to start the project.",
+            "function": "0ef68839210945628c569fa5182e3c47",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Starting Description",
+                    "name": "deecceeed5694129bf3038400aab8b30",
+                    "defaultValue": "How to start your project\r\n\r\n```bash\r\ncd project-name\r\nnpm some-command-to-run\r\n```",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
+            "name": "Collaborators",
+            "description": "This function lists the collaborators of the project.",
+            "function": "fd910a3045d14c4bb24a30719ca0be14",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Collaborators Description",
+                    "name": "73e2fef307cb4f5b890d146274427c43",
+                    "defaultValue": "Special thank you for all people that contributed for this project.",
+                    "_type": "textArea"
+                },
+                {
+                    "label": "Collaborators List",
+                    "name": "1028928e67fc47eb987801079f50acb8",
+                    "_type": "list",
+                    "defaultValue": [
+                        {
+                            "name": "Fernanda Kipper",
+                            "profilePictureURL": "https://avatars.githubusercontent.com/u/61896274?v=4",
+                            "githubURL": "https://github.com/Fernanda-Kipper"
+                        },
+                        { "name": "Shaan Khan", "profilePictureURL": "https://avatars.githubusercontent.com/u/22236218?v=4", "githubURL": "https://github.com/ShaanCoding" }
+                    ],
+                    "listSchema": [
+                        { "label": "Name", "name": "name", "_type": "input" },
+                        { "label": "Profile Picture URL", "name": "profilePictureURL", "_type": "input" },
+                        { "label": "Github URL", "name": "githubURL", "_type": "input" }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Contribute",
+            "description": "This function provides a guide on how to contribute to the project.",
+            "function": "ab29bd2aff6341dc9a818b2965540fc1",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Contribute Description",
+                    "name": "7dd4351dc39b4e20be1a0150b57d7bd2",
+                    "defaultValue": "Here you will explain how other developers can contribute to your project. For example, explaining how can create their branches, which patterns to follow and how to open an pull request\r\n\r\n1. `git clone https://github.com/Fernanda-Kipper/text-editor.git`\r\n2. `git checkout -b feature/NAME`\r\n3. Follow commit patterns\r\n4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!",
+                    "_type": "textArea"
+                }
+            ]
+        },
+        {
+            "name": "Documentation That Might Help",
+            "description": "This function provides a list of documentation that might help the user.",
+            "function": "66140a2c858a4d06b2fc4f95143ebdd0",
+            "folder": "fernanda-kipper-readme-templates-frontend",
+            "variables": [
+                {
+                    "label": "Documentation Description",
+                    "name": "e30cf58d21fa41d78c8d894e77f31fa5",
+                    "defaultValue": "[📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)\r\n\r\n[💾 Commit pattern](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)",
+                    "_type": "textArea"
+                }
+            ]
+        }
+    ]
+}

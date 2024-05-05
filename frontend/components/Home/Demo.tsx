@@ -11,7 +11,7 @@ const Demo = () => {
       </div>
       <div className="w-full flex items-center justify-center">
         <Image
-          className="h-full lg:w-3/4"
+          className="h-full lg:w-3/4 rounded-[36px] border-white/15 border-[6px] shadow-2xl shadow-black"
           width={1920}
           height={1080}
           src={siteConfig.homePage.demo}

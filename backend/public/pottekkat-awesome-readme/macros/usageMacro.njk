@@ -1,0 +1,7 @@
+{% macro usageMacro() %}{% if isBackToTopEnabled or usageDescription %}
+# Usage{% if isBackToTopEnabled %}
+[(Back to top)](#table-of-contents){% endif %}{% if usageDescription %}
+
+{{ usageDescription }}{% endif %}
+{% endif %}
+{% endmacro %}

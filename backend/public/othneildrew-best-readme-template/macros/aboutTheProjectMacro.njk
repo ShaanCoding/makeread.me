@@ -1,0 +1,6 @@
+{% macro aboutTheProjectMacro() %}{% if productScreenshot.altTag and productScreenshot.url or aboutTheProjectDescription %}## About The Project{% if productScreenshot.altTag and productScreenshot.url %}
+
+![{{ productScreenshot.altTag }}]({{ productScreenshot.url }}){% endif %}{% if aboutTheProjectDescription %}
+
+{{ aboutTheProjectDescription }}{% endif %}
+{% endif %}{% endmacro %}

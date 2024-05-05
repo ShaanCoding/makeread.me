@@ -1,0 +1,8 @@
+{% macro authorsMacro() %}{% if authorsDescription or authorsList|length %}
+## Authors{% if authorsDescription %}
+
+{{ authorsDescription }}{% endif %}{% if authorsList|length %}
+{% for item in authorsList %}{% if item.url and item.name %}
+- {% if item.description %}{{ item.description }} - {% endif %}[{{ item.name }}]({{ item.url }}){% endif %}{% endfor %}{% endif %}
+{% endif %}
+{% endmacro %}

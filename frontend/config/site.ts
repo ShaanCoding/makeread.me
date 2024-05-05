@@ -10,13 +10,13 @@ export const siteConfig = {
       href: "/",
     },
     {
-      title: "Template",
+      title: "Select A Template",
       href: "/select-template",
     },
-    // {
-    //   title: "Scratch",
-    //   href: "/generator",
-    // },
+    {
+      title: "Create Your Own",
+      href: "/generator",
+    }
   ],
   links: {
     twitter: "https://twitter.com/ShaanCoding",
@@ -33,13 +33,13 @@ export const siteConfig = {
         href: "/",
       },
       {
-        title: "Select Template",
+        title: "Select A Template",
         href: "/select-template",
       },
-      // {
-      //   title: "Make My Own",
-      //   href: "/generator",
-      // },
+      {
+        title: "Create Your Own",
+        href: "/generator",
+      }
     ],
     socialMedia: [
       {
@@ -70,7 +70,7 @@ export const siteConfig = {
         href: "/select-template",
       },
     },
-    demo: "/Demo.svg",
+    demo: "/Demo.jpg",
     keyFeatures: [
       {
         image: "/icons/home/templateReadMEGeneration.svg",

@@ -2,6 +2,7 @@ import { Controller } from "react-hook-form"
 
 import { Checkbox } from "@/components/ui/checkbox"
 
+import ContextTitle from "./ContextTitle"
 import { ICheckBoxFieldProps } from "./types"
 
 const CheckBoxField: React.FC<ICheckBoxFieldProps> = ({
@@ -15,8 +16,10 @@ const CheckBoxField: React.FC<ICheckBoxFieldProps> = ({
       defaultValue={variables.defaultValue}
       render={({ field }) => (
         <div className="flex w-full items-center justify-start pb-4">
-          <h4 className="pr-2 font-semibold">{variables.label}</h4>
-
+          <ContextTitle
+            title={variables.label}
+            description={variables.description}
+          />
           <Checkbox
             {...field}
             name={variables.name}

@@ -5,6 +5,18 @@
 export type IObject = {
     label: string;
     name: string;
-    _type: string;
+    _type: IObject._type;
+    description?: string;
 };
+export namespace IObject {
+    export enum _type {
+        INPUT = 'input',
+        TEXT_AREA = 'textArea',
+        CHECK_BOX = 'checkBox',
+        LIST = 'list',
+        OBJECT = 'object',
+        SELECT = 'select',
+        RADIO = 'radio',
+    }
+}
 

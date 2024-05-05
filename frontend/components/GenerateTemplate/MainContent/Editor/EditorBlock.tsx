@@ -21,16 +21,12 @@ import {
 import InputGenerator from "./Factory/InputGenerator"
 
 const EditorBlock = ({
-  isTransitionUp,
-  isTransitionDown,
   block,
   moveBlockUp,
   moveBlockDown,
   deleteBlock,
   control,
 }: {
-  isTransitionUp: boolean
-  isTransitionDown: boolean
   block: IFunction
   moveBlockUp: () => void
   moveBlockDown: () => void
@@ -50,16 +46,9 @@ const EditorBlock = ({
     <Card
       id="editor-block"
       className={`p-4 transition-transform duration-300 transform ${
-        !isTransitionDown && !isTransitionUp && "hover:scale-[1.02]"
+        isMinimized && "hover:scale-[1.02]"
       }
       `}
-      style={
-        isTransitionDown
-          ? { transform: `translateY(${getHeight().toString()}px)` }
-          : isTransitionUp
-          ? { transform: `translateY(-${getHeight().toString()}px)` }
-          : {}
-      }
     >
       <CardHeader>
         <div className="mb-2 xl:mb-4">

@@ -6,10 +6,12 @@ import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import type { OpenAPIConfig } from './core/OpenAPI';
 import { FetchHttpRequest } from './core/FetchHttpRequest';
 import { HealthCheckService } from './services/HealthCheckService';
+import { SidebarService } from './services/SidebarService';
 import { TemplateService } from './services/TemplateService';
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 export class readMeGenerator {
     public readonly healthCheck: HealthCheckService;
+    public readonly sidebar: SidebarService;
     public readonly template: TemplateService;
     public readonly request: BaseHttpRequest;
     constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = FetchHttpRequest) {
@@ -25,6 +27,7 @@ export class readMeGenerator {
             ENCODE_PATH: config?.ENCODE_PATH,
         });
         this.healthCheck = new HealthCheckService(this.request);
+        this.sidebar = new SidebarService(this.request);
         this.template = new TemplateService(this.request);
     }
 }
