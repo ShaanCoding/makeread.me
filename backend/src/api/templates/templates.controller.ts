@@ -29,16 +29,14 @@ export default class TemplateController {
         try {
             // From this, we want to find every UNIQUE macro per folder and then append them to an array
             // Then we want to go through those folders only and get the macros in the fewest amount of reads
-            if(!body || body.length == 0) return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
+            if (!body || body.length == 0) return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
 
             const bodyMapped: Map<string, Set<string>> = new Map<string, Set<string>>()
 
             // Why is object undefined?
 
-            
-
             body.forEach((block: DefaultBlockInput) => {
-                if(bodyMapped.has(block.folder)) {
+                if (bodyMapped.has(block.folder)) {
                     bodyMapped.get(block.folder).add(block.function)
                 } else {
                     bodyMapped.set(block.folder, new Set<string>().add(block.function))
@@ -54,9 +52,6 @@ export default class TemplateController {
                     macros.push(data[macro])
                 })
             })
-
-            
-
 
             return new ServiceResponse<string>(ResponseStatus.Success, 'Success', macros.join(''), StatusCodes.OK)
 
