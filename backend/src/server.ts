@@ -27,21 +27,21 @@ import { PORT,
 import mongoose from "mongoose"
 
 
-let mongoDBConnection: string;
+// let mongoDBConnection: string;
 
-if(PRODUCTION_OR_DEVELOPMENT === Environment.PRODUCTION) {
-    mongoDBConnection = `mongodb://${MONGOUSER!}:${MONGOPASSWORD!}@${MONGOHOST!}:${MONGOPORT!}`;
-} else {
-    mongoDBConnection = MONGO_URL_LOCAL!
-}
+// if(PRODUCTION_OR_DEVELOPMENT === Environment.PRODUCTION) {
+//     mongoDBConnection = `mongodb://${MONGOUSER!}:${MONGOPASSWORD!}@${MONGOHOST!}:${MONGOPORT!}`;
+// } else {
+//     mongoDBConnection = MONGO_URL_LOCAL!
+// }
 
-// Connect to MongoDB
-mongoose.connect(mongoDBConnection)
-    .then(() => console.log('🚀 MongoDB Connected'))
-    .catch((err) => {
-        console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err)
-        process.exit(1)
-    })
+// // Connect to MongoDB
+// mongoose.connect(mongoDBConnection)
+//     .then(() => console.log('🚀 MongoDB Connected'))
+//     .catch((err) => {
+//         console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err)
+//         process.exit(1)
+//     })
 
 
 
