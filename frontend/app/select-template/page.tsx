@@ -51,6 +51,17 @@ export default function IndexPage() {
     }
   }
 
+  function getSortedTemplatesByFavorite() {
+    return template.sort((a, b) =>
+      isFavoriteTemplate(getTemplateId(a)) ===
+      isFavoriteTemplate(getTemplateId(b))
+        ? 0
+        : isFavoriteTemplate(getTemplateId(a))
+        ? -1
+        : 1
+    )
+  }
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <SelectTemplateSideBar
@@ -101,16 +112,18 @@ export default function IndexPage() {
 
           {template.length !== 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-6 lg:grid-cols-3">
-              {template.map((template: ITemplate, index: number) => (
-                <Card
-                  {...template}
-                  key={index}
-                  isFavoriteTemplate={isFavoriteTemplate(
-                    getTemplateId(template)
-                  )}
-                  toggleFavoriteTemplate={toggleFavoriteTemplate}
-                />
-              ))}
+              {getSortedTemplatesByFavorite().map(
+                (template: ITemplate, index: number) => (
+                  <Card
+                    {...template}
+                    key={index}
+                    isFavoriteTemplate={isFavoriteTemplate(
+                      getTemplateId(template)
+                    )}
+                    toggleFavoriteTemplate={toggleFavoriteTemplate}
+                  />
+                )
+              )}
             </div>
           )}
         </main>
