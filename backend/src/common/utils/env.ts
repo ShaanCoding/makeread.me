@@ -56,28 +56,28 @@ export const MONGOPORT = process.env.MONGOPORT
 
 export const MONGO_URL_LOCAL = process.env.MONGODB_URL_LOCAL
 
-if(PRODUCTION_OR_DEVELOPMENT === Environment.PRODUCTION) {
-    if(!MONGO_URL) {
+if (PRODUCTION_OR_DEVELOPMENT === Environment.PRODUCTION) {
+    if (!MONGO_URL) {
         listOfErrorMessages.push('No MONGO_URL set')
     }
 
-    if(!MONGOUSER) {
+    if (!MONGOUSER) {
         listOfErrorMessages.push('No MONGOUSER set')
     }
 
-    if(!MONGOPASSWORD) {
+    if (!MONGOPASSWORD) {
         listOfErrorMessages.push('No MONGOPASSWORD set')
     }
 
-    if(!MONGOHOST) {
+    if (!MONGOHOST) {
         listOfErrorMessages.push('No MONGOHOST set')
     }
 
-    if(!MONGOPORT) {
+    if (!MONGOPORT) {
         listOfErrorMessages.push('No MONGOPORT set')
     }
 } else if (PRODUCTION_OR_DEVELOPMENT === Environment.DEVELOPMENT) {
-    if(!MONGO_URL_LOCAL) {
+    if (!MONGO_URL_LOCAL) {
         listOfErrorMessages.push('No MONGODB_URL_LOCAL set')
     }
 }

@@ -13,19 +13,9 @@ import { openAPIRouter } from './api-docs/openAPIRouter'
 // Middleware
 // Helpers
 import errorHandler from './common/middleware/errorHandler'
-import { PORT,
+import { PORT, MONGO_URL_LOCAL, MONGOHOST, MONGOPASSWORD, MONGOPORT, MONGOUSER, PRODUCTION_OR_DEVELOPMENT, Environment } from './common/utils/env'
 
-    MONGO_URL_LOCAL,
-    MONGOHOST,
-    MONGOPASSWORD,
-    MONGOPORT,
-    MONGOUSER,
-    PRODUCTION_OR_DEVELOPMENT,
-    Environment,
- } from './common/utils/env'
-
-import mongoose from "mongoose"
-
+import mongoose from 'mongoose'
 
 // let mongoDBConnection: string;
 
@@ -42,8 +32,6 @@ import mongoose from "mongoose"
 //         console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err)
 //         process.exit(1)
 //     })
-
-
 
 // Create Express server
 const app: Express = express()

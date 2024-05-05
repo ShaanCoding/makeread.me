@@ -25,10 +25,9 @@ const readDirectoriesAndConvertToJSON = async (directoryPath: string) => {
                 if (stats.isDirectory()) {
                     const variableToUUIDMap: Map<string, string> | undefined = await generateBlockJSON(filePath)
 
-                    if(!variableToUUIDMap) {
+                    if (!variableToUUIDMap) {
                         return
                     }
-
 
                     generateMacroJSON(filePath, variableToUUIDMap)
                 }
@@ -58,7 +57,6 @@ const generateBlockJSON = async (directoryPath: string): Promise<Map<string, str
     const data: FullTemplate = importedData.default
 
     data.functions.forEach((func: IFunction) => {
-        
         // Update the macros name
         const functionUUID = uuidv4().replaceAll('-', '')
         variableToUUIDMap.set(func.function, functionUUID)
@@ -78,43 +76,36 @@ const generateBlockJSON = async (directoryPath: string): Promise<Map<string, str
             console.error('Error writing blocks.json file: ', err)
             return undefined
         }
-        
     })
-    
+
     return variableToUUIDMap
 }
 
-
 function generateMacroJSON(directoryUrl: string, variableToUUIDMap: Map<string, string>): void {
-    console.log(directoryUrl)
-    console.table(variableToUUIDMap)
+    const macrosDirectory = path.join(directoryUrl, 'macros')
 
-    const macrosDirectory = path.join(directoryUrl, 'macros');
-
-    const filesList: string[] = fs.readdirSync(macrosDirectory);
-    const result: { [key: string]: string } = {};
+    const filesList: string[] = fs.readdirSync(macrosDirectory)
+    const result: { [key: string]: string } = {}
 
     for (const file of filesList) {
-        const filePath = path.join(macrosDirectory, file);
+        const filePath = path.join(macrosDirectory, file)
         if (fs.lstatSync(filePath).isFile()) {
-         let data = fs.readFileSync(filePath, { encoding: 'utf8' });
+            let data = fs.readFileSync(filePath, { encoding: 'utf8' })
 
-        //  foreach ofthis hashmap
-        Array.from(variableToUUIDMap).forEach(([key, value]) => {
-            data = data.replace(new RegExp(key, 'g'), value);
-            console.log('replacing', key, value)
-        })
+            //  foreach ofthis hashmap
+            Array.from(variableToUUIDMap).forEach(([key, value]) => {
+                data = data.replace(new RegExp(key, 'g'), value)
+                console.log('replacing', key, value)
+            })
 
-         result[variableToUUIDMap.get(file.replace('.njk', ''))!] = data;
+            result[variableToUUIDMap.get(file.replace('.njk', ''))!] = data
         }
     }
 
-    const outputFile = path.join(directoryUrl, 'macros.json');
+    const outputFile = path.join(directoryUrl, 'macros.json')
 
-    fs.writeFileSync(outputFile, JSON.stringify(result));
+    fs.writeFileSync(outputFile, JSON.stringify(result))
 }
-
-
 
 const rootDirectory: string = path.join(__dirname, '..')
 readDirectoriesAndConvertToJSON(rootDirectory)
