@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { IPageType, ITemplate } from "@/api/generated"
+import { FilePlus2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import Card from "@/components/SelectTemplate/Card"
 import SelectTemplateSideBar from "@/components/SelectTemplate/Sidebar/Sidebar"
-import { FilePlus2 } from "lucide-react"
-import Link from "next/link"
 
 export default function IndexPage() {
   const [template, setTemplates] = useState<ITemplate[]>([])
@@ -26,21 +26,25 @@ export default function IndexPage() {
             <div className="flex gap-6 xl:items-center xl:justify-center">
               <Link href="/generator">
                 <Button variant="default">
-                  <FilePlus2 className="mr-2 size-4" />
+                  <FilePlus2 className="mr-2 size-4 text-nowrap" />
                   Create New Template
                 </Button>
               </Link>
             </div>
 
-
             <div className="xl:flex xl:items-center xl:justify-center gap-6">
-              <h4 className="text-lg font-semibold mb-2 xl:mb-0">Page Type</h4>
+              <h4 className="text-lg font-semibold mb-2 xl:mb-0 text-nowrap">
+                Page Type
+              </h4>
 
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {Object.keys(IPageType).map((page: string, index: number) => (
                   <Button
-                    variant={`${pageType === (IPageType as any)[page] ? "default" : "outline"
-                      }`}
+                    variant={`${
+                      pageType === (IPageType as any)[page]
+                        ? "default"
+                        : "outline"
+                    }`}
                     key={index}
                     onClick={() => setPageType((IPageType as any)[page])}
                   >
@@ -50,7 +54,6 @@ export default function IndexPage() {
               </div>
             </div>
           </div>
-
 
           {template.length === 0 && (
             <div className="flex items-center justify-center size-full">
@@ -68,7 +71,7 @@ export default function IndexPage() {
             </div>
           )}
         </main>
-      </div >
-    </div >
+      </div>
+    </div>
   )
 }
