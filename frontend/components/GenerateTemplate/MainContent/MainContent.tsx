@@ -52,24 +52,24 @@ const MainContent: React.FC<{
   })
 
   useEffect(() => {
-    if (populateMacrosData.status === "success") { 
+    if (populateMacrosData.status === "success") {
       setMacros(populateMacrosData.data!)
     }
   }, [populateMacrosData.data, populateMacrosData.status])
 
   const generateOutput = () => {
-      if (macros && templateBlocks && variables) {
-        const data = compileString(macros, templateBlocks, variables)
-        setOutput(data)
-      }
+    if (macros && templateBlocks && variables) {
+      const data = compileString(macros, templateBlocks, variables)
+      setOutput(data)
+    }
   }
 
   useEffect(() => {
-      generateOutput()
-  }, [macros])
+    const doesFunctionsExist = templateBlocks.every((block) => {
+      return macros.includes(block.function)
+    })
 
-  useEffect(() => {
-    if(populateTemplateData.isLoading === false && populateMacrosData.isLoading === false) {
+    if (populateTemplateData.isLoading === false && populateMacrosData.isLoading === false && doesFunctionsExist) {
       generateOutput()
     }
   }, [variables, templateBlocks, macros])

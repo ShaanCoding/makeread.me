@@ -64,6 +64,18 @@ const GeneratorSideBar: React.FC<{
     enabled: sidebarOptions.status === "success" && !!sidebarOptions.data,
   })
 
+  const sidebarResultsOmittedSelectedBlocks = useMemo(() => {
+    return sidebarResults.data?.map((template: IFullTemplate) => {
+      return {
+        ...template,
+        functions: template.functions.filter(
+          (block: IFunction) =>
+            !templateBlocks.some((selectedBlock: IFunction) => selectedBlock.function === block.function && selectedBlock.folder === block.folder)
+        ),
+      }
+    })
+  }, [sidebarResults.data, templateBlocks])
+
   return (
     <div className="bg-muted/40 mb-4 hidden rounded-br-lg border md:block xl:mb-6">
       <nav className="my-6 grid items-start gap-6 px-2 text-sm font-medium lg:px-4">
@@ -78,7 +90,7 @@ const GeneratorSideBar: React.FC<{
           options={sidebarOptions.data ?? []}
         />
         <MappedBlocks
-          blocks={sidebarResults.data ?? []}
+          blocks={sidebarResultsOmittedSelectedBlocks ?? []}
           templateBlocks={templateBlocks}
           setTemplateBlocks={setTemplateBlocks}
         />
