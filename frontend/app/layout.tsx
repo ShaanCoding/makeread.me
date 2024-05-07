@@ -77,7 +77,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ReactQueryClientProvider>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-              <div className="relative flex min-h-screen flex-col">
+              <div className="relative flex min-h-screen flex-col overflow-hidden">
                 <SiteHeader />
                 <div className="flex-1">{children}</div>
                 <Footer />

@@ -15,12 +15,6 @@ const KeyFeatures = () => {
           <h1 className="text-6xl font-bold text-white">Key Features</h1>
         </div>
 
-        {/* initial={{ y: index % 2 === 0 ? 200 : -200, opacity: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        key={index} */}
-
         <motion.div
           className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
@@ -62,7 +56,6 @@ const KeyFeatures = () => {
             }
           )}
         </motion.div>
-        {/* </div> */}
       </div>
       <div
         className="bg-themeGreen absolute

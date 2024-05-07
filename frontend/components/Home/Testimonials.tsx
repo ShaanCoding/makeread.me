@@ -5,6 +5,7 @@ import Image from "next/image"
 
 import { siteConfig } from "@/config/site"
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar"
+import { motion } from "framer-motion"
 
 const Testimonials = () => {
   return (
@@ -17,7 +18,12 @@ const Testimonials = () => {
       </div>
 
       {/* Testimonials Carasoul */}
-      <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <motion.div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        initial={{ x: 200, opacity: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1, x: 0 }}
+      >
         {siteConfig.homePage.testimonials.map((testimonial, index) => (
           <TestimonialCard
             key={index}
@@ -27,8 +33,8 @@ const Testimonials = () => {
             testimony={testimonial.testimony}
           />
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </div >
   )
 }
 
