@@ -3,14 +3,18 @@ import { StatusCodes } from 'http-status-codes'
 
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
 
-import { DefaultBlockInput, FullTemplate, IFunction, Template } from './template.model'
+import { DefaultBlockInput, FullTemplate, IFunction } from './template.model'
 
 export default class TemplateController {
     public async getTemplateInitialisedComponentList(id: string): Promise<ServiceResponse<IFunction[] | null>> {
         try {
             if (!id || id == 'undefined') return new ServiceResponse(ResponseStatus.Success, 'Success', [], StatusCodes.OK)
 
-            const blocksData: FullTemplate = JSON.parse(fs.readFileSync(`./public/${id}/blocks.json`, 'utf8'))
+            const filePath = `./public/${id}/blocks.json`
+            if (!fs.existsSync(filePath)) {
+                return new ServiceResponse(ResponseStatus.Failed, 'Template not found', null, StatusCodes.NOT_FOUND)
+            }
+            const blocksData: FullTemplate = JSON.parse(fs.readFileSync(filePath, 'utf8'))
             const indexData: string[] = blocksData.startupBlocks
 
             const functions: IFunction[] = blocksData.functions.map((block: IFunction) => {
@@ -29,7 +33,7 @@ export default class TemplateController {
         try {
             // From this, we want to find every UNIQUE macro per folder and then append them to an array
             // Then we want to go through those folders only and get the macros in the fewest amount of reads
-            if (!body || body.length == 0) return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
+            if (!body || body.length === 0) return new ServiceResponse(ResponseStatus.Success, 'Success', '', StatusCodes.OK)
 
             const bodyMapped: Map<string, Set<string>> = new Map<string, Set<string>>()
 
