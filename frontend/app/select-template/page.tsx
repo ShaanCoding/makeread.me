@@ -8,6 +8,7 @@ import { FilePlus2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Card from "@/components/SelectTemplate/Card"
 import SelectTemplateSideBar from "@/components/SelectTemplate/Sidebar/Sidebar"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function IndexPage() {
   const [template, setTemplates] = useState<ITemplate[]>([])
@@ -33,25 +34,22 @@ export default function IndexPage() {
             </div>
 
             <div className="xl:flex xl:items-center xl:justify-center gap-6">
-              <h4 className="text-lg font-semibold mb-2 xl:mb-0 text-nowrap">
-                Page Type
-              </h4>
-
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {Object.keys(IPageType).map((page: string, index: number) => (
-                  <Button
-                    variant={`${
-                      pageType === (IPageType as any)[page]
-                        ? "default"
-                        : "outline"
-                    }`}
-                    key={index}
-                    onClick={() => setPageType((IPageType as any)[page])}
-                  >
-                    {(IPageType as any)[page]}
-                  </Button>
-                ))}
-              </div>
+              {Object.keys(IPageType) && (
+                <Tabs defaultValue={pageType}>
+                  <TabsList>
+                    {Object.keys(IPageType).map((page: string, index: number) => (
+                      <TabsTrigger
+                        onClick={() => setPageType((IPageType as any)[page])}
+                        value={(IPageType as any)[page]}
+                        key={index}>
+                        {(IPageType as any)[page]}
+                      </TabsTrigger >
+                    ))}
+                  </TabsList>
+                  <TabsContent value="account">
+                  </TabsContent>
+                </Tabs>
+              )}
             </div>
           </div>
 
@@ -71,7 +69,7 @@ export default function IndexPage() {
             </div>
           )}
         </main>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
