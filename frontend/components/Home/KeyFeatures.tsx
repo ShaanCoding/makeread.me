@@ -1,7 +1,10 @@
+"use client"
+
 import React from "react"
 import Image from "next/image"
 
 import { siteConfig } from "@/config/site"
+import { motion } from "framer-motion"
 
 const KeyFeatures = () => {
   return (
@@ -12,20 +15,54 @@ const KeyFeatures = () => {
           <h1 className="text-6xl font-bold text-white">Key Features</h1>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* initial={{ y: index % 2 === 0 ? 200 : -200, opacity: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        key={index} */}
+
+        <motion.div
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+          initial="hidden"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          whileInView="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2
+              }
+            }
+          }}
+        >
           {siteConfig.homePage.keyFeatures.map(
             (feature: IFeatureGridElement, index: number) => {
               return (
-                <FeatureGridElement
-                  image={feature.image}
-                  title={feature.title}
-                  description={feature.description}
+                <motion.div
                   key={index}
-                />
+                  variants={{
+                    hidden: { y: 20, opacity: 0 },
+                    visible: {
+                      y: 0,
+                      opacity: 1,
+                    }
+                  }}
+                >
+                  <FeatureGridElement
+                    image={feature.image}
+                    title={feature.title}
+                    description={feature.description}
+                    key={index}
+                  />
+                </motion.div>
               )
             }
           )}
-        </div>
+        </motion.div>
+        {/* </div> */}
       </div>
       <div
         className="bg-themeGreen absolute
