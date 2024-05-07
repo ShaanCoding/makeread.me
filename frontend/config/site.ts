@@ -136,17 +136,20 @@ export const siteConfig = {
     },
     testimonials: [
       {
-        name: "dLyan",
+        name: "dylanheaslip",
+        imageURL: "/testimonials/dylanheaslip.png",
         title: "User",
         testimony: `"I can't believe how easy it was to create an amazing ReadME with makeread.me. Highly recommended to all developers!"`,
       },
       {
         name: "ShaanCoding",
+        imageURL: "/testimonials/shaancoding.jpg",
         title: "Creator",
         testimony: `"Whilst I've used many ReadME Generator tools in the past, I've often found myself manually rekeying the same information over and over again when starting a project. With templating, I'm able to ship faster, and worry less about making the perfect ReadME."`,
       },
       {
-        name: "Massimo",
+        name: "mianni1",
+        imageURL: "/testimonials/mianni1.png",
         title: "User",
         testimony: `"Makeread.me has significantly reduced my documentation time, making READMEs clear and concise. Its customizable template suits all my project needs and has optimised my workflow by allowing me more time for development. A must-try for any developer!"`,
       },

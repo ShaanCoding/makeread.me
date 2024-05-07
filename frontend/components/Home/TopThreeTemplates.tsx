@@ -4,6 +4,7 @@ import { IFullTemplate, ITemplate, readMeGenerator } from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
 
 import Card from "@/components/SelectTemplate/Card"
+import { motion } from "framer-motion"
 
 const TopThreeTemplates = () => {
   const templateMaps = useQuery({
@@ -25,7 +26,15 @@ const TopThreeTemplates = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-6 lg:grid-cols-3">
           {templateMaps.data?.map((template: ITemplate, index: number) => (
-            <Card {...template} key={index} />
+            <motion.div
+              initial={{ y: index % 2 === 0 ? 200 : -200, opacity: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              key={index}
+            >
+              <Card {...template} key={index} />
+            </motion.div>
           ))}
         </div>
       </div>
