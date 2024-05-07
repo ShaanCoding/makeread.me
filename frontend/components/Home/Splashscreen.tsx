@@ -1,21 +1,39 @@
+"use client"
+
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 
 import { Button } from "../ui/button"
 
+import { motion } from 'framer-motion';
+
+
 const Splashscreen = () => {
   return (
     <div className="relative my-12 flex w-full items-center justify-between">
       <div className="lg:flex lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-12">
-        <div className="pb-12 lg:flex lg:w-1/3 lg:items-start lg:justify-end lg:pb-0 xl:w-1/2">
+        <motion.div
+          className="pb-12 lg:flex lg:w-1/3 lg:items-start lg:justify-end lg:pb-0 xl:w-1/2"
+          viewport={{ once: true, amount: 0.5 }}
+          initial={{ opacity: 0, x: 100 }}
+          transition={{ type: 'spring', stiffness: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+        >
           <img
             className="w-full lg:h-[496px] lg:w-auto"
             src="/icons/hero.svg"
             alt="Hero"
           />
-        </div>
-        <div className="lg:w-2/3 xl:w-1/2">
+        </motion.div>
+
+        <motion.div
+          className="lg:w-2/3 xl:w-1/2"
+          viewport={{ once: true, amount: 0.5 }}
+          initial={{ opacity: 0, x: -100 }}
+          transition={{ type: 'spring', stiffness: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+        >
           <h2 className="pb-2 text-xl font-semibold">
             {siteConfig.homePage.splashScreen.subtitle}
           </h2>
@@ -28,7 +46,8 @@ const Splashscreen = () => {
               {siteConfig.homePage.splashScreen.cta.title}
             </Button>
           </Link>
-        </div>
+        </motion.div>
+
       </div>
       <div
         className="bg-themeGreen absolute
