@@ -1,23 +1,18 @@
-import { ServiceResponse, ResponseStatus } from '@/common/models/serviceResponse'
 import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
 import { SideBarOptions, FullTemplate, IFunction, Template } from '../templates/template.model'
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
-import { FullTemplate, SideBarOptions } from '../templates/template.model'
 
 export default class SideBarController {
     public async getAllTemplates(search: string, filter: string[], pageType: string): Promise<ServiceResponse<Template[] | null>> {
         try {
-            const folders: string[] = fs.readdirSync('./public')
+            let blocksData = this.readBlocksData()
 
-            let blocksData: FullTemplate[] = folders.map((folder: string) => {
-                return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
-            })
+            if (blocksData === null) {
+                return this.handleNullBlocksData()
+            }
 
-            // Sort by featured first
-            blocksData.sort((a: FullTemplate, b: FullTemplate) => {
-                return a.featured === b.featured ? 0 : a.featured ? -1 : 1
-            })
+            blocksData = this.sortBlocksByFeatured(blocksData)
 
             // search goes through templates and returns ones that match title or description
             if (search.length) {
@@ -53,11 +48,11 @@ export default class SideBarController {
         try {
             const sidebarOptionsSet: Set<string> = new Set<string>()
 
-            const folders: string[] = fs.readdirSync('./public')
+            const blocksData = this.readBlocksData()
 
-            const blocksData: FullTemplate[] = folders.map((folder: string) => {
-                return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
-            })
+            if (blocksData === null) {
+                return this.handleNullBlocksData()
+            }
 
             blocksData.map((block: FullTemplate) => {
                 block.tags.forEach((tag) => {
@@ -97,19 +92,21 @@ export default class SideBarController {
     public async getTemplateSidebar(id: string, search: string, filter: string[]): Promise<ServiceResponse<FullTemplate[] | null>> {
         try {
             if (id && id !== 'undefined') {
-                const blocksData: FullTemplate = JSON.parse(fs.readFileSync(`./public/${id}/blocks.json`, 'utf8'))
+                const filePath = `./public/${id}/blocks.json`
+                if (!fs.existsSync(filePath)) {
+                    return new ServiceResponse(ResponseStatus.Failed, 'Template not found', null, StatusCodes.NOT_FOUND)
+                }
+
+                const blocksData: FullTemplate = JSON.parse(fs.readFileSync(filePath, 'utf8'))
                 return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', [blocksData], StatusCodes.OK)
             } else {
-                const folders: string[] = fs.readdirSync('./public')
+                let blocksData = this.readBlocksData()
 
-                let blocksData: FullTemplate[] = folders.map((folder: string) => {
-                    return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
-                })
+                if (blocksData === null) {
+                    return this.handleNullBlocksData()
+                }
 
-                // Sort by featured first
-                blocksData = blocksData.sort((a: FullTemplate, b: FullTemplate) => {
-                    return a.featured === b.featured ? 0 : a.featured ? -1 : 1
-                })
+                blocksData = this.sortBlocksByFeatured(blocksData)
 
                 // search goes through all templates and filters by function.name and function.description
                 // Only show that block if it has a function that matches the search and not the other related ones
@@ -134,13 +131,13 @@ export default class SideBarController {
 
     public async getAllTemplateFolders(): Promise<ServiceResponse<SideBarOptions[] | null>> {
         try {
-            const folders: string[] = fs.readdirSync('./public')
+            const blocksData = this.readBlocksData()
 
             // Needs to read the blocks.json file and get the folder name and the title
             // This is to show the folder name and the title of the template
-            const blocksData: FullTemplate[] = folders.map((folder: string) => {
-                return JSON.parse(fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8'))
-            })
+            if (blocksData === null) {
+                return this.handleNullBlocksData()
+            }
 
             const sidebarOptions: SideBarOptions[] = blocksData.map((block: FullTemplate) => {
                 return {
@@ -153,5 +150,28 @@ export default class SideBarController {
         } catch (ex) {
             return new ServiceResponse(ResponseStatus.Failed, 'Failed to get template folders', null, StatusCodes.INTERNAL_SERVER_ERROR)
         }
+    }
+
+    private readBlocksData(): FullTemplate[] | null {
+        try {
+            const folders: string[] = fs.readdirSync('./public')
+            const blocksData = folders.map((folder: string) => {
+                const data = fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8')
+                return JSON.parse(data)
+            })
+            return blocksData
+        } catch (error) {
+            return null
+        }
+    }
+
+    private handleNullBlocksData(): ServiceResponse<null> {
+        return new ServiceResponse(ResponseStatus.Failed, 'Failed to read templates', null, StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+
+    private sortBlocksByFeatured(blocksData: FullTemplate[]): FullTemplate[] {
+        return blocksData.sort((a: FullTemplate, b: FullTemplate) => {
+            return a.featured === b.featured ? 0 : a.featured ? -1 : 1
+        })
     }
 }
