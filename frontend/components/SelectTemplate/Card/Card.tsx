@@ -13,7 +13,12 @@ import CardDescriptions from "./CardDescriptions"
 import CardHeader from "./CardHeader"
 import CardTags from "./CardTags"
 
-export const Card: React.FC<Omit<ITemplate, "functions" | "image">> = ({
+export const Card: React.FC<
+  Omit<ITemplate, "functions" | "image"> & {
+    isFavoriteTemplate: boolean
+    toggleFavoriteTemplate: (template: string) => void
+  }
+> = ({
   title,
   author,
   contributors,
@@ -23,10 +28,22 @@ export const Card: React.FC<Omit<ITemplate, "functions" | "image">> = ({
   folder,
   lastUpdated,
   tags,
+  isFavoriteTemplate,
+  toggleFavoriteTemplate,
 }) => {
+  function handleFavoriteTemplate() {
+    toggleFavoriteTemplate(title + dateCreated)
+  }
+
   return (
     <UICard className="bg-card/35">
-      <CardHeader title={title} author={author} featured={featured} />
+      <CardHeader
+        title={title}
+        author={author}
+        featured={featured}
+        isFavoriteTemplate={isFavoriteTemplate}
+        handleFavoriteTemplate={handleFavoriteTemplate}
+      />
       <CardContent>
         <CardDescriptions description={description} />
         <CardTags tags={tags} />

@@ -1,5 +1,6 @@
+import { useState } from "react"
 import { ITemplate } from "@/api/generated"
-import { StarIcon } from "lucide-react"
+import { Heart, StarIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import {
@@ -10,14 +11,35 @@ import {
 import SocialButton from "@/components/common/SocialButton"
 
 const CardHeader: React.FC<
-  Pick<ITemplate, "featured" | "title" | "author">
-> = ({ featured, title, author }) => {
+  Pick<ITemplate, "featured" | "title" | "author"> & {
+    isFavoriteTemplate: boolean
+    handleFavoriteTemplate: () => void
+  }
+> = ({
+  featured,
+  title,
+  author,
+  isFavoriteTemplate,
+  handleFavoriteTemplate,
+}) => {
+  const [isFavorite, setIsFavorite] = useState(isFavoriteTemplate)
   return (
     <UICardHeader>
-      <div className="xl:flex xl:items-start xl:justify-between">
-        <CardTitle className={`${featured && "pb-2 xl:pb-0"}`}>
-          {title}
-        </CardTitle>
+      <div>
+        <div className="flex justify-between">
+          <CardTitle className={`flex-1 ${featured && "pb-2"}`}>
+            {title}
+          </CardTitle>
+          <Heart
+            className={`size-5 hover:cursor-pointer ${
+              isFavorite ? "fill-red-500" : "hover:animate-pulse"
+            }`}
+            onClick={() => {
+              handleFavoriteTemplate()
+              setIsFavorite(!isFavorite)
+            }}
+          />
+        </div>
         {featured && (
           <Badge>
             <div className="flex items-center justify-center">
