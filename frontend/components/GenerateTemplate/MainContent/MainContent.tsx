@@ -4,7 +4,7 @@ import { IDefaultBlockInput, IFunction, readMeGenerator } from "@/api/generated"
 import CopyButton from "./CopyButton"
 import DownloadButton from "./DownloadButton"
 import Editor from "./Editor/Editor"
-import Preview from "./Preview"
+import Preview from "./Editor/Preview/Preview"
 import { compileString } from "./generator"
 import { useQuery } from "@tanstack/react-query"
 
@@ -52,24 +52,24 @@ const MainContent: React.FC<{
   })
 
   useEffect(() => {
-    if (populateMacrosData.status === "success") { 
+    if (populateMacrosData.status === "success") {
       setMacros(populateMacrosData.data!)
     }
   }, [populateMacrosData.data, populateMacrosData.status])
 
   const generateOutput = () => {
-      if (macros && templateBlocks && variables) {
-        const data = compileString(macros, templateBlocks, variables)
-        setOutput(data)
-      }
+    if (macros && templateBlocks && variables) {
+      const data = compileString(macros, templateBlocks, variables)
+      setOutput(data)
+    }
   }
 
   useEffect(() => {
-      generateOutput()
-  }, [macros])
+    const doesFunctionsExist = templateBlocks.every((block) => {
+      return macros.includes(block.function)
+    })
 
-  useEffect(() => {
-    if(populateTemplateData.isLoading === false && populateMacrosData.isLoading === false) {
+    if (populateTemplateData.isLoading === false && populateMacrosData.isLoading === false && doesFunctionsExist) {
       generateOutput()
     }
   }, [variables, templateBlocks, macros])

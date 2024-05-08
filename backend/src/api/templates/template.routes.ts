@@ -108,5 +108,29 @@ export const templateController: Router = (() => {
         handleServiceResponse(serviceResponse, res)
     })
 
+    templateRegistry.registerPath({
+        method: 'get',
+        path: '/v1/template/template/{id}/preview',
+        tags: ['Template'],
+        parameters: [
+            {
+                name: 'id',
+                in: 'path',
+                required: true,
+                schema: {
+                    type: 'string',
+                },
+            },
+        ],
+        responses: createApiResponse(z.string(), 'Success'),
+    })
+
+    router.get('/template/:id/preview', async (req: Request, res: Response) => {
+        const controller = new TemplateController()
+        const serviceResponse = await controller.getTemplatePreview(req.params.id)
+
+        handleServiceResponse(serviceResponse, res)
+    })
+
     return router
 })()

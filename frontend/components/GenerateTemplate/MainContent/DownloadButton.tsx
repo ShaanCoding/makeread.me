@@ -8,7 +8,8 @@ const DownloadButton: React.FC<{
   downloadText: string
   fileName: string
   className?: string
-}> = ({ downloadText, fileName, className }) => {
+  onClick?: () => void
+}> = ({ downloadText, fileName, className, onClick }) => {
   return (
     <Button
       variant={"outline"}
@@ -20,6 +21,8 @@ const DownloadButton: React.FC<{
         element.download = `${fileName}`
         document.body.appendChild(element)
         element.click()
+
+        if (onClick) onClick()
       }}
     >
       Download ReadME
