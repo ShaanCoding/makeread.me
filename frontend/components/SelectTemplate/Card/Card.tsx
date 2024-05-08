@@ -12,7 +12,7 @@ import CardContributors from "./CardContributors"
 import CardDescriptions from "./CardDescriptions"
 import CardHeader from "./CardHeader"
 import CardTags from "./CardTags"
-import PreviewModal from "../PreviewModal"
+import PreviewModal from "../PreviewModal/PreviewModal"
 import { useState } from "react"
 
 export const Card: React.FC<Omit<ITemplate, "functions" | "image">> = ({
