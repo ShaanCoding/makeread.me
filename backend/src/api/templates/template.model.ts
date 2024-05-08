@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi'
 import { z } from 'zod'
 
@@ -164,3 +165,57 @@ export const DefaultBlockInputSchema = z.object({
     function: z.string(),
     folder: z.string(),
 })
+
+// Mongoose ///////////////////////////////////////////////////////////////
+
+const MongooseURLTypeSchema = {
+    type: String,
+    enum: ['Facebook', 'Instagram', 'Twitter', 'Github', 'LinkedIn', 'Other'],
+}
+
+const MongooseUserSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    url: {
+        type: {
+            url: { type: String, required: true },
+            _type: MongooseURLTypeSchema,
+        },
+        required: true,
+    },
+})
+
+const MongooseTagSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    url: { type: String, required: true },
+})
+
+const MongooseFunctionSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    function: { type: String, required: true },
+    variables: [{ type: Object, required: true }],
+    folder: { type: String, required: true },
+})
+
+const MongoosePageTypeSchema = {
+    type: String,
+    enum: ['None', 'ReadME', 'Code of Conduct', 'Privacy Policy'],
+}
+
+const MongooseFullTemplateSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    author: { type: MongooseUserSchema, required: true },
+    contributors: [MongooseUserSchema],
+    startupBlocks: [String],
+    image: { type: String, required: false }, // TODO: is "required:false` correct?
+    dateCreated: { type: Date, required: true },
+    lastUpdated: { type: Date, required: true },
+    tags: [MongooseTagSchema],
+    featured: { type: Boolean, required: true },
+    folder: { type: String, required: true },
+    pageType: MongoosePageTypeSchema,
+    functions: [MongooseFunctionSchema],
+})
+
+export const FullTemplateModel = mongoose.model<FullTemplate>('FullTemplate', MongooseFullTemplateSchema)

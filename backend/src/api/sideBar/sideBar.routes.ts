@@ -146,7 +146,6 @@ export const sideBarRouter: Router = (() => {
      * @desc Get a specific template by id
      */
     router.get('/template/options', async (req: Request, res: Response) => {
-        console.log('TRIGGERED')
         const controller = new SideBarController()
         const serviceResponse = await controller.getAllTemplateFolders()
 
