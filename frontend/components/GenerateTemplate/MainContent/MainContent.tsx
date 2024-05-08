@@ -4,7 +4,7 @@ import { IDefaultBlockInput, IFunction, readMeGenerator } from "@/api/generated"
 import CopyButton from "./CopyButton"
 import DownloadButton from "./DownloadButton"
 import Editor from "./Editor/Editor"
-import Preview from "./Preview"
+import Preview from "./Editor/Preview/Preview"
 import { compileString } from "./generator"
 import { useQuery } from "@tanstack/react-query"
 

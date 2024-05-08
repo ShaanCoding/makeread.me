@@ -116,4 +116,25 @@ export class TemplateService {
             mediaType: 'application/json',
         });
     }
+    /**
+     * @param id
+     * @returns any Success
+     * @throws ApiError
+     */
+    public getV1TemplateTemplatePreview(
+        id: string,
+    ): CancelablePromise<{
+        success: boolean;
+        message: string;
+        responseObject?: string;
+        statusCode: number;
+    }> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/v1/template/template/{id}/preview',
+            path: {
+                'id': id,
+            },
+        });
+    }
 }
