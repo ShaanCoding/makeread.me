@@ -54,8 +54,6 @@ export default function IndexPage() {
                       </TabsTrigger >
                     ))}
                   </TabsList>
-                  <TabsContent value="account">
-                  </TabsContent>
                 </Tabs>
               )}
             </div>
