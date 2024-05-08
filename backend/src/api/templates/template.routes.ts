@@ -13,6 +13,7 @@ import {
     ObjectSchema,
     PageTypeSchema,
     SideBarOptionsSchema,
+    TagSchema,
     TemplateSchema,
     URLTypeSchema,
     UserSchema,
@@ -46,6 +47,7 @@ templateRegistry.register('IVariableObject', VariableObjectSchema)
 templateRegistry.register('IVariableSelect', VariableSelectSchema)
 templateRegistry.register('IVariableRadio', VariableRadioSchema)
 
+templateRegistry.register('ITag', TagSchema)
 templateRegistry.register('IURLType', URLTypeSchema)
 templateRegistry.register('ISideBarOptions', SideBarOptionsSchema)
 templateRegistry.register('IPageType', PageTypeSchema)
