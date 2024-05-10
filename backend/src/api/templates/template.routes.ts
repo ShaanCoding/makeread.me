@@ -26,7 +26,7 @@ import {
     VariableTextAreaSchema,
     VariableTypeSchema,
 } from './template.model'
-import TemplateController from './templates.controller'
+import TemplateController from './template.controller'
 
 export const templateRegistry = new OpenAPIRegistry()
 

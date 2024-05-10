@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import { Environment, MONGOHOST, MONGOPASSWORD, MONGOPORT, MONGOUSER, PRODUCTION_OR_DEVELOPMENT } from './common/utils/env'
-import { FullTemplateModel } from './api/templates/template.model'
-import { readBlocksData } from './common/utils/helper'
+import { FullTemplateModel, MacroModel } from './api/templates/template.model'
+import { createMacroObjects, createTemplateObjects } from './common/utils/helper'
 
 let mongoDBConnection: string = ''
 
@@ -13,22 +13,29 @@ const connectToDevDB = async () => {
 }
 
 const connectToProdDB = () => {
+    //mongoDBConnection = `mongodb://${MONGOUSER}:${MONGOPASSWORD}@${MONGOHOST}:${MONGOPORT}`
     throw Error('Prod DB not implemented yet')
-    mongoDBConnection = `mongodb://${MONGOUSER}:${MONGOPASSWORD}@${MONGOHOST}:${MONGOPORT}`
 }
 
 const initTemplates = async () => {
     try {
-        const templateData = readBlocksData()
-        if (!templateData) {
+        const templates = createTemplateObjects()
+        if (!templates) {
             throw Error('Failed to read template data')
         }
-
-        for (const template of templateData) {
-            await FullTemplateModel.create(template)
-        }
+         await FullTemplateModel.create(templates)
     } catch (error) {
-        console.error('Error adding template:', error)
+        console.error('Error adding templates:', error)
+    }
+
+    try {
+        const macros = createMacroObjects();
+        if (!macros) {
+            throw Error('Failed to read macros data')
+        }
+        await MacroModel.create(macros)
+    } catch (error) {
+        console.error('Error adding macros:', error)
     }
 }
 

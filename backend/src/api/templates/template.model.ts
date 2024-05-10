@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema, Document } from 'mongoose'
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi'
 import { z } from 'zod'
 
@@ -173,7 +173,7 @@ const MongooseURLTypeSchema = {
     enum: ['Facebook', 'Instagram', 'Twitter', 'Github', 'LinkedIn', 'Other'],
 }
 
-const MongooseUserSchema = new mongoose.Schema({
+const MongooseUserSchema = new Schema({
     name: { type: String, required: true },
     url: {
         type: {
@@ -184,12 +184,12 @@ const MongooseUserSchema = new mongoose.Schema({
     },
 })
 
-const MongooseTagSchema = new mongoose.Schema({
+const MongooseTagSchema = new Schema({
     name: { type: String, required: true },
     url: { type: String, required: true },
 })
 
-const MongooseFunctionSchema = new mongoose.Schema({
+const MongooseFunctionSchema = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     function: { type: String, required: true },
@@ -202,7 +202,7 @@ const MongoosePageTypeSchema = {
     enum: ['None', 'ReadME', 'Code of Conduct', 'Privacy Policy'],
 }
 
-const MongooseFullTemplateSchema = new mongoose.Schema({
+const MongooseFullTemplateSchema = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     author: { type: MongooseUserSchema, required: true },
@@ -218,4 +218,20 @@ const MongooseFullTemplateSchema = new mongoose.Schema({
     functions: [MongooseFunctionSchema],
 })
 
+// Macros ///////////////////////////////////////////////////////////////
+
+export interface Macro extends Document {
+    folder: string,
+    name: string,
+    content: string,
+}
+
+const macroSchema = new Schema({
+    folder: { type: String, required: true },
+    name: { type: String, required: true },
+    content: { type: String, required: true },
+  });
+  
+
 export const FullTemplateModel = mongoose.model<FullTemplate>('FullTemplate', MongooseFullTemplateSchema)
+export const MacroModel = mongoose.model<Macro>('Macro', macroSchema)
