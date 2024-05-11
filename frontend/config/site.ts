@@ -39,7 +39,11 @@ export const siteConfig = {
       {
         title: "Create Your Own",
         href: "/generator",
-      }
+      },
+      {
+        title: "Contributions",
+        href: "/contributions",
+      },
     ],
     socialMedia: [
       {
@@ -118,7 +122,7 @@ export const siteConfig = {
         image: "/icons/home/richSetOfTemplates.svg",
         title: "Rich Set of Contributing Templates",
         description:
-        "Utilize a wide selection of ReadME templates created and shared by our passionate and experienced community members.",
+          "Utilize a wide selection of ReadME templates created and shared by our passionate and experienced community members.",
       },
       {
         image: "/icons/home/gptFunctionality.svg",
