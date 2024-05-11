@@ -1,5 +1,5 @@
 "use client";
-import { IContributor } from "@/app/team/contributions";
+import { IContributor } from "@/app/contributors/contributions";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import {

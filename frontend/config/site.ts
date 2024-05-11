@@ -16,6 +16,10 @@ export const siteConfig = {
     {
       title: "Create Your Own",
       href: "/generator",
+    },
+    {
+      title: "Contributors",
+      href: "/contributors",
     }
   ],
   links: {
@@ -41,21 +45,9 @@ export const siteConfig = {
         href: "/generator",
       },
       {
-        title: "Contributions",
-        href: "/contributions",
-      },
-      {
-        title: "Our team",
-        href: "/team"
-      },
-      {
-        title: "Contributions",
-        href: "/contributions",
-      },
-      // {
-      //   title: "Make My Own",
-      //   href: "/generator",
-      // },
+        title: "Contributors",
+        href: "/contributors",
+      }
     ],
     socialMedia: [
       {

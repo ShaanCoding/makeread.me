@@ -1,4 +1,4 @@
-import { IGithubLink } from "@/app/team/contributions";
+import { IGithubLink } from "@/app/contributors/contributions";
 import Link from "next/link";
 import React from "react";
 import { GitPullRequest, CircleDot } from "lucide-react";
