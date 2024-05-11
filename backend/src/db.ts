@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { MongoMemoryServer } from 'mongodb-memory-server'
-import { Environment, MONGOHOST, MONGOPASSWORD, MONGOPORT, MONGOUSER, PRODUCTION_OR_DEVELOPMENT } from './common/utils/env'
+import { Environment, PRODUCTION_OR_DEVELOPMENT, MONGO_PRIVATE_URL } from './common/utils/env'
 import { FullTemplateModel, MacroModel } from './api/templates/template.model'
 import { createMacroObjects, createTemplateObjects } from './common/utils/helper'
 
@@ -13,7 +13,7 @@ const connectToDevDB = async () => {
 }
 
 const connectToProdDB = () => {
-    mongoDBConnection = `mongodb://${MONGOUSER}:${MONGOPASSWORD}@${MONGOHOST}:${MONGOPORT}`
+    mongoDBConnection = MONGO_PRIVATE_URL
 }
 
 const initTemplates = async () => {
