@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 const TabContentMotionDiv: React.FC<{ show: boolean, children: React.ReactNode }> = ({ show, children }) => {
     return (
         <motion.div
+            className="h-full w-full"
             style={{
                 display: "block"
             }}
