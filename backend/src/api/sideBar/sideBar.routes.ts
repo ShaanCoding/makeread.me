@@ -60,8 +60,6 @@ export const sideBarRouter: Router = (() => {
         const filter: string[] = req.query.filter?.toString().split(',') || []
         const pageType: string = req.query.pageType?.toString() || ''
 
-        console.log({ search, filter, pageType })
-
         const controller = new SideBarController()
         const serviceResponse = await controller.getAllTemplates(search, filter, pageType)
 

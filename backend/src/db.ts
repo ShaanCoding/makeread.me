@@ -13,8 +13,7 @@ const connectToDevDB = async () => {
 }
 
 const connectToProdDB = () => {
-    //mongoDBConnection = `mongodb://${MONGOUSER}:${MONGOPASSWORD}@${MONGOHOST}:${MONGOPORT}`
-    throw Error('Prod DB not implemented yet')
+    mongoDBConnection = `mongodb://${MONGOUSER}:${MONGOPASSWORD}@${MONGOHOST}:${MONGOPORT}`
 }
 
 const initTemplates = async () => {

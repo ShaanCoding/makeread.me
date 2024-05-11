@@ -16,27 +16,23 @@ export const createTemplateObjects = (): FullTemplate[] | null => {
     }
 }
 
-const readNjkFiles = (dirPath: string, parentFolder: string): Macro[] | null => {
-    const macros: Macro[] = [];
-    const macrosDirPath = path.join(dirPath, 'macros');
+const readNjkFiles = (parentFolder: string): Macro[] | null => {
     try {
-        const files = fs.readdirSync(macrosDirPath);
-        return files.map(file => {
-            const filePath = path.join(macrosDirPath, file);
-            const stats = fs.statSync(filePath);
-            if (!stats.isDirectory() && path.extname(file) === '.njk') {
-                const content = fs.readFileSync(filePath, 'utf-8').replace(/\r?\n/g, '\\r\\n');
-                const macroName = path.basename(file, '.njk');
-                const folder = parentFolder;
-                return { folder, name: macroName, content };
-            }
-            return null;
-        }).filter(macro => macro !== null) as Macro[];
+        let macros: Macro[] = [];
+
+        let macroData = fs.readFileSync(`./public/${parentFolder}/macros.json`, 'utf8');
+        macroData = JSON.parse(macroData);
+
+        Object.keys(macroData).forEach(key => {
+            const macro: Macro = { folder: parentFolder, name: key, content: macroData[key] } as Macro;
+            macros.push(macro);
+        })
+
+        return macros;
     } catch (error) {
-        console.error(`Error reading directory ${macrosDirPath}:`, error);
-        return null;
+        return null
     }
-};
+}
 
 export const createMacroObjects = (): Macro[] | null => {
     const macros: Macro[] = [];
@@ -47,7 +43,7 @@ export const createMacroObjects = (): Macro[] | null => {
             const folderPath = path.join(rootDir, folder);
             const folderStats = fs.statSync(folderPath);
             if (folderStats.isDirectory()) {
-                const folderMacros = readNjkFiles(folderPath, folder);
+                const folderMacros = readNjkFiles(folder);
                 if (folderMacros) {
                     macros.push(...folderMacros);
                 }

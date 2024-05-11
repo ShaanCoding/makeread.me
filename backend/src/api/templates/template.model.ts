@@ -167,6 +167,7 @@ export const DefaultBlockInputSchema = z.object({
 })
 
 // Mongoose ///////////////////////////////////////////////////////////////
+// TODO: Figure out how to use zod with mongoose
 
 const MongooseURLTypeSchema = {
     type: String,
