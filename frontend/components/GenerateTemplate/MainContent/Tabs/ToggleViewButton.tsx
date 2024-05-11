@@ -28,10 +28,10 @@ const ToggleViewButton: React.FC<{
 
     return (
         <Button variant={'outline'} onClick={alternateNumberOfViewsToShow}>
+            {numberOfViewsToShow === 1 && <Square className="mr-2 size-4" />}
+            {numberOfViewsToShow === 2 && <Columns2 className="mr-2 size-4" />}
+            {numberOfViewsToShow === 3 && <Columns3 className="mr-2 size-4" />}
             Toggle View
-            {numberOfViewsToShow === 1 && <Square className="ml-2 size-4" />}
-            {numberOfViewsToShow === 2 && <Columns2 className="ml-2 size-4" />}
-            {numberOfViewsToShow === 3 && <Columns3 className="ml-2 size-4" />}
         </Button>
     )
 }

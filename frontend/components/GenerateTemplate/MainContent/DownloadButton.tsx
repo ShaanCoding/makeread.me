@@ -1,8 +1,9 @@
 import React from "react"
-import { DownloadIcon } from "lucide-react"
+import { CheckIcon, DownloadIcon } from "lucide-react"
 import { twMerge } from "tailwind-merge"
 
 import { Button } from "@/components/ui/button"
+import { set } from "react-hook-form"
 
 const DownloadButton: React.FC<{
   downloadText: string
@@ -10,6 +11,8 @@ const DownloadButton: React.FC<{
   className?: string
   onClick?: () => void
 }> = ({ downloadText, fileName, className, onClick }) => {
+  const [isDownloaded, setIsDownloaded] = React.useState(false)
+
   return (
     <Button
       variant={"outline"}
@@ -22,11 +25,21 @@ const DownloadButton: React.FC<{
         document.body.appendChild(element)
         element.click()
 
+        setIsDownloaded(true)
         if (onClick) onClick()
+
+        setTimeout(() => {
+          setIsDownloaded(false)
+        }, 2000)
       }}
     >
-      Download ReadME
-      <DownloadIcon className="ml-2 size-4" />
+
+      {isDownloaded ? (
+        <CheckIcon className="mr-2 size-4" />
+      ) : (
+        <DownloadIcon className="mr-2 size-4" />
+      )}
+      {isDownloaded ? "Downloaded!" : "Download ReadME"}
     </Button>
   )
 }
