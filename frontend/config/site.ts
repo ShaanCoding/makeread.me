@@ -44,6 +44,10 @@ export const siteConfig = {
         title: "Contributions",
         href: "/contributions",
       },
+      {
+        title: "Our team",
+        href: "/team"
+      }
     ],
     socialMedia: [
       {
