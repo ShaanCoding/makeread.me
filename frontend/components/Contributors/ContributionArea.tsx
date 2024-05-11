@@ -1,109 +1,86 @@
 "use client";
 import { IContributor } from "@/app/contributors/contributions";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger
-} from "@/components/ui/collapsible"
 
 import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
-import SocialMediaLinks from "./SocialMediaLinks";
 import GithubContributionLinks from "./GithubContributionLinks";
+import { IUser } from "@/api/generated";
+import Link from "next/link";
+import SocialMediaIcon from "../common/SocialMediaIcon";
 
-export default function ContributionArea({ area, contributors }: { area: string, contributors: IContributor[] }) {
+const ContributionArea: React.FC<{ area: string, contributors: IContributor[] }> = ({ area, contributors }) => {
   return (
-    <section className="p-4">
-      <h1 className="font-bold mb-4 text-3xl">{area}</h1>
+    <section className="grid gap-6">
+      <h1 className="text-2xl font-bold">{area}</h1>
       {contributors.map((contribution: IContributor) =>
-        IndividualContribution(contribution)
+        <IndividualContribution contribution={contribution} />
       )}
     </section>
   )
 }
 
-// sourced from https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
+export default ContributionArea
 
-export function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
+const IndividualContribution: React.FC<{ contribution: IContributor }> = ({ contribution }) => {
+  // TODO: Update schema data directly
+  const authors: IUser[] = contribution.links.map((links) => {
+    return {
+      name: `${links.name}'s ${links.icon}`,
+      url: {
+        url: links.url,
+        _type: links.icon,
+      }
     }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowDimensions;
-}
-
-function IndividualContribution(contribution: IContributor) {
-  const [isOpen, setOpen] = useState(true);
-  const { height, width } = useWindowDimensions();
-
-  // NOTE: Weird media query here. If the width is < 600, dont render the minimise buttons
-  // as it adds to the clutter of the screen on small devices
-
+  });
 
   return (
-    <Card className="mb-6">
-      <Collapsible open={isOpen}>
-        <CardHeader>
-          <div className="flex items-center justify-between space-x-4 px-4">
-            <h3 className="text-2xl font-semibold">{contribution.name}</h3>
-            <CollapsibleTrigger asChild>
-              <div>
-                {width > 600 &&
-                  <Button variant="outline" onClick={() => setOpen(!isOpen)}>
-                    {isOpen ? "- Minimise" : "+ Expand"}
-                  </Button>
-                }
-              </div>
-            </CollapsibleTrigger>
+    <Card>
+      <CardHeader>
+        <h2 className="text-2xl font-semibold">{contribution.name}</h2>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 gap-6">
+          <div className="flex items-start justify-between gap-6">
+            <div className="h-64 w-64 relative rounded-md overflow-clip">
+              <Image className="h-full" fill src={contribution.image} alt={`Image of ${contribution.name}`} />
+            </div>
+
+            {/* to fix */}
+            <div className="w-9/12">
+              <h3 className="text-lg font-bold mb-2">{contribution.job} </h3>
+
+              <p className="mb-2">{contribution.desc}</p>
+
+              {authors.length > 0 && (
+                <>
+                  <h3 className="text-lg font-bold mb-2">Socials</h3>
+                  <div className="flex flex-wrap gap-2 pb-6">
+                    {authors.map((contributor, index) => (
+                      <Link href={contributor.url.url} key={index}>
+                        <Button variant={"outline"}>
+                          <SocialMediaIcon url={contributor.url._type} />
+                          {contributor.name}
+                        </Button>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-        </CardHeader>
 
-        <CardContent className="p-0">
-          <CollapsibleContent className="px-6">
-            <div className="mb-6 ml-4 flex md:flex-row flex-col h-full">
-              <div className="flex items-center h-full justify-center md:justify-normal">
-                <div className="relative md:h-64 md:w-64 w-52 h-52 p-0 mb-4 md:mb-0">
-                  <Image src={`https://github.com/${contribution.image}.png`} fill alt="ContributorImage" style={{ "borderRadius": "2%" }} />
-                </div>
-              </div>
-              <div className="md:pl-6 flex flex-col justify-start w-full h-auto">
-                <h2 className="text-lg font-bold pb-2">{contribution.job} </h2>
-                <h3>
-                  {contribution.desc}
-                </h3>
-              </div>
-            </div>
-
-            <div className="w-full flex justify-between flex-col md:flex-row items-center mb-4">
-              <GithubContributionLinks githubLinks={contribution.githubContributions} />
-              <SocialMediaLinks links={contribution.links} />
-            </div>
-          </CollapsibleContent>
-        </CardContent>
-      </Collapsible>
+          <div className="w-full grid grid-cols-1 gap-6">
+            <h2 className="text-2xl font-semibold">Contributions</h2>
+            <GithubContributionLinks githubLinks={contribution.githubContributions} />
+          </div>
+        </div>
+      </CardContent>
     </Card >
   )
 }

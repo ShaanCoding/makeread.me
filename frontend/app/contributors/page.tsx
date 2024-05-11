@@ -11,10 +11,12 @@ export default function page() {
         {contributorsConfig.description}
       </h2>
 
-      <ContributionArea area="Development" contributors={Contributions.development} />
-      <ContributionArea area="Design" contributors={Contributions.design} />
-      <ContributionArea area="Templates" contributors={Contributions.contributedToTemplate} />
-      <ContributionArea area="Bug report" contributors={Contributions.bugReports} />
+      <div className="grid gap-6 grid-cols-1">
+        <ContributionArea area="Development" contributors={Contributions.development} />
+        <ContributionArea area="Design" contributors={Contributions.design} />
+        <ContributionArea area="Templates" contributors={Contributions.contributedToTemplate} />
+        <ContributionArea area="Bug report" contributors={Contributions.bugReports} />
+      </div>
     </main>
   )
 }

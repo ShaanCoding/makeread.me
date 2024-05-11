@@ -1,3 +1,5 @@
+import { IUser } from "@/api/generated";
+
 export type IContributions = typeof Contributions
 export type IContributor = typeof Contributions.development[0];
 export interface IGithubLink {
@@ -10,24 +12,24 @@ export const Contributions = {
   development: [
     {
       name: "Shaan Khan",
-      image: "shaancoding",
+      image: "https://github.com/shaancoding.png",
       job: "Software Engineer at Nine",
       desc: "DDynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.ynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.",
       links: [
         {
           name: "linkedin",
           url: "https://www.linkedin.com/in/shaancoding/",
-          icon: "icons/home/social/linkedin.svg"
+          icon: IUser._type.LINKED_IN
         },
         {
           name: "github",
           url: "https://www.github.com/shaancoding",
-          icon: "icons/home/social/github.svg"
+          icon: IUser._type.GITHUB
         },
         {
           name: "twitter",
           url: "https://twitter.com/ShaanCoding",
-          icon: "icons/home/social/twitter.svg"
+          icon: IUser._type.TWITTER
         }
       ],
       githubContributions: [
@@ -46,19 +48,19 @@ export const Contributions = {
     {
       name: "Bobrandy",
       job: "Unemployed lol",
-      image: "bobrandy13",
+      image: "https://github.com/bobrandy13.png",
       desc: "High School student that loves to code.",
       links: [
 
         {
           name: "linkedin",
           url: "https://www.linkedin.com/in/kevin-huang-9a94441a1/",
-          icon: "icons/home/social/linkedin.svg"
+          icon: IUser._type.LINKED_IN
         },
         {
           name: "github",
           url: "https://www.github.com/bobrandy13",
-          icon: "icons/home/social/github.svg"
+          icon: IUser._type.TWITTER
         },
 
       ],
@@ -74,19 +76,19 @@ export const Contributions = {
   design: [
     {
       name: "Mathys Deshaies",
-      image: "MathPow",
+      image: "https://github.com/MathPow.png",
       job: "I'm Mathys, a developer passionate about all aspects of computer science and management.",
       desc: "Dynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.",
       links: [
         {
           name: "linkedin",
           url: "https://www.linkedin.com/in/mathys-deshaies/",
-          icon: "icons/home/social/linkedin.svg"
+          icon: IUser._type.LINKED_IN
         },
         {
           name: "github",
           url: "https://www.github.com/MathPow",
-          icon: "icons/home/social/github.svg"
+          icon: IUser._type.GITHUB
         }
       ],
       githubContributions: [
@@ -110,7 +112,7 @@ export const Contributions = {
     {
       name: "Amin Beigi",
       job: '"An idiot admires complexity, a genius admires simplicity." - Terry A. Davis',
-      image: "aminbeigi",
+      image: "https://github.com/aminbeigi.png",
       desc: "Dynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.",
       links: [
 
@@ -138,7 +140,7 @@ export const Contributions = {
   contributedToTemplate: [
     {
       name: "Shaan Khan",
-      image: "shaancoding",
+      image: "https://github.com/shaancoding.png",
       job: "Software Engineer at Nine",
       desc: "Dynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.",
       links: [
@@ -158,7 +160,7 @@ export const Contributions = {
   ],
   bugReports: [{
     name: "Shaan Khan",
-    image: "Shaancoding",
+    image: "https://github.com/shaancoding.png",
     job: "Software Engineer at Nine",
     desc: "DDynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.ynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.",
     links: [
