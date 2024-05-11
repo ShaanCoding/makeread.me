@@ -1,14 +1,14 @@
-import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
-import { SideBarOptions, FullTemplate, IFunction, Template } from '../templates/template.model'
+
+import { Template, FullTemplate, FullTemplateModel, SideBarOptions, IFunction } from '../templates/template.model'
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
 
 export default class SideBarController {
     public async getAllTemplates(search: string, filter: string[], pageType: string): Promise<ServiceResponse<Template[] | null>> {
         try {
-            let blocksData = this.readBlocksData()
+            let blocksData: FullTemplate[] = await FullTemplateModel.find({})
 
-            if (blocksData === null) {
+            if (!blocksData) {
                 return this.handleNullBlocksData()
             }
 
@@ -46,13 +46,12 @@ export default class SideBarController {
 
     public async getAllSidebar(): Promise<ServiceResponse<SideBarOptions[] | null>> {
         try {
-            const sidebarOptionsSet: Set<string> = new Set<string>()
+            let blocksData: FullTemplate[] = await FullTemplateModel.find({})
 
-            const blocksData = this.readBlocksData()
-
-            if (blocksData === null) {
+            if (!blocksData) {
                 return this.handleNullBlocksData()
             }
+            const sidebarOptionsSet: Set<string> = new Set<string>()
 
             blocksData.map((block: FullTemplate) => {
                 block.tags.forEach((tag) => {
@@ -92,17 +91,16 @@ export default class SideBarController {
     public async getTemplateSidebar(id: string, search: string, filter: string[]): Promise<ServiceResponse<FullTemplate[] | null>> {
         try {
             if (id && id !== 'undefined') {
-                const filePath = `./public/${id}/blocks.json`
-                if (!fs.existsSync(filePath)) {
-                    return new ServiceResponse(ResponseStatus.Failed, 'Template not found', null, StatusCodes.NOT_FOUND)
+                let blockData = await FullTemplateModel.findOne({ folder: id })
+
+                if (!blockData) {
+                    return this.handleNullBlocksData()
                 }
-
-                const blocksData: FullTemplate = JSON.parse(fs.readFileSync(filePath, 'utf8'))
-                return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', [blocksData], StatusCodes.OK)
+                return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', [blockData], StatusCodes.OK)
             } else {
-                let blocksData = this.readBlocksData()
+                let blocksData: FullTemplate[] = await FullTemplateModel.find({})
 
-                if (blocksData === null) {
+                if (!blocksData) {
                     return this.handleNullBlocksData()
                 }
 
@@ -131,14 +129,14 @@ export default class SideBarController {
 
     public async getAllTemplateFolders(): Promise<ServiceResponse<SideBarOptions[] | null>> {
         try {
-            const blocksData = this.readBlocksData()
+            const blocksData: FullTemplate[] = await FullTemplateModel.find({})
 
-            // Needs to read the blocks.json file and get the folder name and the title
-            // This is to show the folder name and the title of the template
-            if (blocksData === null) {
+            if (!blocksData) {
                 return this.handleNullBlocksData()
             }
 
+            // Needs to read the blocks.json file and get the folder name and the title
+            // This is to show the folder name and the title of the template
             const sidebarOptions: SideBarOptions[] = blocksData.map((block: FullTemplate) => {
                 return {
                     label: block.title,
@@ -152,21 +150,8 @@ export default class SideBarController {
         }
     }
 
-    private readBlocksData(): FullTemplate[] | null {
-        try {
-            const folders: string[] = fs.readdirSync('./public')
-            const blocksData = folders.map((folder: string) => {
-                const data = fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8')
-                return JSON.parse(data)
-            })
-            return blocksData
-        } catch (error) {
-            return null
-        }
-    }
-
     private handleNullBlocksData(): ServiceResponse<null> {
-        return new ServiceResponse(ResponseStatus.Failed, 'Failed to read templates', null, StatusCodes.INTERNAL_SERVER_ERROR)
+        return new ServiceResponse(ResponseStatus.Failed, 'Templates not found', null, StatusCodes.NOT_FOUND)
     }
 
     private sortBlocksByFeatured(blocksData: FullTemplate[]): FullTemplate[] {
