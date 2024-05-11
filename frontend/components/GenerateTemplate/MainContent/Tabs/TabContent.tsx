@@ -16,7 +16,7 @@ const TabContent: React.FC<{
     const { showEditor, showPreview, showRawText } = editModeBooleans(editMode)
 
     return (
-        <div className={`rounded-lg border border-dashed shadow-sm grid gap-6 items-start justify-center ${numberOfViewClass}`}>
+        <div className={numberOfViewClass}>
             <TabContentMotionDiv show={showEditor}>{Editor}</TabContentMotionDiv>
             <TabContentMotionDiv show={showPreview}>{Preview}</TabContentMotionDiv>
             <TabContentMotionDiv show={showRawText}>{RawText}</TabContentMotionDiv>
