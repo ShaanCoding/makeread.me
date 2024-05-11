@@ -16,6 +16,7 @@ export type { IFunction } from './models/IFunction';
 export { IObject } from './models/IObject';
 export { IPageType } from './models/IPageType';
 export type { ISideBarOptions } from './models/ISideBarOptions';
+export type { ITag } from './models/ITag';
 export { ITemplate } from './models/ITemplate';
 export { IURLType } from './models/IURLType';
 export { IUser } from './models/IUser';

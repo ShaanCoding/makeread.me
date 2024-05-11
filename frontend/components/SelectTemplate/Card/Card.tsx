@@ -15,16 +15,19 @@ import CardTags from "./CardTags"
 import PreviewModal from "../PreviewModal/PreviewModal"
 import { useState } from "react"
 
-export const Card: React.FC<Omit<ITemplate, "functions" | "image">> = ({
-  title,
-  author,
-  contributors,
-  dateCreated,
-  description,
-  featured,
-  folder,
-  lastUpdated,
-  tags,
+export const Card: React.FC<{ cardData: Omit<ITemplate, "functions" | "image">, addCategoryToSidebar?: (value: string) => void }> = ({
+  cardData: {
+    title,
+    author,
+    description,
+    featured,
+    tags,
+    contributors,
+    dateCreated,
+    lastUpdated,
+    folder,
+  },
+  addCategoryToSidebar
 }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
@@ -33,7 +36,7 @@ export const Card: React.FC<Omit<ITemplate, "functions" | "image">> = ({
       <CardHeader title={title} author={author} featured={featured} />
       <CardContent>
         <CardDescriptions description={description} />
-        <CardTags tags={tags} />
+        <CardTags tags={tags} addCategoryToSidebar={addCategoryToSidebar} />
         <CardContributors contributors={contributors} />
 
         <div className="grid items-center justify-center grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-y-0 lg:gap-x-6">

@@ -26,11 +26,12 @@ interface IOption {
 const SelectTemplateSideBar: React.FC<{
   setTemplateBlocks: Dispatch<SetStateAction<ITemplate[]>>
   pageType: IPageType
-}> = ({ pageType, setTemplateBlocks }) => {
+  multiSelectValue: string[]
+  setMultiSelectValue: Dispatch<SetStateAction<string[]>>
+}> = ({ pageType, setTemplateBlocks, multiSelectValue, setMultiSelectValue }) => {
   const [search, setSearch] = useState<string>("")
   const [searchDebounced] = useDebounce<string>(search, 500)
 
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([])
   const [multiSelectList, setMultiSelectList] = useState<IOption[]>([])
 
   const templateMaps = useQuery({

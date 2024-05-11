@@ -27,12 +27,12 @@ const CopyButton: React.FC<{
           if (onClick) onClick()
         }}
       >
-        {isCopied ? "Copied!" : "Copy To Clipboard"}
         {isCopied ? (
-          <CheckIcon className="ml-2 size-4" />
+          <CheckIcon className="mr-2 size-4" />
         ) : (
-          <ClipboardIcon className="ml-2 size-4" />
+          <ClipboardIcon className="mr-2 size-4" />
         )}
+        {isCopied ? "Copied!" : "Copy To Clipboard"}
       </Button>
     )
   }

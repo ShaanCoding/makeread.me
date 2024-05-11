@@ -33,7 +33,7 @@ const TopThreeTemplates = () => {
               whileInView={{ opacity: 1, y: 0 }}
               key={index}
             >
-              <Card {...template} key={index} />
+              <Card cardData={template} key={index} />
             </motion.div>
           ))}
         </div>
