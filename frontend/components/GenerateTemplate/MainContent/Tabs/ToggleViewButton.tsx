@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { GridIcon } from "lucide-react"
+import { Columns2, Columns3, Square } from "lucide-react"
+
 import { EditModeOne, EditModeTwo, EditModeThree } from "../types"
 
 const ToggleViewButton: React.FC<{
@@ -28,9 +29,9 @@ const ToggleViewButton: React.FC<{
     return (
         <Button variant={'outline'} onClick={alternateNumberOfViewsToShow}>
             Toggle View
-            {numberOfViewsToShow === 1 && <GridIcon className="stroke-red-500 ml-2 size-4" />}
-            {numberOfViewsToShow === 2 && <GridIcon className="stroke-green-500 ml-2 size-4" />}
-            {numberOfViewsToShow === 3 && <GridIcon className="stroke-blue-500 ml-2 size-4" />}
+            {numberOfViewsToShow === 1 && <Square className="ml-2 size-4" />}
+            {numberOfViewsToShow === 2 && <Columns2 className="ml-2 size-4" />}
+            {numberOfViewsToShow === 3 && <Columns3 className="ml-2 size-4" />}
         </Button>
     )
 }

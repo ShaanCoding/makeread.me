@@ -1,6 +1,8 @@
 import { EditModeOne, EditModeTwo, EditModeThree } from "../types"
 import editModeBooleans from "./editModeBooleans"
 import generateNumberOfViewClass from "./generateNumberOfViewClass"
+import TabContentMotionDiv from "./TabContentMotionDiv"
+
 
 
 const TabContent: React.FC<{
@@ -10,27 +12,17 @@ const TabContent: React.FC<{
     Preview: React.ReactNode,
     RawText: React.ReactNode,
 }> = ({ numberOfViewsToShow, editMode, Editor, Preview, RawText }) => {
-
-
     const numberOfViewClass = generateNumberOfViewClass(numberOfViewsToShow)
     const { showEditor, showPreview, showRawText } = editModeBooleans(editMode)
 
     return (
         <div className={`rounded-lg border border-dashed shadow-sm grid gap-6 items-start justify-center ${numberOfViewClass}`}>
-
-            <div className={`${showEditor ? 'block' : 'hidden'}`}>
-                {Editor}
-            </div>
-
-            <div className={`${showPreview ? 'block' : 'hidden'}`}>
-                {Preview}
-            </div>
-
-            <div className={`${showRawText ? 'block' : 'hidden'}`}>
-                {RawText}
-            </div>
+            <TabContentMotionDiv show={showEditor}>{Editor}</TabContentMotionDiv>
+            <TabContentMotionDiv show={showPreview}>{Preview}</TabContentMotionDiv>
+            <TabContentMotionDiv show={showRawText}>{RawText}</TabContentMotionDiv>
         </div>
     )
 }
+
 
 export default TabContent
