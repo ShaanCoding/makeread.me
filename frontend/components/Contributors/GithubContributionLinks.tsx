@@ -1,12 +1,12 @@
-import { IGithubLink } from "@/app/contributors/contributions";
+import { IGithubLink } from "@/config/contributions";
 import Link from "next/link";
 import React from "react";
 import { GitPullRequest, CircleDot } from "lucide-react";
 
 export default function GithubContributionLinks({ githubLinks }: { githubLinks: IGithubLink[] }) {
-  console.log(githubLinks)
   return (
     <div className="mb-4">
+
       {
         githubLinks.map((link, key) => {
           return (
@@ -26,9 +26,9 @@ export default function GithubContributionLinks({ githubLinks }: { githubLinks: 
     </div>
   )
 }
-
+// TODO: Remove
 function Icon({ type }: { type: string }) {
   return (
-    type === "PR" ? <GitPullRequest color="#00D100" /> : <CircleDot color="#00D100" />
+    type === "PR" ? <GitPullRequest color="#3fb950" /> : <CircleDot color="#3fb950" />
   )
 }
