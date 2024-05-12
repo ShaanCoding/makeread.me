@@ -1,6 +1,6 @@
 import ContributionArea from "@/components/Contributors/ContributionArea";
 import React from "react";
-import { Contributions, IContributor } from "./contributions";
+import { Contributions } from "../../config/contributions";
 import { contributorsConfig } from "@/config/contributors";
 
 export default function page() {

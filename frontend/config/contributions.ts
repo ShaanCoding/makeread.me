@@ -8,6 +8,42 @@ export interface IGithubLink {
   title: string
 }
 
+const development = [
+  {
+    name: "Shaan Khan",
+    image: "https://github.com/shaancoding.png",
+    title: "Software Engineer at Nine",
+    description: "Dynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.",
+    url: [{
+      _type: IUser._type.LINKED_IN,
+      url: "https://www.linkedin.com/in/shaancoding/",
+    },
+    {
+      _type: IUser._type.GITHUB,
+      url: "https://www.github.com/shaancoding",
+    },
+    {
+      _type: IUser._type.TWITTER,
+      url: "https://twitter.com/ShaanCoding",
+    }
+  ],
+  contributions: [
+    {
+      name: "Generator Page Too Cramped",
+      url: "https://github.com/ShaanCoding/makeread.me/pull/108",
+      type: "DEFINE TYPE"
+    }
+  ]
+  }
+]
+
+export const contributionData = {
+  development: development,
+  design: [],
+  contributedToTemplate: [],
+  bugReports: [],
+}
+
 export const Contributions = {
   development: [
     {
