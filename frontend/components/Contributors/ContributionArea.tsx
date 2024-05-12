@@ -1,6 +1,6 @@
 "use client";
-import { IContributor } from "@/app/contributors/contributions";
-import React from "react";
+import { IContributor } from "@/config/contributions";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button"
@@ -13,13 +13,14 @@ import GithubContributionLinks from "./GithubContributionLinks";
 import { IUser } from "@/api/generated";
 import Link from "next/link";
 import SocialMediaIcon from "../common/SocialMediaIcon";
+import ShowMinimizeButton from "../common/ShowMinimizeButton";
 
 const ContributionArea: React.FC<{ area: string, contributors: IContributor[] }> = ({ area, contributors }) => {
   return (
     <section className="grid gap-6">
       <h1 className="text-2xl font-bold">{area}</h1>
-      {contributors.map((contribution: IContributor) =>
-        <IndividualContribution contribution={contribution} />
+      {contributors.map((contribution: IContributor, index: number) =>
+        <IndividualContribution contribution={contribution} isFirst={index === 0} />
       )}
     </section>
   )
@@ -27,7 +28,9 @@ const ContributionArea: React.FC<{ area: string, contributors: IContributor[] }>
 
 export default ContributionArea
 
-const IndividualContribution: React.FC<{ contribution: IContributor }> = ({ contribution }) => {
+const IndividualContribution: React.FC<{ contribution: IContributor, isFirst?: boolean }> = ({ contribution, isFirst = false }) => {
+  const [isMinimized, setIsMinimized] = useState<boolean>(!isFirst)
+
   // TODO: Update schema data directly
   const authors: IUser[] = contribution.links.map((links) => {
     return {
@@ -42,9 +45,12 @@ const IndividualContribution: React.FC<{ contribution: IContributor }> = ({ cont
   return (
     <Card>
       <CardHeader>
-        <h2 className="text-2xl font-semibold">{contribution.name}</h2>
+        <div className="flex items-center justify-between gap-6">
+          <h2 className="text-2xl font-semibold">{contribution.name}</h2>
+          <ShowMinimizeButton isMinimized={isMinimized} setIsMinimized={setIsMinimized} />
+        </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className={`${isMinimized ? "hidden" : ""}`}>
         <div className="grid grid-cols-1 gap-6">
           <div className="flex items-start justify-between gap-6">
             <div className="h-64 w-64 relative rounded-md overflow-clip">
