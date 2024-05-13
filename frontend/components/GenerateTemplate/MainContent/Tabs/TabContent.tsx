@@ -12,7 +12,7 @@ const TabContent: React.FC<{
     Preview: React.ReactNode,
     RawText: React.ReactNode,
 }> = ({ numberOfViewsToShow, editMode, Editor, Preview, RawText }) => {
-    const numberOfViewClass = generateNumberOfViewClass(numberOfViewsToShow)
+    const numberOfViewClass = generateNumberOfViewClass(numberOfViewsToShow, editMode)
     const { showEditor, showPreview, showRawText } = editModeBooleans(editMode)
 
     return (

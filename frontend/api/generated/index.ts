@@ -10,11 +10,15 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
+export type { IContributor } from './models/IContributor';
 export type { IDefaultBlockInput } from './models/IDefaultBlockInput';
 export { IFullTemplate } from './models/IFullTemplate';
 export type { IFunction } from './models/IFunction';
+export type { IGithubContributionsList } from './models/IGithubContributionsList';
+export { IIssueType } from './models/IIssueType';
 export { IObject } from './models/IObject';
 export { IPageType } from './models/IPageType';
+export { IPullRequestType } from './models/IPullRequestType';
 export type { ISideBarOptions } from './models/ISideBarOptions';
 export type { ITag } from './models/ITag';
 export { ITemplate } from './models/ITemplate';

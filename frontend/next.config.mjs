@@ -8,6 +8,12 @@ const nextConfig = withPlausibleProxy()({
       {
         hostname: "source.unsplash.com",
       },
+      {
+        hostname: "github.com"
+      },
+      {
+        hostname: "avatars.githubusercontent.com"
+      }
     ],
   },
 })

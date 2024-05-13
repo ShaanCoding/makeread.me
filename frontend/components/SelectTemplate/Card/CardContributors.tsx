@@ -15,7 +15,6 @@ const CardContributors: React.FC<Pick<ITemplate, "contributors">> = ({
         {contributors.map((contributor, index) => (
           <Link href={contributor.url.url} key={index}>
             <Button variant={"outline"}>
-              {" "}
               <SocialMediaIcon url={contributor.url._type} />
               {contributor.name}
             </Button>

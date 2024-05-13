@@ -1,4 +1,10 @@
-const generateNumberOfViewClass = (numberOfViewsToShow: number) => {
+import { EditModeOne, EditModeTwo, EditModeThree } from "../types";
+
+const generateNumberOfViewClass = (numberOfViewsToShow: number, editMode: EditModeOne | EditModeTwo | EditModeThree) => {
+  if(numberOfViewsToShow === 2 && editMode === EditModeTwo.RAW) {
+    return 'grid-cols-1';    
+  }
+  
   switch (numberOfViewsToShow) {
     case 1:
       return 'grid-cols-1';
