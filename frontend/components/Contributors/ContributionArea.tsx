@@ -1,5 +1,5 @@
 "use client";
-import { IContributor } from "@/config/contributions";
+
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -10,7 +10,7 @@ import {
   CardHeader,
 } from "@/components/ui/card"
 import GithubContributionLinks from "./GithubContributionLinks";
-import { IUser } from "@/api/generated";
+import { IContributor } from "@/api/generated";
 import Link from "next/link";
 import SocialMediaIcon from "../common/SocialMediaIcon";
 import ShowMinimizeButton from "../common/ShowMinimizeButton";
@@ -31,17 +31,6 @@ export default ContributionArea
 const IndividualContribution: React.FC<{ contribution: IContributor, isFirst?: boolean }> = ({ contribution, isFirst = false }) => {
   const [isMinimized, setIsMinimized] = useState<boolean>(!isFirst)
 
-  // TODO: Update schema data directly
-  const authors: IUser[] = contribution.links.map((links) => {
-    return {
-      name: `${links.name}'s ${links.icon}`,
-      url: {
-        url: links.url,
-        _type: links.icon,
-      }
-    }
-  });
-
   return (
     <Card>
       <CardHeader>
@@ -52,26 +41,28 @@ const IndividualContribution: React.FC<{ contribution: IContributor, isFirst?: b
       </CardHeader>
       <CardContent className={`${isMinimized ? "hidden" : ""}`}>
         <div className="grid grid-cols-1 gap-6">
-          <div className="flex items-start justify-between gap-6">
-            <div className="h-64 w-64 relative rounded-md overflow-clip">
-              <Image className="h-full" fill src={contribution.image} alt={`Image of ${contribution.name}`} />
+          <div className="flex flex-col items-center justify-center md:flex-row gap-6">
+            <div className="h-full w-full md:w-auto md:min-w-[256px] rounded-md overflow-clip">
+              <Image
+                width={1024}
+                height={1024}
+                layout="responsive"
+                src={contribution.image} alt={`Image of ${contribution.name}`} />
             </div>
 
-            {/* to fix */}
-            <div className="w-9/12">
-              <h3 className="text-lg font-bold mb-2">{contribution.job} </h3>
+            <div>
+              <h3 className="text-lg font-bold mb-2">{contribution.title} </h3>
+              <p className="mb-2">{contribution.description}</p>
 
-              <p className="mb-2">{contribution.desc}</p>
-
-              {authors.length > 0 && (
+              {contribution.url.length > 0 && (
                 <>
                   <h3 className="text-lg font-bold mb-2">Socials</h3>
                   <div className="flex flex-wrap gap-2 pb-6">
-                    {authors.map((contributor, index) => (
-                      <Link href={contributor.url.url} key={index}>
+                    {contribution.url.map((socialMediaURL, index) => (
+                      <Link href={socialMediaURL.url} key={index}>
                         <Button variant={"outline"}>
-                          <SocialMediaIcon url={contributor.url._type} />
-                          {contributor.name}
+                          <SocialMediaIcon url={socialMediaURL._type} />
+                          {contribution.name}
                         </Button>
                       </Link>
                     ))}
@@ -81,10 +72,7 @@ const IndividualContribution: React.FC<{ contribution: IContributor, isFirst?: b
             </div>
           </div>
 
-          <div className="w-full grid grid-cols-1 gap-6">
-            <h2 className="text-2xl font-semibold">Contributions</h2>
-            <GithubContributionLinks githubLinks={contribution.githubContributions} />
-          </div>
+          <GithubContributionLinks githubLinks={contribution.contributions} />
         </div>
       </CardContent>
     </Card >
