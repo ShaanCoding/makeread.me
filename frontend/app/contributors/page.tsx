@@ -1,6 +1,6 @@
 import ContributionArea from "@/components/Contributors/ContributionArea";
 import React from "react";
-import { Contributions } from "../../config/contributions";
+import { contributionData } from "../../config/contributors";
 import { contributorsConfig } from "@/config/contributors";
 
 export default function page() {
@@ -12,10 +12,10 @@ export default function page() {
       </h2>
 
       <div className="grid gap-6 grid-cols-1">
-        <ContributionArea area="Development" contributors={Contributions.development} />
-        <ContributionArea area="Design" contributors={Contributions.design} />
-        <ContributionArea area="Templates" contributors={Contributions.contributedToTemplate} />
-        <ContributionArea area="Bug report" contributors={Contributions.bugReports} />
+        <ContributionArea area="Development" contributors={contributionData.development} />
+        <ContributionArea area="Design" contributors={contributionData.design} />
+        <ContributionArea area="Templates" contributors={contributionData.contributedToTemplate} />
+        <ContributionArea area="Bug report" contributors={contributionData.bugReports} />
       </div>
     </main>
   )
