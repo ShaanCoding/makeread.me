@@ -8,7 +8,7 @@ import PullRequestMerged from '../common/Github/PullRequestMerged'
 import PullRequestCancelled from '../common/Github/PullRequestCancelled'
 import PullRequestDraft from '../common/Github/PullRequestDraft'
 
-const ContributionIcon: React.FC<{ iconType: IPullRequestType | IIssueType }> = ({ iconType }) => {
+const ContributorIcon: React.FC<{ iconType: IPullRequestType | IIssueType }> = ({ iconType }) => {
     switch (iconType) {
         case IIssueType.OPEN_ISSUE:
             return <OpenIssueIcon />
@@ -29,4 +29,4 @@ const ContributionIcon: React.FC<{ iconType: IPullRequestType | IIssueType }> = 
     }
 }
 
-export default ContributionIcon
+export default ContributorIcon

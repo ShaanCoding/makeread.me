@@ -10,7 +10,7 @@ const shaancoding: IContributor =  {
   name: "Shaan Khan",
   image: "https://avatars.githubusercontent.com/u/22236218?v=4",
   title: "Software Engineer at Nine",
-  description: "Dynamic and results-oriented software developer with a passion for crafting robust and scalable solutions. Proficient in various programming languages and frameworks, with a proven track record of delivering high-quality code on time and within budget. Excellent problem-solving abilities and a collaborative mindset, combined with strong communication skills to effectively interact with cross-functional teams and stakeholders.",
+  description: "Face the Tech Debt, Build the Future.",
   url: [
     {
       _type: "Twitter",

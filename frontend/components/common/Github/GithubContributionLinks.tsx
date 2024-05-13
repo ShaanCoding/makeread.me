@@ -1,8 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { GitPullRequest, CircleDot } from "lucide-react";
 import { IGithubContributionsList, IIssueType, IPullRequestType } from "@/api/generated";
-import ContributionIcon from "./ContributionIcon";
+import ContributionIcon from "../../Contributors/ContributorIcon";
 
 const GithubContributionLinks: React.FC<{ githubLinks: IGithubContributionsList[] }> = ({ githubLinks }) => {
   if (githubLinks.length === 0) return null
