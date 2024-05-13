@@ -28,12 +28,11 @@ const ContributorBlock: React.FC<{ contribution: IContributor, isFirst?: boolean
             </CardHeader>
             <CardContent className={`${isMinimized ? "hidden" : ""}`}>
                 <div className="grid grid-cols-1 gap-6">
-                    <div className="flex flex-col items-center justify-center md:flex-row gap-6">
-                        <div className="h-full w-full md:w-auto md:min-w-[256px] rounded-md overflow-clip">
+                    <div className="grid grid-cols-1 items-center justify-center md:justify-start gap-6 md:grid-cols-[256px,1fr]">
+                        <div className="relative h-[256px] w-[256px] rounded-md overflow-clip">
                             <Image
-                                width={1024}
-                                height={1024}
-                                layout="responsive"
+                                layout="fill"
+                                objectFit="cover"
                                 src={contribution.image} alt={`Image of ${contribution.name}`} />
                         </div>
 

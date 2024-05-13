@@ -6,9 +6,12 @@ const MainContentTabs: React.FC<{
     editMode: EditModeOne | EditModeTwo | EditModeThree
     setEditMode: React.Dispatch<React.SetStateAction<EditModeOne | EditModeTwo | EditModeThree>>
 }> = ({ numberOfViewsToShow, editMode, setEditMode }) => {
-    if (numberOfViewsToShow === 3) return
+    if (numberOfViewsToShow === 3) return <></>
 
-    let EditMode;
+    let EditMode:
+        | typeof EditModeOne
+        | typeof EditModeTwo
+        | typeof EditModeThree;
 
     switch (numberOfViewsToShow) {
         case 1:
