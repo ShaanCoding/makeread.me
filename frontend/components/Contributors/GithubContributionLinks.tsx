@@ -1,34 +1,33 @@
-import { IGithubLink } from "@/config/contributions";
 import Link from "next/link";
 import React from "react";
 import { GitPullRequest, CircleDot } from "lucide-react";
+import { IGithubContributionsList, IIssueType, IPullRequestType } from "@/api/generated";
+import ContributionIcon from "./ContributionIcon";
 
-export default function GithubContributionLinks({ githubLinks }: { githubLinks: IGithubLink[] }) {
+const GithubContributionLinks: React.FC<{ githubLinks: IGithubContributionsList[] }> = ({ githubLinks }) => {
   return (
-    <div className="mb-4">
-
-      {
-        githubLinks.map((link, key) => {
-          return (
-            <div key={key} className="block">
-              <Link href={link.link} className="">
-                <div className="flex flex-row p-2 text-blue-500 hover:underline">
-                  <div className="pr-4">
-                    <Icon type={link.type} />
+    <div className="w-full grid grid-cols-1 gap-6">
+      <h2 className="text-2xl font-semibold">Contributions</h2>
+      <div className="mb-4">
+        {
+          githubLinks.map((link, key) => {
+            return (
+              <div key={key}>
+                <Link href={link.url}>
+                  <div className="flex flex-row p-2 text-blue-500 hover:underline">
+                    <div className="pr-2">
+                      <ContributionIcon iconType={link.type as IPullRequestType | IIssueType} />
+                    </div>
+                    <p>{link.name}</p>
                   </div>
-                  <p>{link.title}</p>
-                </div>
-              </Link>
-            </div>
-          )
-        })
-      }
+                </Link>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }
-// TODO: Remove
-function Icon({ type }: { type: string }) {
-  return (
-    type === "PR" ? <GitPullRequest color="#3fb950" /> : <CircleDot color="#3fb950" />
-  )
-}
+
+export default GithubContributionLinks;
