@@ -10,6 +10,9 @@ const nextConfig = withPlausibleProxy()({
       },
       {
         hostname: "github.com"
+      },
+      {
+        hostname: "avatars.githubusercontent.com"
       }
     ],
   },

@@ -5,6 +5,8 @@ import { IGithubContributionsList, IIssueType, IPullRequestType } from "@/api/ge
 import ContributionIcon from "./ContributionIcon";
 
 const GithubContributionLinks: React.FC<{ githubLinks: IGithubContributionsList[] }> = ({ githubLinks }) => {
+  if (githubLinks.length === 0) return null
+
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-2">Contributions</h2>
