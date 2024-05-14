@@ -1,3 +1,4 @@
+import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
 
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'

@@ -37,17 +37,6 @@ if (!PORT) {
     listOfErrorMessages.push('No PORT set')
 }
 
-export const FRONTEND_URL = process.env.FRONTEND_URL!
-export const BASE_URL = process.env.BASE_URL!
-
-if (!FRONTEND_URL) {
-    listOfErrorMessages.push('No FRONTEND_URL set')
-}
-
-if (!BASE_URL) {
-    listOfErrorMessages.push('No BASE_URL set')
-}
-
 export const MONGO_PRIVATE_URL = process.env.MONGO_PRIVATE_URL!
 
 if (PRODUCTION_OR_DEVELOPMENT === Environment.PRODUCTION) {
