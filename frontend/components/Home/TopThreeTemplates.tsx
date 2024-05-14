@@ -5,12 +5,13 @@ import { useQuery } from "@tanstack/react-query"
 
 import Card from "@/components/SelectTemplate/Card"
 import { motion } from "framer-motion"
+import { api } from "@/lib/apiWrapper"
 
 const TopThreeTemplates = () => {
   const templateMaps = useQuery({
     queryKey: ["getV1Template"],
     queryFn: async () => {
-      let request = await new readMeGenerator().sidebar.getV1SidebarAll()
+      let request = await api.sidebar.getV1SidebarAll()
 
       return request.responseObject?.slice(0, 3) as IFullTemplate[]
     },

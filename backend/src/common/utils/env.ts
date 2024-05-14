@@ -50,17 +50,11 @@ if (!BASE_URL) {
 
 export const MONGO_PRIVATE_URL = process.env.MONGO_PRIVATE_URL!
 
-export const MONGO_URL_LOCAL = process.env.MONGODB_URL_LOCAL!
-
 if (PRODUCTION_OR_DEVELOPMENT === Environment.PRODUCTION) {
     if(!MONGO_PRIVATE_URL) {
         listOfErrorMessages.push('No MONGO_PRIVATE_URL set')
     }
-} else if (PRODUCTION_OR_DEVELOPMENT === Environment.DEVELOPMENT) {
-    if (!MONGO_URL_LOCAL) {
-        listOfErrorMessages.push('No MONGODB_URL_LOCAL set')
-    }
-}
+} 
 
 if (listOfErrorMessages.length > 0) {
     console.log('Missing environment variables:')

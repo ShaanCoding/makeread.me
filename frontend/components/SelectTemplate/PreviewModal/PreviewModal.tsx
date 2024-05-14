@@ -7,6 +7,7 @@ import ErrorModalContent from "./ErrorModalContent"
 import LoadingModalContent from "./LoadingModalContent"
 import NoDataModalContent from "./NoDataModalContent"
 import PreviewModalContent from "./PreviewModalContent"
+import { api } from "@/lib/apiWrapper"
 
 const PreviewModal: React.FC<{ folder: string; templateTitle: string; modalOpen: boolean; setModalOpen: any }> = ({
     folder,
@@ -17,7 +18,7 @@ const PreviewModal: React.FC<{ folder: string; templateTitle: string; modalOpen:
     const markdownTemplate = useQuery({
         queryKey: ["getV1TemplateTemplatePreview", folder],
         queryFn: async () => {
-            const request = await new readMeGenerator().template.getV1TemplateTemplatePreview(folder)
+            const request = await api.template.getV1TemplateTemplatePreview(folder)
             return request.responseObject as string
         },
         staleTime: 5 * 1000,
