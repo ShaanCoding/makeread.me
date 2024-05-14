@@ -1,10 +1,11 @@
-import mongoose from 'mongoose'
+import mongoose, { mongo } from 'mongoose'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import { Environment, PRODUCTION_OR_DEVELOPMENT, MONGO_PRIVATE_URL } from './common/utils/env'
 import { FullTemplateModel, MacroModel } from './api/templates/template.model'
 import { createMacroObjects, createTemplateObjects } from './common/utils/helper'
 
 let mongoDBConnection: string = ''
+let mongoConnectionOptions: mongoose.ConnectOptions = {}
 
 const connectToDevDB = async () => {
     const mongod = new MongoMemoryServer()
@@ -14,6 +15,10 @@ const connectToDevDB = async () => {
 
 const connectToProdDB = () => {
     mongoDBConnection = MONGO_PRIVATE_URL
+    mongoConnectionOptions = {
+        autoIndex: false,
+        dbName: 'makereadme',
+    }
 }
 
 const initTemplates = async () => {
@@ -46,7 +51,7 @@ export const initMongoDB = async () => {
             await connectToDevDB()
         }
 
-        await mongoose.connect(mongoDBConnection)
+        await mongoose.connect(mongoDBConnection, mongoConnectionOptions)
         await initTemplates()
         console.log('🚀 MongoDB Connected')
     } catch (error) {
