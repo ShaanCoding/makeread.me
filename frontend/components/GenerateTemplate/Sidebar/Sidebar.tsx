@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react"
-import { IFullTemplate, IFunction, readMeGenerator } from "@/api/generated"
+import { IFullTemplate, IFunction } from "@/api/generated"
 import { useQuery } from "@tanstack/react-query"
 import { useDebounce } from "use-debounce"
 
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/multiselect"
 
 import MappedBlocks from "./MappedBlocks"
+import { api } from "@/lib/apiWrapper"
 
 interface IOption {
   label: string
@@ -34,7 +35,7 @@ const GeneratorSideBar: React.FC<{
     queryKey: ["getV1SidebarTemplateOptions"],
     queryFn: async () => {
       let request =
-        await new readMeGenerator().sidebar.getV1SidebarTemplateOptions()
+        await api.sidebar.getV1SidebarTemplateOptions()
 
       return request.responseObject as IOption[]
     },
@@ -56,7 +57,7 @@ const GeneratorSideBar: React.FC<{
   const sidebarResults = useQuery({
     queryKey: ["getV1SidebarTemplate", debouncedInputValue, multiSelectValue],
     queryFn: async () => {
-      let request = await new readMeGenerator().sidebar.getV1SidebarTemplate(debouncedInputValue, multiSelectValue)
+      let request = await api.sidebar.getV1SidebarTemplate(debouncedInputValue, multiSelectValue)
 
       return request.responseObject as IFullTemplate[]
     },

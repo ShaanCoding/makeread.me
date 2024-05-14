@@ -17,6 +17,7 @@ import {
   MultiSelectorList,
   MultiSelectorTrigger,
 } from "@/components/ui/multiselect"
+import { api } from "@/lib/apiWrapper"
 
 interface IOption {
   label: string
@@ -37,7 +38,7 @@ const SelectTemplateSideBar: React.FC<{
   const templateMaps = useQuery({
     queryKey: ["getV1Template", searchDebounced, multiSelectValue, pageType],
     queryFn: async () => {
-      let request = await new readMeGenerator().sidebar.getV1SidebarAll(
+      let request = await api.sidebar.getV1SidebarAll(
         searchDebounced,
         multiSelectValue,
         pageType
@@ -52,7 +53,7 @@ const SelectTemplateSideBar: React.FC<{
     queryKey: ["getV1TemplateGetAllSidebar", search],
     queryFn: async () => {
       let request =
-        await new readMeGenerator().sidebar.getV1SidebarAllOptions()
+        await api.sidebar.getV1SidebarAllOptions()
 
       return request.responseObject as IOption[]
     },

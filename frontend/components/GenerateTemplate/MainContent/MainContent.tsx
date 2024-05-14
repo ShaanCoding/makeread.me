@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { IDefaultBlockInput, IFunction, readMeGenerator } from "@/api/generated"
+import { IDefaultBlockInput, IFunction } from "@/api/generated"
 
 import CopyButton from "./CopyButton"
 import DownloadButton from "./DownloadButton"
@@ -12,6 +12,7 @@ import { EditModeOne, EditModeTwo, EditModeThree } from "./types"
 import MainContentTabs from "./Tabs/MainContentTabs"
 import ToggleViewButton from "./Tabs/ToggleViewButton"
 import TabContent from "./Tabs/TabContent"
+import { api } from "@/lib/apiWrapper"
 
 const MainContent: React.FC<{
   templateId: string
@@ -25,7 +26,7 @@ const MainContent: React.FC<{
   const populateTemplateData = useQuery({
     queryKey: ["getV1TemplateTemplateDefaultBlocks", templateId],
     queryFn: async () => {
-      let index = await new readMeGenerator().template.getV1TemplateTemplateDefaultBlocks(
+      let index = await api.template.getV1TemplateTemplateDefaultBlocks(
         templateId
       )
 
@@ -49,7 +50,7 @@ const MainContent: React.FC<{
         })
       )
 
-      let request = await new readMeGenerator().template.postV1TemplateTemplateMacros(blocksMapped)
+      let request = await api.template.postV1TemplateTemplateMacros(blocksMapped)
 
       return request.responseObject as string
     },
