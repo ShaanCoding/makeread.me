@@ -16,6 +16,7 @@ const nextConfig = withPlausibleProxy()({
       }
     ],
   },
+  output: "standalone"
 })
 
 export default nextConfig
