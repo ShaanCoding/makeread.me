@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node server.js",
+    "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
@@ -33,7 +33,7 @@
     "clsx": "^1.2.1",
     "cmdk": "^1.0.0",
     "framer-motion": "^11.1.7",
-    "lucide-react": "*",
+    "lucide-react": "0.105.0-alpha.4",
     "next": "^13.4.8",
     "next-plausible": "^3.12.0",
     "next-themes": "^0.2.1",
@@ -48,7 +48,7 @@
     "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1",
     "rimraf": "^5.0.5",
-    "sharp": "^0.32.6",
+    "sharp": "^0.31.3",
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6",
     "use-debounce": "^10.0.0"

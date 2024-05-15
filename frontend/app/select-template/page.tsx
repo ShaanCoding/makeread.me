@@ -13,20 +13,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 export default function IndexPage() {
   const [template, setTemplates] = useState<ITemplate[]>([])
   const [pageType, setPageType] = useState<IPageType>(IPageType.NONE)
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([])
-
-
-  const addCategoryToSidebar = (value: string) => {
-    setMultiSelectValue([...multiSelectValue, value])
-  }
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <SelectTemplateSideBar
         setTemplateBlocks={setTemplates}
         pageType={pageType}
-        multiSelectValue={multiSelectValue}
-        setMultiSelectValue={setMultiSelectValue}
       />
 
       <div className="flex flex-col">
@@ -54,6 +46,8 @@ export default function IndexPage() {
                       </TabsTrigger >
                     ))}
                   </TabsList>
+                  <TabsContent value="account">
+                  </TabsContent>
                 </Tabs>
               )}
             </div>
@@ -70,9 +64,7 @@ export default function IndexPage() {
           {template.length !== 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-6 lg:grid-cols-3">
               {template.map((template: ITemplate, index: number) => (
-                <Card cardData={template} key={index}
-                  addCategoryToSidebar={addCategoryToSidebar}
-                />
+                <Card {...template} key={index} />
               ))}
             </div>
           )}
