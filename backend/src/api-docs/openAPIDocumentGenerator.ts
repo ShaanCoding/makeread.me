@@ -3,9 +3,10 @@ import { OpenApiGeneratorV3, OpenAPIRegistry } from '@asteasolutions/zod-to-open
 import { healthCheckRegistry } from '@/api/healthCheck/healthCheck.routes'
 import { templateRegistry } from '@/api/templates/template.routes'
 import { sideBarRegistry } from '@/api/sideBar/sideBar.routes'
+import { contributorRegistry } from '@/api/contributors/contributor.routes'
 
 export function generateOpenAPIDocument() {
-    const registry = new OpenAPIRegistry([healthCheckRegistry, templateRegistry, sideBarRegistry])
+    const registry = new OpenAPIRegistry([healthCheckRegistry, templateRegistry, sideBarRegistry, contributorRegistry])
     const generator = new OpenApiGeneratorV3(registry.definitions)
 
     return generator.generateDocument({
