@@ -27,7 +27,9 @@ const initTemplates = async () => {
         if (!templates) {
             throw Error('Failed to read template data')
         }
-         await FullTemplateModel.create(templates)
+        // TODO: This will cause horizontal scaling issues. We should use a unique index on the folder field instead.
+        await FullTemplateModel.collection.drop()
+        await FullTemplateModel.create(templates)
     } catch (error) {
         console.error('Error adding templates:', error)
     }
@@ -37,6 +39,8 @@ const initTemplates = async () => {
         if (!macros) {
             throw Error('Failed to read macros data')
         }
+        // TODO: This will cause horizontal scaling issues. We should use a unique index on the folder field instead.
+        await MacroModel.collection.drop()
         await MacroModel.create(macros)
     } catch (error) {
         console.error('Error adding macros:', error)
