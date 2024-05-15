@@ -18,7 +18,7 @@ BASE_URL
 
 const listOfErrorMessages: string[] = []
 
-const NODE_ENV = process.env.NODE_ENV
+const NODE_ENV = process.env.NODE_ENV!
 
 if (!NODE_ENV) {
     listOfErrorMessages.push('No NODE_ENV set')
@@ -31,56 +31,19 @@ export enum Environment {
 
 export const PRODUCTION_OR_DEVELOPMENT: Environment = NODE_ENV === 'prod' ? Environment.PRODUCTION : Environment.DEVELOPMENT
 
-export const PORT = process.env.PORT
+export const PORT = process.env.PORT!
 
 if (!PORT) {
     listOfErrorMessages.push('No PORT set')
 }
 
-export const FRONTEND_URL = process.env.FRONTEND_URL
-export const BASE_URL = process.env.BASE_URL
-
-if (!FRONTEND_URL) {
-    listOfErrorMessages.push('No FRONTEND_URL set')
-}
-
-if (!BASE_URL) {
-    listOfErrorMessages.push('No BASE_URL set')
-}
-
-export const MONGO_URL = process.env.MONGO_URL
-export const MONGOUSER = process.env.MONGOUSER
-export const MONGOPASSWORD = process.env.MONGOPASSWORD
-export const MONGOHOST = process.env.MONGOHOST
-export const MONGOPORT = process.env.MONGOPORT
-
-export const MONGO_URL_LOCAL = process.env.MONGODB_URL_LOCAL
+export const MONGO_PRIVATE_URL = process.env.MONGO_PRIVATE_URL!
 
 if (PRODUCTION_OR_DEVELOPMENT === Environment.PRODUCTION) {
-    if (!MONGO_URL) {
-        listOfErrorMessages.push('No MONGO_URL set')
+    if(!MONGO_PRIVATE_URL) {
+        listOfErrorMessages.push('No MONGO_PRIVATE_URL set')
     }
-
-    if (!MONGOUSER) {
-        listOfErrorMessages.push('No MONGOUSER set')
-    }
-
-    if (!MONGOPASSWORD) {
-        listOfErrorMessages.push('No MONGOPASSWORD set')
-    }
-
-    if (!MONGOHOST) {
-        listOfErrorMessages.push('No MONGOHOST set')
-    }
-
-    if (!MONGOPORT) {
-        listOfErrorMessages.push('No MONGOPORT set')
-    }
-} else if (PRODUCTION_OR_DEVELOPMENT === Environment.DEVELOPMENT) {
-    if (!MONGO_URL_LOCAL) {
-        listOfErrorMessages.push('No MONGODB_URL_LOCAL set')
-    }
-}
+} 
 
 if (listOfErrorMessages.length > 0) {
     console.log('Missing environment variables:')

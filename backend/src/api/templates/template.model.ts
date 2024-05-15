@@ -1,3 +1,4 @@
+import mongoose, { Schema, Document } from 'mongoose'
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi'
 import { z } from 'zod'
 
@@ -164,3 +165,74 @@ export const DefaultBlockInputSchema = z.object({
     function: z.string(),
     folder: z.string(),
 })
+
+// Mongoose ///////////////////////////////////////////////////////////////
+// TODO: Figure out how to use zod with mongoose
+
+const MongooseURLTypeSchema = {
+    type: String,
+    enum: ['Facebook', 'Instagram', 'Twitter', 'Github', 'LinkedIn', 'Other'],
+}
+
+const MongooseUserSchema = new Schema({
+    name: { type: String, required: true },
+    url: {
+        type: {
+            url: { type: String, required: true },
+            _type: MongooseURLTypeSchema,
+        },
+        required: true,
+    },
+})
+
+const MongooseTagSchema = new Schema({
+    name: { type: String, required: true },
+    url: { type: String, required: true },
+})
+
+const MongooseFunctionSchema = new Schema({
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    function: { type: String, required: true },
+    variables: [{ type: Object, required: true }],
+    folder: { type: String, required: true },
+})
+
+const MongoosePageTypeSchema = {
+    type: String,
+    enum: ['None', 'ReadME', 'Code of Conduct', 'Privacy Policy'],
+}
+
+const MongooseFullTemplateSchema = new Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    author: { type: MongooseUserSchema, required: true },
+    contributors: [MongooseUserSchema],
+    startupBlocks: [String],
+    image: { type: String, required: false }, // TODO: is "required:false` correct?
+    dateCreated: { type: Date, required: true },
+    lastUpdated: { type: Date, required: true },
+    tags: [MongooseTagSchema],
+    featured: { type: Boolean, required: true },
+    folder: { type: String, required: true },
+    pageType: MongoosePageTypeSchema,
+    functions: [MongooseFunctionSchema],
+})
+
+// Macros ///////////////////////////////////////////////////////////////
+
+export interface Macro extends Document {
+    folder: string,
+    name: string,
+    content: string,
+}
+
+const macroSchema = new Schema({
+    folder: { type: String, required: true },
+    name: { type: String, required: true },
+    content: { type: String, required: true },
+  });
+  
+
+export const FullTemplateModel = mongoose.model<FullTemplate>('FullTemplate', MongooseFullTemplateSchema)
+export const MacroModel = mongoose.model<Macro>('Macro', macroSchema)
