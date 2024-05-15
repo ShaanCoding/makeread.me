@@ -13,7 +13,6 @@ import {
     ObjectSchema,
     PageTypeSchema,
     SideBarOptionsSchema,
-    TagSchema,
     TemplateSchema,
     URLTypeSchema,
     UserSchema,
@@ -27,7 +26,7 @@ import {
     VariableTextAreaSchema,
     VariableTypeSchema,
 } from './template.model'
-import TemplateController from './template.controller'
+import TemplateController from './templates.controller'
 
 export const templateRegistry = new OpenAPIRegistry()
 
@@ -47,7 +46,6 @@ templateRegistry.register('IVariableObject', VariableObjectSchema)
 templateRegistry.register('IVariableSelect', VariableSelectSchema)
 templateRegistry.register('IVariableRadio', VariableRadioSchema)
 
-templateRegistry.register('ITag', TagSchema)
 templateRegistry.register('IURLType', URLTypeSchema)
 templateRegistry.register('ISideBarOptions', SideBarOptionsSchema)
 templateRegistry.register('IPageType', PageTypeSchema)

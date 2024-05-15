@@ -1,14 +1,14 @@
+import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
-
-import { Template, FullTemplate, FullTemplateModel, SideBarOptions, IFunction } from '../templates/template.model'
+import { SideBarOptions, FullTemplate, IFunction, Template } from '../templates/template.model'
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse'
 
 export default class SideBarController {
     public async getAllTemplates(search: string, filter: string[], pageType: string): Promise<ServiceResponse<Template[] | null>> {
         try {
-            let blocksData: FullTemplate[] = await FullTemplateModel.find({})
+            let blocksData = this.readBlocksData()
 
-            if (!blocksData) {
+            if (blocksData === null) {
                 return this.handleNullBlocksData()
             }
 
@@ -46,12 +46,13 @@ export default class SideBarController {
 
     public async getAllSidebar(): Promise<ServiceResponse<SideBarOptions[] | null>> {
         try {
-            let blocksData: FullTemplate[] = await FullTemplateModel.find({})
+            const sidebarOptionsSet: Set<string> = new Set<string>()
 
-            if (!blocksData) {
+            const blocksData = this.readBlocksData()
+
+            if (blocksData === null) {
                 return this.handleNullBlocksData()
             }
-            const sidebarOptionsSet: Set<string> = new Set<string>()
 
             blocksData.map((block: FullTemplate) => {
                 block.tags.forEach((tag) => {
@@ -91,16 +92,17 @@ export default class SideBarController {
     public async getTemplateSidebar(id: string, search: string, filter: string[]): Promise<ServiceResponse<FullTemplate[] | null>> {
         try {
             if (id && id !== 'undefined') {
-                let blockData = await FullTemplateModel.findOne({ folder: id })
-
-                if (!blockData) {
-                    return this.handleNullBlocksData()
+                const filePath = `./public/${id}/blocks.json`
+                if (!fs.existsSync(filePath)) {
+                    return new ServiceResponse(ResponseStatus.Failed, 'Template not found', null, StatusCodes.NOT_FOUND)
                 }
-                return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', [blockData], StatusCodes.OK)
-            } else {
-                let blocksData: FullTemplate[] = await FullTemplateModel.find({})
 
-                if (!blocksData) {
+                const blocksData: FullTemplate = JSON.parse(fs.readFileSync(filePath, 'utf8'))
+                return new ServiceResponse<FullTemplate[]>(ResponseStatus.Success, 'Success', [blocksData], StatusCodes.OK)
+            } else {
+                let blocksData = this.readBlocksData()
+
+                if (blocksData === null) {
                     return this.handleNullBlocksData()
                 }
 
@@ -129,14 +131,14 @@ export default class SideBarController {
 
     public async getAllTemplateFolders(): Promise<ServiceResponse<SideBarOptions[] | null>> {
         try {
-            const blocksData: FullTemplate[] = await FullTemplateModel.find({})
-
-            if (!blocksData) {
-                return this.handleNullBlocksData()
-            }
+            const blocksData = this.readBlocksData()
 
             // Needs to read the blocks.json file and get the folder name and the title
             // This is to show the folder name and the title of the template
+            if (blocksData === null) {
+                return this.handleNullBlocksData()
+            }
+
             const sidebarOptions: SideBarOptions[] = blocksData.map((block: FullTemplate) => {
                 return {
                     label: block.title,
@@ -150,8 +152,21 @@ export default class SideBarController {
         }
     }
 
+    private readBlocksData(): FullTemplate[] | null {
+        try {
+            const folders: string[] = fs.readdirSync('./public')
+            const blocksData = folders.map((folder: string) => {
+                const data = fs.readFileSync(`./public/${folder}/blocks.json`, 'utf8')
+                return JSON.parse(data)
+            })
+            return blocksData
+        } catch (error) {
+            return null
+        }
+    }
+
     private handleNullBlocksData(): ServiceResponse<null> {
-        return new ServiceResponse(ResponseStatus.Failed, 'Templates not found', null, StatusCodes.NOT_FOUND)
+        return new ServiceResponse(ResponseStatus.Failed, 'Failed to read templates', null, StatusCodes.INTERNAL_SERVER_ERROR)
     }
 
     private sortBlocksByFeatured(blocksData: FullTemplate[]): FullTemplate[] {
