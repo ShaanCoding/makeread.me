@@ -33,7 +33,7 @@ export default class TemplateController {
 
     public async getTemplateMacros(body: DefaultBlockInput[]): Promise<ServiceResponse<string | null>> {
         try {
-            if (!body || body.length === 0) {
+            if (!body) {
                 return new ServiceResponse(ResponseStatus.Failed, 'Body is empty', null, StatusCodes.BAD_REQUEST)
             }
 
