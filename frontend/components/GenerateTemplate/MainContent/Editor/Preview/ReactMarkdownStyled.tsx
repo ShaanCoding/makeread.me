@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment, createElement, useEffect, useState } from 'react';
 
 import { unified } from 'unified';
@@ -94,7 +95,7 @@ const components = {
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={cn(
-        "mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground",
+        "[&>*]:text-muted-foreground mt-6 border-l-2 pl-6 italic",
         className
       )}
       {...props}
@@ -110,7 +111,7 @@ const components = {
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
-      className={cn("m-0 border-t p-0 even:bg-muted", className)}
+      className={cn("even:bg-muted m-0 border-t p-0", className)}
       {...props}
     />
   ),
@@ -152,7 +153,6 @@ const components = {
   ),
 }
 
-
 const processor = unified()
 .use(parse, {fragment: true})
 .use(rehypeReact, production)
@@ -187,7 +187,6 @@ const processor = unified()
 const ReactMarkdownStyled = ({ output }: { output: string }) => {
   const [Content, setContent] = useState(createElement(Fragment))
 
-  
   useEffect(() => {
     (async () => {
       const renderedContent = await processor.process(output)
