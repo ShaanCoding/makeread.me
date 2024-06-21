@@ -35,6 +35,7 @@
     "clsx": "^1.2.1",
     "cmdk": "^1.0.0",
     "contentlayer2": "^0.4.6",
+    "date-fns": "^3.6.0",
     "framer-motion": "^11.1.7",
     "lucide-react": "*",
     "mdast-util-gfm-table": "^2.0.0",
