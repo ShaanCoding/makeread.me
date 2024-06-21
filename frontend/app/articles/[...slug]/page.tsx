@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { allPosts } from 'contentlayer/generated';
+import { allArticles } from 'contentlayer/generated';
 
 import { Mdx } from '@/components/mdx-components';
 
@@ -16,7 +16,7 @@ interface PostProps {
 
 async function getPostFromParams(params: PostProps['params']) {
   const slug = params?.slug?.join('/');
-  const post = allPosts.find((post) => post.slugAsParams === slug);
+  const post = allArticles.find((post) => post.slugAsParams === slug);
 
   if (!post) {
     return null;
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
 }
 
 export async function generateStaticParams(): Promise<PostProps['params'][]> {
-  return allPosts.map((post) => ({
+  return allArticles.map((post) => ({
     slug: post.slugAsParams.split('/'),
   }));
 }
@@ -52,6 +52,8 @@ export default async function PostPage({ params }: PostProps) {
   }
 
   return (
+    <main className="flex items-center justify-center">
+      <div className="flex max-w-screen-2xl flex-1 flex-col gap-4 p-4 xl:gap-6 xl:p-6">
     <article className="py-6 prose dark:prose-invert">
       <h1 className="mb-2">{post.title}</h1>
       {post.description && (
@@ -70,5 +72,7 @@ export default async function PostPage({ params }: PostProps) {
       <hr className="my-4" />
       <Mdx code={post.body.code} />
     </article>
+    </div>
+    </main>
   );
 }

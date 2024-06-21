@@ -16,9 +16,9 @@ const computedFields = {
   },
 }
 
-export const Post = defineDocumentType(() => ({
-  name: "Post",
-  filePathPattern: "posts/**/*.mdx",
+export const Article = defineDocumentType(() => ({
+  name: "Articles",
+  filePathPattern: "articles/**/*.mdx",
   contentType: "mdx",
   fields: {
     title: {
@@ -46,7 +46,7 @@ export const Post = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Post],
+  documentTypes: [Article],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
