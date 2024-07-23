@@ -29,18 +29,14 @@ const SelectTemplateSideBar: React.FC<{
   pageType: IPageType
   multiSelectValue: string[]
   setMultiSelectValue: Dispatch<SetStateAction<string[]>>
-  isLoading: boolean
   setIsLoading: Dispatch<SetStateAction<boolean>>
-  isError: boolean
   setIsError: Dispatch<SetStateAction<boolean>>
 }> = ({
   pageType,
   setTemplateBlocks,
   multiSelectValue,
   setMultiSelectValue,
-  isLoading,
   setIsLoading,
-  isError,
   setIsError,
 }) => {
   const [search, setSearch] = useState<string>("")

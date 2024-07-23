@@ -13,11 +13,11 @@ import SelectTemplateSideBar from "@/components/SelectTemplate/Sidebar/Sidebar"
 
 export default function IndexPage() {
   const [template, setTemplates] = useState<ITemplate[]>([])
-  const [pageType, setPageType] = useState<IPageType>(IPageType.NONE)
-  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([])
-
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [isError, setIsError] = useState<boolean>(false)
+
+  const [pageType, setPageType] = useState<IPageType>(IPageType.NONE)
+  const [multiSelectValue, setMultiSelectValue] = useState<string[]>([])
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -26,9 +26,7 @@ export default function IndexPage() {
         pageType={pageType}
         multiSelectValue={multiSelectValue}
         setMultiSelectValue={setMultiSelectValue}
-        isLoading={isLoading}
         setIsLoading={setIsLoading}
-        isError={isError}
         setIsError={setIsError}
       />
 
