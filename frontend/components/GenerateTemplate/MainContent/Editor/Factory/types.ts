@@ -7,7 +7,7 @@ import {
   IVariableRadio,
   IVariableSelect,
   IVariableTextArea,
-} from "@/api/generated"
+} from "@/openAPI/generated"
 import { Control } from "react-hook-form"
 
 export interface IInputFieldProps {

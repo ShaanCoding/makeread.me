@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { IPageType, ITemplate } from "@/api/generated"
+import { IPageType, ITemplate } from "@/openAPI/generated"
 import { FilePlus2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"

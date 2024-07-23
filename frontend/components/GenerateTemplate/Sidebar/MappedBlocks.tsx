@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react"
-import { IFullTemplate, IFunction } from "@/api/generated"
+import { IFullTemplate, IFunction } from "@/openAPI/generated"
 import {
   Collapsible,
   CollapsibleContent,

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { IFunction } from "@/api/generated"
+import { IFunction } from "@/openAPI/generated"
 import { Reorder, motion, useDragControls } from "framer-motion"
 import { GripVertical, Trash2Icon } from "lucide-react"
 import { Control, FieldValues } from "react-hook-form"

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { IFunction } from "@/api/generated"
+import { IFunction } from "@/openAPI/generated"
 import { Reorder } from "framer-motion"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 

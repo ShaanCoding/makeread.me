@@ -1,5 +1,5 @@
 import React from "react"
-import { IIssueType, IPullRequestType } from "@/api/generated"
+import { IIssueType, IPullRequestType } from "@/openAPI/generated"
 
 import ClosedIssueCancelled from "../common/Github/ClosedIssueCancelled"
 import ClosedIssueDone from "../common/Github/ClosedIssueDone"

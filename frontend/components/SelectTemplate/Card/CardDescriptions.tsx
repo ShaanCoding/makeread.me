@@ -1,4 +1,4 @@
-import { ITemplate } from "@/api/generated"
+import { ITemplate } from "@/openAPI/generated"
 
 import { CardDescription, CardTitle } from "@/components/ui/card"
 

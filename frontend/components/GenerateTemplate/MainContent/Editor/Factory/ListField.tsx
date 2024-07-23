@@ -6,7 +6,7 @@ import {
   IVariableObject,
   IVariableSelect,
   IVariableTextArea,
-} from "@/api/generated"
+} from "@/openAPI/generated"
 import { useFieldArray } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"

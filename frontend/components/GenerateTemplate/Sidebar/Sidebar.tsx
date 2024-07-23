@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from "react"
-import { IFullTemplate, IFunction } from "@/api/generated"
+import { IFullTemplate, IFunction } from "@/openAPI/generated"
 import { useQuery } from "@tanstack/react-query"
 import { useDebounce } from "use-debounce"
 

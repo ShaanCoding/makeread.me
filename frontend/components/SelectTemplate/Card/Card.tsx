@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Link from "next/link"
-import { ITemplate } from "@/api/generated"
+import { ITemplate } from "@/openAPI/generated"
 
 import { Button } from "../../ui/button"
 import {

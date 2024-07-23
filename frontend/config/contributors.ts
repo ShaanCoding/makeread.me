@@ -1,4 +1,4 @@
-import { IContributor } from "@/api/generated"
+import { IContributor } from "@/openAPI/generated"
 
 export type ContributorsConfig = typeof contributorsConfig
 

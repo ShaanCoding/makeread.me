@@ -1,4 +1,4 @@
-import { IFunction } from "@/api/generated"
+import { IFunction } from "@/openAPI/generated"
 import nunjucks from "nunjucks"
 
 export const combineMacroIntoOrderedFunctionString = (blocks: any[]) => {

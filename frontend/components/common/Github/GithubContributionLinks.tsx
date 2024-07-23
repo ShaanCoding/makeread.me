@@ -4,7 +4,7 @@ import {
   IGithubContributionsList,
   IIssueType,
   IPullRequestType,
-} from "@/api/generated"
+} from "@/openAPI/generated"
 
 import ContributionIcon from "../../Contributors/ContributorIcon"
 

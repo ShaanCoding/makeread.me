@@ -1,6 +1,6 @@
 "use client"
 
-import { IFullTemplate, ITemplate, readMeGenerator } from "@/api/generated"
+import { IFullTemplate, ITemplate, readMeGenerator } from "@/openAPI/generated"
 import { useQuery } from "@tanstack/react-query"
 import { motion } from "framer-motion"
 

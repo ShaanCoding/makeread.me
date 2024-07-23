@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { IDefaultBlockInput, IFunction } from "@/api/generated"
+import { IDefaultBlockInput, IFunction } from "@/openAPI/generated"
 import { useQuery } from "@tanstack/react-query"
 
 import { api } from "@/lib/apiWrapper"

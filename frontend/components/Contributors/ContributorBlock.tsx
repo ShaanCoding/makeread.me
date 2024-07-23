@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { IContributor } from "@/api/generated"
+import { IContributor } from "@/openAPI/generated"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"

@@ -1,4 +1,4 @@
-import { ITemplate } from "@/api/generated"
+import { ITemplate } from "@/openAPI/generated"
 import { StarIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"

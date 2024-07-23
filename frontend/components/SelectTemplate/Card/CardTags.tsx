@@ -1,4 +1,4 @@
-import { ITag } from "@/api/generated"
+import { ITag } from "@/openAPI/generated"
 
 import { Badge } from "@/components/ui/badge"
 import { CardTitle } from "@/components/ui/card"

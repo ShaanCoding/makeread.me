@@ -1,4 +1,4 @@
-import { readMeGenerator } from "@/api/generated"
+import { readMeGenerator } from "@/openAPI/generated"
 import { useQuery } from "@tanstack/react-query"
 
 import { api } from "@/lib/apiWrapper"
