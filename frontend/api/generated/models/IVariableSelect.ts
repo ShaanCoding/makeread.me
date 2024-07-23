@@ -3,18 +3,19 @@
 /* tslint:disable */
 /* eslint-disable */
 export type IVariableSelect = {
-  label: string
-  name: string
-  description?: string
-  defaultValue: string
-  selectList: Array<{
-    label: string
-    value: string
-  }>
-  _type: IVariableSelect._type
-}
+    label: string;
+    name: string;
+    description?: string;
+    defaultValue: string;
+    selectList: Array<{
+        label: string;
+        value: string;
+    }>;
+    _type: IVariableSelect._type;
+};
 export namespace IVariableSelect {
-  export enum _type {
-    SELECT = "select",
-  }
+    export enum _type {
+        SELECT = 'select',
+    }
 }
+

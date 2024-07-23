@@ -3,14 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export type IGithubContributionsList = {
-  name: string
-  url: string
-  type:
-    | "OpenIssue"
-    | "ClosedIssueDone"
-    | "ClosedIssueCancelled"
-    | "PullRequestOpen"
-    | "PullRequestMerged"
-    | "PullRequestCancelled"
-    | "PullRequestDraft"
-}
+    name: string;
+    url: string;
+    type: ('OpenIssue' | 'ClosedIssueDone' | 'ClosedIssueCancelled' | 'PullRequestOpen' | 'PullRequestMerged' | 'PullRequestCancelled' | 'PullRequestDraft');
+};
+

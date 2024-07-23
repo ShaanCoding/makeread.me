@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type ITag = {
-  name: string
-  url: string
-}
+    name: string;
+    url: string;
+};
+

@@ -3,7 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export type IVariable = {
-  label: string
-  name: string
-  description?: string
-}
+    label: string;
+    name: string;
+    description?: string;
+};
+

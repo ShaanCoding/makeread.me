@@ -3,27 +3,21 @@
 /* tslint:disable */
 /* eslint-disable */
 export type IVariableList = {
-  label: string
-  name: string
-  description?: string
-  defaultValue: Array<Record<string, any>>
-  listSchema: Array<{
-    label: string
-    name: string
-    _type:
-      | "input"
-      | "textArea"
-      | "checkBox"
-      | "list"
-      | "object"
-      | "select"
-      | "radio"
-    description?: string
-  }>
-  _type: IVariableList._type
-}
+    label: string;
+    name: string;
+    description?: string;
+    defaultValue: Array<Record<string, any>>;
+    listSchema: Array<{
+        label: string;
+        name: string;
+        _type: 'input' | 'textArea' | 'checkBox' | 'list' | 'object' | 'select' | 'radio';
+        description?: string;
+    }>;
+    _type: IVariableList._type;
+};
 export namespace IVariableList {
-  export enum _type {
-    LIST = "list",
-  }
+    export enum _type {
+        LIST = 'list',
+    }
 }
+
