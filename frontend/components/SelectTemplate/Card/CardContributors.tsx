@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ITemplate } from "@/api/generated"
+import { ITemplate } from "@/openAPI/generated"
 
 import { Button } from "@/components/ui/button"
 import { CardTitle } from "@/components/ui/card"

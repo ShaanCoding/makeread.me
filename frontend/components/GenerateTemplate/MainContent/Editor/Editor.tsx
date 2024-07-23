@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { IFunction } from "@/api/generated"
+import { IFunction } from "@/openAPI/generated"
 import { Reorder } from "framer-motion"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
@@ -33,7 +33,6 @@ const Editor = ({
     setTemplateBlocks(newBlocks)
   }
 
-
   return (
     <div className="grid grid-cols-1 gap-6 p-6 xl:w-full">
       <FormProvider {...methods}>
@@ -45,7 +44,8 @@ const Editor = ({
             className="grid grid-cols-1 gap-6"
             axis="y"
             onReorder={setTemplateBlocks}
-            values={templateBlocks}>
+            values={templateBlocks}
+          >
             {templateBlocks.map((block: IFunction, index: number) => (
               <EditorBlock
                 block={block}
