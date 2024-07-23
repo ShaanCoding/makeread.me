@@ -29,11 +29,15 @@ const SelectTemplateSideBar: React.FC<{
   pageType: IPageType
   multiSelectValue: string[]
   setMultiSelectValue: Dispatch<SetStateAction<string[]>>
+  setIsLoading: Dispatch<SetStateAction<boolean>>
+  setIsError: Dispatch<SetStateAction<boolean>>
 }> = ({
   pageType,
   setTemplateBlocks,
   multiSelectValue,
   setMultiSelectValue,
+  setIsLoading,
+  setIsError,
 }) => {
   const [search, setSearch] = useState<string>("")
   const [searchDebounced] = useDebounce<string>(search, 500)
@@ -80,6 +84,23 @@ const SelectTemplateSideBar: React.FC<{
       setTemplateBlocks(templateMaps.data!)
     }
   }, [templateMaps.status, templateMaps.data])
+
+  useEffect(() => {
+    if (templateMaps.isError) {
+      setIsError(true)
+      setIsLoading(false)
+    }
+
+    if (templateMaps.isLoading) {
+      setIsLoading(true)
+      setIsError(false)
+    }
+
+    if (templateMaps.isSuccess) {
+      setIsError(false)
+      setIsLoading(false)
+    }
+  }, [templateMaps.isLoading, templateMaps.isError, templateMaps.isSuccess])
 
   return (
     <div className="mb-4 hidden rounded-br-lg border bg-muted/40 md:block xl:mb-6">
