@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import Image from "next/image"
+import MobileNav from "./mobile-nav"
 
 export function SiteHeader() {
   return (
@@ -16,7 +17,7 @@ export function SiteHeader() {
         </Link>
         <MainNav items={siteConfig.mainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="hidden items-center space-x-1 sm:flex">
+          <nav className="flex items-center space-x-1">
             <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -47,6 +48,8 @@ export function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
+
+            <MobileNav />
           </nav>
         </div>
       </div>

@@ -12,7 +12,7 @@ interface MainNavProps {
 
 export function MainNav({ items }: MainNavProps) {
   return (
-    <div className="flex">
+    <div className="hidden md:flex">
       {items?.length ? (
         <nav className="flex gap-6">
           {items?.map(
