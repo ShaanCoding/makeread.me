@@ -7,27 +7,6 @@ import { AnimatePresence, motion, useCycle } from "framer-motion"
 import { buttonVariants } from './ui/button'
 import { Icons } from './icons'
 
-/**
- * Renders the mobile navigation items.
- */
-function MobileNavItems () {
-    return (
-        <nav className="flex flex-col gap-6">
-            {siteConfig.mainNav.map((item, index) => (
-                <Link
-                    key={index}
-                    href={item.href}
-                    className={cn(
-                        "flex items-center text-md font-medium",
-                      )}
-                >
-                    {item.title}
-                </Link>
-            ))}
-        </nav>
-    )
-}
-
 
 /**
  * Renders the mobile navigation component.
@@ -62,7 +41,7 @@ export default function MobileNav() {
 
             <AnimatePresence>
                 {open && (
-                    <motion.nav className="fixed z-50 gap-4 bg-background p-6 shadow-lg inset-y-0 right-0 h-full w-3/4 border-r sm:max-w-sm pr-0"
+                    <motion.div className="fixed z-50 gap-4 bg-background p-6 shadow-lg inset-y-0 right-0 h-full w-3/4 border-r sm:max-w-sm pr-0"
                         initial={{ x: "100vw" }}
                         animate={{ x: 0 }}
                         exit={{ x: "100vw" }}
@@ -82,8 +61,21 @@ export default function MobileNav() {
                             <Icons.close className="size-5" />
                             <span className="sr-only">Close Menu</span>
                         </button>
-                        <MobileNavItems />
-                    </motion.nav>
+                        <nav className="flex flex-col gap-6">
+                            {siteConfig.mainNav.map((item, index) => (
+                                <Link
+                                    key={index}
+                                    href={item.href}
+                                    onClick={() => cycleOpen()}
+                                    className={cn(
+                                        "flex items-center text-md font-medium",
+                                    )}
+                                >
+                                    {item.title}
+                                </Link>
+                            ))}
+                        </nav>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </div>
