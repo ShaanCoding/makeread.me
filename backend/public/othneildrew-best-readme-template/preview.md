@@ -1,7 +1,7 @@
 <br/>
 <div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
-<img src="https://source.unsplash.com/random/256x256" alt="Logo" width="80" height="80">
+<img src="https://picsum.photos/400" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">ReadME Generator</h3>
 <p align="center">
@@ -19,7 +19,7 @@ An awesome README template to jumpstart your projects!
 
  ## About The Project
 
-![Product Screenshot](https://source.unsplash.com/random/1920x1080)
+![Product Screenshot](https://picsum.photos/1920/1080)
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 

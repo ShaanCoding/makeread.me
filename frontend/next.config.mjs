@@ -6,7 +6,7 @@ const nextConfig = withPlausibleProxy()({
   images: {
     remotePatterns: [
       {
-        hostname: "source.unsplash.com",
+        hostname: "picsum.photos",
       },
       {
         hostname: "github.com",
