@@ -21,8 +21,8 @@
 
 <p align="center">
 
-<img src="https://source.unsplash.com/random" alt="Random Image" width="400px">
-<img src="https://source.unsplash.com/random" alt="Random Image" width="400px">
+<img src="https://picsum.photos/400" alt="Random Image" width="400px">
+<img src="https://picsum.photos/400" alt="Random Image" width="400px">
 </p>
  
 <h2 id="technologies">💻 Technologies</h2>

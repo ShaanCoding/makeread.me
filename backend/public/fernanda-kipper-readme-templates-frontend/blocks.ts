@@ -135,11 +135,11 @@ const functionsList: IFunction[] = [
                 _type: 'list',
                 defaultValue: [
                     {
-                        url: 'https://source.unsplash.com/random',
+                        url: 'https://picsum.photos/1080/1920',
                         altTag: 'Random Image',
                     },
                     {
-                        url: 'https://source.unsplash.com/random',
+                        url: 'https://picsum.photos/1080/1920',
                         altTag: 'Random Image',
                     },
                 ],

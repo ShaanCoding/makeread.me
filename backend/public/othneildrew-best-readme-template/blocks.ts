@@ -64,7 +64,7 @@ const projectHeaderFunction: IFunction = {
         {
             label: 'Logo URL',
             name: 'logoURL',
-            defaultValue: 'https://source.unsplash.com/random/256x256',
+            defaultValue: 'https://picsum.photos/400',
             _type: 'input',
         },
         {
@@ -117,7 +117,7 @@ const aboutTheProjectFunction: IFunction = {
             name: 'productScreenshot',
             defaultValue: {
                 altTag: 'Product Screenshot',
-                url: 'https://source.unsplash.com/random/1920x1080',
+                url: 'https://picsum.photos/1920/1080',
             },
             _type: 'object',
             objectSchema: [
