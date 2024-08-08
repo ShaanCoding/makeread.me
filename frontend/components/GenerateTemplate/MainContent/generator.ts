@@ -10,7 +10,7 @@ export const combineMacroIntoOrderedFunctionString = (blocks: any[]) => {
         variableArray.push(variable.name)
       })
 
-      return `{{ ${func.function}(${variableArray.join(", ")}) }}`
+      return `{{- ${func.function}(${variableArray.join(", ")}) -}}`
     })
     .join(" ")
 }
@@ -19,9 +19,9 @@ export const mapVariableObjectToString = (variables: Record<string, any>) => {
   let variablesString = ""
 
   Object.keys(variables).forEach((element: string) => {
-    variablesString += `{% set ${element} = ${JSON.stringify(
+    variablesString += `{%- set ${element} = ${JSON.stringify(
       variables[element]
-    )} %} `
+    )} -%} `
   })
 
   return variablesString
@@ -37,7 +37,7 @@ export const compileString = (
   // Contains the macro definitions used
   const specificTemplate = macros
 
-  // Combine templateBLocks in format "macro1 macro2 macro3"
+  // Combine templateBlocks in format "macro1 macro2 macro3"
   const index = combineMacroIntoOrderedFunctionString(templateBlocks)
 
   // Assign variables in this format grabs it from the variable state KEY-value
