@@ -1,12 +1,12 @@
 "use client"
-import FeedbackPopup from "@/components/common/FeedbackPopup"
+
 import CallToAction from "@/components/Home/CallToAction"
 import Demo from "@/components/Home/Demo"
 import KeyFeatures from "@/components/Home/KeyFeatures"
 import Splashscreen from "@/components/Home/Splashscreen"
 import Testimonials from "@/components/Home/Testimonials"
 import TopThreeTemplates from "@/components/Home/TopThreeTemplates"
-
+import FeedbackPopup from "@/components/common/FeedbackPopup"
 
 export default function IndexPage() {
   return (
@@ -17,7 +17,7 @@ export default function IndexPage() {
       <KeyFeatures />
       <Testimonials />
       <CallToAction />
-      <FeedbackPopup/>
+      <FeedbackPopup />
     </section>
   )
 }
