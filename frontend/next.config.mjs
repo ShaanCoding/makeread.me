@@ -6,17 +6,17 @@ const nextConfig = withPlausibleProxy()({
   images: {
     remotePatterns: [
       {
-        hostname: "source.unsplash.com",
+        hostname: "picsum.photos",
       },
       {
-        hostname: "github.com"
+        hostname: "github.com",
       },
       {
-        hostname: "avatars.githubusercontent.com"
-      }
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
-  output: "standalone"
+  // output: "standalone"
 })
 
 export default nextConfig

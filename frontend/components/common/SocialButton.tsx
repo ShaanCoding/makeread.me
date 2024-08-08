@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { IUser } from "@/api/generated"
+import { IUser } from "@/openAPI/generated"
 import { twMerge } from "tailwind-merge"
 
 import { Button } from "../ui/button"

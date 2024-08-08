@@ -49,7 +49,7 @@ The badges used here are explained below:
  
 # Quick Start Demo
 
-![Demo Preview](https://source.unsplash.com/random/1280x720)
+![Demo Preview](https://picsum.photos/1920/1080)
 
 I believe that you should bring value to the reader as soon as possible. You should be able to get the user up and running with your project with minimal friction.
 

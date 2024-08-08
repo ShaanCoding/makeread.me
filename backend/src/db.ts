@@ -1,4 +1,4 @@
-import mongoose, { mongo } from 'mongoose'
+import mongoose, { Collection, mongo } from 'mongoose'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import { Environment, PRODUCTION_OR_DEVELOPMENT, MONGO_PRIVATE_URL } from './common/utils/env'
 import { FullTemplateModel, MacroModel } from './api/templates/template.model'
@@ -28,7 +28,8 @@ const initTemplates = async () => {
             throw Error('Failed to read template data')
         }
         // TODO: This will cause horizontal scaling issues. We should use a unique index on the folder field instead.
-        await FullTemplateModel.collection.drop()
+       
+        await FullTemplateModel.collection.drop().catch((err) => {})
         await FullTemplateModel.create(templates)
     } catch (error) {
         console.error('Error adding templates:', error)
@@ -40,7 +41,7 @@ const initTemplates = async () => {
             throw Error('Failed to read macros data')
         }
         // TODO: This will cause horizontal scaling issues. We should use a unique index on the folder field instead.
-        await MacroModel.collection.drop()
+        await MacroModel.collection.drop().catch((err) => {})
         await MacroModel.create(macros)
     } catch (error) {
         console.error('Error adding macros:', error)

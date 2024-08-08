@@ -1,4 +1,4 @@
-import { IVariableInput, IVariableTextArea } from "@/api/generated"
+import { IVariableInput, IVariableTextArea } from "@/openAPI/generated"
 
 import ContextTitle from "./ContextTitle"
 import InputGenerator from "./InputGenerator"

@@ -7,7 +7,7 @@ import {
   IVariableRadio,
   IVariableSelect,
   IVariableTextArea,
-} from "@/api/generated"
+} from "@/openAPI/generated"
 import { Control, useFieldArray } from "react-hook-form"
 
 import CheckBoxField from "./CheckboxField"

@@ -2,10 +2,10 @@
 
 import { useMemo, useState } from "react"
 import { useParams } from "next/navigation"
-import { IFunction } from "@/api/generated"
 
 import MainContent from "@/components/GenerateTemplate/MainContent/MainContent"
 import GeneratorSideBar from "@/components/GenerateTemplate/Sidebar/Sidebar"
+import { IFunction } from "@/openAPI/generated"
 
 export default function ReadMEGeneratorPage() {
   const router = useParams()

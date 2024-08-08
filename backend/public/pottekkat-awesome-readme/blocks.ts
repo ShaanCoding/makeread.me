@@ -152,7 +152,7 @@ const functionsList: IFunction[] = [
                 label: 'Demo Preview',
                 name: 'demoPreview',
                 defaultValue: {
-                    url: 'https://source.unsplash.com/random/1280x720',
+                    url: 'https://picsum.photos/1920/1080',
                     altTag: 'Demo Preview',
                 },
                 _type: 'object',
