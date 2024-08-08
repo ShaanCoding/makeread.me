@@ -12,7 +12,7 @@ interface MainNavProps {
 
 export function MainNav({ items }: MainNavProps) {
   return (
-      <div className="hidden md:flex">
+    <div className="hidden md:flex">
       {items?.length ? (
         <nav className="flex gap-6">
           {items?.map(
@@ -22,7 +22,7 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    "text-muted-foreground flex items-center text-sm font-medium",
+                    "flex items-center text-sm font-medium text-muted-foreground",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                 >

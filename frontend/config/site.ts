@@ -26,7 +26,7 @@ export const siteConfig = {
     {
       title: "Articles",
       href: "/articles",
-    }
+    },
   ],
   links: {
     twitter: "https://twitter.com/ShaanCoding",
@@ -57,7 +57,7 @@ export const siteConfig = {
       {
         title: "Articles",
         href: "/articles",
-      }
+      },
     ],
     socialMedia: [
       {
