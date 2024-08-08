@@ -1,3 +1,5 @@
+import { title } from "process"
+
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
@@ -24,7 +26,7 @@ export const siteConfig = {
     {
       title: "Articles",
       href: "/articles",
-    }
+    },
   ],
   links: {
     twitter: "https://twitter.com/ShaanCoding",
@@ -51,6 +53,10 @@ export const siteConfig = {
       {
         title: "Contributors",
         href: "/contributors",
+      },
+      {
+        title: "Articles",
+        href: "/articles",
       },
     ],
     socialMedia: [
@@ -102,18 +108,18 @@ export const siteConfig = {
         description:
           "Our user-friendly interface allows you to effortlessly customize and generate your ReadME, streamlining the entire process.",
       },
-      {
-        image: "/icons/home/shieldsBadgeIntegration.svg",
-        title: "Shields.io Badge Integration",
-        description:
-          "Enhance your project presentation with seamless integration of badges from Shields.io, adding both visual appeal and valuable information to your ReadME.",
-      },
-      {
-        image: "/icons/home/extensiveCustomizationOptions.svg",
-        title: "Extensive Customization Options",
-        description:
-          "Tailor your ReadME's appearance and functionality with a variety of customization options, such as light and dark mode, copy and download buttons, and more.",
-      },
+      // {
+      //   image: "/icons/home/shieldsBadgeIntegration.svg",
+      //   title: "Shields.io Badge Integration",
+      //   description:
+      //     "Enhance your project presentation with seamless integration of badges from Shields.io, adding both visual appeal and valuable information to your ReadME.",
+      // },
+      // {
+      //   image: "/icons/home/extensiveCustomizationOptions.svg",
+      //   title: "Extensive Customization Options",
+      //   description:
+      //     "Tailor your ReadME's appearance and functionality with a variety of customization options, such as light and dark mode, copy and download buttons, and more.",
+      // },
       {
         image: "/icons/home/realTimePreview.svg",
         title: "Real-Time Preview",
@@ -132,12 +138,12 @@ export const siteConfig = {
         description:
           "Utilize a wide selection of ReadME templates created and shared by our passionate and experienced community members.",
       },
-      {
-        image: "/icons/home/gptFunctionality.svg",
-        title: "GPT-3 Integration (Coming Soon)",
-        description:
-          "Leverage advanced AI-powered writing assistance to further enhance the content of your ReadME.",
-      },
+      // {
+      //   image: "/icons/home/gptFunctionality.svg",
+      //   title: "GPT-3 Integration (Coming Soon)",
+      //   description:
+      //     "Leverage advanced AI-powered writing assistance to further enhance the content of your ReadME.",
+      // },
     ],
     callToAction: {
       title: "Ready to create professional-quality ReadMEs for your projects?",

@@ -1,20 +1,19 @@
 // @ts-nocheck
-import React, { Fragment, createElement, useEffect, useState } from 'react';
-
-import { unified } from 'unified';
-import parse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeRaw from 'rehype-raw';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeReact from 'rehype-react';
-import remarkGfm from 'remark-gfm';
-
-import * as prod from 'react/jsx-runtime'
-const production = {Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs}
-
+import React, { Fragment, createElement, useEffect, useState } from "react"
+import * as prod from "react/jsx-runtime"
 import Image, { ImageProps } from "next/image"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypePrettyCode from "rehype-pretty-code"
+import rehypeRaw from "rehype-raw"
+import rehypeReact from "rehype-react"
+import remarkGfm from "remark-gfm"
+import parse from "remark-parse"
+import remarkRehype from "remark-rehype"
+import { unified } from "unified"
+
 import { cn } from "@/lib/utils"
+
+const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs }
 
 const components = {
   h1: ({ className, ...props }) => (
@@ -95,7 +94,7 @@ const components = {
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={cn(
-        "[&>*]:text-muted-foreground mt-6 border-l-2 pl-6 italic",
+        "mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground",
         className
       )}
       {...props}
@@ -111,7 +110,7 @@ const components = {
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
-      className={cn("even:bg-muted m-0 border-t p-0", className)}
+      className={cn("m-0 border-t p-0 even:bg-muted", className)}
       {...props}
     />
   ),
@@ -154,41 +153,41 @@ const components = {
 }
 
 const processor = unified()
-.use(parse, {fragment: true})
-.use(rehypeReact, production)
-.use(remarkGfm)
-.use(remarkRehype, {allowDangerousHtml: true})
-.use(rehypeRaw)
-.use(rehypePrettyCode, {
-  theme: 'github-dark',
-  onVisitLine(node) {
-    if (node.children.length === 0) {
-      node.children = [{ type: 'text', value: ' ' }];
-    }
-  },
-  onVisitHighlightedLine(node) {
-    node.properties.className.push('line--highlighted');
-  },
-  onVisitHighlightedWord(node) {
-    node.properties.className = ['word--highlighted'];
-  },
-})
-.use(rehypeAutolinkHeadings, {
-  properties: {
-    className: ['subheading-anchor'],
-    ariaLabel: 'Link to section',
-  },
-})
-.use(rehypeReact, {
-  createElement: React.createElement,
-  components,
-});
+  .use(parse, { fragment: true })
+  .use(rehypeReact, production)
+  .use(remarkGfm)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeRaw)
+  .use(rehypePrettyCode, {
+    theme: "github-dark",
+    onVisitLine(node) {
+      if (node.children.length === 0) {
+        node.children = [{ type: "text", value: " " }]
+      }
+    },
+    onVisitHighlightedLine(node) {
+      node.properties.className.push("line--highlighted")
+    },
+    onVisitHighlightedWord(node) {
+      node.properties.className = ["word--highlighted"]
+    },
+  })
+  .use(rehypeAutolinkHeadings, {
+    properties: {
+      className: ["subheading-anchor"],
+      ariaLabel: "Link to section",
+    },
+  })
+  .use(rehypeReact, {
+    createElement: React.createElement,
+    components,
+  })
 
 const ReactMarkdownStyled = ({ output }: { output: string }) => {
   const [Content, setContent] = useState(createElement(Fragment))
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       const renderedContent = await processor.process(output)
       setContent(renderedContent.result)
     })()
